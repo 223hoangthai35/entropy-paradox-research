@@ -213,7 +213,7 @@ discover hidden market regimes without human-labeled bias.
 
 ### 3.2 Volume Regime Classification (Plane 2)
 
-| Features | $[\text{Vol}_{\text{Shannon}}, \text{Vol}_{\text{SampEn}}]$ |
+| Features | [Vol<sub>Shannon</sub>, Vol<sub>SampEn</sub>] |
 |---|---|
 | **Preprocessing** | `StandardScaler` |
 | **Label Mapping** | Sort clusters by **sum of centroid coordinates** (Shannon + SampEn) |
