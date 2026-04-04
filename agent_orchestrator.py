@@ -1,6 +1,7 @@
 """
-Agent Orchestrator -- Financial Entropy Agent
+Agent Orchestrator -- Financial Entropy Agent (Dual-Plane Engine)
 ReAct Loop + Anthropic Tool Use Protocol.
+Cross-Plane Reasoning: Price Dynamics x Liquidity Structure.
 """
 
 import os
@@ -11,8 +12,8 @@ import pandas as pd
 import anthropic
 
 from skills.data_skill import get_latest_market_data
-from skills.quant_skill import calc_rolling_wpe, calc_mfi
-from skills.ds_skill import fit_predict_regime
+from skills.quant_skill import calc_rolling_wpe, calc_mfi, calc_rolling_volume_entropy
+from skills.ds_skill import fit_predict_regime, fit_predict_volume_regime
 
 warnings.filterwarnings("ignore")
 
@@ -23,7 +24,9 @@ warnings.filterwarnings("ignore")
 STATE = {
     "df": None,
     "metrics_computed": False,
-    "classifier": None,
+    "volume_metrics_computed": False,
+    "price_classifier": None,
+    "volume_classifier": None,
 }
 
 
@@ -35,61 +38,129 @@ def tool_fetch_market_data(ticker="VNINDEX", start_date="2024-01-01"):
     df = get_latest_market_data(ticker=ticker, start_date=start_date)
     STATE["df"] = df
     STATE["metrics_computed"] = False
+    STATE["volume_metrics_computed"] = False
     return json.dumps({
-        "status": "success", 
+        "status": "success",
         "rows": len(df),
         "latest_close": float(df["Close"].iloc[-1])
     })
 
 
 def tool_compute_entropy_metrics():
-    print("  [Tool Execution] Computing Entropy Metrics (WPE, C, MFI)...")
+    """Plane 1: Tinh WPE, Complexity, MFI tu Price data."""
+    print("  [Tool Execution] Computing Price Entropy Metrics (WPE, C, MFI)...")
     df = STATE.get("df")
     if df is None:
-        return json.dumps({"error": "No market data available. Call fetch_market_data first."})
-    
+        return json.dumps({"error": "No market data. Call fetch_market_data first."})
+
     log_returns = np.log(df["Close"] / df["Close"].shift(1)).values
-    
+    df["Volatility"] = pd.Series(log_returns, index=df.index).rolling(20).std() * np.sqrt(252) * 100
+
     wpe_arr, c_arr = calc_rolling_wpe(log_returns, m=3, tau=1, window=22)
     mfi_arr = calc_mfi(wpe_arr, c_arr)
-    
+
     df["WPE"] = wpe_arr
     df["Complexity"] = c_arr
     df["MFI"] = mfi_arr
-    
+
+    # Kinematic Vectors: 3-day momentum derivatives of PE
+    df["PE_Velocity"] = df["WPE"].diff(3).fillna(0)
+    df["PE_Acceleration"] = df["PE_Velocity"].diff(3).fillna(0)
+
     STATE["df"] = df
     STATE["metrics_computed"] = True
-    
-    latest = df.dropna().iloc[-1]
+
+    latest = df.dropna(subset=["WPE"]).iloc[-1]
     return json.dumps({
         "status": "success",
         "latest_WPE": float(latest["WPE"]),
         "latest_Complexity": float(latest["Complexity"]),
-        "latest_MFI": float(latest["MFI"])
+        "latest_MFI": float(latest["MFI"]),
+        "latest_Volatility": float(latest["Volatility"]),
+        "PE_Velocity": float(latest["PE_Velocity"]),
+        "PE_Acceleration": float(latest["PE_Acceleration"]),
+    })
+
+
+def tool_compute_volume_entropy():
+    """Plane 2: Tinh Volume Shannon Entropy va Sample Entropy."""
+    print("  [Tool Execution] Computing Volume Entropy (Shannon + SampEn, window=60)...")
+    df = STATE.get("df")
+    if df is None:
+        return json.dumps({"error": "No market data. Call fetch_market_data first."})
+
+    if "Volume" not in df.columns:
+        return json.dumps({"error": "Volume column missing from data."})
+
+    vol_shannon, vol_sampen = calc_rolling_volume_entropy(df["Volume"].values, window=60)
+    df["Vol_Shannon"] = vol_shannon
+    df["Vol_SampEn"] = vol_sampen
+
+    STATE["df"] = df
+    STATE["volume_metrics_computed"] = True
+
+    valid = df.dropna(subset=["Vol_Shannon", "Vol_SampEn"])
+    if valid.empty:
+        return json.dumps({"status": "success", "warning": "Not enough data for volume entropy (need 60+ days)"})
+
+    latest = valid.iloc[-1]
+    return json.dumps({
+        "status": "success",
+        "latest_Vol_Shannon": float(latest["Vol_Shannon"]),
+        "latest_Vol_SampEn": float(latest["Vol_SampEn"]),
     })
 
 
 def tool_predict_market_regime():
-    print("  [Tool Execution] Predicting Market Regime via GMM...")
+    """Plane 1: GMM predict Price Regime."""
+    print("  [Tool Execution] Predicting Price Regime via GMM (Plane 1)...")
     df = STATE.get("df")
     if df is None or not STATE.get("metrics_computed"):
-        return json.dumps({"error": "Data/Metrics missing. Compute metrics first."})
-    
+        return json.dumps({"error": "Price metrics missing. Compute entropy first."})
+
     valid_df = df.dropna(subset=["WPE", "Complexity", "MFI"]).copy()
     features = valid_df[["WPE", "Complexity", "MFI"]].values
-    
+
     labels, clf = fit_predict_regime(features, n_components=3)
     valid_df["RegimeLabel"] = labels
     valid_df["RegimeName"] = [clf.get_regime_name(lbl) for lbl in labels]
-    
+
     STATE["df"] = valid_df
-    STATE["classifier"] = clf
-    
+    STATE["price_classifier"] = clf
+
     latest = valid_df.iloc[-1]
     return json.dumps({
-        "status": "success", 
-        "current_regime": str(latest["RegimeName"]),
-        "mfi": float(latest["MFI"])
+        "status": "success",
+        "price_regime": str(latest["RegimeName"]),
+        "mfi": float(latest["MFI"]),
+    })
+
+
+def tool_predict_volume_regime():
+    """Plane 2: GMM predict Volume Regime."""
+    print("  [Tool Execution] Predicting Volume Regime via GMM (Plane 2)...")
+    df = STATE.get("df")
+    if df is None or not STATE.get("volume_metrics_computed"):
+        return json.dumps({"error": "Volume metrics missing. Compute volume entropy first."})
+
+    valid_df = df.dropna(subset=["Vol_Shannon", "Vol_SampEn"]).copy()
+    if valid_df.empty:
+        return json.dumps({"error": "Not enough data for Volume GMM (need 60+ days)."})
+
+    features = valid_df[["Vol_Shannon", "Vol_SampEn"]].values
+    labels, clf = fit_predict_volume_regime(features, n_components=3)
+    valid_df["VolRegimeLabel"] = labels
+    valid_df["VolRegimeName"] = [clf.get_regime_name(lbl) for lbl in labels]
+
+    STATE["df"] = valid_df
+    STATE["volume_classifier"] = clf
+
+    latest = valid_df.iloc[-1]
+    return json.dumps({
+        "status": "success",
+        "volume_regime": str(latest["VolRegimeName"]),
+        "vol_shannon": float(latest["Vol_Shannon"]),
+        "vol_sampen": float(latest["Vol_SampEn"]),
     })
 
 
@@ -102,8 +173,12 @@ def dispatch_tool(tool_name: str, tool_kwargs: dict) -> str:
         return tool_fetch_market_data(**tool_kwargs)
     elif tool_name == "compute_entropy_metrics":
         return tool_compute_entropy_metrics()
+    elif tool_name == "compute_volume_entropy":
+        return tool_compute_volume_entropy()
     elif tool_name == "predict_market_regime":
         return tool_predict_market_regime()
+    elif tool_name == "predict_volume_regime":
+        return tool_predict_volume_regime()
     else:
         return json.dumps({"error": f"Unknown tool: {tool_name}"})
 
@@ -114,68 +189,163 @@ def dispatch_tool(tool_name: str, tool_kwargs: dict) -> str:
 ANTHROPIC_TOOLS = [
     {
         "name": "fetch_market_data",
-        "description": "Fetch real-time daily Open, High, Low, Close, Volume data for a specific stock or index.",
+        "description": "Fetch real-time daily OHLCV data for a specific stock or index.",
         "input_schema": {
             "type": "object",
             "properties": {
-                "ticker": {"type": "string", "description": "The ticker symbol (e.g., VNINDEX)."},
-                "start_date": {"type": "string", "description": "Start date in YYYY-MM-DD format."}
+                "ticker": {"type": "string", "description": "Ticker symbol (e.g., VNINDEX)."},
+                "start_date": {"type": "string", "description": "Start date YYYY-MM-DD."}
             },
             "required": ["ticker", "start_date"]
         }
     },
     {
         "name": "compute_entropy_metrics",
-        "description": "Compute advanced Symbolic Dynamics metrics (WPE, Statistical Complexity, Market Fragility Index) on the fetched data.",
-        "input_schema": {
-            "type": "object",
-            "properties": {}
-        }
+        "description": "Compute Plane 1 (Price) metrics: WPE, Statistical Complexity, MFI, Volatility.",
+        "input_schema": {"type": "object", "properties": {}}
+    },
+    {
+        "name": "compute_volume_entropy",
+        "description": "Compute Plane 2 (Volume) metrics: Shannon Entropy and Sample Entropy on volume data with 60-day rolling window.",
+        "input_schema": {"type": "object", "properties": {}}
     },
     {
         "name": "predict_market_regime",
-        "description": "Classify the current market regime using a Gaussian Mixture Model based on the computed entropy metrics. Returns the regime name.",
-        "input_schema": {
-            "type": "object",
-            "properties": {}
-        }
-    }
+        "description": "Classify Price regime via GMM (Plane 1). Labels: Stable Growth, Fragile Growth, Chaos/Panic.",
+        "input_schema": {"type": "object", "properties": {}}
+    },
+    {
+        "name": "predict_volume_regime",
+        "description": "Classify Volume regime via GMM (Plane 2). Labels: Consensus Flow, Dispersed Flow, Erratic/Noisy Flow.",
+        "input_schema": {"type": "object", "properties": {}}
+    },
 ]
+
+
+# ==============================================================================
+# CROSS-PLANE SYNTHESIS LOGIC
+# ==============================================================================
+def _cross_plane_synthesis(price_regime: str, volume_regime: str) -> tuple[str, str]:
+    """
+    Ma tran Cross-Plane: ket hop Price Plane va Volume Plane
+    de suy ra ket luan he thong.
+    Returns: (synthesis_label, explanation)
+    """
+    p = price_regime.upper()
+    v = volume_regime.upper()
+
+    p_fragile_chaos = "CHAOS" in p or "PANIC" in p or "FRAGILE" in p
+    v_consensus = "CONSENSUS" in v
+    v_erratic = "ERRATIC" in v or "NOISY" in v
+    p_stable = "STABLE" in p
+
+    if p_fragile_chaos and v_consensus:
+        return (
+            "STRUCTURAL ACCUMULATION",
+            "Price chaos is contained by highly organized liquidity. "
+            "Smart Money absorption detected. The physical disorder is a surface "
+            "phenomenon; underlying capital flow remains structurally coherent."
+        )
+    elif p_fragile_chaos and v_erratic:
+        return (
+            "CRITICAL BREAKDOWN",
+            "Physical price chaos is amplified by fragmented liquidity. "
+            "Both planes confirm systemic instability. High systemic risk "
+            "with no structural support from capital flow."
+        )
+    elif p_stable and v_erratic:
+        return (
+            "TREND EXHAUSTION",
+            "Price trend appears stable, but liquidity structure is breaking "
+            "down beneath the surface. The divergence between stable prices "
+            "and erratic volume signals unsustainable momentum."
+        )
+    else:
+        return (
+            "SYSTEM COHERENT",
+            "Both planes exhibit structural alignment. No cross-plane "
+            "divergence detected. Current market dynamics are internally consistent."
+        )
+
+
+# ==============================================================================
+# SYSTEM PROMPT (DUAL-PLANE)
+# ==============================================================================
+SYSTEM_PROMPT = """
+You are a Dual-Plane Financial Entropy Expert specializing in Non-linear Dynamics
+and Systemic Risk Analysis.
+
+Your task is to analyze the market through TWO independent observation planes:
+1. PLANE 1 (Price Dynamics): WPE, Kinematic Vectors (V, a), MFI, Volatility.
+2. PLANE 2 (Liquidity Structure): Volume Shannon Entropy, Volume Sample Entropy.
+
+EXECUTION ORDER (mandatory):
+1. fetch_market_data -> get OHLCV data.
+2. compute_entropy_metrics -> compute Plane 1 (Price) features + Kinematic Vectors.
+3. compute_volume_entropy -> compute Plane 2 (Volume) features.
+4. predict_market_regime -> classify Price regime (Stable/Fragile/Chaos).
+5. predict_volume_regime -> classify Volume regime (Consensus/Dispersed/Erratic).
+6. Synthesize BOTH planes into a unified conclusion.
+
+KINEMATIC VECTOR ANALYSIS:
+Analyze the Kinematic Vectors (V and a) of Permutation Entropy:
+- V (Velocity = dE/dt): Determines the direction. V > 0 means chaos is expanding.
+  V < 0 means order is forming.
+- a (Acceleration = d2E/dt2): Determines the momentum force. a > 0 means the trend
+  (chaos or order) is exploding/accelerating. a < 0 means the momentum is fading/exhausting.
+
+CROSS-PLANE SYNTHESIS MATRIX:
+- IF Price=[Fragile/Chaos] AND Volume=[Consensus Flow] -> STRUCTURAL ACCUMULATION
+  "Price chaos contained by organized liquidity. Smart Money absorption."
+- IF Price=[Fragile/Chaos] AND Volume=[Erratic/Noisy Flow] -> CRITICAL BREAKDOWN
+  "Price chaos amplified by fragmented liquidity. High systemic risk."
+- IF Price=[Stable Growth] AND Volume=[Erratic/Noisy Flow] -> TREND EXHAUSTION
+  "Stable prices but liquidity breaking down. Unsustainable momentum."
+
+OUTPUT FORMAT INSTRUCTIONS:
+You MUST format your final response EXACTLY using the following Markdown structure. Use a table for the metrics and preserve the exact headings for the text sections. Do NOT omit the [CONCLUSION].
+
+| Telemetry Module | Key Metrics | Regime / Status |
+| :--- | :--- | :--- |
+| **Plane 1: Price Dynamics** | WPE: [Value] • V (dE/dt): [Value] • a (d2E/dt2): [Value] | **[Regime 1]** |
+| **Plane 2: Liquidity Structure** | Shannon: [Value] • SampEn: [Value] | **[Regime 2]** |
+| **Cross-Plane Synthesis** | Systemic Risk: [Risk Level] | **[Synthesis Label]** |
+
+### [ANALYSIS]
+(Write your detailed cross-plane reasoning here. Include Kinematic interpretation of V and a. Keep it concise and analytical.)
+
+### [VN30 STRUCTURAL DYNAMICS]
+(Write your analysis of internal capital rotation here. Keep it brief.)
+
+### [CONCLUSION]
+(Your final, definitive actionable takeaway here. THIS SECTION IS MANDATORY.)
+
+Maintain an academic, quantitative tone. No speculation without data.
+"""
 
 
 # ==============================================================================
 # ORCHESTRATOR LOOP (REAL ANTHROPIC API)
 # ==============================================================================
-def run_orchestrator(query: str, max_iters: int = 5):
+def run_orchestrator(query: str, max_iters: int = 8):
     api_key = os.environ.get("ANTHROPIC_API_KEY")
     if not api_key:
-        print("[WARN] ANTHROPIC_API_KEY not found. Running MOCK orchestrator sequence for testing.")
+        print("[WARN] ANTHROPIC_API_KEY not found. Running MOCK orchestrator.")
         _run_mock_orchestrator(query)
         return
 
     client = anthropic.Anthropic(api_key=api_key)
-    
-    system_prompt = """
-You are a Financial Entropy Expert specializing in Non-linear Dynamics.
-Your task is to analyze the market by:
-1. Fetching data (fetch_market_data).
-2. Computing entropy metrics (compute_entropy_metrics).
-3. Predicting the regime (predict_market_regime).
-4. Analyzing the results. You MUST output a structured Risk Warning if the regime indicates 'Volatile', 'Panic', 'Chaos', or 'Fragile'.
-Focus on Ordinal Pattern Breakdown, Structural Fragility, and Dynamic Complexity in your analysis.
-Always use the tools sequentially before making conclusions.
-"""
-    
+
     messages = [{"role": "user", "content": query}]
-    print("🤖 Agent Orchestrator Started (Real API)...")
-    
+    print("Agent Orchestrator Started (Real API, Dual-Plane)...")
+
     for i in range(max_iters):
         print(f"\n--- Iteration {i+1} ---")
         try:
             response = client.messages.create(
                 model="claude-3-5-sonnet-20241022",
-                max_tokens=1000,
-                system=system_prompt,
+                max_tokens=1500,
+                system=SYSTEM_PROMPT,
                 messages=messages,
                 tools=ANTHROPIC_TOOLS,
                 tool_choice={"type": "auto"}
@@ -183,88 +353,114 @@ Always use the tools sequentially before making conclusions.
         except Exception as e:
             print(f"API Request Failed: {e}")
             break
-        
-        # Save assistant message
+
         messages.append({"role": "assistant", "content": response.content})
-        
+
         if response.stop_reason == "tool_use":
             tool_results = []
             for block in response.content:
                 if block.type == "tool_use":
-                    print(f"🛠️  Agent called tool: {block.name}({block.input})")
+                    print(f"  Agent called tool: {block.name}({block.input})")
                     result_json = dispatch_tool(block.name, block.input)
                     tool_results.append({
                         "type": "tool_result",
                         "tool_use_id": block.id,
                         "content": result_json
                     })
-            # Send results back to LLM
             messages.append({"role": "user", "content": tool_results})
-            
+
         elif response.stop_reason == "end_turn":
             for block in response.content:
                 if block.type == "text":
-                    print(f"\n📢 Agent Final Output:\n")
+                    print(f"\n  Agent Final Output:\n")
                     print(block.text)
             break
         else:
-            print(f"Unexpected stop factor: {response.stop_reason}")
+            print(f"Unexpected stop reason: {response.stop_reason}")
             break
 
 
 # ==============================================================================
-# MOCK LLM (TESTING PURPOSES ONLY)
+# MOCK LLM (TESTING PURPOSES -- DUAL-PLANE)
 # ==============================================================================
 def _run_mock_orchestrator(query: str):
     """
-    Mo phong vong lap ReAct, tu dong ra quyet dinh goi dung cac tool lien tiep 
-    neu khong co key API nao.
+    Mo phong vong lap ReAct Dual-Plane, goi 5 tools lien tiep
+    va tong hop Cross-Plane Synthesis.
     """
-    print("\n🤖 Agent Orchestrator Started (MOCK MODE)...")
-    
-    # 1. Thuc thi Tool 1
+    print("\n  Agent Orchestrator Started (MOCK MODE, Dual-Plane)...")
+
+    # 1. Fetch Data
     print("\n--- Iteration 1 ---")
-    print("🛠️  Agent called tool: fetch_market_data({'ticker': 'VNINDEX', 'start_date': '2024-01-01'})")
+    print("  Agent called tool: fetch_market_data({'ticker': 'VNINDEX', 'start_date': '2024-01-01'})")
     res1 = dispatch_tool("fetch_market_data", {'ticker': 'VNINDEX', 'start_date': '2024-01-01'})
-    print(f"   -> LLM Observe: {res1}")
-    
-    # 2. Thuc thi Tool 2
+    print(f"   -> Observe: {res1}")
+
+    # 2. Compute Price Entropy (Plane 1)
     print("\n--- Iteration 2 ---")
-    print("🛠️  Agent called tool: compute_entropy_metrics({})")
+    print("  Agent called tool: compute_entropy_metrics({})")
     res2 = dispatch_tool("compute_entropy_metrics", {})
-    print(f"   -> LLM Observe: {res2}")
-    
-    # 3. Thuc thi Tool 3
+    print(f"   -> Observe: {res2}")
+
+    # 3. Compute Volume Entropy (Plane 2)
     print("\n--- Iteration 3 ---")
-    print("🛠️  Agent called tool: predict_market_regime({})")
-    res3 = dispatch_tool("predict_market_regime", {})
-    print(f"   -> LLM Observe: {res3}")
-    
-    # 4. Giai doan tra ve Final Response cua LLM
+    print("  Agent called tool: compute_volume_entropy({})")
+    res3 = dispatch_tool("compute_volume_entropy", {})
+    print(f"   -> Observe: {res3}")
+
+    # 4. Predict Price Regime
     print("\n--- Iteration 4 ---")
-    print("📢 Agent Final Output:")
-    
-    regime_data = json.loads(res3)
-    regime = regime_data.get("current_regime", "Unknown")
-    
-    print(f"Analysis Complete. The current state of VNINDEX is calculated as: **{regime}**.")
-    
-    if "Chaos" in regime or "Panic" in regime or "Fragile" in regime:
-        print("\n==========================================")
-        print("⚠️  RISK WARNING: STRUCTURAL VULNERABILITY")
-        print("==========================================")
-        print(f"The complex systems physics engine detects an MFI of {regime_data.get('mfi', 0):.4f}.")
-        print("Market structure is exhibiting severe structural fragility and an ordinal pattern breakdown.")
-        print("Capital flow is highly fragmented. Precautionary risk management is advised.")
-    else:
-        print("The market implies structural integrity, stable ordinal patterns, and low dynamic complexity.")
+    print("  Agent called tool: predict_market_regime({})")
+    res4 = dispatch_tool("predict_market_regime", {})
+    print(f"   -> Observe: {res4}")
+
+    # 5. Predict Volume Regime
+    print("\n--- Iteration 5 ---")
+    print("  Agent called tool: predict_volume_regime({})")
+    res5 = dispatch_tool("predict_volume_regime", {})
+    print(f"   -> Observe: {res5}")
+
+    # 6. Cross-Plane Synthesis
+    print("\n--- Iteration 6: CROSS-PLANE SYNTHESIS ---")
+    print("  Agent Final Output:\n")
+
+    price_data = json.loads(res4)
+    volume_data = json.loads(res5)
+    price_regime = price_data.get("price_regime", "Unknown")
+    volume_regime = volume_data.get("volume_regime", "Unknown")
+
+    synthesis_label, synthesis_detail = _cross_plane_synthesis(price_regime, volume_regime)
+
+    risk_level = "CRITICAL" if synthesis_label == "CRITICAL BREAKDOWN" else (
+        "ELEVATED" if synthesis_label == "TREND EXHAUSTION" else "MODERATE"
+    )
+
+    print("=" * 50)
+    print("  DUAL-PLANE DIAGNOSTIC REPORT")
+    print("=" * 50)
+    print(f"\n  PLANE 1 -- PRICE DYNAMICS")
+    print(f"  REGIME          : [{price_regime.upper()}]")
+    print(f"  MFI             : {price_data.get('mfi', 0):.4f}")
+    pe_v = price_data.get('PE_Velocity', 0)
+    pe_a = price_data.get('PE_Acceleration', 0)
+    print(f"  PE Velocity (V) : {pe_v:+.4f} ({'chaos expanding' if pe_v > 0 else 'order forming'})")
+    print(f"  PE Accel (a)    : {pe_a:+.4f} ({'momentum accelerating' if pe_a > 0 else 'momentum fading'})")
+    print(f"\n  PLANE 2 -- LIQUIDITY STRUCTURE")
+    print(f"  REGIME          : [{volume_regime.upper()}]")
+    print(f"  Vol Shannon     : {volume_data.get('vol_shannon', 0):.4f}")
+    print(f"  Vol SampEn      : {volume_data.get('vol_sampen', 0):.4f}")
+    print(f"\n  CROSS-PLANE SYNTHESIS")
+    print(f"  CONCLUSION      : [{synthesis_label}]")
+    print(f"  SYSTEMIC RISK   : [{risk_level}]")
+    print(f"\n  {synthesis_detail}")
+    print("=" * 50)
 
 
 # ==============================================================================
 # TESTING BLOCK
 # ==============================================================================
 if __name__ == "__main__":
-    print("="*60)
-    print("TEST: Agent Orchestrator ReAct Loop and Tool Calling Structure")
-    print("="*60)
-    run_orchestrator("Please check the VNINDEX dynamics and see if the market is Fragile.")
+    print("=" * 60)
+    print("TEST: Dual-Plane Agent Orchestrator ReAct Loop")
+    print("=" * 60)
+    run_orchestrator("Analyze VNINDEX with Cross-Plane synthesis. Is the market structurally sound?")

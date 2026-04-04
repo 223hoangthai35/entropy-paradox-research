@@ -1,13 +1,13 @@
 """
 Quantitative Physics Engine -- Financial Entropy Agent
-WPE, Statistical Complexity, MFI, Cross-Sectional Entropy, CECP Boundary.
+WPE, Statistical Complexity, MFI, Cross-Sectional Entropy,
+Volume Entropy (Shannon, SampEn).
 Toi uu bang @numba.njit va numpy vectorized.
 """
 
 import numpy as np
 import numba
 import pandas as pd
-from math import factorial
 
 
 # ==============================================================================
@@ -199,62 +199,136 @@ def calc_correlation_entropy(
     return corr_entropy
 
 
+
 # ==============================================================================
-# CECP BOUNDARY CURVES (LOPEZ-RUIZ)
+# NUMBA CORE: SAMPLE ENTROPY (SampEn)
 # ==============================================================================
-def generate_cecp_boundary(
-    m: int = 3,
-) -> tuple[list, list, list, list]:
+@numba.njit(cache=True)
+def _calc_sample_entropy_jit(x: np.ndarray, m: int, r: float) -> float:
     """
-    Tao Upper/Lower bound cho Complexity-Entropy Causality Plane.
-    Returns: (H_upper, C_upper, H_lower, C_lower).
+    SampEn(m, r) = -ln(A / B).
+    B = so cap template match o chieu m. A = so cap match o chieu m+1.
+    Complexity O(N^2) -- bat buoc JIT.
     """
-    N = factorial(m)
-    U = 1.0 / N
-    S_U = np.log(N)
+    N = len(x)
+    if N < m + 2:
+        return np.nan
 
-    P_s0 = (1.0 + U) / 2.0
-    P_sr = U / 2.0
-    S_star = -(P_s0 * np.log(P_s0)) - (N - 1) * (P_sr * np.log(P_sr))
-    D_max = S_star - 0.5 * S_U
-    Q0 = 1.0 / D_max if D_max > 0 else 0.0
+    B = 0  # matches tai embedding dim m
+    A = 0  # matches tai embedding dim m+1
 
-    def _h_c(p_dist: np.ndarray) -> tuple[float, float]:
-        P = p_dist[p_dist > 0]
-        if len(P) == 0:
-            return 0.0, 0.0
-        S_P = -np.sum(P * np.log(P))
-        H_P = S_P / S_U
-        P_mid = (p_dist + U) / 2.0
-        S_mid = -np.sum(P_mid * np.log(P_mid))
-        JSD = S_mid - 0.5 * S_P - 0.5 * S_U
-        return H_P, Q0 * JSD * H_P
+    for i in range(N - m):
+        for j in range(i + 1, N - m):
+            # Kiem tra m-length match
+            match_m = True
+            for k in range(m):
+                if abs(x[i + k] - x[j + k]) > r:
+                    match_m = False
+                    break
+            if match_m:
+                B += 1
+                # Kiem tra (m+1)-length match (chi khi m-match da thanh cong)
+                if i + m < N and j + m < N:
+                    if abs(x[i + m] - x[j + m]) <= r:
+                        A += 1
 
-    # Upper bound
-    H_upper, C_upper = [], []
-    for p_max in np.linspace(1.0 / N, 1.0, 200):
-        dist = np.full(N, (1.0 - p_max) / (N - 1))
-        dist[0] = p_max
-        h, c = _h_c(dist)
-        H_upper.append(h)
-        C_upper.append(c)
+    if B == 0:
+        return np.nan
+    if A == 0:
+        # Khong co match nao o m+1 -> entropy cuc dai (maximal irregularity)
+        return np.nan
 
-    # Lower bound
-    H_lower, C_lower = [], []
-    for k in range(1, N):
-        for p in np.linspace(1.0 / k, 1.0 / (k + 1), 50):
-            dist = np.zeros(N)
-            dist[:k] = p
-            dist[k] = 1.0 - k * p
-            h, c = _h_c(dist)
-            H_lower.append(h)
-            C_lower.append(c)
+    return -np.log(np.float64(A) / np.float64(B))
 
-    h, c = _h_c(np.full(N, 1.0 / N))
-    H_lower.append(h)
-    C_lower.append(c)
 
-    return H_upper, C_upper, H_lower, C_lower
+def calc_sample_entropy(
+    x: np.ndarray, m: int = 2, r: float | None = None,
+) -> float:
+    """
+    Public wrapper: tinh Sample Entropy cho 1 mang.
+    Neu r=None, tu dong tinh r = 0.2 * std(x).
+    Returns float (NaN neu input khong hop le hoac zero-variance).
+    """
+    arr = np.asarray(x, dtype=np.float64)
+    if len(arr) < m + 2:
+        return np.nan
+    if r is None:
+        std = np.std(arr)
+        if std == 0.0:
+            return np.nan
+        r = 0.2 * std
+    return _calc_sample_entropy_jit(arr, m, r)
+
+
+# ==============================================================================
+# VOLUME SHANNON ENTROPY (HISTOGRAM-BASED)
+# ==============================================================================
+def calc_shannon_entropy_hist(
+    x: np.ndarray, bins: str | int = "auto",
+) -> float:
+    """
+    Shannon Entropy cua phan phoi histogram: H = -SUM(p_i * ln(p_i)) / ln(n_bins).
+    Normalized ve [0, 1]. bins='auto' ap dung Freedman-Diaconis / Sturges rule
+    de xu ly phan phoi heavy-tailed cua volume data (tranh empty bins).
+    Returns float [0, 1]. 0 = tap trung hoan toan, 1 = phan tan deu.
+    """
+    arr = np.asarray(x, dtype=np.float64)
+    valid = arr[np.isfinite(arr)]
+    if len(valid) < 2:
+        return np.nan
+
+    counts, _ = np.histogram(valid, bins=bins)
+    # Loai bo bins trong
+    counts_nz = counts[counts > 0]
+    n_bins = len(counts)
+
+    if n_bins <= 1:
+        return 0.0
+
+    p = counts_nz / counts_nz.sum()
+    H = -np.sum(p * np.log(p)) / np.log(n_bins)
+    return float(np.clip(H, 0.0, 1.0))
+
+
+# ==============================================================================
+# ROLLING VOLUME ENTROPY (SampEn + Shannon)
+# ==============================================================================
+def calc_rolling_volume_entropy(
+    volume: np.ndarray, window: int = 60,
+) -> tuple[np.ndarray, np.ndarray]:
+    """
+    Rolling SampEn + Shannon Entropy tren chuoi volume.
+    Volume duoc log-transform (log1p) truoc khi tinh de on dinh hoa
+    phan phoi heavy-tailed.
+    Window=60: SampEn voi m=2 can N >= 10^m = 100 ly tuong, 60 la
+    muc toi thieu thuc te dam bao hoi tu thong ke.
+    Returns: (shannon_arr, sampen_arr) -- cung shape voi input.
+    """
+    vol = np.asarray(volume, dtype=np.float64)
+    n = len(vol)
+    shannon_out = np.full(n, np.nan)
+    sampen_out = np.full(n, np.nan)
+
+    # Log-transform: xu ly heavy-tail va lam tolerance r tuong doi hon
+    log_vol = np.log1p(np.maximum(vol, 0.0))
+
+    for i in range(window, n):
+        segment = log_vol[i - window: i]
+
+        # Loc NaN/Inf
+        valid = segment[np.isfinite(segment)]
+        if len(valid) < 10:
+            continue
+
+        # Shannon Entropy (bins='auto')
+        shannon_out[i] = calc_shannon_entropy_hist(valid, bins="auto")
+
+        # Sample Entropy (m=2, r=0.2*std)
+        std_v = np.std(valid)
+        if std_v > 0.0:
+            sampen_out[i] = _calc_sample_entropy_jit(valid, 2, 0.2 * std_v)
+
+    return shannon_out, sampen_out
 
 
 # ==============================================================================
@@ -305,10 +379,43 @@ if __name__ == "__main__":
 
     print()
     print("=" * 60)
-    print("TEST 4: CECP Boundary (m=3)")
+    print("TEST 4: Sample Entropy (SampEn)")
     print("=" * 60)
-    Hu, Cu, Hl, Cl = generate_cecp_boundary(m=3)
-    print(f"  Upper points : {len(Hu)}")
-    print(f"  Lower points : {len(Hl)}")
-    print(f"  H range      : [{min(Hu):.4f}, {max(Hu):.4f}]")
-    print(f"  C range      : [{min(Cu):.4f}, {max(Cu):.4f}]")
+    # Random -> SampEn cao (bat quy luat)
+    rand_sig = np.random.randn(200)
+    se_rand = calc_sample_entropy(rand_sig, m=2)
+    # Periodic -> SampEn thap (co quy luat)
+    periodic_sig = np.sin(np.linspace(0, 20 * np.pi, 200))
+    se_periodic = calc_sample_entropy(periodic_sig, m=2)
+    print(f"  SampEn (random)   = {se_rand:.4f}  (ky vong cao, ~2.0+)")
+    print(f"  SampEn (periodic) = {se_periodic:.4f}  (ky vong thap, <1.0)")
+    print(f"  Validation        : random > periodic = {se_rand > se_periodic}")
+
+    print()
+    print("=" * 60)
+    print("TEST 6: Shannon Entropy (Histogram, bins='auto')")
+    print("=" * 60)
+    uniform_data = np.random.uniform(0, 100, 200)
+    concentrated = np.concatenate([np.full(180, 50.0), np.random.randn(20)])
+    h_uniform = calc_shannon_entropy_hist(uniform_data, bins="auto")
+    h_concentrated = calc_shannon_entropy_hist(concentrated, bins="auto")
+    print(f"  H (uniform)      = {h_uniform:.4f}  (ky vong ~1.0)")
+    print(f"  H (concentrated) = {h_concentrated:.4f}  (ky vong thap, <0.5)")
+    print(f"  Validation       : uniform > concentrated = {h_uniform > h_concentrated}")
+
+    print()
+    print("=" * 60)
+    print("TEST 7: Rolling Volume Entropy (window=60)")
+    print("=" * 60)
+    fake_volume = np.abs(np.random.randn(300)) * 1e6 + 5e5
+    sh_arr, se_arr = calc_rolling_volume_entropy(fake_volume, window=60)
+    print(f"  Input shape     : {fake_volume.shape}")
+    print(f"  Shannon shape   : {sh_arr.shape}")
+    print(f"  SampEn shape    : {se_arr.shape}")
+    print(f"  NaN count       : Shannon={np.isnan(sh_arr).sum()}, SampEn={np.isnan(se_arr).sum()}")
+    valid_sh = sh_arr[np.isfinite(sh_arr)]
+    valid_se = se_arr[np.isfinite(se_arr)]
+    print(f"  Shannon range   : [{valid_sh.min():.4f}, {valid_sh.max():.4f}]")
+    print(f"  SampEn range    : [{valid_se.min():.4f}, {valid_se.max():.4f}]")
+    print(f"  Last 5 Shannon  : {sh_arr[-5:]}")
+    print(f"  Last 5 SampEn   : {se_arr[-5:]}")

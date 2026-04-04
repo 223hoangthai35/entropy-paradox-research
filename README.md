@@ -1,75 +1,331 @@
-# Financial Entropy Agent: System Architect
+# Financial Entropy Agent: Dual-Plane Systemic Risk Engine
 
-## 1. Project Overview & Motivation
-**Financial Entropy Agent** is a high-end quantitative finance terminal designed to monitor systemic risk and structural complexity in financial markets through the lens of Chaos Theory and Symbolic Dynamics. 
+## Abstract
 
-Traditional technical analysis heavily relies on lagging price indicators (like Moving Averages, RSI, or MACD), which only react after a structural breakdown has occurred. Furthermore, traditional probability-based entropy fails to capture the temporal order of market data, making it sub-optimal for non-stationary financial markets. The Financial Entropy Agent proposes a paradigm shift: adopting **Ordinal Pattern Analysis** to decouple "Market Noise" from intrinsic "Regimes." By measuring the thermodynamic entropy of capital dispersion and ordinal permutations, this system flags fragile market conditions before they manifest as catastrophic price collapses.
+The **Financial Entropy Agent** is a Multi-Modal Systemic Risk Engine that monitors financial
+market structural integrity through two independent, unsupervised observation planes. Moving beyond
+single-variable forecasting or lagging technical indicators, this system employs concepts from
+**Symbolic Dynamics**, **Information Theory**, and **Non-linear Physics** to decouple market noise
+from intrinsic structural regimes.
 
-## 2. Technical Architecture: 1. ALL-IN-ONE STRUCTURAL TELEMETRY
+The architecture observes the market through two lenses simultaneously:
 
-### Permutation Entropy (PE) & Ordinal Analysis for VNINDEX
-Permutation Entropy (PE) is employed as our primary diagnostic tool because it accurately measures the structural orderliness and deterministic characteristics of a time series based on its ordinal sequence. Because it maps values to ordinal rankings rather than raw amplitudes, PE captures the **temporal order** of market data, making it fundamentally superior to probability-based structural entropy for non-stationary financial markets.
+- **Plane 1 -- Price Dynamics**: Measures the *physical chaos* of price action via Weighted
+  Permutation Entropy and Annualized Volatility.
+- **Plane 2 -- Liquidity Structure**: Measures the *structural integrity of capital flow* via
+  Volume Shannon Entropy and Volume Sample Entropy.
 
-When a market trends sustainably, its price patterns become highly structured, driving Entropy toward zero. Conversely, when capital fragments and "smart money" exits—leaving only random, uncoordinated retail noise—Entropy spikes toward the state of maximum chaos.
+An autonomous AI Agent (Anthropic Claude) acts as the **Cross-Plane Reasoning Engine**, synthesizing
+both planes to identify systemic conditions that are invisible from a single observation space --
+such as Smart Money accumulation masked by price chaos, or trend exhaustion hidden beneath stable
+prices.
 
-**The Formula:**
-We calculate the Weighted Permutation Entropy ($H_{WPE}$) to capture both structural sequential patterns and amplitude variations:
+---
 
-$$H_{WPE} = - \frac{1}{\ln(d!)} \sum_{i=1}^{d!} p^{(w)}_i \ln(p^{(w)}_i)$$
+## 1. Architecture Overview
+
+```
+                     +---------------------------------------+
+                     |        agent_orchestrator.py           |
+                     |    Cross-Plane Reasoning Engine        |
+                     |    (ReAct Loop + Anthropic Tool Use)   |
+                     +---------------------------------------+
+                      /           |            |            \
+          +-----------+   +---------------+   +------------+
+          | data_skill|   | quant_skill   |   | ds_skill   |
+          | .py       |   | .py           |   | .py        |
+          +-----------+   +---------------+   +------------+
+          | vnstock   |   | WPE, MFI      |   | Price GMM  |
+          | VN30 fetch|   | Vol Shannon   |   | Volume GMM |
+          | Fallback  |   | Vol SampEn    |   | Regime Map |
+          +-----------+   +---------------+   +------------+
+                |                |                  |
+          [Market Data]   [Entropy Metrics]   [Dual Labels]
+                \                |                 /
+                 +===============+================+
+                 |       CROSS-PLANE SYNTHESIS     |
+                 | Accumulation | Breakdown         |
+                 | Exhaustion   | Coherent          |
+                 +=================================+
+```
+
+| Observation Plane | X-Axis | Y-Axis | Measures |
+|---|---|---|---|
+| **Plane 1: Price Dynamics** | Weighted Permutation Entropy (WPE) | Annualized Volatility | Physical Chaos |
+| **Plane 2: Liquidity Structure** | Volume Shannon Entropy | Volume Sample Entropy | Capital Flow Structure |
+
+---
+
+## 2. Mathematical Foundations and Hyperparameters
+
+### 2.1 Weighted Permutation Entropy (WPE) -- Plane 1
+
+Permutation Entropy measures the structural orderliness of a time series by analyzing the frequency
+distribution of **ordinal patterns** (rank sequences) within sliding windows. Unlike amplitude-based
+entropy measures, PE captures the *temporal order* of data points, making it fundamentally appropriate
+for non-stationary financial time series where absolute price levels are less informative than
+relative movements.
+
+**Weighted Permutation Entropy** extends this by incorporating the variance (amplitude) of each
+pattern, preventing information loss from rank-only analysis:
+
+$$H_{WPE} = -\frac{1}{\ln(d!)} \sum_{i=1}^{d!} p_i^{(w)} \ln\left(p_i^{(w)}\right)$$
 
 Where:
-- $d$ represents the **embedding dimension** (e.g., $d=3$), determining the length of the ordinal patterns extracted.
-- $\tau$ is the **time delay** between data points (standard $\tau=1$ for daily granularity).
-- $p^{(w)}_i$ is the variance-amplified frequency of the $i$-th ordinal pattern.
+- $d = 3$ -- Embedding dimension. Defines the length of ordinal patterns extracted from the time
+  series. $d = 3$ yields $3! = 6$ possible permutations, balancing granularity against statistical
+  reliability.
+- $\tau = 1$ -- Time delay between consecutive data points. Standard for daily granularity.
+- $p_i^{(w)}$ -- Variance-weighted frequency of the $i$-th ordinal pattern. Weights proportional
+  to the variance within each pattern window ensure that high-amplitude events contribute more to
+  the entropy estimate.
+- Rolling window: **22 trading days** (approximately 1 calendar month).
 
-### Cross-Sectional Entropy for VN30
-While VNINDEX captures the global state, the VN30 basket provides insight into the underlying structural pillars (blue-chip components). We construct a Pearson Correlation matrix of the largest 30 stocks and calculate structural fragmentation through Eigenvalue Decomposition (EVD).
+**Interpretation**: $H_{WPE} \to 0$ implies deterministic, trending structure. $H_{WPE} \to 1$
+implies maximum disorder -- random, structureless price action.
 
-The Cross-Sectional Entropy measures whether capital is flowing in a centralized consensus (Low Entropy) or dispersing erratically across sectors (High Entropy). A breakdown in Cross-Sectional consensus acts as the earliest warning of systemic fragility.
+### 2.2 Market Fragility Index (MFI)
 
-## 3. Machine Learning Logic: 2. UNSUPERVISED LEARNING DS PROOF
+The MFI combines entropy with statistical complexity to quantify how close the market is to a
+structurally fragile state:
 
-### Market Volatility (Ann. Std)
-- **Definition:** The Annualized Standard Deviation of Log-Returns.
-- **Formula:**
+$$\text{MFI} = H_{WPE} \times (1 - C_{JS})$$
 
-$$\sigma_{ann} = \sigma_{daily} \cdot \sqrt{252}$$
+Where $C_{JS}$ is the Jensen-Shannon Statistical Complexity -- a measure of the distance between
+the observed ordinal distribution and a uniform (maximum entropy) distribution. High MFI indicates
+simultaneously high disorder and low complexity, the signature of structural fragility.
 
-- **Significance:** Measures the magnitude of price action and systemic turbulence. 
+### 2.3 Kinematic Physics Vectors -- Plane 1
 
-### GMM Clustering (The DS Core)
-To move beyond subjective analysis, we apply a **Gaussian Mixture Model (GMM)**. The algorithm maps the historical trading sessions onto a 2D plane based on Entropy and Volatility parameters. Completely untethered from human labeling, this unsupervised learning approach probabilistically clusters the market space into mathematically distinct states:
-1. **Stable Growth (Green):** Low Entropy, clustered volatility, structural deterministic consensus.
-2. **Fragile Growth (Yellow):** Anomalous divergence—nominal surges in price accompanied by an ordinal pattern breakdown.
-3. **Chaos/Panic (Red):** Maximum complexity saturation, high dynamic complexity, and structural fragmentation.
+Beyond the static entropy value, the system computes the **first and second derivatives** of
+Permutation Entropy to capture dynamic momentum -- analogous to velocity and acceleration in
+classical mechanics:
 
-## 4. The Brain: 3. 🤖 AGENT ORCHESTRATOR DIAGNOSTIC
+$$V = \frac{dE}{dt} \approx \Delta_3 H_{WPE} = H_{WPE}(t) - H_{WPE}(t-3)$$
 
-### ReAct Loop Integration
-"Financial Entropy Agent" features a built-in **AI Orchestrator** leveraging Anthropic's Tool Use protocol. Instead of statically displaying the results, the Orchestrator, operating as a Financial Entropy Expert, runs an autonomous ReAct (Reasoning and Acting) loop. It fetches the required market vectors, calculates the thermodynamic physics parameters, triggers the ML clustering, and compiles the final diagnostic report.
+$$a = \frac{d^2E}{dt^2} \approx \Delta_3 V = V(t) - V(t-3)$$
 
-### Diagnostic Logic (Explainable AI - XAI)
-The Agent functions as an Explainable AI layer overlaying the Physics Engine. It doesn't merely spit out a classification label. By dissecting the variance between global entropy (VNINDEX) and structural component fragmentation (VN30), the Agent formulates a sophisticated, human-readable justification for the current Regime state—specifically highlighting structural vulnerabilities, ordinal pattern breakdowns, and dynamic complexity shifts.
+| Vector | Formula | Interpretation |
+|---|---|---|
+| **V (Velocity)** | `WPE.diff(3)` | Direction of entropy change. $V > 0$: chaos expanding. $V < 0$: order forming. |
+| **a (Acceleration)** | `V.diff(3)` | Force of momentum. $a > 0$: trend accelerating (exploding). $a < 0$: momentum fading (exhausting). |
 
-## 5. Resilience & Portability
-Engineered for ultimate institutional resilience:
-- **Dual-Pipeline Routing:** The terminal seamlessly integrates cloud-based API fetches (via `vnstock` and `yfinance`). 
-- **Decentralized Manual Failover:** Should API routes fail due to geographic constraints or Cloud IP bans, the terminal accepts local CSV / Excel files via an Upload Data Pipeline. The physics engines automatically recalibrate to the manual data feed, ensuring uninterrupted analysis capabilities.
+**Why 3-day momentum**: A 1-day diff captures excessive noise from daily microstructure artifacts.
+A 3-day window filters noise while remaining responsive to genuine structural shifts. NaN values
+from the differencing operation are filled with `0` to prevent breaking downstream GMM clustering
+and JSON serialization.
 
-## 6. How to Run
+**Kinematic Heuristic Matrix**:
 
-**Prerequisites:** 
+| V | a | Interpretation |
+|---|---|---|
+| $V > 0$ | $a > 0$ | Chaos accelerating. Structural breakdown in progress. |
+| $V > 0$ | $a < 0$ | Chaos expanding but decelerating. Peak disorder may be near. |
+| $V < 0$ | $a < 0$ | Order forming and accelerating. Recovery gaining momentum. |
+| $V < 0$ | $a > 0$ | Order forming but decelerating. Recovery may stall. |
+
+### 2.4 Volume Sample Entropy (SampEn) -- Plane 2
+
+Sample Entropy quantifies the **regularity of volume impulse patterns**. It measures the conditional
+probability that two sequences of $m$ consecutive data points that are similar (within tolerance $r$)
+will remain similar when extended to $m+1$ points.
+
+$$\text{SampEn}(m, r, N) = -\ln\left(\frac{A}{B}\right)$$
+
+Where:
+- $A$ = Number of template matches for sequences of length $m+1$
+- $B$ = Number of template matches for sequences of length $m$
+
+**Hyperparameters and Justification**:
+
+| Parameter | Value | Justification |
+|---|---|---|
+| $m$ (Embedding Dimension) | **2** | Captures 2-day micro-structural patterns in volume impulses. Higher $m$ would require exponentially more data ($N \geq 10^m$) for convergence. |
+| $r$ (Tolerance) | **$0.2 \times \text{std}(x)$** | Standard threshold from physiological signal processing literature (Richman & Moorman, 2000). Proportional to standard deviation to be scale-invariant. |
+| Window | **60 trading days** | Satisfies the convergence requirement $N \geq 10^m = 100$ at the practical minimum. 60 trading days (~3 calendar months) balances statistical reliability against responsiveness to regime shifts. |
+| Pre-processing | **$\log(1 + V)$ transform** | Financial volume data exhibits heavy-tailed distributions with extreme outliers (volume spikes). The `log1p` transform stabilizes the distribution and makes the tolerance parameter $r$ relatively more sensitive to structural changes rather than absolute magnitude. |
+
+**Interpretation**:
+- **Low SampEn**: Volume impulses are regular and predictable -- characteristic of institutional,
+  algorithmic flow (Consensus Flow).
+- **High SampEn**: Volume impulses are irregular and unpredictable -- characteristic of fragmented
+  retail activity or panic-driven trading (Erratic Flow).
+
+**Performance Note**: The $O(N^2)$ complexity of the template-matching algorithm necessitates
+`@numba.njit` JIT compilation for real-time dashboard responsiveness.
+
+### 2.5 Volume Shannon Entropy -- Plane 2
+
+Shannon Entropy measures the **concentration or dispersion** of volume distribution:
+
+$$H_{Shannon} = -\sum_{i=1}^{k} p_i \log_2(p_i) \quad \text{(normalized to [0, 1])}$$
+
+Where $p_i$ is the probability of volume falling in the $i$-th histogram bin.
+
+**Hyperparameters and Justification**:
+
+| Parameter | Value | Justification |
+|---|---|---|
+| Binning Strategy | **`bins='auto'`** | Delegates to NumPy's automatic bin selection (Freedman-Diaconis or Sturges rule). This is critical for financial volume data: hardcoded bins (e.g., `bins=10`) create numerous empty bins due to the heavy-tailed distribution, artificially deflating entropy. The Freedman-Diaconis rule adapts bin width based on the Interquartile Range, naturally handling outliers and volume spikes. |
+| Normalization | **$H / H_{max}$** | Divides by $\log_2(k)$ to normalize to $[0, 1]$ range, enabling cross-comparison regardless of the number of bins. |
+
+**Interpretation**:
+- **Low Shannon**: Volume is concentrated in a narrow range -- institutional, consensus-driven flow.
+- **High Shannon**: Volume is dispersed across many levels -- fragmented, multi-source activity.
+
+### 2.6 Cross-Sectional Correlation Entropy (VN30)
+
+Measures the structural fragmentation across the VN30 blue-chip basket:
+
+1. Compute the Pearson Correlation Matrix of VN30 component daily returns.
+2. Perform Eigenvalue Decomposition (EVD).
+3. Convert eigenvalues to a probability distribution and compute Shannon Entropy.
+4. Scale to $[0, 100]$.
+
+**Interpretation**: Low entropy = centralized capital consensus (blue chips move together).
+High entropy = extreme fragmentation (decorrelated sector rotation).
+
+---
+
+## 3. Unsupervised Learning: Gaussian Mixture Models
+
+Both observation planes employ **Gaussian Mixture Models (GMM)** with $n = 3$ components to
+discover hidden market regimes without human-labeled bias.
+
+### 3.1 Price Regime Classification (Plane 1)
+
+| Features | $[H_{WPE}, C_{JS}, \text{MFI}]$ |
+|---|---|
+| **Preprocessing** | `StandardScaler` (zero mean, unit variance) |
+| **Covariance Type** | `full` (no assumption on feature independence) |
+| **Label Mapping** | Sort clusters by mean feature value (ascending) |
+
+| Regime | Characteristics |
+|---|---|
+| **Stable Growth** | Low WPE, high complexity, low MFI. Structured, deterministic market. |
+| **Fragile Growth** | Moderate WPE, declining complexity. Ordinal pattern breakdown beginning. |
+| **Chaos/Panic** | High WPE, low complexity, high MFI. Maximum structural fragmentation. |
+
+### 3.2 Volume Regime Classification (Plane 2)
+
+| Features | $[\text{Vol\_Shannon}, \text{Vol\_SampEn}]$ |
+|---|---|
+| **Preprocessing** | `StandardScaler` |
+| **Label Mapping** | Sort clusters by **sum of centroid coordinates** (Shannon + SampEn) |
+
+| Regime | Characteristics |
+|---|---|
+| **Consensus Flow** | Low Shannon + Low SampEn. Volume concentrated and regular. Institutional. |
+| **Dispersed Flow** | Moderate Shannon + SampEn. Transitional, mixed participation. |
+| **Erratic/Noisy Flow** | High Shannon + High SampEn. Fragmented and irregular. Retail/Panic. |
+
+---
+
+## 4. The Agent Orchestrator: Cross-Plane Synthesis
+
+> **Disclaimer (Human-in-the-Loop):** The Agent is designed as a structural telemetry tool. It provides the "map" (Entropy states) and the "vehicle's dashboard" (Kinematic vectors V and a) to interpret complex market dynamics. However, the Agent is strictly an analytical observer. The final decision to act upon these conclusions rests entirely on human judgment and execution strategy.
+
+The LLM Agent (Anthropic Claude) operates as the **Cross-Plane Reasoning Engine** using a
+**ReAct (Reasoning and Acting) Loop** with 5 sequential tool calls:
+
+```
+[1] fetch_market_data       -->  OHLCV data
+[2] compute_entropy_metrics -->  Plane 1: WPE, MFI, V (dE/dt), a (d2E/dt2)
+[3] compute_volume_entropy  -->  Plane 2: Shannon, SampEn
+[4] predict_market_regime   -->  Price Regime (GMM)
+[5] predict_volume_regime   -->  Volume Regime (GMM)
+[6] Cross-Plane Synthesis   -->  Unified systemic conclusion
+```
+
+### Cross-Plane Synthesis Matrix
+
+The Agent cross-validates Price Physics against Liquidity Structure to prevent false positives:
+
+| Price Plane | Volume Plane | Synthesis | Rationale |
+|---|---|---|---|
+| Fragile / Chaos | Consensus Flow | **STRUCTURAL ACCUMULATION** | Price chaos is a surface phenomenon. Highly organized institutional liquidity absorbs supply. Smart Money accumulation. |
+| Fragile / Chaos | Erratic/Noisy Flow | **CRITICAL BREAKDOWN** | Both planes confirm systemic instability. Fragmented liquidity amplifies price chaos. No structural floor. |
+| Stable Growth | Erratic/Noisy Flow | **TREND EXHAUSTION** | Stable prices mask deteriorating liquidity structure. Volume fragmentation precedes price correction. |
+| *Other* | *Other* | **SYSTEM COHERENT** | Both planes structurally aligned. No cross-plane divergence. |
+
+**Why Cross-Plane matters**: A single-plane observation would classify "Fragile + Consensus" identically
+to "Fragile + Erratic" (both show price stress). Only by observing the volume plane can we
+distinguish **accumulation** (bullish) from **breakdown** (bearish) -- the difference between
+a buying opportunity and a systemic crisis.
+
+---
+
+## 5. Dashboard: Streamlit Terminal
+
+The dashboard provides three integrated views:
+
+1. **All-in-One Structural Telemetry**: Candlestick chart with WPE overlay + Cross-Sectional
+   Entropy / MFI subplot. Regime backgrounds color-coded.
+2. **Dual-Plane DS Proof**: Side-by-side GMM scatter plots proving both Price and Volume regimes
+   are mathematically discovered without human labels.
+3. **Cross-Plane Agent Diagnostic**: Markdown-formatted diagnostic table with structured
+   Telemetry Module output, analysis sections, and mandatory conclusion.
+
+---
+
+## 6. Resilience and Portability
+
+- **Dual-Pipeline Routing**: Cloud API (`vnstock`, `yfinance`) with automatic local file fallback
+  (CSV / XLSX upload).
+- **Numba JIT Compilation**: Critical $O(N^2)$ algorithms (SampEn) and iterative rolling windows
+  (WPE) are JIT-compiled for real-time dashboard performance.
+
+---
+
+## 7. How to Run
+
+**Prerequisites:**
 - Python 3.9+
-- An API Key from Anthropic (Optional, for full Agent capabilities)
+- Anthropic API Key (optional -- mock orchestrator available for testing)
 
 **Installation:**
+
 ```bash
 pip install -r requirements.txt
 ```
-*(Dependencies include: `streamlit`, `pandas`, `numpy`, `plotly`, `scikit-learn`, `numba`, `vnstock`, `yfinance`, `anthropic`)*
+
+Dependencies: `streamlit`, `pandas`, `numpy`, `plotly`, `scikit-learn`, `numba`, `vnstock`,
+`yfinance`, `anthropic`.
 
 **Execution:**
-Start the terminal from the base directory using:
+
 ```bash
 streamlit run dashboard.py
 ```
+
+**Agent Orchestrator (standalone test):**
+
+```bash
+python agent_orchestrator.py
+```
+
+---
+
+## 8. Project Structure
+
+```
+Financial Entropy Agent/
+|-- agent_orchestrator.py           # Cross-Plane Reasoning Engine (5 tools + synthesis)
+|-- dashboard.py                    # Streamlit UI: Dual scatter + agent diagnostic
+|-- architecture.md                 # Detailed architecture blueprint
+|-- README.md                       # <<< This file
+|-- skills/
+|   |-- data_skill.py               # Data ingestion (vnstock, yfinance, local file)
+|   |-- quant_skill.py              # WPE, MFI, Shannon, SampEn, Cross-Sectional
+|   |-- ds_skill.py                 # Dual GMM: Price + Volume regime classifiers
+```
+
+---
+
+## References
+
+- Bandt, C. & Pompe, B. (2002). *Permutation Entropy: A Natural Complexity Measure for Time Series.* Physical Review Letters, 88(17).
+- Fadlallah, B. et al. (2013). *Weighted-permutation entropy: A complexity measure for time series incorporating amplitude information.* Physical Review E, 87(2).
+- Richman, J. S. & Moorman, J. R. (2000). *Physiological time-series analysis using approximate entropy and sample entropy.* American Journal of Physiology, 278(6).
+- Lopez-Ruiz, R., Mancini, H. L. & Calbet, X. (1995). *A statistical measure of complexity.* Physics Letters A, 209(5-6).
+- Rosso, O. A. et al. (2007). *Distinguishing noise from chaos.* Physical Review Letters, 99(15).

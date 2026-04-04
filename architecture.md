@@ -1,35 +1,76 @@
-# InfoStat Dynamics -- Architecture Blueprint
+# Financial Entropy Agent -- Dual-Plane Architecture Blueprint
 
-> **Muc tieu**: Chuyen doi ung dung monolith Streamlit (`_reference_VSE/app.py`) thanh kien truc **Agent-Driven Modular**, 
-> trong do mot LLM Orchestrator (Anthropic Claude) dieu phoi 3 skill modules thong qua vong lap **ReAct** (Reasoning + Acting) 
-> va **Tool Use** protocol.
+> **Muc tieu**: He thong Multi-Modal Systemic Risk Engine quan sat thi truong qua **hai mat phang 
+> Unsupervised Learning doc lap** -- Price Dynamics va Liquidity Structure. Agent Orchestrator 
+> (Anthropic Claude) dong vai tro **Cross-Plane Reasoning Engine**, xac nhan Price Physics 
+> bang Liquidity Structure thong qua vong lap **ReAct** va **Tool Use** protocol.
 
 ---
 
-## 1. Tong quan Kien truc
+## 1. Tong quan Kien truc -- Dual-Plane Engine
 
 ```
-                          +---------------------------+
-                          |   agent_orchestrator.py   |
-                          |   (ReAct Loop + Claude    |
-                          |    Anthropic Tool Use)    |
-                          +---------------------------+
-                           /           |            \
-                          /            |             \
-              +-----------+    +---------------+    +----------+
-              | data_skill|    | quant_skill   |    | ds_skill |
-              | .py       |    | .py           |    | .py      |
-              +-----------+    +---------------+    +----------+
-              | vnstock   |    | WPE           |    | GMM      |
-              | VN30 fetch|    | Cross-Sect.   |    | Regime   |
-              | Fallback  |    | CECP Boundary |    | Classify |
-              +-----------+    +---------------+    +----------+
-                    |                 |                   |
-                    v                 v                   v
-              [Market Data]    [Entropy Metrics]    [Regime Labels]
+                     +-----------------------------------+
+                     |      agent_orchestrator.py         |
+                     |   Cross-Plane Reasoning Engine     |
+                     |   (ReAct Loop + Anthropic Tool Use)|
+                     +-----------------------------------+
+                      /         |          |           \
+                     /          |          |            \
+          +-----------+  +---------------+  +----------+
+          | data_skill|  | quant_skill   |  | ds_skill |
+          | .py       |  | .py           |  | .py      |
+          +-----------+  +---------------+  +----------+
+          | vnstock   |  | WPE, MFI      |  | Price GMM|
+          | VN30 fetch|  | Vol Shannon   |  | Vol GMM  |
+          | Fallback  |  | Vol SampEn    |  | Regime   |
+          +-----------+  +---------------+  | Classify |
+                |        +---------------+  +----------+
+                v               |                |
+          [Market Data]   [Entropy Metrics]  [Dual Labels]
+                               |                |
+                   +-----------+---------+------+
+                   v                     v
+           +===============+    +================+
+           | PLANE 1       |    | PLANE 2        |
+           | Price Dynamics |    | Liquidity      |
+           | X: WPE        |    | X: Shannon Ent |
+           | Y: Volatility |    | Y: Sample Ent  |
+           | Physical Chaos|    | Liq. Structure |
+           +===============+    +================+
+                   \                    /
+                    \                  /
+                +========================+
+                | CROSS-PLANE SYNTHESIS  |
+                | Accumulation           |
+                | Breakdown              |
+                | Exhaustion             |
+                | Coherent               |
+                +========================+
 ```
 
-### Nguyen tac Thiet ke
+### Dinh nghia Hai Mat Phang
+
+| Mat Phang | Truc X | Truc Y | Do luong | Muc dich |
+|---|---|---|---|---|
+| **Plane 1: Price Dynamics** | Weighted Permutation Entropy (WPE) | Annualized Volatility | "Physical Chaos" + Kinematic Vectors (V, a) | Do muc do hon loan trong dong luc gia. WPE do tinh ngau nhien cua ordinal patterns, Volatility do bien do dao dong. V = dE/dt (huong), a = d2E/dt2 (luc). |
+| **Plane 2: Liquidity Structure** | Volume Shannon Entropy | Volume Sample Entropy | "Liquidity Structure" | Do cau truc dong tien. Shannon do su phan tan/tap trung cua volume. SampEn do tinh quy luat cua xung volume. |
+
+### Vai tro Agent: Cross-Plane Reasoning Engine
+
+Agent khong chi phan tich tung plane rieng le ma thuc hien **tong hop cheo hai mat phang** 
+de phat hien nhung divergence he thong ma khong the nhan thay tu mot goc nhin don le:
+
+| Price Plane | Volume Plane | Ket luan | Y nghia |
+|---|---|---|---|
+| Fragile/Chaos | Consensus Flow | **STRUCTURAL ACCUMULATION** | Chaos gia bi kiem soat boi thanh khoan co to chuc. Smart Money hap thu. |
+| Fragile/Chaos | Erratic/Noisy Flow | **CRITICAL BREAKDOWN** | Chaos gia duoc khuech dai boi thanh khoan phan manh. Rui ro he thong cao. |
+| Stable Growth | Erratic/Noisy Flow | **TREND EXHAUSTION** | Xu huong gia on dinh nhung cau truc thanh khoan dang do vo. |
+| *Khac* | *Khac* | **SYSTEM COHERENT** | Hai mat phang dong bo. Khong co phan ky cheo. |
+
+---
+
+## 2. Nguyen tac Thiet ke
 
 | Nguyen tac | Mo ta |
 |---|---|
@@ -38,373 +79,223 @@
 | **Vectorized First** | Toan bo phep toan tren mang su dung `numpy` vectorized. Loop chi khi bat buoc va phai dung `@numba.jit(nopython=True)`. |
 | **Type Safety** | Strict type hints cho moi function signature. |
 | **Testable** | Moi file ket thuc bang `if __name__ == "__main__":` block voi du lieu test. |
+| **Dual-Plane Independence** | Hai classifier (Price GMM, Volume GMM) hoat dong doc lap. Agent la diem duy nhat tong hop. |
 
 ---
 
-## 2. Module Chi tiet
+## 3. Module Chi tiet
 
-### 2.1 `skills/data_skill.py` -- Data Ingestion Layer
+### 3.1 `skills/data_skill.py` -- Data Ingestion Layer
 
 **Trach nhiem**: Thu thap du lieu thi truong real-time tu API, xu ly fallback, va chuan hoa output.
 
-**Nguon Tham chieu**: `_reference_VSE/app.py` dong 36-59 (`fetch_market_data`, `fetch_vn30_components`).
-
-#### Cac ham can triet xuat va tai cau truc:
-
 | Ham | Input | Output | Ghi chu |
 |---|---|---|---|
-| `fetch_vnindex(ticker, start, end) -> pd.DataFrame` | `ticker: str`, `start: str`, `end: str` | DataFrame OHLCV voi DatetimeIndex | Dung `vnstock.Vnstock().stock().quote.history()`. Columns chuan hoa: `Open, High, Low, Close, Volume`. |
-| `fetch_vn30_returns(start, end) -> pd.DataFrame` | `start: str`, `end: str` | DataFrame pct_change returns cho ~28 VN30 tickers | Dung `yfinance` lam nguon. `ffill()` truoc khi `pct_change()`. |
-| `load_local_file(path) -> pd.DataFrame` | `path: str` | DataFrame OHLCV | Fallback khi API bi rate-limit. Ho tro `.csv` va `.xlsx`. Tu dong detect cot ngay va rename columns. |
-
-#### Luu y Ky thuat:
-- **Caching**: Ap dung `@functools.lru_cache` hoac tuong duong de cache ket qua API (TTL ~1h).
-- **VN30 Ticker List**: Hardcode danh sach ticker nhu trong reference (dong 49-54). Can xem xet co che cap nhat dong trong tuong lai.
-- **Error Handling**: Khi `vnstock` that bai, raise custom exception de orchestrator co the chuyen sang fallback strategy.
+| `fetch_vnindex(ticker, start, end)` | `ticker: str`, `start: str`, `end: str` | DataFrame OHLCV + DatetimeIndex | `vnstock` API. Columns: `Open, High, Low, Close, Volume`. |
+| `fetch_vn30_returns(start, end)` | `start: str`, `end: str` | DataFrame pct_change returns VN30 | `yfinance`. `ffill()` truoc `pct_change()`. |
+| `load_local_file(path)` | `path: str` | DataFrame OHLCV | Fallback. Ho tro `.csv` va `.xlsx`. |
+| `get_latest_market_data(...)` | params | DataFrame OHLCV | Convenience wrapper: API uu tien, fallback neu fail. |
 
 ---
 
-### 2.2 `skills/quant_skill.py` -- Quantitative Physics Engine
+### 3.2 `skills/quant_skill.py` -- Quantitative Physics Engine
 
-**Trach nhiem**: Toan bo tinh toan Information Theory: Weighted Permutation Entropy (WPE), Statistical Complexity (C_JS), 
-Market Fragility Index (MFI), Cross-Sectional Correlation Entropy, va CECP Boundary curves.
+**Trach nhiem**: Tinh toan Symbolic Dynamics (WPE, Complexity, MFI), Volume Entropy (Shannon, SampEn)
+va Cross-Sectional Entropy.
 
-**Nguon Tham chieu**: `_reference_VSE/app.py` dong 65-240 va `_reference_VSE/README.md` (cong thuc toan hoc).
-
-#### 2.2.1 Weighted Permutation Entropy (WPE)
-
-**Cong thuc Goc** (tu README):
-
-```
-H(WPE) = - (1 / ln(m!)) * SUM[ p_i^(w) * ln(p_i^(w)) ]
-```
-
-- `m`: Embedding dimension (mac dinh = 3, toi da 7).
-- `tau`: Time lag (mac dinh = 1).
-- `p_i^(w)`: Tan suat trong so (weighted by variance) cua ordinal pattern thu i.
+#### 3.2.1 Plane 1: Price Entropy
 
 | Ham | Input | Output | Ghi chu |
 |---|---|---|---|
-| `get_ordinal_patterns_wpe(x, m, tau) -> tuple[np.ndarray, np.ndarray]` | `x: np.ndarray` (time series), `m: int`, `tau: int` | `(patterns, weights)` | Pattern = argsort cua embedded vectors. Weight = variance cua amplitude. |
-| `calc_wpe_complexity(x, m, tau) -> tuple[float, float]` | `x: np.ndarray`, `m: int`, `tau: int` | `(H_wpe, C_js)` | Tra ve normalized entropy `H` va Jensen-Shannon Statistical Complexity `C`. |
-| `calc_rolling_entropy(series, m, tau, window) -> np.ndarray` | `series: np.ndarray`, cac tham so | Mang entropy rolling | Ap dung `calc_wpe_complexity` tren sliding window. Day la ham iterative -> **uu tien `@numba.jit`**. |
+| `_calc_wpe_complexity_jit(x, m, tau)` | `np.ndarray`, `int`, `int` | `(H, C)` | Numba JIT. WPE + Jensen-Shannon Complexity. |
+| `calc_rolling_wpe(log_returns, m, tau, window)` | arrays + params | `(wpe_arr, c_arr)` | Rolling window. Numba JIT. |
+| `calc_wpe_complexity(x, m, tau)` | `np.ndarray` | `(float, float)` | Public wrapper single array. |
+| `calc_mfi(wpe, complexity)` | `np.ndarray`, `np.ndarray` | `np.ndarray` | MFI = WPE * (1 - C). Vectorized. |
 
-#### 2.2.2 Jensen-Shannon Statistical Complexity (C_JS) va MFI
+**Kinematic Vectors (tinh trong pipeline, khong phai ham rieng)**:
 
-**Cong thuc Goc**:
+| Vector | Cong thuc | Tham so | Y nghia |
+|---|---|---|---|
+| `PE_Velocity` (V) | `df['WPE'].diff(3)` | 3-day momentum | Huong thay doi entropy. V > 0: chaos mo rong. V < 0: trat tu dang hinh thanh. |
+| `PE_Acceleration` (a) | `PE_Velocity.diff(3)` | 3-day momentum | Luc thay doi. a > 0: xu huong dang tang toc. a < 0: dong luc dang can kiet. |
 
-```
-C = Q0 * JSD(P, U) * H
+**Xu ly NaN**: `fillna(0)` de tranh break GMM clustering va JSON serialization.
 
-MFI = WPE * (1 - C)
-```
-
-- `JSD(P, U)`: Jensen-Shannon Divergence giua phan phoi thuc nghiem `P` va phan phoi deu `U`.
-- `Q0`: He so chuan hoa (1 / D_max).
-- `MFI` tang khi he thong dong thoi random (WPE cao) va mat complexity (C thap) -> bao hieu fragility.
-
-Logic tinh `Q0`, `JSD`, `C_JS` da duoc implement tai `_reference_VSE/app.py:76-114`. Can trich xuat nguyen khoi, chi refactor type hints va bien naming.
-
-#### 2.2.3 Cross-Sectional Correlation Entropy (VN30)
-
-**Cong thuc Goc**:
-
-```
-p_i = lambda_i / SUM(lambda_j)
-S_corr = - ( SUM(p_i * ln(p_i)) / ln(M) ) * 100
-```
-
-- `C`: Ma tran Pearson Correlation cua returns M co phieu (M ~ 28-30).
-- Eigenvalue Decomposition (EVD) tren `C` -> `lambda_i`.
-- Output: Gia tri 0-100. Thap (<40) = consensus manh, Cao (>70) = fragmented/chaos.
+#### 3.2.2 Plane 2: Volume Entropy
 
 | Ham | Input | Output | Ghi chu |
 |---|---|---|---|
-| `calc_correlation_entropy(df_returns, window) -> pd.Series` | `df_returns: pd.DataFrame`, `window: int` | Series entropy 0-100 | Rolling window tren correlation matrix. Ref: dong 219-240. |
+| `_calc_sample_entropy_jit(x, m, r)` | `np.ndarray`, `int`, `float` | `float` | Numba JIT. O(N^2). SampEn = -ln(A/B). |
+| `calc_sample_entropy(x, m, r)` | `np.ndarray` | `float` | Public wrapper. r = 0.2*std neu None. |
+| `calc_shannon_entropy_hist(x, bins)` | `np.ndarray`, `str|int` | `float [0,1]` | Histogram Shannon. bins='auto' (Freedman-Diaconis). |
+| `calc_rolling_volume_entropy(volume, window)` | `np.ndarray`, `int=60` | `(shannon_arr, sampen_arr)` | Rolling wrapper. `log1p` transform. Window=60 cho SampEn hoi tu. |
 
-#### 2.2.4 CECP Boundary Curves (Lopez-Ruiz)
+**Ly do chon tham so**:
+- `bins='auto'`: Volume data co phan phoi heavy-tailed, `bins=10` se tao nhieu empty bins. Freedman-Diaconis tu dong dieu chinh.
+- `window=60`: SampEn voi m=2 can N >= 10^m = 100 ly tuong. 60 la muc toi thieu thuc te dam bao hoi tu.
+- `log1p(volume)`: On dinh hoa phan phoi, lam tolerance r tuong doi hon.
+
+#### 3.2.3 Cross-Sectional Correlation Entropy (VN30)
 
 | Ham | Input | Output | Ghi chu |
 |---|---|---|---|
-| `generate_cecp_boundary(m) -> tuple[list, list, list, list]` | `m: int` | `(H_max, C_max, H_min, C_min)` | Upper/Lower bound curves cho Complexity-Entropy plane. Ref: dong 173-217. |
-
-#### 2.2.5 Multi-Scale WPE
-
-Tinh WPE tren 3 time scale doc lap:
-- **Daily**: Rolling window tren log-return hang ngay.
-- **Weekly**: Resample `Close` theo tuan, tinh log-return, rolling window = 12 tuan.
-- **Monthly**: Resample `Close` theo thang, tinh log-return, rolling window = 6 thang.
-
-Ref: `_reference_VSE/app.py:146-170`.
+| `calc_correlation_entropy(df_returns, window)` | `pd.DataFrame`, `int` | `pd.Series` 0-100 | EVD tren Pearson Correlation Matrix. |
 
 ---
 
-### 2.3 `skills/ds_skill.py` -- Data Science / ML Layer
+### 3.3 `skills/ds_skill.py` -- Data Science / ML Layer (Dual GMM)
 
-**Trach nhiem**: Unsupervised Regime Classification su dung Gaussian Mixture Model (GMM), thay the logic rule-based hien tai.
+**Trach nhiem**: Unsupervised Regime Classification cho **ca hai mat phang**.
 
-**Nguon Tham chieu**: `_reference_VSE/app.py` dong 242-271 (`detect_market_regime` -- hien la **rule-based**).
+#### 3.3.1 Price Regime (Plane 1)
 
-#### Hien trang (Rule-Based)
+| Component | Mo ta |
+|---|---|
+| `REGIME_NAMES` | `{0: "Stable Growth", 1: "Fragile Growth", 2: "Chaos/Panic"}` |
+| `RegimeClassifier` | GMM `n_components=3`, `covariance_type='full'`. Mapping: sort by mean feature value. |
+| `fit_predict_regime(features)` | Functional API -> `(labels, classifier)` |
 
-Logic hien tai su dung hard-coded thresholds:
-```python
-if price >= MA20 and MFI < 50:        -> "Stable Growth"
-if price >= MA20 and MFI >= 50:       -> "Fragile Growth"
-if price < MA20 and MFI > 65:         -> "Chaos/Panic"
-if price < MA20 and entropy_diff < 0: -> "Structural Recomposition"
-```
+#### 3.3.2 Volume Regime (Plane 2)
 
-#### Thiet ke Moi (GMM-Based)
+| Component | Mo ta |
+|---|---|
+| `VOLUME_REGIME_NAMES` | `{0: "Consensus Flow", 1: "Dispersed Flow", 2: "Erratic/Noisy Flow"}` |
+| `VolumeRegimeClassifier` | GMM `n_components=3`, `covariance_type='full'`. Mapping: sort by sum(Shannon + SampEn). Thap = Consensus, Cao = Erratic. |
+| `fit_predict_volume_regime(features)` | Functional API -> `(labels, classifier)` |
 
-Thay the rule-based bang **Gaussian Mixture Model** (tu `sklearn.mixture.GaussianMixture`) de tu dong phat hien regime clusters trong khong gian dac trung da chieu.
-
-| Ham | Input | Output | Ghi chu |
-|---|---|---|---|
-| `build_feature_matrix(df) -> np.ndarray` | `df: pd.DataFrame` (chua WPE, C, MFI, System_Entropy) | Ma tran dac trung N x F | Feature engineering: `[WPE_Price, Complexity_Price, MFI_Price, System_Entropy, price_vs_ma20_ratio]`. Chuan hoa voi `StandardScaler`. |
-| `fit_gmm(features, n_components) -> GaussianMixture` | `features: np.ndarray`, `n_components: int = 4` | Fitted GMM model | 4 components tuong ung 4 regimes. Su dung `covariance_type='full'` va `n_init=10` de on dinh. |
-| `classify_regime(model, features) -> np.ndarray` | `model: GaussianMixture`, `features: np.ndarray` | Mang regime labels (0-3) | `model.predict(features)`. Can mapping cluster index -> regime name dua tren dac tinh centroid. |
-| `map_cluster_to_regime(model) -> dict[int, str]` | `model: GaussianMixture` | `{0: 'Stable Growth', ...}` | Phan tich `model.means_` de tu dong gan nhan: cluster co MFI thap nhat -> Stable, MFI cao nhat + WPE cao -> Chaos, v.v. |
-
-#### Luu y:
-- GMM cho phep soft classification (probability per regime), huu ich hon binary thresholds.
-- Can giu nguyen 4 regime labels de tuong thich voi he thong hien tai: `Stable Growth`, `Fragile Growth`, `Chaos/Panic`, `Structural Recomposition`.
+**Ngu nghia Volume Regimes**:
+- **Consensus Flow**: Shannon thap + SampEn thap = Volume tap trung, deu dan. -> Institutional/Smart Money.
+- **Dispersed Flow**: Shannon cao + SampEn trung binh = Volume phan tan nhung khong bat quy luat.
+- **Erratic/Noisy Flow**: Shannon cao + SampEn cao = Volume vua phan tan vua bat quy luat. -> Retail/panic.
 
 ---
 
-### 2.4 `agent_orchestrator.py` -- ReAct Loop + Anthropic Tool Use
+### 3.4 `agent_orchestrator.py` -- Cross-Plane Reasoning Engine
 
-**Trach nhiem**: Trung tam dieu phoi. Nhan truy van tu nguoi dung (hoac trigger tu dinh ky), chay vong lap ReAct 
-de goi cac skill nhu tools, tong hop ket qua, va tra ve phan tich cuoi cung.
+> **Disclaimer (Human-in-the-Loop):** The Agent is designed as a structural telemetry tool. It provides the "map" (Entropy states) and the "vehicle's dashboard" (Kinematic vectors V and a) to interpret complex market dynamics. However, the Agent is strictly an analytical observer. The final decision to act upon these conclusions rests entirely on human judgment and execution strategy.
 
-#### Kien truc ReAct Loop
+**Trach nhiem**: Trung tam dieu phoi Dual-Plane. Goi 5 tools lien tiep, tinh Kinematic Vectors, tong hop Cross-Plane Synthesis.
+
+#### Tool Execution Order
 
 ```
-User Query / Scheduled Trigger
-        |
-        v
-+-------------------+
-| THINK (Reasoning) | <-- Claude phan tich truy van, quyet dinh can data gi
-+-------------------+
-        |
-        v
-+-------------------+
-| ACT (Tool Call)   | <-- Goi skill tuong ung qua Anthropic Tool Use API
-+-------------------+     (fetch_vnindex, calc_wpe_complexity, fit_gmm, ...)
-        |
-        v
-+-------------------+
-| OBSERVE           | <-- Nhan ket qua tu tool, Claude danh gia
-+-------------------+
-        |
-        v
-   Ket qua da du? --No--> quay lai THINK
-        |
-       Yes
-        v
-+-------------------+
-| RESPOND           | <-- Tong hop narrative + du lieu -> tra ve user
-+-------------------+
+[1] fetch_market_data      -> OHLCV data
+[2] compute_entropy_metrics -> Plane 1 (WPE, C, MFI, Volatility, V, a)
+[3] compute_volume_entropy  -> Plane 2 (Shannon, SampEn)
+[4] predict_market_regime   -> Price Regime label
+[5] predict_volume_regime   -> Volume Regime label
+[6] Cross-Plane Synthesis   -> Unified conclusion
 ```
 
-#### Tool Definitions (Anthropic Format)
-
-Moi skill function duoc expose nhu mot tool voi schema JSON:
+#### Cross-Plane Synthesis Matrix (trong code)
 
 ```python
-TOOLS = [
-    {
-        "name": "fetch_vnindex",
-        "description": "Thu thap du lieu OHLCV cua VN-Index tu vnstock API.",
-        "input_schema": {
-            "type": "object",
-            "properties": {
-                "ticker": {"type": "string", "default": "VNINDEX"},
-                "start_date": {"type": "string", "description": "YYYY-MM-DD"},
-                "end_date": {"type": "string", "description": "YYYY-MM-DD"}
-            },
-            "required": ["start_date"]
-        }
-    },
-    {
-        "name": "fetch_vn30_returns",
-        "description": "Lay returns cua ro VN30 de tinh Cross-Sectional Entropy.",
-        "input_schema": {
-            "type": "object",
-            "properties": {
-                "start_date": {"type": "string"},
-                "end_date": {"type": "string"}
-            },
-            "required": ["start_date"]
-        }
-    },
-    {
-        "name": "calc_full_entropy_analysis",
-        "description": "Tinh toan WPE, Complexity, MFI cho chuoi gia. Tra ve DataFrame da enriched.",
-        "input_schema": {
-            "type": "object",
-            "properties": {
-                "embed_dim": {"type": "integer", "default": 3},
-                "rolling_window": {"type": "integer", "default": 22}
-            }
-        }
-    },
-    {
-        "name": "calc_correlation_entropy",
-        "description": "Tinh Cross-Sectional Entropy tu returns VN30 (EVD-based).",
-        "input_schema": {
-            "type": "object",
-            "properties": {
-                "window": {"type": "integer", "default": 22}
-            }
-        }
-    },
-    {
-        "name": "classify_regime",
-        "description": "Phan loai trang thai thi truong (GMM unsupervised) tu cac entropy features.",
-        "input_schema": {
-            "type": "object",
-            "properties": {
-                "n_components": {"type": "integer", "default": 4}
-            }
-        }
-    },
-    {
-        "name": "generate_cecp_boundary",
-        "description": "Tao duong gioi han Lopez-Ruiz cho CECP plot.",
-        "input_schema": {
-            "type": "object",
-            "properties": {
-                "embed_dim": {"type": "integer", "default": 3}
-            }
-        }
-    }
-]
+def _cross_plane_synthesis(price_regime, volume_regime):
+    if price_fragile_chaos and vol_consensus:
+        return "STRUCTURAL ACCUMULATION"
+    elif price_fragile_chaos and vol_erratic:
+        return "CRITICAL BREAKDOWN"
+    elif price_stable and vol_erratic:
+        return "TREND EXHAUSTION"
+    else:
+        return "SYSTEM COHERENT"
 ```
 
-#### Xu ly Tool Call (Dispatcher)
+#### Diagnostic Output Format
 
-```python
-def dispatch_tool(tool_name: str, tool_input: dict) -> str:
-    """
-    Map tool_name -> skill function, thuc thi, serialize ket qua.
-    """
-    if tool_name == "fetch_vnindex":
-        df = data_skill.fetch_vnindex(**tool_input)
-        return df.to_json(orient="split", date_format="iso")
-    elif tool_name == "calc_full_entropy_analysis":
-        # Su dung du lieu da fetch truoc do (stored in session state)
-        ...
-    elif tool_name == "classify_regime":
-        ...
-    ...
 ```
+=========================================
+=========================================
+  PLANE 1 -- PRICE DYNAMICS
+=========================================
+REGIME DETECTED       : [FRAGILE GROWTH]
+WPE                   : 0.8745
+PE Velocity (V)       : +0.0312 (chaos expanding)
+PE Acceleration (a)   : -0.0045 (momentum fading)
+Market Fragility (MFI): 0.8612
 
-#### Conversation Loop
+=========================================
+  PLANE 2 -- LIQUIDITY STRUCTURE
+=========================================
+REGIME DETECTED       : [CONSENSUS FLOW]
+Shannon Entropy       : 0.8234
+Sample Entropy        : 1.4521
 
-```python
-def run_react_loop(user_query: str, max_iterations: int = 10) -> str:
-    messages = [{"role": "user", "content": user_query}]
-    
-    for _ in range(max_iterations):
-        response = anthropic.messages.create(
-            model="claude-sonnet-4-20250514",
-            max_tokens=4096,
-            tools=TOOLS,
-            messages=messages,
-            system=SYSTEM_PROMPT
-        )
-        
-        # Kiem tra stop_reason
-        if response.stop_reason == "end_turn":
-            return extract_text(response)
-        
-        if response.stop_reason == "tool_use":
-            # Xu ly tung tool call
-            tool_results = []
-            for block in response.content:
-                if block.type == "tool_use":
-                    result = dispatch_tool(block.name, block.input)
-                    tool_results.append({
-                        "type": "tool_result",
-                        "tool_use_id": block.id,
-                        "content": result
-                    })
-            
-            messages.append({"role": "assistant", "content": response.content})
-            messages.append({"role": "user", "content": tool_results})
-    
-    return "Max iterations reached."
+=========================================
+  CROSS-PLANE SYNTHESIS
+=========================================
+SYNTHESIS             : [STRUCTURAL ACCUMULATION]
+SYSTEMIC RISK LEVEL   : [MODERATE]
 ```
 
 ---
 
-## 3. Data Flow Pipeline
+## 4. Data Flow Pipeline (Dual-Plane)
 
 ```
-[1] User Query: "Phan tich trang thai VN-Index hom nay"
+[1] User Query: "Phan tich VNINDEX voi Cross-Plane synthesis"
                 |
-[2] Orchestrator THINK: "Can fetch data -> tinh entropy -> classify regime"
+[2] Orchestrator THINK: "Can 5 tools: data -> price entropy -> volume entropy -> 2 GMM"
                 |
-[3] ACT: fetch_vnindex(start="2024-01-01", end="2025-04-03")
-    ACT: fetch_vn30_returns(start="2024-01-01", end="2025-04-03")
+[3] ACT: fetch_market_data(ticker="VNINDEX", start="2024-01-01")
                 |
-[4] OBSERVE: Nhan 2 DataFrames
+[4] ACT: compute_entropy_metrics()    -- Plane 1
+    ACT: compute_volume_entropy()     -- Plane 2
                 |
-[5] ACT: calc_full_entropy_analysis(embed_dim=3, rolling_window=22)
-    ACT: calc_correlation_entropy(window=22)
+[5] ACT: predict_market_regime()      -- GMM Plane 1
+    ACT: predict_volume_regime()      -- GMM Plane 2
                 |
-[6] OBSERVE: Nhan enriched DataFrame voi WPE, C, MFI, System_Entropy
+[6] SYNTHESIS: Cross-Plane Matrix
+    Price = "Fragile Growth" + Volume = "Consensus Flow"
+    -> Conclusion: "STRUCTURAL ACCUMULATION"
                 |
-[7] ACT: classify_regime(n_components=4)
-                |
-[8] OBSERVE: Regime labels cho tung ngay
-                |
-[9] RESPOND: "VN-Index hien dang o trang thai Fragile Growth (MFI = 72.3/100).
-              Cross-Sectional Entropy = 68.5 cho thay dong tien dang phan manh.
-              Tren CECP, diem hien tai bam sat Lower Bound voi H=0.85, C=0.08..."
+[7] RESPOND: "VN-Index Price Plane dang o trang thai Fragile Growth (MFI=0.86).
+              Volume Plane xac nhan dong tien Consensus Flow (institutional).
+              Cross-Plane Synthesis: STRUCTURAL ACCUMULATION.
+              Chaos gia chi la be mat, thanh khoan van co cau truc."
 ```
 
 ---
 
-## 4. Cau truc Thu muc
+## 5. Cau truc Thu muc
 
 ```
-InfoStatDynamics/
-|-- agent_orchestrator.py       # ReAct loop + Anthropic Tool Use
+Financial Entropy Agent/
+|-- agent_orchestrator.py       # Cross-Plane Reasoning Engine (5 tools + synthesis)
+|-- dashboard.py                # Streamlit UI: Dual scatter plots + agent diagnostic
+|-- architecture.md             # <<< File nay
 |-- skills/
 |   |-- data_skill.py           # Data ingestion (vnstock, yfinance, local file)
-|   |-- quant_skill.py          # WPE, C_JS, MFI, Cross-Sectional Entropy, CECP
-|   |-- ds_skill.py             # GMM Regime Classification
+|   |-- quant_skill.py          # WPE, MFI, Shannon, SampEn, Cross-Sectional Entropy
+|   |-- ds_skill.py             # Dual GMM: RegimeClassifier + VolumeRegimeClassifier
 |-- _reference_VSE/             # Codebase goc (Streamlit monolith) - READ ONLY
-|   |-- app.py                  # 654 dong, toan bo logic goc
-|   |-- README.md               # Cong thuc toan hoc & ly thuyet
 |-- .agents/
 |   |-- workflows/              # Workflow definitions
-|-- architecture.md             # <<< File nay
 ```
 
 ---
 
-## 5. Dependency Map
+## 6. Dependency Map
 
 | Package | Version | Module su dung | Muc dich |
 |---|---|---|---|
 | `numpy` | >=1.24 | `quant_skill`, `ds_skill` | Vector operations, linear algebra |
-| `pandas` | >=2.0 | `data_skill`, `quant_skill` | DataFrame manipulation |
-| `numba` | >=0.58 | `quant_skill` | JIT compilation cho rolling loops |
+| `pandas` | >=2.0 | `data_skill`, `quant_skill`, `dashboard` | DataFrame manipulation |
+| `numba` | >=0.58 | `quant_skill` | JIT: WPE rolling, SampEn O(N^2) |
 | `vnstock` | >=2.0 | `data_skill` | Fetch VN-Index OHLCV |
 | `yfinance` | >=0.2 | `data_skill` | Fetch VN30 component prices |
 | `scikit-learn` | >=1.3 | `ds_skill` | GaussianMixture, StandardScaler |
 | `anthropic` | >=0.30 | `agent_orchestrator` | Claude API, Tool Use protocol |
-| `scipy` | >=1.11 | `quant_skill` | Bo sung (eigenvalue, statistical functions) |
+| `streamlit` | >=1.30 | `dashboard` | Web UI framework |
+| `plotly` | >=5.18 | `dashboard` | Interactive charts |
 
 ---
 
-## 6. Quy tac Phat trien (Dev Rules)
+## 7. Quy tac Phat trien (Dev Rules)
 
 1. **KHONG BAO GIO** dinh nghia lai ham da ton tai trong mot skill khac. Luon `from skills.quant_skill import ...`.
 2. **Logic toan hoc** chi nam trong `quant_skill.py`. **ML models** chi nam trong `ds_skill.py`. Khong tron lan.
 3. Moi phep toan tren mang **PHAI** dung `numpy` vectorized. Chi dung loop khi khong the vectorize va phai danh dau `@numba.jit(nopython=True)`.
-4. **Type hints** bat buoc cho moi function signature. Docstring chi tap trung vao I/O va muc dich toan hoc, khong viet boilerplate.
+4. **Type hints** bat buoc cho moi function signature. Docstring chi tap trung vao I/O va muc dich toan hoc.
 5. Moi file **PHAI** co `if __name__ == "__main__":` block de test doc lap.
+6. **Hai GMM classifier hoat dong doc lap**. Agent la diem duy nhat tong hop cheo.
