@@ -25,28 +25,44 @@ prices.
 ## 1. Architecture Overview
 
 ```
-                     +---------------------------------------+
-                     |        agent_orchestrator.py           |
-                     |    Cross-Plane Reasoning Engine        |
-                     |    (ReAct Loop + Anthropic Tool Use)   |
-                     +---------------------------------------+
-                      /           |            |            \
-          +-----------+   +---------------+   +------------+
-          | data_skill|   | quant_skill   |   | ds_skill   |
-          | .py       |   | .py           |   | .py        |
-          +-----------+   +---------------+   +------------+
-          | vnstock   |   | WPE, MFI      |   | Price GMM  |
-          | VN30 fetch|   | Vol Shannon   |   | Volume GMM |
-          | Fallback  |   | Vol SampEn    |   | Regime Map |
-          +-----------+   +---------------+   +------------+
-                |                |                  |
-          [Market Data]   [Entropy Metrics]   [Dual Labels]
-                \                |                 /
-                 +===============+================+
-                 |       CROSS-PLANE SYNTHESIS     |
-                 | Accumulation | Breakdown         |
-                 | Exhaustion   | Coherent          |
-                 +=================================+
++-------------------------------------------------+
+|             agent_orchestrator.py               |
+|         Cross-Plane Reasoning Engine            |
+|       (ReAct Loop + Anthropic Tool Use)         |
++-------------------------------------------------+
+         /                |                \
+        /                 |                 \
++-------------+   +---------------+   +---------------+
+| data_skill  |   |  quant_skill  |   |   ds_skill    |
+|    .py      |   |      .py      |   |     .py       |
++-------------+   +---------------+   +---------------+
+| vnstock     |   | WPE, MFI      |   | Price GMM     |
+| VN30 fetch  |   | Vol Shannon   |   | Volume GMM    |
+| Fallback    |   | Vol SampEn    |   | Regime Map    |
++-------------+   +---------------+   +---------------+
+       |                  |                   |
+       v                  v                   v
+ [Market Data]    [Entropy Metrics]     [Dual Labels]
+       |                  |                   |
+       +----------+-------+-------+-----------+
+                  |               |
+                  v               v
+        +=================+ +=================+
+        |     PLANE 1     | |     PLANE 2     |
+        | Price Dynamics  | |    Liquidity    |
+        | X: WPE          | | X: Shannon Ent  |
+        | Y: Volatility   | | Y: Sample Ent   |
+        | Physical Chaos  | | Liq. Structure  |
+        +=================+ +=================+
+                  \               /
+                   \             /
+                    v           v
+             +=============================+
+             |    CROSS-PLANE SYNTHESIS    |
+             |-----------------------------|
+             | Accumulation | Breakdown    |
+             | Exhaustion   | Coherent     |
+             +=============================+
 ```
 
 | Observation Plane | X-Axis | Y-Axis | Measures |
