@@ -145,13 +145,7 @@ The **STRUCTURAL WARNING** cell (Deterministic + low σ) is the classic calm-bef
 
 ---
 
-## 7. Architecture Decisions & Deprecations
+## 7. Notes
 
-### Active Fallback (not deprecated)
-- **`calc_composite_risk_score()`**: The entropy aggregate (0-100 score) remains as a fallback when GARCH-X is unavailable (< 120 days of data). It is not shown in the primary pipeline but is invoked automatically in dashboard when `fit_garch_x()` returns an error.
-
-### Deprecated
-- **Tri-Vector weighted sum as primary risk metric**: Fixed weights (V1 40% / V2 40% / V3 20%) with P75/P90 dynamic thresholds are superseded by GARCH σ_t + Regime Multiplier + Verdict Matrix. The GARCH framework captures volatility clustering and entropy's contribution to variance in a statistically rigorous way that arbitrary weighting cannot.
-- **5-day Pattern Fingerprinting**: Short-horizon pattern matching has been removed. Structural regime classification operates on 22-day (WPE) and 60-day (SampEn) rolling windows — timescales validated against forward realized volatility.
-- **PowerTransformer on Plane 1**: No normalization is applied to [WPE, SPE_Z] before GMM. Preserves the natural topology of entropy distributions — the raw scale carries physical meaning. PowerTransformer is retained for Plane 2 (Volume) only.
-- **Static risk threshold labels**: Hard thresholds on σ alone (e.g., >2.5% = EXTREME RISK) are replaced by the Verdict Matrix, which contextualizes σ_adjusted against the current price regime. A σ > 2.5% in a Stochastic regime (healthy structure) produces a different label than the same σ in a Deterministic regime (structural coordination).
+- **`calc_composite_risk_score()`**: Entropy aggregate (0-100 score) used as fallback when GARCH-X is unavailable (< 120 days of data). Invoked automatically in dashboard when `fit_garch_x()` returns an error. Not part of the primary pipeline.
+- **PowerTransformer**: Applied to Plane 2 (Volume) only. Plane 1 (Price) uses raw [WPE, SPE_Z] features — the natural scale carries physical meaning and must not be normalized before GMM.
