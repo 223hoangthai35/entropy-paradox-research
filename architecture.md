@@ -1,151 +1,264 @@
 # ARCHITECTURE.md
 
-## Financial Entropy Agent -- Technical Architecture Specification
+## Financial Entropy Agent — Technical Architecture Specification
 
-**Version**: 6.0 (Regime-Aware Verdict Matrix + Direction-Aware XAI Narrative)
-**Classification**: Entropy-Driven Conditional Volatility Engine & Diagnostic XAI Terminal
-
----
-
-## 1. System Philosophy: From Numbers to Narratives
-
-The system has evolved from a purely quantitative 0-100 composite risk scoring engine into a comprehensive **Explainable AI (XAI) Risk Terminal**. The core architectural pivot is the realization that raw entropy indices are more valuable when used as **exogenous predictors for volatility** and as triggers for **linguistic synthesis**, rather than being arbitrarily summed into gauge charts.
-
-The primary risk pipeline is:
-1. **Entropy Feature Engineering** → GMM Regime Classification (structural state)
-2. **GARCH(1,1)-X Engine** → Conditional volatility σ_t with entropy exogenous variables
-3. **Regime Multiplier** → σ_adjusted = σ_raw × regime_multiplier (1.0x / 1.4x / 2.2x)
-4. **Verdict Matrix** → Risk label derived from σ_adjusted × regime combination, preventing σ threshold alone from mislabeling liquidity spikes as systemic crises
-5. **Intelligence Report** → Direction-aware XAI narrative: Deterministic + rally vs. Deterministic + decline produce different interpretations
+**Version**: 7.0 (System-Thinking Revision)
+**Classification**: Entropy-Driven Conditional Volatility Engine & Explainable AI Risk Terminal
 
 ---
 
-## 2. Structural Layering
+## 1. Conceptual Model: What the System Actually Measures
 
-The codebase separates concerns into strictly parallel pipelines.
+Before code, there is a mental model. Every architectural decision traces back to one hypothesis:
 
-### Layer A: Unsupervised Phase Space (GMM Diagnostics)
+> **Financial markets are Type-2 chaotic systems. In such systems, dangerous states are characterized by coordination — not chaos. Entropy measures the absence of coordination.**
 
-This layer runs independently for **Plane 1 (Price)** and **Plane 2 (Liquidity)**, applying Gaussian Mixture Models to categorize the current environment with zero human thresholding.
+This inverts the intuition from physical thermodynamics. In a gas, low entropy = ordered = stable. In a financial market, low entropy = participants moving together = herding = fragility. The system is built on this single inversion.
 
-#### A.1 Price Plane (Plane 1)
-- **Features Input**:
-  - $X$: `WPE` (Weighted Permutation Entropy)
-  - $Y$: `SPE_Z` (Standardized Price Sample Entropy)
-- **Classification Method**: Full-Covariance GMM ($k=3$) with absolutely **no PowerTransformer** normalizations. Raw topology is preserved by design.
-- **Identified Regimes**: Deterministic, Transitional, Stochastic.
-  - Deterministic (low entropy) — highest structural risk, coordinated behavior
-  - Transitional (mid entropy) — phase boundary, moderate risk
-  - Stochastic (high entropy) — random walk, normal healthy market
-
-#### A.2 Liquidity Plane (Plane 2)
-- **Features Input**:
-  - $X$: `Vol_Shannon` (Volume Concentration)
-  - $Y$: `Vol_SampEn` (Volume Complexity)
-- **Classification Method**: Full-Covariance GMM ($k=3$) with Yeo-Johnson PowerTransformer preprocessing.
-- **Identified Regimes**: Consensus Flow, Dispersed Flow, Erratic/Noisy Flow.
-
-### Layer B: Cross-Sectional Breadth (Supplementary)
-
-Operates strictly behind-the-scenes on VN30 index components.
-- Extracts the **Eigenvalue Decomposition** of the 22-day rolling Pearson correlation matrix.
-- Yields the Cross-Sectional Entropy ($S_{corr}$), quantifying whether the market is heavily glued together (High Risk of flash crash) or healthily fragmented.
-
----
-
-## 3. The Quantitative Engine (GARCH-X)
-
-Rather than the legacy system's min-max scaling combinations to compute risk mathematically, **Version 5.0 implements a unified Econometric Volatility Model**. 
-
-### The Core Loop
-```python
-# Model initialization using the Python `arch` library 
-# exog_vars = [H_price(WPE + |SPE_Z|), H_volume(Vol_SampEn + Vol_Shannon)]
-# Both normalized via rolling 504-day MinMaxScaler, lagged 1 day (no look-ahead)
-am = arch_model(y, x=exog_vars, vol='GARCH', p=1, q=1, dist='Normal')
-res = am.fit(disp='off', options={'maxiter': 500})
+```
+PHYSICAL INTUITION          FINANCIAL REALITY
+──────────────────────────────────────────────────────
+Low entropy  →  order       Low entropy  →  coordination
+Order        →  stability   Coordination →  fragility
+High entropy →  chaos       High entropy →  diversity
+Chaos        →  danger      Diversity    →  resilience
 ```
 
-Statistical pruning: exogenous variables with p-value > 0.10 are dropped. If both are insignificant, the model falls back to pure GARCH(1,1) — entropy features are still used for regime classification but do not enter the variance equation.
+**Three causal chains run in parallel**, each measuring the same underlying phenomenon — behavioral coordination — from a different angle:
 
-The system forecasts out-of-sample volatility ($\sigma_t$). However, to reflect structural market vulnerabilities detected by the GMM Phase Spaces, the agent applies the **Regime Stress Multiplier Protocol**.
+```
+PRICE STRUCTURE (Plane 1)           LIQUIDITY STRUCTURE (Plane 2)
+─────────────────────────           ──────────────────────────────
+  Do price movements follow           Is capital flow concentrated
+  repeating ordinal patterns?         or dispersed across sessions?
+          ↓                                       ↓
+    WPE + SPE_Z                         Vol_Shannon + Vol_SampEn
+          ↓                                       ↓
+  Deterministic / Transitional /      Consensus / Dispersed /
+  Stochastic                          Erratic/Noisy Flow
+          ↓                                       ↓
+   REGIME MULTIPLIER ←──────────────────────────────
+          ↓
+   GARCH σ_t × multiplier = σ_adjusted
+          ↓
+   VERDICT MATRIX (σ_adjusted × regime)
+          ↓
+   RISK INTELLIGENCE NARRATIVE
+```
 
-1. Extract `current_regime` and `current_vol_regime`.
-2. Map to empirically determined stress amplifiers (calibrated on VNINDEX forward volatility):
-   - Stochastic: 1.0x — normal market, no structural stress premium
-   - Transitional: 1.4x — mixed structure, phase transition in progress
-   - Deterministic: 2.2x — high coordination, structural fragility at maximum
-3. Output **Adjusted Volatility** = Base $\sigma_t \times \text{Multiplier}$.
-
-This Adjusted Volatility drives the primary risk gauge in the UI.
+The Verdict Matrix exists because **the same σ_adjusted level carries different meaning depending on its structural source**. A 3% daily vol spike in a Stochastic (healthy) regime is a transient liquidity event. The same 3% in a Deterministic regime is a structural breakdown. The system captures this distinction that a single volatility number cannot.
 
 ---
 
-## 4. The XAI Linguistic Generator (Risk Intelligence Report)
-
-The visual output replaces massive data tables with the **Risk Intelligence Report**. 
-The system algorithmically parses the underlying outputs over four blocks:
-
-1. **Volatility Assessment**: Interprets the raw statistical significance (p-values) of the Entropy vectors within the GARCH-X regression. If $p > 0.05$, the XAI informs the user that Entropy is acting purely as a regime classifier rather than a daily variance cluster predictor.
-2. **Phase Space Diagnostics**: Synthesizes the Regime labels from Layer A. Direction-aware: Deterministic + rising prices (coordinated rally, late-stage momentum warning) produces a different narrative from Deterministic + falling prices (institutional selling or panic). Emits a **Divergence Alert** if Price shows "Stochastic" but liquidity shows "Erratic" (Capitulation Vacuum), or if Price shows "Deterministic" but volume shows "Dispersed" (Hollow Rally / Bull Trap).
-3. **Kinematic Momentum**: Evaluates the velocity ($V_{WPE}$) and acceleration ($a_{WPE}$) using basic differential logic to explain the trajectory of market disorder.
-4. **Tail Risk Observer**: Generates the Expected Shortfall ($ES_{5\%}$) narrative, modified by the Cross-Sectional ratio (Vector 3) to articulate if distribution tails are expanding or contracting.
-
----
-
-## 5. Execution Pipeline
+## 2. System Map
 
 ```mermaid
 graph TD
-    subgraph "Data & Skill Layer"
-        A["vnstock OHLCV Data"] --> B["skills/data_skill.py"]
-        B --> C["skills/quant_skill.py\n(WPE, SampEn, EVD)"]
-        B --> D["skills/ds_skill.py\n(Full-Covariace GMM)"]
+    subgraph INPUT["Layer 1 — Data Ingestion"]
+        A1["vnstock API\n(VNINDEX, VN30)"]
+        A2["yfinance\n(fallback / cross-market)"]
+        A1 --> B["skills/data_skill.py\nOHLCV DataFrame"]
+        A2 --> B
     end
 
-    subgraph "Econometric Core"
-        C --> E["Exog X Data"]
-        B --> F["Log Returns Data"]
-        E --> G["GARCH(1,1)-X Engine"]
-        F --> G
-        G --> H["Base Variance Forecast"]
+    subgraph FEATURES["Layer 2 — Entropy Feature Engine  skills/quant_skill.py"]
+        B --> C1["WPE\nordinal disorder in price returns\nm=3, τ=1, window=22d"]
+        B --> C2["SPE_Z\ntrajectory complexity\nm=2, r=0.2σ, window=60d"]
+        B --> C3["Vol_Shannon + Vol_SampEn\nliquidity structure\nwindow=60d"]
+        B --> C4["Cross-Sectional Entropy\nVN30 breadth / correlation\neigenvalue decomposition"]
+        B --> C5["MFI + Kinematics\nV_WPE, a_WPE\nXAI narrative only"]
     end
 
-    subgraph "Intelligence & Transformation"
-        D --> I["Regime Stress Multiplier"]
-        H --> J["Adjusted Volatility & VaR/ES"]
-        I --> J
-        C --> K["Kinematic Differentials (XAI)"]
+    subgraph CLASSIFY["Layer 3 — Unsupervised Regime Classifier  skills/ds_skill.py"]
+        C1 --> D1["Plane 1\nFull-Cov GMM, k=3\nRaw WPE × SPE_Z\nno preprocessing"]
+        C2 --> D1
+        C3 --> D2["Plane 2\nFull-Cov GMM, k=3\nYeo-Johnson + Vol_Shannon × Vol_SampEn"]
+        D1 --> D3["Price Regime\nDeterministic / Transitional / Stochastic"]
+        D2 --> D4["Vol Regime\nConsensus / Dispersed / Erratic"]
     end
 
-    subgraph "Presentation (dashboard.py)"
-        J --> L["Primary UI Risk Gauges"]
-        I --> M["Scatter Plot Context Zones"]
-        J --> N["Risk Intelligence Narrative"]
-        K --> N
+    subgraph GARCH_ENGINE["Layer 4 — Conditional Volatility  agent_orchestrator.py"]
+        B --> E1["Log Returns"]
+        C1 --> E2["Entropy Exog Features\nMinMaxScaled, lagged 1d\n504d rolling window"]
+        C2 --> E2
+        E1 --> E3{"GARCH-X fit\np-value pruning"}
+        E2 --> E3
+        E3 -->|"exog p < 0.10"| E4["GARCH(1,1)-X\nσ_t with entropy predictors"]
+        E3 -->|"all exog p ≥ 0.10"| E5["GARCH(1,1)\npure volatility model"]
+        E4 --> E6["FHS: VaR 5%, ES 5%\nEmpirical residual distribution"]
+        E5 --> E6
+        D3 --> E7["Regime Multiplier\nStochastic 1.0×\nTransitional 1.4×\nDeterministic 2.2×"]
+        E6 --> E8["σ_adjusted = σ_raw × multiplier"]
+        E7 --> E8
+    end
+
+    subgraph FALLBACK["Fallback Path  (< 120 days data)"]
+        E3 -->|"insufficient history"| F1["calc_composite_risk_score()\nentropy aggregate 0-100\nnot primary pipeline"]
+    end
+
+    subgraph VERDICT["Layer 5 — Verdict Matrix  dashboard.py"]
+        E8 --> G1["3 × 4 Decision Grid\nregime × σ_adjusted level"]
+        D3 --> G1
+        G1 --> G2["Risk Verdict + Color\nLOW RISK → EXTREME RISK"]
+        G1 --> G3["mult_explain\nwhy this multiplier"]
+    end
+
+    subgraph DIVERGENCE["Cross-Plane Divergence Detection"]
+        D3 --> H1{"Plane 1 vs Plane 2\ncongruence check"}
+        D4 --> H1
+        H1 -->|"Deterministic + Dispersed/Erratic"| H2["HOLLOW RALLY alert\nbull trap signal"]
+        H1 -->|"Stochastic + negative Vol_Global_Z"| H3["CAPITULATION VACUUM\nliquidity withdrawal"]
+    end
+
+    subgraph XAI["Layer 6 — AI Explanation Layer  agent_orchestrator.py"]
+        E8 --> I1["ReAct Loop\nClaude API"]
+        D3 --> I1
+        D4 --> I1
+        C5 --> I1
+        E6 --> I1
+        G2 --> I1
+        H2 --> I1
+        H3 --> I1
+        I1 --> I2["Risk Intelligence Report\n5-card structured narrative\ndirection-aware synthesis"]
     end
 ```
 
 ---
 
-## 6. Verdict Matrix (Regime-Aware Risk Classification)
+## 3. Dual-Plane Design: Why Two Independent GMMs
 
-The Verdict Matrix replaces hard σ thresholds as the final risk label output. It combines `sigma_adjusted` level with the current price regime in a 3×4 grid:
+The two GMM planes are kept strictly independent. They are never merged into a single feature space. This is a deliberate architectural constraint.
 
-| | Stochastic | Transitional | Deterministic |
-|:---|:---|:---|:---|
-| σ < 0.8% | LOW RISK 🟢 | STRUCTURAL BUILD-UP 🟡 | STRUCTURAL WARNING 🟠 |
-| σ 0.8–1.5% | LOW-MODERATE 🟢 | MODERATE RISK 🟡 | STRUCTURAL WARNING 🟠 |
-| σ 1.5–2.5% | ELEVATED VOLATILITY 🟡 | HIGH RISK 🟠 | HIGH RISK 🟠 |
-| σ > 2.5% | ELEVATED VOLATILITY 🟡 | HIGH RISK 🟠 | EXTREME RISK 🔴 |
+**Why separation matters:**
 
-**Key insight**: A σ > 2.5% in a Stochastic regime is labeled ELEVATED VOLATILITY (yellow), not EXTREME RISK (red). The structural source matters — a liquidity-driven spike in a healthy market is categorically different from the same σ level arising from Deterministic coordination.
+| | Plane 1 (Price) | Plane 2 (Volume) |
+|:---|:---|:---|
+| **Features** | WPE, SPE_Z | Vol_Shannon, Vol_SampEn |
+| **Preprocessing** | None — raw topology preserved | Yeo-Johnson — right-skewed data |
+| **What it measures** | Ordinal + amplitude structure of *price returns* | Concentration + complexity of *capital flow* |
+| **Failure mode** | Would lose entropy geometry if normalized | Would produce biased GMM without normalization |
 
-The **STRUCTURAL WARNING** cell (Deterministic + low σ) is the classic calm-before-storm pattern: entropy detects coordination building while volatility appears low, providing advance warning before σ spikes.
+**Why divergence between planes is meaningful:**
+
+When Plane 1 says Deterministic but Plane 2 says Dispersed, it means: *price structure is highly coordinated, but capital is not flowing in support of that structure*. This is the **Hollow Rally** pattern — a coordinated price move without broad liquidity backing, historically preceding sharp reversals.
+
+When Plane 1 says Stochastic but Vol_Global_Z is strongly negative, it means: *price is healthy but institutional capital is exiting*. This is the **Capitulation Vacuum** — quiet price, invisible institutional withdrawal.
+
+Neither pattern is detectable from a single plane.
 
 ---
 
-## 7. Notes
+## 4. GARCH Engine: Fallback Logic and Adaptive Activation
 
-- **`calc_composite_risk_score()`**: Entropy aggregate (0-100 score) used as fallback when GARCH-X is unavailable (< 120 days of data). Invoked automatically in dashboard when `fit_garch_x()` returns an error. Not part of the primary pipeline.
-- **PowerTransformer**: Applied to Plane 2 (Volume) only. Plane 1 (Price) uses raw [WPE, SPE_Z] features — the natural scale carries physical meaning and must not be normalized before GMM.
+The entropy features do not always improve the GARCH variance equation. During calm markets, entropy-based exogenous variables are statistically insignificant — they add noise, not signal. The engine handles this with explicit pruning:
+
+```
+FIT GARCH-X with [H_price, H_volume] as exogenous
+    ↓
+For each exogenous variable:
+    if p-value > 0.10 → drop from model
+    ↓
+If all exogenous dropped:
+    fall back to pure GARCH(1,1)
+    entropy still active for regime classification
+    ↓
+If GARCH cannot fit (< 120 days history):
+    fall back to calc_composite_risk_score()
+    entropy aggregate 0-100 (not primary pipeline)
+```
+
+**Key insight**: Entropy is *always* contributing through regime classification (Layer 3). The question is only whether it also enters the variance equation. This adaptive activation prevents entropy from degrading GARCH accuracy during periods when structure is absent.
+
+---
+
+## 5. Verdict Matrix: The Decision System
+
+The Verdict Matrix is the integration point where the quantitative pipeline produces a human-interpretable risk label. It exists to solve one specific failure mode: **a σ threshold alone cannot distinguish structural risk from transient liquidity noise**.
+
+```
+σ_adjusted \ Regime    STOCHASTIC       TRANSITIONAL      DETERMINISTIC
+─────────────────────────────────────────────────────────────────────────
+σ < 0.8%               LOW RISK         STRUCTURAL        STRUCTURAL
+                        (green)          BUILD-UP          WARNING
+                                         (yellow)          (orange) ←─ calm-before-storm
+σ 0.8–1.5%             LOW-MODERATE     MODERATE RISK     STRUCTURAL
+                        (green)          (yellow)          WARNING
+                                                           (orange)
+σ 1.5–2.5%             ELEVATED         HIGH RISK         HIGH RISK
+                        VOLATILITY       (orange)          (orange)
+                        (yellow)
+σ > 2.5%               ELEVATED         HIGH RISK         EXTREME RISK
+                        VOLATILITY       (orange)          (red)
+                        (yellow) ←─ max for Stochastic
+─────────────────────────────────────────────────────────────────────────
+```
+
+**Reading the matrix:**
+- Stochastic + any σ → capped at ELEVATED VOLATILITY (yellow). The structural source is transient; the multiplier came from volume, not price regime. The narrative explicitly notes: *"this is a liquidity-driven spike, not a systemic structural breakdown."*
+- Deterministic + low σ → STRUCTURAL WARNING (orange). This is the advance warning cell: entropy detects coordination building while volatility appears calm. Classic pre-crash topology.
+- Deterministic + σ > 2.5% → EXTREME RISK (red). Both structural and quantitative thresholds breached simultaneously.
+
+---
+
+## 6. XAI Narrative Layer: Direction-Aware Synthesis
+
+The AI narrative (Claude API, ReAct loop) does not simply restate numbers. It synthesizes across all layers with context the quantitative pipeline cannot encode:
+
+**Direction-awareness** (Deterministic regime only):
+- Price above SMA-20 + Deterministic → *coordinated rally, late-stage momentum, vulnerable to reversal*
+- Price below SMA-20 + Deterministic → *institutional selling or panic, trend has structure*
+
+**Entropy trajectory** (kinematic XAI):
+- $V_{\text{WPE}} > 0$ (rising entropy) → disorder increasing → regime may be transitioning away from Deterministic
+- $V_{\text{WPE}} < 0$ (falling entropy) → coordination intensifying → risk building
+
+Kinematic indicators $V_{\text{WPE}}$ and $a_{\text{WPE}}$ are **narrative-only** — they never enter the GMM or GARCH pipeline. This separation is intentional: kinematics can be noisy on a single-day basis and would inject instability into the quantitative models.
+
+**Five-card report structure:**
+1. **Volatility Assessment** — GARCH σ, exog significance, regime multiplier explanation
+2. **Price Regime** — GMM label, direction context, entropy trend
+3. **Liquidity Structure** — Volume regime, Vol_Global_Z, capital flow interpretation
+4. **Entropy Momentum** — $V_{\text{WPE}}$, $a_{\text{WPE}}$, trajectory narrative
+5. **Tail Risk** — ES 5%, VaR 5%, cross-sectional breadth
+6. **Conclusion** — Verdict + divergence alert (if any) + plain-language synthesis for non-technical readers
+
+---
+
+## 7. Design Invariants
+
+These constraints are **not configurable**. Each exists for a documented reason. Changing them without re-validation invalidates the system's empirical results.
+
+| Invariant | Value | Reason |
+|:----------|:------|:-------|
+| WPE: $m$, $\tau$, window | 3, 1, 22d | Calibrated on VNINDEX; 22d = 1 trading month |
+| SampEn: $m$, $r$, window | 2, $0.2\sigma$, 60d | Standard physiological time-series parameters adapted for finance |
+| Vol SampEn: $r$ | 0.2 (fixed) | Volume does not have the same local-σ scaling as price |
+| GMM: $k$, covariance, n_init | 3, full, 10 | Three-phase physics analogy; full covariance captures true entropy geometry |
+| GARCH exog pruning threshold | $p < 0.10$ | Prevents entropy from degrading point forecasts during calm periods |
+| Risk rolling window | 504d | ~2 trading years; stable percentile estimation |
+| Regime multipliers | 1.0×, 1.4×, 2.2× | Calibrated on VNINDEX forward volatility by regime |
+| Plane 1 preprocessing | None | Raw WPE/SPE_Z topology must not be distorted before GMM |
+| Plane 2 preprocessing | Yeo-Johnson | Right-skewed volume distributions bias GMM without transformation |
+| Kinematics → GMM/GARCH | Forbidden | Noisy single-day derivatives would destabilize quantitative models |
+
+---
+
+## 8. Cross-Market Scope and Portability
+
+The architecture is market-agnostic at the data and feature level. Three components are VNINDEX-specific and require re-calibration for new markets:
+
+| Component | VNINDEX-Specific | Re-calibration Required |
+|:----------|:----------------|:------------------------|
+| `data_skill.py` | vnstock API | Replace with target market data source |
+| Regime multipliers (1.0×, 1.4×, 2.2×) | Calibrated on VNINDEX forward vol by regime | Re-fit on new market's regime × forward vol distribution |
+| VN30 breadth (cross-sectional entropy) | VN30 constituent list | Replace with target index constituents |
+
+**Critical re-validation step**: Before deploying on a new market, confirm that the Entropy Paradox direction holds — i.e., Deterministic mean forward vol > Stochastic mean forward vol. Cross-market validation (V5) shows this is **not guaranteed**: S&P 500 shows an inverted relationship, driven by institutional market-making that makes "order" stabilizing rather than fragile. The same GMM architecture applies, but its interpretation depends on market microstructure.
+
+---
+
+## 9. Notes
+
+- **`calc_composite_risk_score()`**: Entropy aggregate (0–100) used as fallback when GARCH-X is unavailable (< 120 days of data). Invoked automatically in dashboard when `fit_garch_x()` returns an error. Not part of the primary pipeline.
+- **`PowerTransformer`**: Applied to Plane 2 (Volume) only via `VolumeRegimeClassifier`. Plane 1 (Price) uses raw `[WPE, SPE_Z]` — the natural scale carries physical meaning and must not be normalized before GMM fitting.
+- **Module boundaries (DRY)**:  Math logic belongs only in `quant_skill.py`. ML models belong only in `ds_skill.py`. `agent_orchestrator.py` and `dashboard.py` import from skills; they do not redefine functions.
