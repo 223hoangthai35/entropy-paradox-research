@@ -310,11 +310,11 @@ where $\mathbf{z}_{t-1}$ are lagged, MinMaxScaled entropy features over a 504-da
 
 The regime stress multiplier amplifies $\sigma_t$ to reflect structural vulnerabilities detected by the GMM:
 
-$$\sigma_{\text{adj}} = \sigma_t \times m_{\text{regime}}, \qquad m \in \{1.0,\; 1.4,\; 2.2\}$$
+$$\sigma_{\text{adj}} = \sigma_t \times m_{\text{regime}}, \qquad m \in \lbrace 1.0,\; 1.4,\; 2.2 \rbrace$$
 
 **Filtered Historical Simulation** for tail risk: standardized residuals $z_t = \varepsilon_t / \sigma_t$ are drawn from their empirical distribution rather than a Gaussian assumption.
 
-$$\text{VaR}_{5\%} = \sigma_t \cdot Q_{0.05}\!\left(\{z_s\}\right), \qquad \text{ES}_{5\%} = \sigma_t \cdot \mathbb{E}\!\left[z_s \mid z_s < Q_{0.05}\right]$$
+$$\text{VaR}_{5\%} = \sigma_t \cdot Q_{0.05}\!\left(\lbrace z_s \rbrace\right), \qquad \text{ES}_{5\%} = \sigma_t \cdot \mathbb{E}\!\left[z_s \mid z_s < Q_{0.05}\right]$$
 
 This handles VNINDEX's fat tails and jump risk (circuit breakers, policy shocks) that parametric VaR cannot capture.
 
