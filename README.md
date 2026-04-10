@@ -139,6 +139,46 @@ This result justifies the system's use of Filtered Historical Simulation rather 
 
 ![GARCH Forecast Evaluation](validation/garch_forecast_eval.png)
 
+### V5: Cross-Market Validation — VNINDEX, S&P 500, Bitcoin
+
+The entropy framework was tested across three markets with fundamentally
+different microstructures to assess generalizability.
+
+| Market | Circuit Breaker | Dominant Participants | H-statistic | p-value | Entropy Paradox |
+|:-------|:----------------|:----------------------|:------------|:--------|:----------------|
+| **VNINDEX** | ±7% daily limit | Retail-dominated | **192.43** | <0.0001 | **✓ YES** (Det 20.5% vs Sto 14.0%) |
+| **S&P 500** | None (daily) | Algo/institutional | 14.25 | 0.0008 | **✗ INVERTED** (Sto 16.8% > Det 16.2%) |
+| **Bitcoin** | None, 24/7 | Mixed retail/bot | **42.70** | <0.0001 | **✓ YES** (Det 44.6% vs Sto 43.9%, thin margin) |
+
+![Cross-Market Validation](validation/cross_market_validation.png)
+
+**Key finding:** The Entropy Paradox is **market-microstructure dependent**,
+not universal. This reveals a deeper insight about what entropy actually measures
+in different market contexts:
+
+- **Frontier markets (VNINDEX):** Low entropy = retail herding, panic, FOMO.
+  Coordinated behavior from unsophisticated participants is inherently unstable —
+  **order = danger**. Circuit breaker ±7% constrains ordinal patterns, producing
+  cleaner GMM separation (H=192.43).
+
+- **Developed markets (S&P 500):** Low entropy = institutional stabilization,
+  efficient price discovery by algorithmic market makers. "Order" comes from
+  sophisticated liquidity provision, which is stabilizing — **order ≈ stability**.
+  Without circuit breakers, WPE distribution is compressed (0.65–1.0 vs 0.4–1.0 for VNINDEX),
+  making regime separation harder (H=14.25).
+
+- **Crypto (Bitcoin):** Paradox holds directionally but with thin margin (44.6% vs 43.9%).
+  Bitcoin has both retail herding (like VNINDEX) and bot trading (like S&P 500),
+  producing mixed signals. WPE parameters calibrated for daily trading (window=22)
+  may not be optimal for 24/7 markets.
+
+**Implication:** Entropy does not measure the same thing across all markets.
+On frontier markets, it measures **behavioral coordination risk** (herding).
+On developed markets, it measures **informational efficiency** (price discovery quality).
+This distinction maps directly to the Adaptive Market Hypothesis (Lo, 2004):
+market efficiency is not binary but evolves with participant composition
+and institutional structure.
+
 ---
 
 ## Key Insight: The Entropy Paradox
@@ -153,6 +193,15 @@ Maximum entropy, by contrast, means maximum randomness — a market where divers
 
 This insight directly connects to the Type-2 chaos hypothesis that motivated the project: in a system where participants observe and react to each other (reflexivity), order is a warning signal.
 
+**Cross-market evidence** (see V5 above) reveals that the Entropy Paradox
+is specific to markets where low entropy signals behavioral coordination
+rather than institutional stabilization. This finding connects to the broader
+entropy-efficiency literature (Zanin et al., 2012; Risso, 2008) which
+established that permutation entropy correlates with market development stage,
+but extends it by showing that the *direction* of the entropy-risk relationship
+itself depends on market microstructure — a result not previously documented
+in the literature.
+
 **Practical implication:** Because Deterministic regimes coincide with both sharp rallies *and* sharp declines, the system is not a directional predictor. It is a **structural fragility detector**. When the market enters a Deterministic regime during a rally, it does not mean "sell now" — it means "the current trend is driven by coordination rather than diverse conviction, making it vulnerable to sharp reversals." This distinction between directional prediction and structural assessment is critical for responsible deployment in financial applications.
 
 ---
@@ -166,6 +215,14 @@ This insight directly connects to the Type-2 chaos hypothesis that motivated the
 **3. Simple benchmarks are essential.** Rolling 22-day volatility outperformed GARCH on VNINDEX. This doesn't invalidate the entropy approach — it clarifies its role: entropy excels at structural risk detection (Lift 5.5× for tail events), while simple volatility excels at point forecasting. They solve different problems.
 
 **4. Domain knowledge matters more than model sophistication.** The Entropy Paradox was only interpretable because of my background in physics (understanding entropy in different system types) and finance (understanding that coordinated behavior drives crashes). A purely technical approach would have either missed the inversion or abandoned entropy as "broken."
+
+**5. Market microstructure determines entropy interpretation.**
+The same metric (WPE) measures different phenomena on different markets:
+behavioral coordination risk on frontier markets versus informational
+efficiency on developed markets. Any deployment of this framework on a
+new market requires re-validation of the entropy-risk relationship direction,
+not just re-fitting of model parameters. This is perhaps the most important
+lesson: **a model's meaning is context-dependent, not just its parameters.**
 
 ---
 
@@ -324,10 +381,11 @@ Financial Entropy Agent/
 │   ├── quant_skill.py          # WPE, SampEn, Shannon, kinematics
 │   └── ds_skill.py             # GMM regime classification
 ├── validation/
-│   ├── regime_validation.py    # V1: Regime labels vs forward realized vol
-│   ├── garch_forecast_eval.py  # V2: GARCH out-of-sample forecast
-│   ├── risk_alert_hitrate.py   # V3: Drawdown prediction hit rate
-│   └── entropy_vs_simple.py    # V4: Entropy vs simple vol comparison
+│   ├── regime_validation.py          # V1: Regime labels vs forward realized vol
+│   ├── garch_forecast_eval.py        # V2: GARCH out-of-sample forecast
+│   ├── risk_alert_hitrate.py         # V3: Drawdown prediction hit rate
+│   ├── entropy_vs_simple.py          # V4: Entropy vs simple vol comparison
+│   └── cross_market_validation.py    # V5: Cross-market generalizability test
 ├── ARCHITECTURE.md             # Full mathematical specifications
 ├── requirements.txt
 └── README.md                   # This file
@@ -363,6 +421,7 @@ python validation/regime_validation.py
 python validation/risk_alert_hitrate.py
 python validation/entropy_vs_simple.py
 python validation/garch_forecast_eval.py
+python validation/cross_market_validation.py
 ```
 
 ---
@@ -414,6 +473,9 @@ For deep, institutionally-dominated markets (e.g., US Treasuries), the Entropy P
 - Fadlallah, B. et al. (2013). *Weighted-Permutation Entropy: A Complexity Measure for Time Series Incorporating Amplitude Information.* Physical Review E, 87(2).
 - Richman, J.S. & Moorman, J.R. (2000). *Physiological Time-Series Analysis Using Approximate Entropy and Sample Entropy.* American Journal of Physiology.
 - Bollerslev, T. (1986). *Generalized Autoregressive Conditional Heteroskedasticity.* Journal of Econometrics.
+- Lo, A. W. (2004). *The Adaptive Markets Hypothesis.* Journal of Portfolio Management, 30(5), 15-29.
+- Zanin, M., Zunino, L., Rosso, O. A., & Papo, D. (2012). *Forbidden patterns, permutation entropy and stock market inefficiency.* Physica A, 391(6), 1820-1827.
+- Risso, W. A. (2008). *The informational efficiency and the financial crashes.* Research in International Business and Finance, 22(3), 396-408.
 
 ---
 
