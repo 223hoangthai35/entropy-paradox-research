@@ -17,7 +17,8 @@ from skills.data_skill import get_latest_market_data, fetch_vn30_returns
 from skills.quant_skill import (
     calc_rolling_wpe, calc_mfi, calc_rolling_volume_entropy,
     calc_correlation_entropy, calc_wpe_kinematics,
-    calc_rolling_price_sample_entropy, calc_spe_z,
+    calc_rolling_price_sample_entropy,
+    cal_spe_z_rolling, cal_spe_z_global,
 )
 from skills.ds_skill import fit_predict_regime, fit_predict_volume_regime
 
@@ -414,10 +415,12 @@ def tool_compute_entropy_metrics():
     df["MFI"] = mfi_arr
 
     # 2. Price Sample Entropy (SPE_Z) -- Plane 1 Y-axis
+    # Production path uses ROLLING 504d Z-score (no look-ahead bias).
+    # Global Z-score is also stored for static dashboard scatter overlay only.
     sampen_price = calc_rolling_price_sample_entropy(df["Close"].values, window=60)
-    spe_z = calc_spe_z(sampen_price)
     df["Price_SampEn"] = sampen_price
-    df["SPE_Z"] = spe_z
+    df["SPE_Z"] = cal_spe_z_rolling(sampen_price, window=504)
+    df["SPE_Z_global"] = cal_spe_z_global(sampen_price)
 
     # 3. WPE Kinematics (XAI trajectory indicators -- NOT used in ML)
     vel, acc = calc_wpe_kinematics(wpe_arr)

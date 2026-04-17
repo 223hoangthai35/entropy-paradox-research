@@ -17,7 +17,8 @@ from skills.data_skill import get_latest_market_data, fetch_vn30_returns
 from skills.quant_skill import (
     calc_rolling_wpe, calc_mfi, calc_correlation_entropy,
     calc_rolling_volume_entropy, calc_wpe_kinematics,
-    calc_rolling_price_sample_entropy, calc_spe_z,
+    calc_rolling_price_sample_entropy,
+    cal_spe_z_rolling, cal_spe_z_global,
 )
 from skills.ds_skill import fit_predict_regime, fit_predict_volume_regime
 from agent_orchestrator import calc_composite_risk_score, fit_garch_x
@@ -27,49 +28,45 @@ from agent_orchestrator import calc_composite_risk_score, fit_garch_x
 # ==============================================================================
 st.set_page_config(page_title="Financial Entropy Agent | Terminal", layout="wide", page_icon="⚡")
 
-# Custom Styling (Dark Quant Terminal)
-st.markdown("""
-<style>
+if "lang" not in st.session_state:
+    st.session_state["lang"] = "EN"
+if "theme" not in st.session_state:
+    st.session_state["theme"] = "Dark"
+
+def T(en: str, vn: str) -> str:
+    return en if st.session_state.get("lang", "EN") == "EN" else vn
+
+# Custom Styling (Dark/Light Quant Terminal)
+css_common = """
     @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=Inter:wght@400;800&display=swap');
+    .stPlotlyChart { background: transparent !important; }
     
-    .reportview-container { background: #0E1117; color: #FFFFFF; font-family: 'Inter', sans-serif; }
-    .metric-value { font-size: 2rem; font-weight: 800; color: #FFFFFF; font-family: 'Courier Prime', monospace; }
-    .metric-label { font-size: 0.9rem; color: #AAAAAA; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 400; }
+    .metric-value { font-size: 2rem; font-weight: 800; font-family: 'Courier Prime', monospace; }
+    .metric-label { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 400; }
     
-    h1, h2, h3 { color: #00FF41 !important; font-family: 'Courier Prime', monospace; text-transform: uppercase; letter-spacing: 2px; }
+    h1, h2, h3 { font-family: 'Courier Prime', monospace; text-transform: uppercase; letter-spacing: 2px; }
     
     .agent-log {
-        background-color: #0a0a0a;
-        border-left: 4px solid #00FF41;
         padding: 30px;
         font-family: 'Courier Prime', monospace;
-        color: #d1ffd1;
         font-size: 0.95rem;
         line-height: 1.7;
         border-radius: 4px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-        border: 1px solid #1a3a1a;
     }
-    .agent-log h3 { color: #39FF14 !important; margin-bottom: 20px; border-bottom: 1px solid #1a3a1a; padding-bottom: 10px; }
-    .agent-log code { color: #FFD700 !important; font-weight: 800; background: transparent; padding: 0; }
-    .agent-log strong { color: #39FF14 !important; text-transform: uppercase; }
-    .agent-log table { border-collapse: collapse; width: 100%; margin: 20px 0; border: 1px solid #1a3a1a; }
-    .agent-log th, .agent-log td { border: 1px solid #1a3a1a; padding: 12px; text-align: left; }
-    .agent-log th { background: #112211; color: #00FF41; }
+    .agent-log h3 { margin-bottom: 20px; padding-bottom: 10px; }
+    .agent-log code { font-weight: 800; background: transparent; padding: 0; }
+    .agent-log strong { text-transform: uppercase; }
+    .agent-log table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+    .agent-log th, .agent-log td { padding: 12px; text-align: left; }
     
     .arch-badge {
-        background: #1e1e1e;
         padding: 15px;
         border-radius: 12px;
-        border: 1px solid #333;
         text-align: center;
         transition: all 0.3s ease;
     }
-    .arch-badge:hover { border-color: #00FF41; box-shadow: 0 0 15px rgba(0, 255, 65, 0.2); }
     
     [data-testid="column"]:nth-child(1) > div:nth-child(1) {
-        background: #1e1e1e;
-        border: 1px solid #333;
         border-radius: 12px;
         height: 210px;
         display: flex;
@@ -78,18 +75,13 @@ st.markdown("""
         padding: 5px;
     }
     
-    .stPlotlyChart { background: transparent !important; }
-    
     .analysis-card {
-        background: #111611;
-        border: 1px solid #1a3a1a;
         border-radius: 8px;
         padding: 18px 22px;
         margin: 12px 0;
     }
     .analysis-card-title {
         font-size: 0.85rem;
-        color: #39FF14;
         text-transform: uppercase;
         letter-spacing: 2px;
         font-weight: 800;
@@ -107,14 +99,11 @@ st.markdown("""
         font-family: 'Courier Prime', monospace;
     }
     .xai-trajectory-box {
-        background: #0d1a0d;
-        border: 1px dashed #2a4a2a;
         border-radius: 6px;
         padding: 12px 18px;
         margin-top: 12px;
     }
     .xai-label {
-        color: #666;
         font-size: 0.75rem;
         text-transform: uppercase;
         letter-spacing: 1.5px;
@@ -130,46 +119,27 @@ st.markdown("""
         align-items: center;
         gap: 8px;
     }
-    .xai-item-label {
-        color: #888;
-        font-size: 0.82rem;
-    }
-    .xai-item-value {
-        color: #00BFFF;
-        font-weight: 800;
-        font-family: 'Courier Prime', monospace;
-    }
+    .xai-item-label { font-size: 0.82rem; }
+    .xai-item-value { font-weight: 800; font-family: 'Courier Prime', monospace; }
     .xai-narrative {
-        color: #a0d0a0;
         font-size: 0.88rem;
         font-style: italic;
         margin-top: 6px;
         line-height: 1.5;
     }
-    .analysis-text {
-        color: #c0e0c0;
-        font-size: 0.9rem;
-        line-height: 1.65;
-        margin-top: 8px;
-    }
+    .analysis-text { font-size: 0.9rem; line-height: 1.65; margin-top: 8px; }
     .garch-metric-row {
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 8px 0;
-        border-bottom: 1px solid rgba(255,255,255,0.05);
     }
     .garch-metric-label {
-        color: #888;
         font-size: 0.82rem;
         text-transform: uppercase;
         letter-spacing: 1px;
     }
-    .garch-metric-value {
-        font-family: 'Courier Prime', monospace;
-        font-weight: 800;
-        font-size: 1rem;
-    }
+    .garch-metric-value { font-family: 'Courier Prime', monospace; font-weight: 800; font-size: 1rem; }
     .garch-sigma-badge {
         display: inline-block;
         padding: 6px 20px;
@@ -181,29 +151,124 @@ st.markdown("""
         text-align: center;
     }
     .garch-warn-box {
-        border: 1px solid #FF5F1F;
-        background: rgba(255, 95, 31, 0.08);
         padding: 10px 15px;
         border-radius: 6px;
         margin: 8px 0;
         font-size: 0.85rem;
-        color: #FFB088;
     }
     .es-observer-box {
-        background: #0d0d1a;
-        border: 1px dashed #333366;
         border-radius: 6px;
         padding: 12px 18px;
         margin-top: 12px;
     }
-    .es-label {
-        color: #6666AA;
-        font-size: 0.75rem;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
+    .es-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; }
+"""
+
+css_dark = """
+    .reportview-container { background: #0E1117; color: #FFFFFF; font-family: 'Inter', sans-serif; }
+    .metric-value { color: #FFFFFF; }
+    .metric-label { color: #AAAAAA; }
+    
+    h1, h2, h3 { color: #00FF41 !important; }
+    
+    .agent-log {
+        background-color: #0a0a0a;
+        border-left: 4px solid #00FF41;
+        color: #d1ffd1;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        border: 1px solid #1a3a1a;
     }
-</style>
-""", unsafe_allow_html=True)
+    .agent-log h3 { color: #39FF14 !important; border-bottom: 1px solid #1a3a1a; }
+    .agent-log code { color: #FFD700 !important; }
+    .agent-log strong { color: #39FF14 !important; }
+    .agent-log table { border: 1px solid #1a3a1a; }
+    .agent-log th, .agent-log td { border: 1px solid #1a3a1a; }
+    .agent-log th { background: #112211; color: #00FF41; }
+    
+    .arch-badge {
+        background: #1e1e1e;
+        border: 1px solid #333;
+    }
+    .arch-badge:hover { border-color: #00FF41; box-shadow: 0 0 15px rgba(0, 255, 65, 0.2); }
+    
+    [data-testid="column"]:nth-child(1) > div:nth-child(1) { background: #1e1e1e; border: 1px solid #333; }
+    
+    .analysis-card { background: #111611; border: 1px solid #1a3a1a; }
+    .analysis-card-title { color: #39FF14; }
+    .xai-trajectory-box { background: #0d1a0d; border: 1px dashed #2a4a2a; }
+    .xai-label { color: #666; }
+    .xai-item-label { color: #888; }
+    .xai-item-value { color: #00BFFF; }
+    .xai-narrative { color: #a0d0a0; }
+    .analysis-text { color: #c0e0c0; }
+    .garch-metric-row { border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .garch-metric-label { color: #888; }
+    .garch-warn-box { border: 1px solid #FF5F1F; background: rgba(255, 95, 31, 0.08); color: #FFB088; }
+    .es-observer-box { background: #0d0d1a; border: 1px dashed #333366; }
+    .es-label { color: #6666AA; }
+"""
+
+css_light = """
+    .reportview-container { background: #F8F9FA; color: #1E1E1E; font-family: 'Inter', sans-serif; }
+    .metric-value { color: #1E1E1E; }
+    .metric-label { color: #555555; }
+    
+    h1, h2, h3 { color: #00A32A !important; }
+    
+    .agent-log {
+        background-color: #FFFFFF;
+        border-left: 4px solid #00A32A;
+        color: #1a4a1a;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        border: 1px solid #E0E0E0;
+    }
+    .agent-log h3 { color: #00A32A !important; border-bottom: 1px solid #E0E0E0; }
+    .agent-log code { color: #D4AF37 !important; }
+    .agent-log strong { color: #00A32A !important; }
+    .agent-log table { border: 1px solid #E0E0E0; }
+    .agent-log th, .agent-log td { border: 1px solid #E0E0E0; }
+    .agent-log th { background: #F0F8F0; color: #00A32A; }
+    
+    .arch-badge {
+        background: #FFFFFF;
+        border: 1px solid #E0E0E0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+    .arch-badge:hover { border-color: #00A32A; box-shadow: 0 0 15px rgba(0, 163, 42, 0.15); }
+    
+    [data-testid="column"]:nth-child(1) > div:nth-child(1) { background: #FFFFFF; border: 1px solid #E0E0E0; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+    
+    .analysis-card { background: #F8FFF8; border: 1px solid #D0E8D0; }
+    .analysis-card-title { color: #00A32A; }
+    .xai-trajectory-box { background: #F0F8F0; border: 1px dashed #A0C8A0; }
+    .xai-label { color: #555; }
+    .xai-item-label { color: #666; }
+    .xai-item-value { color: #0077CC; }
+    .xai-narrative { color: #3a7a3a; }
+    .analysis-text { color: #2a5a2a; }
+    .garch-metric-row { border-bottom: 1px solid rgba(0,0,0,0.05); }
+    .garch-metric-label { color: #666; }
+    .garch-warn-box { border: 1px solid #FF5F1F; background: rgba(255, 95, 31, 0.08); color: #D84000; }
+    .es-observer-box { background: #F0F0F8; border: 1px dashed #A0A0C8; }
+    .es-label { color: #444499; }
+"""
+
+selected_css = css_dark if st.session_state["theme"] == "Dark" else css_light
+is_light = st.session_state["theme"] == "Light"
+
+# Plotly theme tokens (dung chung cho moi chart)
+_plotly_template  = "plotly_white" if is_light else "plotly_dark"
+_plotly_plot_bg   = "#F0F1F3" if is_light else "#0E1117"
+_plotly_paper_bg  = "#F7F8FA" if is_light else "#0E1117"
+_plotly_grid      = "rgba(0,0,0,0.08)" if is_light else "rgba(255,255,255,0.05)"
+_plotly_font_color = "#1E1E1E" if is_light else "#FFFFFF"
+_gauge_tick_color  = "#333" if is_light else "white"
+_gauge_border      = "#CCCCCC" if is_light else "#333"
+_candle_up         = "#16A34A" if is_light else "#FFFFFF"
+_candle_down       = "#DC2626" if is_light else "#888888"
+_sma_color         = "#B8860B" if is_light else "yellow"
+
+st.markdown(f"<style>{css_common}\n{selected_css}</style>", unsafe_allow_html=True)
 
 # ==============================================================================
 # UI INITIALIZATION & MULTILINGUAL SUPPORT
@@ -220,11 +285,7 @@ vol_sh_kpi = "0.50"
 vol_se_kpi = "0.50"
 vol_gz_kpi = "0.00 Z"
 
-def T(en: str, vn: str) -> str:
-    return en if st.session_state.get("lang", "EN") == "EN" else vn
 
-if "lang" not in st.session_state:
-    st.session_state["lang"] = "EN"
 
 # ==============================================================================
 # DATA PIPELINE (CACHED)
@@ -275,10 +336,12 @@ def load_and_compute_data(start_date_str, end_date_str, file_bytes=None, file_na
     df["MFI"] = mfi_arr
     
     # 2. Price Sample Entropy (SPE_Z) -- Plane 1 Y-axis
+    # Production path uses ROLLING 504d Z-score (real-time, no look-ahead).
+    # Global Z-score is also stored for the static GMM scatter overlay only.
     sampen_price = calc_rolling_price_sample_entropy(df["Close"].values, window=60)
-    spe_z = calc_spe_z(sampen_price)
     df["Price_SampEn"] = sampen_price
-    df["SPE_Z"] = spe_z
+    df["SPE_Z"] = cal_spe_z_rolling(sampen_price, window=504)
+    df["SPE_Z_global"] = cal_spe_z_global(sampen_price)
 
     # 3. WPE Kinematics (XAI trajectory indicators -- NOT used in ML)
     vel, acc = calc_wpe_kinematics(wpe_arr)
@@ -308,18 +371,33 @@ def load_and_compute_data(start_date_str, end_date_str, file_bytes=None, file_na
     except Exception as e:
         df["Cross_Sectional_Entropy"] = np.nan
         
-    # 6. Predict Price Regime (Full GMM in Raw Entropy Phase Space: [WPE, SPE_Z])
-    price_clf = None
+    # 6. Predict Price Regime — TWO GMMs by purpose:
+    #    (a) Production: fit on ROLLING [WPE, SPE_Z] (no look-ahead). Drives
+    #        the live regime label, timeline shading and risk verdict.
+    #    (b) Visualization: fit on GLOBAL [WPE, SPE_Z_global] for the static
+    #        scatter overlay, so the user sees the full historical topology
+    #        in a stable reference frame.
+    price_clf = None              # production (rolling)
+    price_clf_global = None       # visualization (global)
     valid_df = df.dropna(subset=["WPE", "SPE_Z"]).copy()
     if not valid_df.empty:
         features = valid_df[["WPE", "SPE_Z"]].values
         labels, price_clf = fit_predict_regime(features, n_components=3)
         valid_df["RegimeLabel"] = labels
         valid_df["RegimeName"] = [price_clf.get_regime_name(lbl) for lbl in labels]
-    
-    # Luu classifier vao df.attrs de truy cap cho ellipse rendering
-    df.attrs["price_classifier"] = price_clf
-    
+
+    valid_df_global = df.dropna(subset=["WPE", "SPE_Z_global"]).copy()
+    if not valid_df_global.empty:
+        features_g = valid_df_global[["WPE", "SPE_Z_global"]].values
+        labels_g, price_clf_global = fit_predict_regime(features_g, n_components=3)
+        valid_df_global["RegimeLabel_global"] = labels_g
+        valid_df_global["RegimeName_global"] = [
+            price_clf_global.get_regime_name(lbl) for lbl in labels_g
+        ]
+
+    df.attrs["price_classifier"] = price_clf                  # production
+    df.attrs["price_classifier_global"] = price_clf_global    # visualization
+
     df["RegimeName"] = np.nan
     df["RegimeLabel"] = np.nan
     if not valid_df.empty:
@@ -327,6 +405,12 @@ def load_and_compute_data(start_date_str, end_date_str, file_bytes=None, file_na
         df.loc[valid_df.index, "RegimeLabel"] = valid_df["RegimeLabel"]
     df["RegimeName"] = df["RegimeName"].ffill()
     df["RegimeLabel"] = df["RegimeLabel"].ffill()
+
+    df["RegimeName_global"] = np.nan
+    df["RegimeLabel_global"] = np.nan
+    if not valid_df_global.empty:
+        df.loc[valid_df_global.index, "RegimeName_global"] = valid_df_global["RegimeName_global"]
+        df.loc[valid_df_global.index, "RegimeLabel_global"] = valid_df_global["RegimeLabel_global"]
     
     # 7. Volume Regime (GMM -- Plane 2)
     vol_valid = df.dropna(subset=["Vol_Shannon", "Vol_SampEn"]).copy()
@@ -370,6 +454,12 @@ def load_and_compute_data(start_date_str, end_date_str, file_bytes=None, file_na
 st.sidebar.markdown("### 🌐 " + T("Language / Ngôn ngữ", "Language / Ngôn ngữ"))
 lang = st.sidebar.radio("", ["EN", "VN"], index=0 if st.session_state["lang"] == "EN" else 1, horizontal=True, label_visibility="collapsed")
 st.session_state["lang"] = lang
+
+st.sidebar.markdown("### 🌗 " + T("Theme / Giao diện", "Theme / Giao diện"))
+theme_val = st.sidebar.radio("", ["Dark", "Light"], index=0 if st.session_state["theme"] == "Dark" else 1, horizontal=True, label_visibility="collapsed")
+if theme_val != st.session_state["theme"]:
+    st.session_state["theme"] = theme_val
+    st.rerun()
 
 st.sidebar.markdown(f"### ⚙️ {T('SYSTEM CONFIGURATION', 'CẤU HÌNH HỆ THỐNG')}")
 
@@ -541,12 +631,13 @@ with col1:
             value=sigma_adj,
             domain={'x': [0, 1], 'y': [0, 1]},
             gauge={
-                'axis': {'range': [0, 4], 'tickwidth': 1, 'tickcolor': "white",
+                'axis': {'range': [0, 4], 'tickwidth': 1, 'tickcolor': _gauge_tick_color,
                          'tickvals': [0, 0.8, 1.5, 2.5, 4.0],
-                         'ticktext': ['0', '0.8', '1.5', '2.5', '4.0']},
+                         'ticktext': ['0', '0.8', '1.5', '2.5', '4.0'],
+                         'tickfont': {'color': _plotly_font_color}},
                 'bar': {'color': risk_color},
                 'bgcolor': "rgba(0,0,0,0)",
-                'borderwidth': 2, 'bordercolor': "#333",
+                'borderwidth': 2, 'bordercolor': _gauge_border,
                 'steps': [
                     {'range': [0,   0.8], 'color': 'rgba(0, 255, 65, 0.1)'},
                     {'range': [0.8, 1.5], 'color': 'rgba(255, 215, 0, 0.1)'},
@@ -562,7 +653,7 @@ with col1:
                 text=f"{sigma_adj:.2f}%",
                 x=0.5, y=0.25,
                 xref="paper", yref="paper",
-                font=dict(size=36, color="#FFFFFF", family="Courier Prime"),
+                font=dict(size=36, color=_plotly_font_color, family="Courier Prime"),
                 showarrow=False, xanchor="center", yanchor="middle"
             )]
         )
@@ -590,10 +681,11 @@ with col1:
             mode="gauge", value=risk_score,
             domain={'x': [0, 1], 'y': [0, 1]},
             gauge={
-                'axis': {'range': [None, 100], 'tickwidth': 1, 'tickcolor': "white"},
+                'axis': {'range': [None, 100], 'tickwidth': 1, 'tickcolor': _gauge_tick_color,
+                         'tickfont': {'color': _plotly_font_color}},
                 'bar': {'color': risk_color},
                 'bgcolor': "rgba(0,0,0,0)",
-                'borderwidth': 2, 'bordercolor': "#333",
+                'borderwidth': 2, 'bordercolor': _gauge_border,
                 'steps': [
                     {'range': [0, elevated_bound],              'color': 'rgba(0, 255, 65, 0.1)'},
                     {'range': [elevated_bound, critical_bound], 'color': 'rgba(255, 215, 0, 0.1)'},
@@ -607,7 +699,7 @@ with col1:
             annotations=[dict(
                 text=f"{risk_score:.1f}", x=0.5, y=0.25,
                 xref="paper", yref="paper",
-                font=dict(size=40, color="#FFFFFF", family="Courier Prime"),
+                font=dict(size=40, color=_plotly_font_color, family="Courier Prime"),
                 showarrow=False, xanchor="center", yanchor="middle"
             )]
         )
@@ -720,7 +812,11 @@ col_price_plot, col_vol_plot = st.columns([1, 1])
 # --- PLOT 1: Price Dynamics Plane (Raw Entropy Phase Space) ---
 with col_price_plot:
     st.markdown(f"**{T('PLANE 1: RAW ENTROPY PHASE SPACE', 'MAT PHANG 1: KHONG GIAN PHA ENTROPY (RAW)')}**")
-    plot_df = df.dropna(subset=['WPE', 'SPE_Z', 'RegimeName'])
+    # Visualization uses GLOBAL SPE_Z reference frame to display the full
+    # historical topology in a stable axis. Production regime labels (latest
+    # day) use ROLLING 504d SPE_Z to avoid look-ahead bias.
+    price_clf_viz = df.attrs.get("price_classifier_global", None)
+    plot_df = df.dropna(subset=['WPE', 'SPE_Z_global', 'RegimeName_global'])
     if not plot_df.empty:
         color_map_price = {
             "Stochastic":    "#00FF41",   # green  — normal market
@@ -728,21 +824,21 @@ with col_price_plot:
             "Deterministic": "#FF0000",   # red    — high coordination
         }
         scatter_price = px.scatter(
-            plot_df, x="WPE", y="SPE_Z",
-            color="RegimeName",
+            plot_df, x="WPE", y="SPE_Z_global",
+            color="RegimeName_global",
             color_discrete_map=color_map_price,
             hover_data=["Close", "MFI"],
-            labels={"WPE": "WPE (Weighted Permutation Entropy)", "SPE_Z": "SPE_Z (Standardized Price Sample Entropy)"},
+            labels={"WPE": "WPE (Weighted Permutation Entropy)", "SPE_Z_global": "SPE_Z (Global, visualization frame)"},
         )
 
         # 95% Confidence Ellipses (Full GMM: unique shape per cluster, RAW space)
-        if price_clf is not None:
+        if price_clf_viz is not None:
             try:
                 regime_colors = {0: "#00FF41", 1: "#FFD700", 2: "#FF0000"}
                 t_arr = np.linspace(0, 2 * np.pi, 100)
-                for cluster_idx in range(price_clf.n_components):
-                    ell = price_clf.get_ellipse_params(cluster_idx, n_std=2.0)
-                    regime_idx = price_clf._cluster_to_regime.get(cluster_idx, cluster_idx)
+                for cluster_idx in range(price_clf_viz.n_components):
+                    ell = price_clf_viz.get_ellipse_params(cluster_idx, n_std=2.0)
+                    regime_idx = price_clf_viz._cluster_to_regime.get(cluster_idx, cluster_idx)
                     cos_a = np.cos(np.radians(ell["angle"]))
                     sin_a = np.sin(np.radians(ell["angle"]))
                     x_ell = (ell["width"] / 2) * np.cos(t_arr)
@@ -758,11 +854,20 @@ with col_price_plot:
                 pass
 
         scatter_price.update_layout(
-            template="plotly_dark", plot_bgcolor='#0E1117', paper_bgcolor='#0E1117',
-            legend_title="Price Regime (Raw Full GMM)",
+            template=_plotly_template, plot_bgcolor=_plotly_plot_bg, paper_bgcolor=_plotly_paper_bg,
+            legend_title="Price Regime (Global frame)",
+            font=dict(color=_plotly_font_color),
             margin=dict(l=20, r=20, b=20, t=20), height=450,
         )
         st.plotly_chart(scatter_price, use_container_width=True)
+        st.caption(T(
+            "Scatter uses GLOBAL SPE_Z as a static reference frame to display the full "
+            "historical topology. Real-time regime classification uses ROLLING 504d SPE_Z "
+            "to avoid look-ahead bias.",
+            "Scatter dung GLOBAL SPE_Z lam reference frame tinh de hien thi toan bo "
+            "topology lich su. Phan loai regime real-time dung ROLLING 504d SPE_Z "
+            "de tranh look-ahead bias."
+        ))
 
 # --- PLOT 2: Volume Entropy Plane ---
 with col_vol_plot:
@@ -782,8 +887,9 @@ with col_vol_plot:
             labels={"Vol_Shannon": "Shannon Entropy (Concentration)", "Vol_SampEn": "Sample Entropy (Impulse Regularity)"},
         )
         scatter_vol.update_layout(
-            template="plotly_dark", plot_bgcolor='#0E1117', paper_bgcolor='#0E1117',
+            template=_plotly_template, plot_bgcolor=_plotly_plot_bg, paper_bgcolor=_plotly_paper_bg,
             legend_title="Volume Regime",
+            font=dict(color=_plotly_font_color),
             margin=dict(l=20, r=20, b=20, t=20), height=450,
         )
         st.plotly_chart(scatter_vol, use_container_width=True)
@@ -810,12 +916,12 @@ fig1 = make_subplots(
 # --- Row 1 (Price) ---
 fig1.add_trace(go.Candlestick(
     x=df.index, open=df['Open'], high=df['High'], low=df['Low'], close=df['Close'],
-    name="VNindex", increasing_line_color='#FFFFFF', decreasing_line_color='#888888'
+    name="VNindex", increasing_line_color=_candle_up, decreasing_line_color=_candle_down
 ), row=1, col=1)
 
 fig1.add_trace(go.Scatter(
     x=df.index, y=df['SMA20'], mode='lines', name='SMA20',
-    line=dict(color='yellow', width=1, dash='dash')
+    line=dict(color=_sma_color, width=1, dash='dash')
 ), row=1, col=1)
 
 # --- Row 2 (WPE) ---
@@ -854,13 +960,14 @@ for i in range(len(shift_indices)):
 
 fig1.update_layout(
     title=dict(text="VNindex Structure State (Full GMM Regime)", x=0.5, y=0.98, xanchor="center", yanchor="top"),
-    template="plotly_dark", height=600, plot_bgcolor='#0E1117', paper_bgcolor='#0E1117',
+    template=_plotly_template, height=600, plot_bgcolor=_plotly_plot_bg, paper_bgcolor=_plotly_paper_bg,
+    font=dict(color=_plotly_font_color),
     legend=dict(orientation="h", yanchor="top", y=1.08, xanchor="right", x=1.0),
     margin=dict(l=20, r=20, b=20, t=60)
 )
 fig1.update_xaxes(rangeslider_visible=False)
-fig1.update_yaxes(title_text="VNIndex Price", row=1, col=1, showgrid=True, gridcolor='rgba(255, 255, 255, 0.05)')
-fig1.update_yaxes(title_text="WPE Entropy", row=2, col=1, showgrid=True, gridcolor='rgba(255, 255, 255, 0.05)')
+fig1.update_yaxes(title_text="VNIndex Price", row=1, col=1, showgrid=True, gridcolor=_plotly_grid)
+fig1.update_yaxes(title_text="WPE Entropy", row=2, col=1, showgrid=True, gridcolor=_plotly_grid)
 st.plotly_chart(fig1, use_container_width=True)
 
 # --- GARCH-X Conditional Volatility Overlay ---
@@ -926,13 +1033,14 @@ if _garch_ok and "Cond_Vol" in df.columns:
                               layer="below", line_width=0)
 
     fig_vol.update_layout(
-        template="plotly_dark", height=350,
-        plot_bgcolor='#0E1117', paper_bgcolor='#0E1117',
+        template=_plotly_template, height=350,
+        plot_bgcolor=_plotly_plot_bg, paper_bgcolor=_plotly_paper_bg,
+        font=dict(color=_plotly_font_color),
         legend=dict(orientation="h", yanchor="top", y=1.08, xanchor="right", x=1.0),
         margin=dict(l=20, r=20, b=20, t=30),
         yaxis=dict(
             title_text=T("Daily Volatility (%)", "Bien dong hang ngay (%)"),
-            showgrid=True, gridcolor='rgba(255,255,255,0.05)'
+            showgrid=True, gridcolor=_plotly_grid
         ),
     )
 
@@ -966,7 +1074,8 @@ fig2.add_trace(go.Scatter(
 
 fig2.update_layout(
     title=dict(text="Cross-sectional Entropy VN30 (Eigenvalue Decomposition)", x=0.5, y=0.95, xanchor="center", yanchor="top"),
-    template="plotly_dark", height=400, plot_bgcolor='#0E1117', paper_bgcolor='#0E1117',
+    template=_plotly_template, height=400, plot_bgcolor=_plotly_plot_bg, paper_bgcolor=_plotly_paper_bg,
+    font=dict(color=_plotly_font_color),
     legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1.0),
     margin=dict(l=20, r=20, b=20, t=60),
     yaxis=dict(title_text="Entropy (0-100 Scale)")

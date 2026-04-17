@@ -8,6 +8,7 @@ Note: Plane 1 uses NO preprocessing — raw entropy topology is preserved by des
 
 import logging
 import numpy as np
+import pandas as pd
 from sklearn.mixture import GaussianMixture
 from sklearn.preprocessing import PowerTransformer
 from scipy.stats import normaltest
@@ -16,6 +17,16 @@ from scipy.stats import normaltest
 # EntropyPhaseSpaceClassifier (Plane 1) KHONG dung PowerTransformer.
 
 logger = logging.getLogger(__name__)
+
+
+# ==============================================================================
+# REFIT CADENCE FOR ROLLING SPE_Z STREAMING INFERENCE
+# ==============================================================================
+# Khi SPE_Z chuyen sang rolling 504d, distribution cua features troi theo
+# thoi gian. Refit GMM moi 21 phien (~ 1 thang giao dich) tren cua so
+# rolling 504 ngay gan nhat de centroid cluster bam sat dynamics hien tai.
+REFIT_INTERVAL: int = 21
+ROLLING_FIT_WINDOW: int = 504
 
 
 # ==============================================================================
@@ -68,6 +79,7 @@ class EntropyPhaseSpaceClassifier:
         )
         self._cluster_to_regime: dict[int, int] = {}
         self.X_fitted: np.ndarray | None = None
+        self.last_fit_date = None  # streaming refit cadence anchor
 
     def fit(self, features: np.ndarray) -> "EntropyPhaseSpaceClassifier":
         """
@@ -119,6 +131,36 @@ class EntropyPhaseSpaceClassifier:
             "height": float(height),
             "angle": float(angle),
         }
+
+    def fit_or_refit(
+        self,
+        features_df: pd.DataFrame,
+        current_date,
+        refit_interval: int = REFIT_INTERVAL,
+        rolling_window: int = ROLLING_FIT_WINDOW,
+    ) -> np.ndarray:
+        """
+        Streaming inference helper: refit GMM moi `refit_interval` phien
+        tren cua so rolling `rolling_window` ngay gan nhat (rolling SPE_Z
+        distribution troi theo thoi gian, centroid co dinh se lech).
+
+        Tra ve nhan regime cho dong cuoi cung cua features_df.
+        """
+        features_df = features_df.dropna()
+        if features_df.empty:
+            return np.array([], dtype=int)
+
+        need_refit = self.last_fit_date is None or (
+            (pd.Timestamp(current_date) - pd.Timestamp(self.last_fit_date)).days
+            >= refit_interval
+        )
+        if need_refit:
+            window_df = features_df.iloc[-rolling_window:]
+            self.fit(window_df.values)
+            self.last_fit_date = current_date
+
+        latest = features_df.iloc[[-1]].values
+        return self.predict(latest)
 
     def _map_clusters_by_combined_entropy(self) -> None:
         """
