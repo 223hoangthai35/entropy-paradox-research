@@ -20,7 +20,16 @@ from skills.quant_skill import (
     calc_rolling_price_sample_entropy,
     cal_spe_z_rolling, cal_spe_z_global,
 )
-from skills.ds_skill import fit_predict_regime, fit_predict_volume_regime
+from skills.ds_skill import (
+    fit_predict_regime,
+    fit_predict_volume_regime,
+    HysteresisGMMWrapper,
+    HYSTERESIS_DELTA_HARD,
+    HYSTERESIS_DELTA_SOFT,
+    HYSTERESIS_T_PERSIST,
+    REGIME_NAMES,
+    VOLUME_REGIME_NAMES,
+)
 from agent_orchestrator import fit_garch_x
 
 # ==============================================================================
@@ -397,11 +406,31 @@ def load_and_compute_data(start_date_str, end_date_str, file_bytes=None, file_na
     df.attrs["price_classifier"] = price_clf                  # production
     df.attrs["price_classifier_global"] = price_clf_global    # visualization
 
+    df["RegimeName_raw"] = np.nan
+    df["RegimeLabel_raw"] = np.nan
     df["RegimeName"] = np.nan
     df["RegimeLabel"] = np.nan
     if not valid_df.empty:
-        df.loc[valid_df.index, "RegimeName"] = valid_df["RegimeName"]
-        df.loc[valid_df.index, "RegimeLabel"] = valid_df["RegimeLabel"]
+        # Hysteresis post-filter on Plane 1 GMM posteriors. The raw labels
+        # are kept (RegimeName_raw / RegimeLabel_raw) for the timeline panel
+        # so the user can see what hysteresis is suppressing.
+        df.loc[valid_df.index, "RegimeName_raw"] = valid_df["RegimeName"]
+        df.loc[valid_df.index, "RegimeLabel_raw"] = valid_df["RegimeLabel"]
+
+        price_hyst = HysteresisGMMWrapper(
+            price_clf,
+            delta_hard=HYSTERESIS_DELTA_HARD,
+            delta_soft=HYSTERESIS_DELTA_SOFT,
+            t_persist=HYSTERESIS_T_PERSIST,
+        )
+        hyst_labels = price_hyst.transform(valid_df[["WPE", "SPE_Z"]].values)
+        df.loc[valid_df.index, "RegimeLabel"] = hyst_labels
+        df.loc[valid_df.index, "RegimeName"] = [
+            REGIME_NAMES.get(int(l), str(l)) for l in hyst_labels
+        ]
+
+    df["RegimeName_raw"] = df["RegimeName_raw"].ffill()
+    df["RegimeLabel_raw"] = df["RegimeLabel_raw"].ffill()
     df["RegimeName"] = df["RegimeName"].ffill()
     df["RegimeLabel"] = df["RegimeLabel"].ffill()
 
@@ -410,20 +439,51 @@ def load_and_compute_data(start_date_str, end_date_str, file_bytes=None, file_na
     if not valid_df_global.empty:
         df.loc[valid_df_global.index, "RegimeName_global"] = valid_df_global["RegimeName_global"]
         df.loc[valid_df_global.index, "RegimeLabel_global"] = valid_df_global["RegimeLabel_global"]
-    
-    # 7. Volume Regime (GMM -- Plane 2)
+
+    # 7. Volume Regime (GMM -- Plane 2) -- with hysteresis post-filter
     vol_valid = df.dropna(subset=["Vol_Shannon", "Vol_SampEn"]).copy()
+    vol_clf = None
     if not vol_valid.empty and len(vol_valid) >= 10:
         vol_features = vol_valid[["Vol_Shannon", "Vol_SampEn"]].values
         vol_labels, vol_clf = fit_predict_volume_regime(vol_features, n_components=3)
-        vol_valid["VolRegimeLabel"] = vol_labels
-        vol_valid["VolRegimeName"] = [vol_clf.get_regime_name(lbl) for lbl in vol_labels]
-    
+        vol_valid["VolRegimeLabel_raw"] = vol_labels
+        vol_valid["VolRegimeName_raw"] = [vol_clf.get_regime_name(lbl) for lbl in vol_labels]
+
+    df["VolRegimeName_raw"] = np.nan
+    df["VolRegimeLabel_raw"] = np.nan
     df["VolRegimeName"] = np.nan
     df["VolRegimeLabel"] = np.nan
-    if not vol_valid.empty and len(vol_valid) >= 10:
-        df.loc[vol_valid.index, "VolRegimeName"] = vol_valid["VolRegimeName"]
-        df.loc[vol_valid.index, "VolRegimeLabel"] = vol_valid["VolRegimeLabel"]
+    if not vol_valid.empty and len(vol_valid) >= 10 and vol_clf is not None:
+        df.loc[vol_valid.index, "VolRegimeName_raw"] = vol_valid["VolRegimeName_raw"]
+        df.loc[vol_valid.index, "VolRegimeLabel_raw"] = vol_valid["VolRegimeLabel_raw"]
+
+        # vol_clf doesn't expose a clean cluster->semantic int map (its
+        # _cluster_to_regime stores strings). Build one from the GMM's
+        # cluster->name map and the inverse VOLUME_REGIME_NAMES.
+        name_to_int = {v: k for k, v in VOLUME_REGIME_NAMES.items()}
+        vol_label_map = {
+            int(c): int(name_to_int.get(n, c))
+            for c, n in vol_clf._cluster_to_regime.items()
+        }
+        vol_hyst = HysteresisGMMWrapper(
+            vol_clf,
+            delta_hard=HYSTERESIS_DELTA_HARD,
+            delta_soft=HYSTERESIS_DELTA_SOFT,
+            t_persist=HYSTERESIS_T_PERSIST,
+            label_map=vol_label_map,
+        )
+        # Volume classifier transforms features through PowerTransformer
+        # before posterior — feed transformed features so hysteresis uses
+        # the same posterior space the base classifier sees.
+        vol_X_tf = vol_clf.power_tf.transform(vol_features)
+        vol_hyst_labels = vol_hyst.transform(vol_X_tf)
+        df.loc[vol_valid.index, "VolRegimeLabel"] = vol_hyst_labels
+        df.loc[vol_valid.index, "VolRegimeName"] = [
+            VOLUME_REGIME_NAMES.get(int(l), str(l)) for l in vol_hyst_labels
+        ]
+
+    df["VolRegimeName_raw"] = df["VolRegimeName_raw"].ffill()
+    df["VolRegimeLabel_raw"] = df["VolRegimeLabel_raw"].ffill()
     df["VolRegimeName"] = df["VolRegimeName"].ffill()
     df["VolRegimeLabel"] = df["VolRegimeLabel"].ffill()
 
@@ -939,6 +999,70 @@ fig1.update_xaxes(rangeslider_visible=False)
 fig1.update_yaxes(title_text="VNIndex Price", row=1, col=1, showgrid=True, gridcolor=_plotly_grid)
 fig1.update_yaxes(title_text="WPE Entropy", row=2, col=1, showgrid=True, gridcolor=_plotly_grid)
 st.plotly_chart(fig1, use_container_width=True)
+
+# ==============================================================================
+# REGIME LABEL TIMELINE -- RAW vs HYSTERESIS-FILTERED
+# Visualize what the Schmitt-trigger hysteresis is suppressing on Plane 1.
+# ==============================================================================
+if "RegimeName_raw" in df.columns and df["RegimeName_raw"].notna().any():
+    st.markdown(f"**{T('REGIME LABEL TIMELINE — Raw GMM vs Hysteresis-Filtered', 'TIMELINE NHÃN REGIME — GMM Thô vs Sau Hysteresis')}**")
+    st.caption(T(
+        f"Schmitt trigger: delta_hard={HYSTERESIS_DELTA_HARD:.2f}, delta_soft={HYSTERESIS_DELTA_SOFT:.2f}, t_persist={HYSTERESIS_T_PERSIST}. "
+        "Calibrated post-2020 on VNINDEX. Hysteresis (top row) suppresses single-bar flicker that the raw GMM (bottom row) emits.",
+        f"Schmitt trigger: delta_hard={HYSTERESIS_DELTA_HARD:.2f}, delta_soft={HYSTERESIS_DELTA_SOFT:.2f}, t_persist={HYSTERESIS_T_PERSIST}. "
+        "Calibrated trên VNINDEX sau 2020. Hysteresis (hàng trên) lọc đi nhiễu một-phiên mà GMM thô (hàng dưới) phát ra.",
+    ))
+
+    label_to_int = {"Stochastic": 0, "Transitional": 1, "Deterministic": 2}
+    int_to_color = {
+        0: "rgba(0, 255, 65, 0.85)",
+        1: "rgba(255, 215, 0, 0.85)",
+        2: "rgba(255, 49, 49, 0.85)",
+    }
+    timeline_df = df.dropna(subset=["RegimeName", "RegimeName_raw"]).copy()
+    if not timeline_df.empty:
+        timeline_df["_hyst_int"] = timeline_df["RegimeName"].map(label_to_int).fillna(-1).astype(int)
+        timeline_df["_raw_int"] = timeline_df["RegimeName_raw"].map(label_to_int).fillna(-1).astype(int)
+
+        n_flips_raw = int((timeline_df["_raw_int"].diff().fillna(0) != 0).sum())
+        n_flips_hyst = int((timeline_df["_hyst_int"].diff().fillna(0) != 0).sum())
+        years = max(len(timeline_df) / 252.0, 1e-6)
+        st.caption(T(
+            f"Flips/yr — raw: {n_flips_raw / years:.1f} | filtered: {n_flips_hyst / years:.1f} "
+            f"(over {len(timeline_df)} bars / ~{years:.1f} years).",
+            f"Số lần đổi nhãn/năm — thô: {n_flips_raw / years:.1f} | đã lọc: {n_flips_hyst / years:.1f} "
+            f"(trên {len(timeline_df)} phiên / ~{years:.1f} năm).",
+        ))
+
+        fig_tl = make_subplots(
+            rows=2, cols=1, shared_xaxes=True, vertical_spacing=0.06,
+            row_heights=[0.5, 0.5],
+            subplot_titles=(T("Hysteresis-Filtered (production)", "Sau hysteresis (production)"),
+                            T("Raw GMM Posteriors", "GMM thô")),
+        )
+
+        for row_idx, col_int in [(1, "_hyst_int"), (2, "_raw_int")]:
+            shifts = timeline_df.index[timeline_df[col_int].diff().fillna(0) != 0].tolist()
+            if not shifts or shifts[0] != timeline_df.index[0]:
+                shifts = [timeline_df.index[0]] + shifts
+            for i, start in enumerate(shifts):
+                end = shifts[i + 1] if i + 1 < len(shifts) else timeline_df.index[-1]
+                lbl_int = int(timeline_df.loc[start, col_int])
+                color = int_to_color.get(lbl_int, "rgba(128,128,128,0.4)")
+                fig_tl.add_vrect(
+                    x0=start, x1=end, fillcolor=color, opacity=1.0,
+                    layer="below", line_width=0, row=row_idx, col=1,
+                )
+
+        fig_tl.update_yaxes(showticklabels=False, range=[0, 1], row=1, col=1)
+        fig_tl.update_yaxes(showticklabels=False, range=[0, 1], row=2, col=1)
+        fig_tl.update_layout(
+            template=_plotly_template, height=260,
+            plot_bgcolor=_plotly_plot_bg, paper_bgcolor=_plotly_paper_bg,
+            font=dict(color=_plotly_font_color),
+            margin=dict(l=20, r=20, b=20, t=40), showlegend=False,
+        )
+        st.plotly_chart(fig_tl, use_container_width=True)
 
 # --- GARCH-X Conditional Volatility Overlay ---
 if _garch_ok and "Cond_Vol" in df.columns:

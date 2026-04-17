@@ -2,8 +2,22 @@
 
 ## Financial Entropy Agent — Technical Architecture Specification
 
-**Version**: 7.0 (System-Thinking Revision)
+**Version**: 7.1 (Hysteresis + Rolling-GARCH Revision)
 **Classification**: Entropy-Driven Conditional Volatility Engine & Explainable AI Risk Terminal
+
+**v7.1 changes from v7.0**:
+- Plane 1 / Plane 2 GMM regime labels are now post-filtered by a Schmitt-trigger
+  `HysteresisGMMWrapper` (`delta_hard=0.60`, `delta_soft=0.35`, `t_persist=8`),
+  calibrated on VNINDEX post-2020 to ~8 flips/yr (raw GMM ~29).
+- `SPE_Z` is computed as a 504-day **rolling** Z-score in production
+  (`cal_spe_z_rolling`) to remove look-ahead bias; the global Z-score
+  (`cal_spe_z_global`) is retained for static dashboard scatter overlays only.
+- The `EntropyPhaseSpaceClassifier` exposes a `fit_or_refit` streaming helper
+  that re-fits the GMM every 21 bars on the latest 504-day window, so the
+  cluster centroids track the rolling-Z distribution drift.
+- The `calc_composite_risk_score` Tri-Vector fallback (V1 0.40, V2 0.40, V3 0.20)
+  is **removed**. GARCH-X is the sole risk engine; failures are surfaced
+  explicitly in the dashboard rather than silently substituting a different score.
 
 ---
 
@@ -169,6 +183,51 @@ If GARCH cannot fit (genuine error: missing arch dep, degenerate data):
 
 ---
 
+## 4b. Hysteresis Post-Filter on Regime Labels
+
+The raw GMM is fit on 504-day rolling features and emits a label per bar.
+On VNINDEX (post-2020) the raw labels flip ~28-30 times per trading year —
+much of that is single-bar flicker from posteriors near a cluster boundary.
+A risk gauge that flips daily is operationally unreadable.
+
+`HysteresisGMMWrapper` (in [skills/ds_skill.py](skills/ds_skill.py)) wraps the
+fitted GMM and applies a Schmitt-trigger filter to the posterior margin
+between the current candidate label and the held label:
+
+```
+margin = P(top_label) − P(held_label)
+
+if top == held                        : hold
+elif margin ≥ delta_hard              : flip immediately (hard penetration)
+elif margin ≥ delta_soft for t_persist: flip (sustained drift)
+                              consecutive bars
+else                                  : hold (treat as noise)
+```
+
+**Calibrated parameters** (post-2020 VNINDEX, see [scripts/calibrate_hysteresis.py](scripts/calibrate_hysteresis.py)):
+
+| Parameter | Value | Effect |
+|:----------|:------|:-------|
+| $\delta_\text{hard}$ | 0.60 | Posterior margin required for an instant flip |
+| $\delta_\text{soft}$ | 0.35 | Posterior margin required to start accumulating persistence |
+| $t_\text{persist}$  | 8    | Consecutive soft-margin bars required before a flip |
+
+These compress the raw flip rate from ~28.8/yr to ~7.8/yr (one structural
+change every ~6 weeks) while preserving 83% bar-level agreement with the
+raw classifier. The dashboard's regime timeline panel renders both raw and
+filtered tracks so the user can see what hysteresis is suppressing.
+
+**Why post-2020 only for calibration**: VNINDEX liquidity, retail
+participation, and circuit-breaker regime changed materially before 2020.
+Including pre-2020 bars biases the flip-rate metric toward an obsolete
+microstructure. The `start_date` argument to the calibration script defaults
+to `2020-01-01` and should not be lowered without re-justifying.
+
+The Verdict Matrix downstream consumes the **filtered** labels; the raw
+labels are retained only for the diagnostic timeline panel.
+
+---
+
 ## 5. Verdict Matrix: The Decision System
 
 The Verdict Matrix is the integration point where the quantitative pipeline produces a human-interpretable risk label. It exists to solve one specific failure mode: **a σ threshold alone cannot distinguish structural risk from transient liquidity noise**.
@@ -232,12 +291,16 @@ These constraints are **not configurable**. Each exists for a documented reason.
 | SampEn: $m$, $r$, window | 2, $0.2\sigma$, 60d | Standard physiological time-series parameters adapted for finance |
 | Vol SampEn: $r$ | 0.2 (fixed) | Volume does not have the same local-σ scaling as price |
 | GMM: $k$, covariance, n_init | 3, full, 10 | Three-phase physics analogy; full covariance captures true entropy geometry |
+| GMM refit cadence | every 21 bars on a rolling 504d window | Rolling SPE_Z drifts the feature distribution; static centroids would lag |
+| Hysteresis: $\delta_\text{hard}$, $\delta_\text{soft}$, $t_\text{persist}$ | 0.60, 0.35, 8 | Calibrated post-2020 on VNINDEX → ~8 flips/yr (raw GMM ~29); see [scripts/calibrate_hysteresis.py](scripts/calibrate_hysteresis.py) |
 | GARCH exog pruning threshold | $p < 0.10$ | Prevents entropy from degrading point forecasts during calm periods |
+| GARCH-X exog lag | $\text{shift}(1)$ | Entropy at $t$ already conditions on returns up to $t$; feeding it raw into $\sigma_t^2$ would create circular look-ahead |
 | Risk rolling window | 504d | ~2 trading years; stable percentile estimation |
 | Regime multipliers | 1.0×, 1.4×, 2.2× | Calibrated on VNINDEX forward volatility by regime |
 | Plane 1 preprocessing | None | Raw WPE/SPE_Z topology must not be distorted before GMM |
 | Plane 2 preprocessing | Yeo-Johnson | Right-skewed volume distributions bias GMM without transformation |
 | Kinematics → GMM/GARCH | Forbidden | Noisy single-day derivatives would destabilize quantitative models |
+| Composite-fallback risk score | Removed (v7.1) | Supported markets always have ≥120 days; silent fallback made the gauge non-comparable across runs |
 
 ---
 
