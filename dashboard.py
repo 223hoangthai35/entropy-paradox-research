@@ -21,7 +21,7 @@ from skills.quant_skill import (
     cal_spe_z_rolling, cal_spe_z_global,
 )
 from skills.ds_skill import fit_predict_regime, fit_predict_volume_regime
-from agent_orchestrator import calc_composite_risk_score, fit_garch_x
+from agent_orchestrator import fit_garch_x
 
 # ==============================================================================
 # UI CONFIGURATION & MULTILINGUAL SUPPORT
@@ -273,9 +273,8 @@ st.markdown(f"<style>{css_common}\n{selected_css}</style>", unsafe_allow_html=Tr
 # ==============================================================================
 # UI INITIALIZATION & MULTILINGUAL SUPPORT
 # ==============================================================================
-risk_score = 0.0
-synthesis_label = "STOCHASTIC"
 risk_color = "#00FF41"
+risk_label_vn = ""
 current_wpe = 0.5
 current_regime = "Stochastic"
 current_vol_global_z = 0.0
@@ -524,25 +523,11 @@ vol_sh_kpi = f"{current_vol_shannon:.2f}" if pd.notna(current_vol_shannon) else 
 vol_se_kpi = f"{current_vol_sampen:.2f}" if pd.notna(current_vol_sampen) else "N/A"
 vol_gz_kpi = f"{current_vol_global_z:+.2f}" if pd.notna(current_vol_global_z) else "N/A"
 
-# FALLBACK: entropy aggregate score used when GARCH unavailable (< 120 days)
-risk_score, synthesis_label, vector_info = calc_composite_risk_score(latest.to_dict(), df=df)
-contributions = vector_info.get("contributions", {})
-dominant_vector = vector_info.get("dominant_vector", "N/A")
-
-# Dynamic Thresholds
-dyn_thresholds = vector_info.get("thresholds", {})
-elevated_bound = dyn_thresholds.get("elevated_bound", 55.0)
-critical_bound = dyn_thresholds.get("critical_bound", 70.0)
+# Primary risk label resolved later by Verdict Matrix (sigma_adjusted x regime).
+# v7.1: composite-fallback removed — GARCH-X is the only risk pipeline (data >= 120d guaranteed).
 price_clf = df.attrs.get("price_classifier", None)
-
-# Risk Color
-if "CRITICAL" in synthesis_label:
-    risk_color = "#FF0000"
-elif "ELEVATED" in synthesis_label:
-    risk_color = "#FF5F1F"
-else:
-    risk_color = "#00FF41"
-risk_label_vn = synthesis_label
+risk_color = "#00FF41"
+risk_label_vn = T("CALM MARKET", "THỊ TRƯỜNG ỔN ĐỊNH")
 
 # ==============================================================================
 # TOP KPI SECTION: GARCH-X PRIMARY + ES TAIL + REGIME SUMMARY
@@ -676,38 +661,26 @@ with col1:
         st.markdown(f"<div style='text-align:center; font-size:0.72rem; color:#888; margin-top:4px; font-family:Courier Prime, monospace;'>{mult_explain}</div>", unsafe_allow_html=True)
 
     else:
-        # FALLBACK: entropy aggregate gauge (GARCH unavailable)
-        fig_gauge = go.Figure(go.Indicator(
-            mode="gauge", value=risk_score,
-            domain={'x': [0, 1], 'y': [0, 1]},
-            gauge={
-                'axis': {'range': [None, 100], 'tickwidth': 1, 'tickcolor': _gauge_tick_color,
-                         'tickfont': {'color': _plotly_font_color}},
-                'bar': {'color': risk_color},
-                'bgcolor': "rgba(0,0,0,0)",
-                'borderwidth': 2, 'bordercolor': _gauge_border,
-                'steps': [
-                    {'range': [0, elevated_bound],              'color': 'rgba(0, 255, 65, 0.1)'},
-                    {'range': [elevated_bound, critical_bound], 'color': 'rgba(255, 215, 0, 0.1)'},
-                    {'range': [critical_bound, 100],            'color': 'rgba(255, 0, 0, 0.1)'}],
-            }
-        ))
-        fig_gauge.update_layout(
-            autosize=True, height=170,
-            margin=dict(l=20, r=20, t=10, b=10),
-            paper_bgcolor='rgba(0,0,0,0)',
-            annotations=[dict(
-                text=f"{risk_score:.1f}", x=0.5, y=0.25,
-                xref="paper", yref="paper",
-                font=dict(size=40, color=_plotly_font_color, family="Courier Prime"),
-                showarrow=False, xanchor="center", yanchor="middle"
-            )]
+        # GARCH-X is the only risk pipeline in v7.1 — surface the failure explicitly
+        # rather than silently falling back to a composite entropy score.
+        err_msg = (_garch_kpi or {}).get("error", T("GARCH-X engine unavailable.", "Engine GARCH-X chưa sẵn sàng."))
+        st.markdown(
+            f"""
+            <div class="arch-badge" style="height:210px; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:14px 16px; border:1px solid #FF5F1F;">
+                <div class="metric-label" style="text-align:center; margin-bottom:8px; color:#FF5F1F;">
+                    {T("GARCH-X UNAVAILABLE", "GARCH-X KHÔNG SẴN SÀNG")}
+                </div>
+                <div style="font-size:0.78rem; color:#FF5F1F; text-align:center; font-family:'Courier Prime',monospace; margin-bottom:8px;">
+                    {err_msg}
+                </div>
+                <div style="font-size:0.68rem; color:#888; text-align:center; font-family:'Courier Prime',monospace;">
+                    {T("Risk gauge requires the GARCH-X engine. Check the arch dependency or wait for ≥120 days of entropy features.",
+                       "Bảng đo rủi ro yêu cầu engine GARCH-X. Kiểm tra thư viện arch hoặc đợi đủ ≥120 ngày dữ liệu entropy.")}
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
         )
-        st.markdown(f'<div class="metric-label" style="text-align:center; padding-top:5px;">{T("COMPOSITE RISK SCORE", "ĐIỂM RỦI RO")}</div>', unsafe_allow_html=True)
-        st.plotly_chart(fig_gauge, use_container_width=True, config={'displayModeBar': False})
-        st.markdown(f"<div style='text-align:center; color:{risk_color}; font-weight:800; font-size:1.0rem; margin-top:-15px;'>{risk_label_vn}</div>", unsafe_allow_html=True)
-        if _garch_kpi and "error" in _garch_kpi and "arch" in str(_garch_kpi.get("error", "")).lower():
-            st.markdown("<div style='text-align:center; font-size:0.68rem; color:#FF5F1F; margin-top:3px;'>pip install arch  →  enable GARCH-X</div>", unsafe_allow_html=True)
 
 # --- Column 2: ES Tail Risk Observer ---
 with col2:
@@ -764,9 +737,6 @@ with col2:
 with col3:
     cse_display = f"{current_cse:.1f}%"
     mfi_display = f"{current_mfi:.4f}"
-    v1_risk = contributions.get('V1_Price', 0) * 100
-    v2_risk = contributions.get('V2_Volume', 0) * 100
-    v3_risk = contributions.get('V3_Breadth', 0) * 100
     _p1_subtitles = {
         "Deterministic": T("High Coordination — trending structure", "Phoi hop cao — cau truc xu huong"),
         "Transitional":  T("Mixed Structure — phase transition",    "Cau truc hon hop — chuyen pha"),

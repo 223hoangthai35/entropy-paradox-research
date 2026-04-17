@@ -92,10 +92,6 @@ graph TD
         E7 --> E8
     end
 
-    subgraph FALLBACK["Fallback Path  (< 120 days data)"]
-        E3 -->|"insufficient history"| F1["calc_composite_risk_score()\nentropy aggregate 0-100\nnot primary pipeline"]
-    end
-
     subgraph VERDICT["Layer 5 — Verdict Matrix  dashboard.py"]
         E8 --> G1["3 × 4 Decision Grid\nregime × σ_adjusted level"]
         D3 --> G1
@@ -148,7 +144,7 @@ Neither pattern is detectable from a single plane.
 
 ---
 
-## 4. GARCH Engine: Fallback Logic and Adaptive Activation
+## 4. GARCH Engine: Adaptive Exog Activation
 
 The entropy features do not always improve the GARCH variance equation. During calm markets, entropy-based exogenous variables are statistically insignificant — they add noise, not signal. The engine handles this with explicit pruning:
 
@@ -162,12 +158,14 @@ If all exogenous dropped:
     fall back to pure GARCH(1,1)
     entropy still active for regime classification
     ↓
-If GARCH cannot fit (< 120 days history):
-    fall back to calc_composite_risk_score()
-    entropy aggregate 0-100 (not primary pipeline)
+If GARCH cannot fit (genuine error: missing arch dep, degenerate data):
+    surface the error explicitly in the dashboard
+    no composite-fallback path in v7.1
 ```
 
 **Key insight**: Entropy is *always* contributing through regime classification (Layer 3). The question is only whether it also enters the variance equation. This adaptive activation prevents entropy from degrading GARCH accuracy during periods when structure is absent.
+
+**v7.1 simplification**: Earlier prototypes routed cold-start runs (< 120 days of entropy features) into a deterministic "Tri-Vector Composite Risk" aggregate (V1 0.40, V2 0.40, V3 0.20). That fallback has been removed: the supported markets always have ≥ 120 days of history, and silently switching scoring methods made the dashboard's risk gauge non-comparable across runs. GARCH-X is now the single source of truth for the risk reading.
 
 ---
 
@@ -259,6 +257,6 @@ The architecture is market-agnostic at the data and feature level. Three compone
 
 ## 9. Notes
 
-- **`calc_composite_risk_score()`**: Entropy aggregate (0–100) used as fallback when GARCH-X is unavailable (< 120 days of data). Invoked automatically in dashboard when `fit_garch_x()` returns an error. Not part of the primary pipeline.
+- **No composite risk fallback**: v7.1 removed the legacy `calc_composite_risk_score()` aggregate. GARCH-X is the single risk pipeline. If `fit_garch_x()` fails, the dashboard surfaces the error rather than silently switching scoring methods.
 - **`PowerTransformer`**: Applied to Plane 2 (Volume) only via `VolumeRegimeClassifier`. Plane 1 (Price) uses raw `[WPE, SPE_Z]` — the natural scale carries physical meaning and must not be normalized before GMM fitting.
 - **Module boundaries (DRY)**:  Math logic belongs only in `quant_skill.py`. ML models belong only in `ds_skill.py`. `agent_orchestrator.py` and `dashboard.py` import from skills; they do not redefine functions.
