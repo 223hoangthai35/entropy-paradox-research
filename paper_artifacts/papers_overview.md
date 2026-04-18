@@ -19,6 +19,7 @@ Per-version summaries:
 Extended drafts and working artifacts:
 
 - [section_5_6_draft.md](section_5_6_draft.md) — Paper v2 Section 5.6 draft text
+- [ms_index_rationale.md](ms_index_rationale.md) — H2 / Microstructure Index construction, robustness, and the "not a VNINDEX outlier" argument
 
 ## Why three versions
 
