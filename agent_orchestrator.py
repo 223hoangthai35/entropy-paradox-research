@@ -17,7 +17,8 @@ from skills.data_skill import get_latest_market_data, fetch_vn30_returns
 from skills.quant_skill import (
     calc_rolling_wpe, calc_mfi, calc_rolling_volume_entropy,
     calc_correlation_entropy, calc_wpe_kinematics,
-    calc_rolling_price_sample_entropy, calc_spe_z,
+    calc_rolling_price_sample_entropy,
+    cal_spe_z_rolling, cal_spe_z_global,
 )
 from skills.ds_skill import fit_predict_regime, fit_predict_volume_regime
 
@@ -43,7 +44,7 @@ STATE = {
 # ==============================================================================
 def fit_garch_x(df: pd.DataFrame) -> dict:
     """
-    GARCH(1,1)-X: thay thế calc_composite_risk_score.
+    GARCH(1,1)-X: primary conditional volatility engine.
     Exogenous vars: H_price = (WPE + |SPE_Z|) / 2, H_volume = (Vol_SampEn + Vol_Shannon) / 2
     Cả hai aggregate về [0,1] dùng rolling MinMax 504-day, lag 1 ngày tránh look-ahead.
     Returns dict với conditional_vol series, latest sigma, VaR 5%, ES 5%.
@@ -67,8 +68,13 @@ def fit_garch_x(df: pd.DataFrame) -> dict:
         denom = (roll_max - roll_min).replace(0, 1e-8)
         return ((series - roll_min) / denom).clip(0, 1)
 
-    df_valid["H_price"] = rolling_minmax(H_price_raw).shift(1)  # lag 1
-    df_valid["H_volume"] = rolling_minmax(H_vol_raw).shift(1)   # lag 1
+    # lag 1 — entropy at time t is already a function of returns up to t,
+    # so feeding H_t into σ²_t would create circular look-ahead. We use
+    # H_{t-1} → σ²_t. The variance equation in the variance-equation block
+    # of arch's GARCH-X is documented to apply x_t to σ²_t; we explicitly
+    # shift the exog so x_t (post-shift) carries entropy from t-1.
+    df_valid["H_price"] = rolling_minmax(H_price_raw).shift(1)
+    df_valid["H_volume"] = rolling_minmax(H_vol_raw).shift(1)
     df_valid = df_valid.dropna(subset=["H_price", "H_volume"])
 
     # 2. Log returns (%)
@@ -224,164 +230,6 @@ def fit_garch_x(df: pd.DataFrame) -> dict:
 
 
 # ==============================================================================
-# FALLBACK RISK SCORE
-# Used only when GARCH unavailable (< 120 days of data).
-# The primary risk pipeline is: GARCH sigma_t + Regime Multiplier + Verdict Matrix.
-# ==============================================================================
-ROLLING_RISK_WINDOW: int = 504  # 2 trading years
-
-
-def calc_composite_risk_score(
-    latest: dict, df: pd.DataFrame | None = None,
-) -> tuple[float, str, dict]:
-    """
-    FALLBACK risk index (0-100) — used when GARCH-X is unavailable.
-    Weighted entropy aggregate: V1=[WPE, |SPE_Z|], V2=[Vol_SampEn, |Vol_Global_Z|, Vol_Shannon],
-    V3=[Cross_Sectional_Entropy/100, MFI]. MinMaxScaler + P75/P90 rolling thresholds.
-    Returns: (composite_score, risk_label, vector_info)
-    """
-    from sklearn.preprocessing import MinMaxScaler
-
-    # --- 1. Extract raw features ---
-    wpe = float(latest.get("WPE", 0.5))
-    spe_z = float(latest.get("SPE_Z", 0.0))
-    vol_sampen = float(latest.get("Vol_SampEn", 0.5))
-    vol_global_z = float(latest.get("Vol_Global_Z", 0.0))
-    vol_shannon = float(latest.get("Vol_Shannon", 0.5))
-    corr_entropy = float(latest.get("Cross_Sectional_Entropy", 50.0)) / 100.0
-    mfi = float(latest.get("MFI", 0.5))
-
-    # Current day feature arrays
-    v1_current = np.array([[wpe, abs(spe_z)]])                             # (1, 2)
-    v2_current = np.array([[vol_sampen, abs(vol_global_z), vol_shannon]]) # (1, 3)
-    v3_current = np.array([[corr_entropy, mfi]])                          # (1, 2)
-
-    # --- 2. Build historical feature matrix (rolling 504-day) ---
-    elevated_bound = 55.0  # fallback
-    critical_bound = 70.0
-
-    required_cols = ["WPE", "Vol_SampEn", "Vol_Shannon"]
-
-    if df is not None and len(df) >= 60 and all(c in df.columns for c in required_cols):
-        hist = df.tail(ROLLING_RISK_WINDOW).copy()
-        n_hist = len(hist)
-
-        # V1 history: [WPE, |SPE_Z|]
-        v1_hist = np.column_stack([
-            hist["WPE"].fillna(0.5).values,
-            (hist["SPE_Z"].abs().fillna(0.0).values
-             if "SPE_Z" in hist.columns
-             else np.zeros(n_hist)),
-        ])
-
-        # V2 history: [SampEn, |Global_Z|, Shannon]
-        v2_hist = np.column_stack([
-            hist["Vol_SampEn"].fillna(0.5).values,
-            (hist["Vol_Global_Z"].abs().fillna(0.0).values
-             if "Vol_Global_Z" in hist.columns
-             else np.zeros(n_hist)),
-            hist["Vol_Shannon"].fillna(0.5).values,
-        ])
-
-        # V3 history: [Corr_Entropy/100, MFI]
-        v3_hist = np.column_stack([
-            (hist["Cross_Sectional_Entropy"].fillna(50.0).values / 100.0
-             if "Cross_Sectional_Entropy" in hist.columns
-             else np.full(n_hist, 0.5)),
-            (hist["MFI"].fillna(0.5).values
-             if "MFI" in hist.columns
-             else np.full(n_hist, 0.5)),
-        ])
-
-        # --- 3. Fit MinMaxScaler per vector ---
-        def _fit_transform_vector(v_hist: np.ndarray, v_current: np.ndarray) -> tuple[float, np.ndarray]:
-            """MinMaxScale -> mean. Returns (current_score, hist_scores)."""
-            mms = MinMaxScaler(feature_range=(0, 1))
-            # Fit on history
-            v_scaled = mms.fit_transform(v_hist)
-            # Transform current
-            c_scaled = mms.transform(v_current)
-            # Mean per day
-            hist_means = v_scaled.mean(axis=1)  # (N,)
-            current_mean = float(c_scaled.mean())
-            return current_mean, hist_means
-
-        s_v1, v1_hist_scores = _fit_transform_vector(v1_hist, v1_current)
-        s_v2, v2_hist_scores = _fit_transform_vector(v2_hist, v2_current)
-        s_v3, v3_hist_scores = _fit_transform_vector(v3_hist, v3_current)
-
-        # --- 4. Compute historical composite scores ---
-        hist_composites = (0.4 * v1_hist_scores + 0.4 * v2_hist_scores + 0.2 * v3_hist_scores) * 100.0
-        hist_composites = np.clip(hist_composites, 0.0, 100.0)
-
-        # --- 5. P75/P90 dynamic thresholds ---
-        valid_scores = hist_composites[np.isfinite(hist_composites)]
-        if len(valid_scores) >= 30:
-            elevated_bound = float(np.percentile(valid_scores, 75))
-            critical_bound = float(np.percentile(valid_scores, 90))
-            if critical_bound - elevated_bound < 3.0:
-                critical_bound = elevated_bound + 3.0
-
-    else:
-        # Fallback: no history, simple clamp
-        s_v1 = float(np.clip(wpe, 0, 1))
-        s_v2 = float(np.clip(vol_sampen, 0, 1))
-        s_v3 = float(np.clip(corr_entropy, 0, 1))
-
-    # --- 6. Weighted composite and XAI Contributions ---
-    weight_v1_score = 0.4 * s_v1
-    weight_v2_score = 0.4 * s_v2
-    weight_v3_score = 0.2 * s_v3
-    total_weight = weight_v1_score + weight_v2_score + weight_v3_score
-    
-    composite_score = float(np.clip(total_weight * 100.0, 0.0, 100.0))
-
-    if total_weight > 0:
-        contrib_v1_pct = (weight_v1_score / total_weight) * 100.0
-        contrib_v2_pct = (weight_v2_score / total_weight) * 100.0
-        contrib_v3_pct = (weight_v3_score / total_weight) * 100.0
-    else:
-        contrib_v1_pct, contrib_v2_pct, contrib_v3_pct = 0.0, 0.0, 0.0
-
-    # --- 7. Dynamic risk label ---
-    if composite_score >= critical_bound:
-        risk_label = "CRITICAL"
-    elif composite_score >= elevated_bound:
-        risk_label = "ELEVATED"
-    else:
-        risk_label = "STABLE"
-
-    # --- 8. Dominant vector ---
-    contributions = {
-        "V1_Price": round(s_v1, 4),
-        "V2_Volume": round(s_v2, 4),
-        "V3_Breadth": round(s_v3, 4),
-    }
-    dominant = max(contributions, key=contributions.get)
-
-    vector_info = {
-        "composite_score": round(composite_score, 1),
-        "risk_label": risk_label,
-        "dominant_vector": dominant,
-        "contributions": contributions,
-        "contribution_percentages": {
-            "V1_Price": round(contrib_v1_pct, 2),
-            "V2_Volume": round(contrib_v2_pct, 2),
-            "V3_Breadth": round(contrib_v3_pct, 2),
-        },
-        "weights": {"V1": 0.4, "V2": 0.4, "V3": 0.2},
-        "thresholds": {
-            "elevated_bound": round(elevated_bound, 1),
-            "critical_bound": round(critical_bound, 1),
-            "method": "MinMaxScale + P75/P90 (504-day)",
-        },
-    }
-
-    return composite_score, risk_label, vector_info
-
-
-
-# ==============================================================================
 # TOOL IMPLEMENTATIONS
 # ==============================================================================
 def tool_fetch_market_data(ticker="VNINDEX", start_date="2020-01-01"):
@@ -414,10 +262,12 @@ def tool_compute_entropy_metrics():
     df["MFI"] = mfi_arr
 
     # 2. Price Sample Entropy (SPE_Z) -- Plane 1 Y-axis
+    # Production path uses ROLLING 504d Z-score (no look-ahead bias).
+    # Global Z-score is also stored for static dashboard scatter overlay only.
     sampen_price = calc_rolling_price_sample_entropy(df["Close"].values, window=60)
-    spe_z = calc_spe_z(sampen_price)
     df["Price_SampEn"] = sampen_price
-    df["SPE_Z"] = spe_z
+    df["SPE_Z"] = cal_spe_z_rolling(sampen_price, window=504)
+    df["SPE_Z_global"] = cal_spe_z_global(sampen_price)
 
     # 3. WPE Kinematics (XAI trajectory indicators -- NOT used in ML)
     vel, acc = calc_wpe_kinematics(wpe_arr)

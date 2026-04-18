@@ -407,14 +407,18 @@ def calc_rolling_price_sample_entropy(
     return sampen_out
 
 
-def calc_spe_z(sampen_arr: np.ndarray) -> np.ndarray:
+def cal_spe_z_global(sampen_series) -> np.ndarray:
     """
-    Global Z-Score normalization cua Price Sample Entropy.
-    SPE_Z = (SampEn - mean) / std. Chuan hoa toan cuc de tao
-    orthogonal axis voi WPE trong Phase Space.
-    Returns: spe_z_array (NaN-safe).
+    Global Z-Score normalization — VISUALIZATION ONLY.
+
+    Dung mu, sigma cua TOAN BO series de tao reference frame tinh.
+    Co LOOK-AHEAD BIAS — KHONG dung cho production inference.
+
+    USE CASE: hien thi historical scatter tren Plane 1 GMM dashboard
+    de user thay toan bo topology cac regime qua thoi gian. Centroid GMM
+    duoc fit tren cung global frame nay -> consistent overlay.
     """
-    arr = np.asarray(sampen_arr, dtype=np.float64)
+    arr = np.asarray(sampen_series, dtype=np.float64)
     valid = arr[np.isfinite(arr)]
     if len(valid) < 2:
         return np.full_like(arr, np.nan)
@@ -424,6 +428,43 @@ def calc_spe_z(sampen_arr: np.ndarray) -> np.ndarray:
         return np.full_like(arr, 0.0)
     spe_z = np.where(np.isfinite(arr), (arr - mu) / sigma, np.nan)
     return spe_z
+
+
+def cal_spe_z_rolling(sampen_series, window: int = 504) -> np.ndarray:
+    """
+    Rolling Z-Score normalization — PRODUCTION / REAL-TIME use.
+
+    Tai moi thoi diem t, chuan hoa bang mu, sigma cua window
+    [t-window+1, t]. Tra ve NaN cho cac diem co index < window-1
+    (chua du lich su).
+
+    KHONG co look-ahead bias: tai t khong dung gia tri tuong lai.
+
+    USE CASE: feed vao GARCH-X exog, GMM regime classifier real-time.
+    """
+    arr = np.asarray(sampen_series, dtype=np.float64)
+    s = pd.Series(arr)
+    roll_mean = s.rolling(window, min_periods=window).mean()
+    roll_std = s.rolling(window, min_periods=window).std()
+    roll_std = roll_std.replace(0, np.nan)
+    spe_z = (s - roll_mean) / roll_std
+    return spe_z.where(np.isfinite(spe_z), np.nan).to_numpy()
+
+
+def calc_spe_z(sampen_arr: np.ndarray) -> np.ndarray:
+    """
+    DEPRECATED alias of `cal_spe_z_global` — kept for backward compatibility.
+
+    Use `cal_spe_z_rolling` for production inference (no look-ahead) or
+    `cal_spe_z_global` explicitly for visualization-only frames.
+    """
+    import warnings as _w
+    _w.warn(
+        "calc_spe_z is deprecated — use cal_spe_z_rolling for production "
+        "(no look-ahead) or cal_spe_z_global for visualization-only frames.",
+        DeprecationWarning, stacklevel=2,
+    )
+    return cal_spe_z_global(sampen_arr)
 
 
 # ==============================================================================
