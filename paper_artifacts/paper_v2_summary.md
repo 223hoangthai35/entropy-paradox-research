@@ -1,5 +1,13 @@
 # Paper v2 — Hysteresis + Transitional Dominance (May 2026, draft)
 
+> **Historical snapshot — superseded by v2.1.** This file preserves the
+> May 2026 v2 draft at reproducibility tag `v2.0-paper`. The canonical
+> paper is [paper_v2_1_combined_summary.md](paper_v2_1_combined_summary.md)
+> (8-market panel, post-COVID window, H1–H5 under the refined statistical
+> architecture with pre-registration transparency). v2 is retained for
+> provenance of the Transitional Dominance line of argument; do not cite
+> as current.
+
 **Title.** *Hysteresis-Filtered Regime Classification and Transitional
 Dominance on Frontier Equity.*
 

@@ -1,5 +1,11 @@
 # Paper v1 — Entropy Paradox (April 2026)
 
+> **Historical snapshot — superseded by v2.1.** This file preserves the
+> April 2026 v1 draft at reproducibility tag `v1.0-paper`. The canonical
+> paper is [paper_v2_1_combined_summary.md](paper_v2_1_combined_summary.md)
+> (8-market, post-COVID, H1–H5 under the refined statistical architecture).
+> v1 is retained for provenance; do not cite as current.
+
 **Title.** *Entropy-Based Regime Classification for Financial Market Risk
 Surveillance: Evidence from Frontier, Developed, and Cryptocurrency Markets.*
 
