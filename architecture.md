@@ -11,13 +11,14 @@
   calibrated on VNINDEX post-2020 to ~8 flips/yr (raw GMM ~29).
 - `SPE_Z` is computed as a 504-day **rolling** Z-score in production
   (`cal_spe_z_rolling`) to remove look-ahead bias; the global Z-score
-  (`cal_spe_z_global`) is retained for static dashboard scatter overlays only.
+  (`cal_spe_z_global`) is retained for static scatter overlays only (kept for
+  analysis-time inspection of look-ahead behaviour).
 - The `EntropyPhaseSpaceClassifier` exposes a `fit_or_refit` streaming helper
   that re-fits the GMM every 21 bars on the latest 504-day window, so the
   cluster centroids track the rolling-Z distribution drift.
 - The `calc_composite_risk_score` Tri-Vector fallback (V1 0.40, V2 0.40, V3 0.20)
   is **removed**. GARCH-X is the sole risk engine; failures are surfaced
-  explicitly in the dashboard rather than silently substituting a different score.
+  explicitly by the pipeline rather than silently substituting a different score.
 
 ---
 
@@ -91,7 +92,7 @@ graph TD
         D2 --> D4["Vol Regime\nConsensus / Dispersed / Erratic"]
     end
 
-    subgraph GARCH_ENGINE["Layer 4 — Conditional Volatility  agent_orchestrator.py"]
+    subgraph GARCH_ENGINE["Layer 4 — Conditional Volatility"]
         B --> E1["Log Returns"]
         C1 --> E2["Entropy Exog Features\nMinMaxScaled, lagged 1d\n504d rolling window"]
         C2 --> E2
@@ -106,7 +107,7 @@ graph TD
         E7 --> E8
     end
 
-    subgraph VERDICT["Layer 5 — Verdict Matrix  dashboard.py"]
+    subgraph VERDICT["Layer 5 — Verdict Matrix"]
         E8 --> G1["3 × 4 Decision Grid\nregime × σ_adjusted level"]
         D3 --> G1
         G1 --> G2["Risk Verdict + Color\nLOW RISK → EXTREME RISK"]
@@ -120,7 +121,7 @@ graph TD
         H1 -->|"Stochastic + negative Vol_Global_Z"| H3["CAPITULATION VACUUM\nliquidity withdrawal"]
     end
 
-    subgraph XAI["Layer 6 — AI Explanation Layer  agent_orchestrator.py"]
+    subgraph XAI["Layer 6 — AI Explanation Layer"]
         E8 --> I1["ReAct Loop\nClaude API"]
         D3 --> I1
         D4 --> I1
@@ -173,13 +174,13 @@ If all exogenous dropped:
     entropy still active for regime classification
     ↓
 If GARCH cannot fit (genuine error: missing arch dep, degenerate data):
-    surface the error explicitly in the dashboard
+    surface the error explicitly to the caller
     no composite-fallback path in v7.1
 ```
 
 **Key insight**: Entropy is *always* contributing through regime classification (Layer 3). The question is only whether it also enters the variance equation. This adaptive activation prevents entropy from degrading GARCH accuracy during periods when structure is absent.
 
-**v7.1 simplification**: Earlier prototypes routed cold-start runs (< 120 days of entropy features) into a deterministic "Tri-Vector Composite Risk" aggregate (V1 0.40, V2 0.40, V3 0.20). That fallback has been removed: the supported markets always have ≥ 120 days of history, and silently switching scoring methods made the dashboard's risk gauge non-comparable across runs. GARCH-X is now the single source of truth for the risk reading.
+**v7.1 simplification**: Earlier prototypes routed cold-start runs (< 120 days of entropy features) into a deterministic "Tri-Vector Composite Risk" aggregate (V1 0.40, V2 0.40, V3 0.20). That fallback has been removed: the supported markets always have ≥ 120 days of history, and silently switching scoring methods made the risk gauge non-comparable across runs. GARCH-X is now the single source of truth for the risk reading.
 
 ---
 
@@ -214,8 +215,8 @@ else                                  : hold (treat as noise)
 
 These compress the raw flip rate from ~28.8/yr to ~7.8/yr (one structural
 change every ~6 weeks) while preserving 83% bar-level agreement with the
-raw classifier. The dashboard's regime timeline panel renders both raw and
-filtered tracks so the user can see what hysteresis is suppressing.
+raw classifier. Both raw and filtered tracks are emitted by the wrapper, so any
+downstream visualization can show what hysteresis is suppressing.
 
 **Why post-2020 only for calibration**: VNINDEX liquidity, retail
 participation, and circuit-breaker regime changed materially before 2020.
@@ -320,6 +321,6 @@ The architecture is market-agnostic at the data and feature level. Three compone
 
 ## 9. Notes
 
-- **No composite risk fallback**: v7.1 removed the legacy `calc_composite_risk_score()` aggregate. GARCH-X is the single risk pipeline. If `fit_garch_x()` fails, the dashboard surfaces the error rather than silently switching scoring methods.
+- **No composite risk fallback**: v7.1 removed the legacy `calc_composite_risk_score()` aggregate. GARCH-X is the single risk pipeline. If `fit_garch_x()` fails, the pipeline surfaces the error rather than silently switching scoring methods.
 - **`PowerTransformer`**: Applied to Plane 2 (Volume) only via `VolumeRegimeClassifier`. Plane 1 (Price) uses raw `[WPE, SPE_Z]` — the natural scale carries physical meaning and must not be normalized before GMM fitting.
-- **Module boundaries (DRY)**:  Math logic belongs only in `quant_skill.py`. ML models belong only in `ds_skill.py`. `agent_orchestrator.py` and `dashboard.py` import from skills; they do not redefine functions.
+- **Module boundaries (DRY)**:  Math logic belongs only in `quant_skill.py`. ML models belong only in `ds_skill.py`. Validation and analysis scripts import from `skills/`; they do not redefine math/ML functions.

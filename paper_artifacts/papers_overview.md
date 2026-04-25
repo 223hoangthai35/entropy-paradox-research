@@ -1,27 +1,30 @@
 # Papers Overview
 
-Three successive drafts describe the same underlying phenomenon —
-**microstructure-dependent entropy-volatility coupling** — at progressively
-larger scope and methodological tightness.
+The canonical paper is **v2.1** (`v2.1-paper-combined`). v1 and v2 are
+preserved as historical draft snapshots documenting the progression of
+scope and methodological tightness. Only v2.1 reflects the final
+statistical architecture and the pre-registration transparency review.
 
-| Version | Date       | Tag                     | Scope                       | Headline claim                                                    |
-|---------|------------|-------------------------|-----------------------------|-------------------------------------------------------------------|
-| v1      | April 2026 | `v1.0-paper`            | 3 markets, ~10-yr window    | Entropy Paradox: low entropy → higher vol on frontier; inverts on developed |
-| v2      | May 2026 (draft) | `v2.0-paper`      | 3 markets, 2022–2026 common | Adds hysteresis + Transitional Dominance (VN p(Tra) ≈ 67.8%)      |
-| v2.1    | April 2026 | `v2.1-paper-combined`   | 8 markets, 2020–2026        | Paradox direction tracks MS_index (Spearman ρ ≈ 0.95); Transitional Dominance extended to 8-market panel |
+| Version | Date       | Tag                     | Status      | Scope                       | Headline claim                                                    |
+|---------|------------|-------------------------|-------------|-----------------------------|-------------------------------------------------------------------|
+| v1      | April 2026 | `v1.0-paper`            | Historical  | 3 markets, ~10-yr window    | Entropy Paradox: low entropy → higher vol on frontier; inverts on developed |
+| v2      | May 2026 (draft) | `v2.0-paper`      | Historical  | 3 markets, 2022–2026 common | Adds hysteresis + Transitional Dominance (VN p(Tra) ≈ 67.8%)      |
+| v2.1    | April 2026 | `v2.1-paper-combined`   | **Canonical** | 8 markets, 2020–2026      | Paradox *magnitude* tracks Retail Participation Share (Spearman ρ = 0.754, p = 0.031). Pairwise direction survives on PSEI @ 20d only. Transitional Dominance is a microstructure gradient (continuous ρ = 0.56, n = 8). |
 
 Per-version summaries:
 
-- [paper_v1_summary.md](paper_v1_summary.md) — Entropy Paradox, V1–V5 validation
-- [paper_v2_summary.md](paper_v2_summary.md) — Hysteresis + Case A (T1–T4, T-D)
-- [paper_v2_1_combined_summary.md](paper_v2_1_combined_summary.md) — 8-market, post-COVID, H1–H5
+- [paper_v1_summary.md](paper_v1_summary.md) — **historical snapshot.** Entropy Paradox, V1–V5 validation. Superseded by v2.1.
+- [paper_v2_summary.md](paper_v2_summary.md) — **historical snapshot.** Hysteresis + Case A (T1–T4, T-D). Superseded by v2.1.
+- [paper_v2_1_combined_summary.md](paper_v2_1_combined_summary.md) — **canonical v2.1 paper.** 8-market, post-COVID, H1–H5 under refined statistical architecture with pre-registration transparency.
 
 Extended drafts and working artifacts:
 
-- [section_5_6_draft.md](section_5_6_draft.md) — Paper v2 Section 5.6 draft text
-- [ms_index_rationale.md](ms_index_rationale.md) — H2 / Microstructure Index construction, robustness, and the "not a VNINDEX outlier" argument
+- [section_5_6_draft.md](section_5_6_draft.md) — Paper v2 Section 5.6 draft text (historical)
+- [rps_rationale.md](rps_rationale.md) — H2 Retail Participation Share construction, sources, robustness, and the "not a VNINDEX outlier" argument
+- [../pre_registration/hypotheses_v2_combined.md](../pre_registration/hypotheses_v2_combined.md) — Frozen pre-registration at commit `b130b0f` (2026-04-18)
+- [../pre_registration/critique.md](../pre_registration/critique.md) — Scientific-foundation audit of the H1–H5 pre-registration design (`v2.1.3-prereg-audit`)
 
-## Why three versions
+## Progression of scope
 
 - **v1 → v2.** v1 left regime *cadence* and *duration* unexamined. When
   v7.1's hysteresis filter reduced the raw ~28 flips/yr on VNINDEX to
@@ -30,8 +33,17 @@ Extended drafts and working artifacts:
 - **v2 → v2.1.** v1 and v2 both used a 3-market panel and both
   effectively labelled post-2020 bars (the 504-bar rolling SPE_Z
   precludes labelling earlier). v2.1 makes the post-COVID window
-  explicit, widens the panel to 8 markets grouped by microstructure, and
-  pre-registers H1–H5 (commit `b130b0f`) before running Phase 1.
+  explicit, widens the panel to 8 markets grouped by microstructure,
+  and pre-registers H1–H5 (commit `b130b0f`) before running Phase 1.
+  v2.1's statistical architecture was further refined during the
+  scientific-foundation review: pairwise directional tests replace KW
+  omnibus for H1, a single-variable RPS replaces a three-component
+  composite for H2, bootstrap CIs and continuous companions replace
+  categorical thresholds for H3, block-permutation replaces simple
+  shuffle for H4, and the pre-registered dead-zone rule is applied as
+  written for H5. The pre-registration transparency appendix in v2.1
+  §9 and the full audit at `pre_registration/critique.md` document the
+  refinement history.
 
 ## What is *not* changed between versions
 
