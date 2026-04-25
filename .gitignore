@@ -29,7 +29,8 @@ env/
 Thumbs.db
 
 # Research-scope filter (non-methodology / non-output)
-.claude/settings.local.json
+.claude/
+.agents/
 dashboard.py
 agent_orchestrator.py
 
