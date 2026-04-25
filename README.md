@@ -10,19 +10,27 @@ Research artifacts, validation studies, and paper drafts on the Entropy Paradox 
 
 ## Publications
 
-### Paper v1 (April 2026)
+### Paper v2.1 (April 2026, canonical)
 
-*Entropy-Based Regime Classification for Financial Market Risk Surveillance: Evidence from Frontier, Developed, and Cryptocurrency Markets*
+*The Entropy Paradox — 8-market post-COVID evidence under refined statistical architecture with pre-registration transparency.*
 
-**Key finding — Entropy Paradox**: Low entropy predicts higher forward volatility on frontier markets (VNINDEX H=192.43, p<0.0001), inverts on developed markets (SPX H=14.25).
+**Headline claim**: Paradox magnitude tracks Retail Participation Share (Spearman ρ = 0.754, p = 0.031, n = 8). Pairwise direction (Det > Sto) survives FDR correction on PSEI at the 20-day horizon. Transitional Dominance is a microstructure gradient (continuous ρ(p_tra, RPS) = 0.56).
 
-### Paper v2 (May 2026, in preparation)
+Summary: [paper_artifacts/paper_v2_1_combined_summary.md](paper_artifacts/paper_v2_1_combined_summary.md). Pre-registration audit: [pre_registration/critique.md](pre_registration/critique.md).
+
+Reproducibility: `git checkout v2.1.3-prereg-audit` (current HEAD) or `v2.1-paper-combined` (canonical paper tag).
+
+### Paper v2 (May 2026, draft — historical, superseded by v2.1)
 
 *Hysteresis-Filtered Regime Classification and Transitional Dominance*
 
-**Key finding — Transitional Dominance**: VNINDEX spends 67.8% of trading bars in intermediate entropy regime with 62-day mean spells, revealing frontier fragility operates through regime persistence rather than transition frequency.
+**Earlier finding**: VNINDEX spends 67.8% of trading bars in the intermediate entropy regime with 62-day mean spells. Reframed in v2.1 as a microstructure gradient rather than a frontier-specific result.
 
-Reproducibility: `git checkout v2.0-paper`
+### Paper v1 (April 2026 — historical, superseded by v2.1)
+
+*Entropy-Based Regime Classification for Financial Market Risk Surveillance: Evidence from Frontier, Developed, and Cryptocurrency Markets*
+
+**Earlier finding — Entropy Paradox**: Low entropy predicts higher forward volatility on frontier markets (VNINDEX H = 192.43, p < 0.0001), inverts on developed markets (SPX H = 14.25). The 8-market panel in v2.1 sharpens the claim into a microstructure ordering.
 
 ## Validation Framework
 
@@ -42,9 +50,10 @@ Reproducibility: `git checkout v2.0-paper`
 ## Repository Structure
 
 ```
-papers/                 Paper PDFs and Section 5.6 drafts
-validation/             V1-V5 + T1-T4 validation scripts
-skills/                 Core computation modules
+paper_artifacts/        Paper summaries (v1, v2, v2.1 canonical) and rationales
+pre_registration/       Frozen H1-H5 pre-registration and scientific-foundation audit
+validation/             V1-V5, T1-T4, and Phase 1/2/2.1 validation scripts and results
+skills/                 Core computation modules (quant, ds, data)
 scripts/                Calibration and analysis
 docs/                   Documentation
 CONTEXT.md              Project state anchor for research sessions
@@ -56,7 +65,10 @@ architecture.md         Detailed system architecture (v7.2)
 All paper results reproducible via tagged commits. All code public for verification.
 
 Tags:
-- `v2.0-paper` — Paper v2 state (current HEAD)
+- `v2.1.3-prereg-audit` — current HEAD (canonical paper + pre-registration audit)
+- `v2.1-paper-combined` — canonical v2.1 paper (April 2026)
+- `v2.0-paper` — historical Paper v2 state
+- `v1.0-paper` — historical Paper v1 state
 - `v7.1-production` — v7.1 production baseline
 
 ## Author

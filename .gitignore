@@ -27,3 +27,11 @@ env/
 # OS
 .DS_Store
 Thumbs.db
+
+# Research-scope filter (non-methodology / non-output)
+.claude/settings.local.json
+dashboard.py
+agent_orchestrator.py
+
+# Runtime stdout — research outputs live in JSON / CSV / PNG / MD
+*.log
