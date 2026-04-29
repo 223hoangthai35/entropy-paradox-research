@@ -1,0 +1,49 @@
+{
+  "market": "PSEI",
+  "ticker": "PSEI.PS",
+  "category": "Frontier",
+  "n_bars": 1460,
+  "start": "2020-04-28",
+  "end": "2026-04-16",
+  "H_stat": 48.10061221438809,
+  "p_value": 3.589919991424138e-11,
+  "direction": "Paradox",
+  "regime_mean_vol": {
+    "Deterministic": 18.24951663027689,
+    "Transitional": 17.382165935629555,
+    "Stochastic": 15.134453970366812
+  },
+  "regime_median_vol": {
+    "Deterministic": 16.976954706901473,
+    "Transitional": 16.36312381769672,
+    "Stochastic": 14.71642034734393
+  },
+  "regime_share": {
+    "Deterministic": 0.5054794520547945,
+    "Transitional": 0.3801369863013699,
+    "Stochastic": 0.11438356164383562
+  },
+  "base_drawdown_rates": {
+    "3.0": 0.22122674017918678,
+    "5.0": 0.07787732598208132,
+    "7.0": 0.025499655410062026
+  },
+  "lift_by_regime": {
+    "Deterministic": {
+      "lift_3.0pct": 1.1484872341866448,
+      "lift_5.0pct": 1.3608358984224702,
+      "lift_7.0pct": 1.4386383666274973
+    },
+    "Transitional": {
+      "lift_3.0pct": 0.8496088864633785,
+      "lift_5.0pct": 0.6560945675343971,
+      "lift_7.0pct": 0.5724995068060762
+    },
+    "Stochastic": {
+      "lift_3.0pct": 0.8390881787826215,
+      "lift_5.0pct": 0.5382332679773197,
+      "lift_7.0pct": 0.46965528402654155
+    }
+  },
+  "ms_index": 0.6804575749056068
+}

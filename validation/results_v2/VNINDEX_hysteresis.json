@@ -1,0 +1,46 @@
+{
+  "market": "VNINDEX",
+  "ticker": "VNINDEX",
+  "category": "Frontier",
+  "common_window": [
+    "2020-01-01",
+    "2026-04-17"
+  ],
+  "n_bars": 1506,
+  "bars_per_year": 252,
+  "raw_flips_per_year": 15.227091633466136,
+  "filtered_flips_per_year": 6.52589641434263,
+  "reduction_pct": 57.14285714285714,
+  "p_det": 0.4913678618857902,
+  "p_tra": 0.45086321381142097,
+  "p_sto": 0.05776892430278884,
+  "p_tra_ci_lo": 0.35790172642762286,
+  "p_tra_ci_hi": 0.550464807436919,
+  "distance_to_threshold": 0.0008632138114209598,
+  "distance_spec": "frontier_lower_fail",
+  "threshold_wrong_side_p": 0.4975,
+  "h3_verdict_categorical": "PASS",
+  "h3_verdict_refined": "PASS_BORDERLINE",
+  "T_det_days": 76.55895691609976,
+  "T_tra_days": 49.173611111111114,
+  "T_sto_days": 21.001984126984127,
+  "overall_mean_days": 54.532738095238095,
+  "n_segments": 40,
+  "shuffle_observed": 6.52589641434263,
+  "shuffle_null_mean": 139.11721912350598,
+  "shuffle_null_p05": 134.03187250996015,
+  "shuffle_null_p95": 144.07171314741035,
+  "shuffle_p_value": 0.0,
+  "shuffle_verdict": "STRUCTURED",
+  "shuffle_block_p": {
+    "5": 0.0,
+    "10": 0.0,
+    "20": 0.0
+  },
+  "shuffle_block_null_mean": {
+    "5": 33.75335856573705,
+    "10": 20.12235059760956,
+    "20": 13.019916334661353
+  },
+  "rps": 0.9
+}

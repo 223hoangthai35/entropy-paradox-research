@@ -1,0 +1,49 @@
+{
+  "market": "SPX",
+  "ticker": "^GSPC",
+  "category": "Developed",
+  "n_bars": 1520,
+  "start": "2020-03-30",
+  "end": "2026-04-16",
+  "H_stat": 2.1225545802572015,
+  "p_value": 0.3460135682393804,
+  "direction": "Paradox",
+  "regime_mean_vol": {
+    "Deterministic": 16.05220476328567,
+    "Transitional": 15.964595840182533,
+    "Stochastic": 15.153861055134595
+  },
+  "regime_median_vol": {
+    "Deterministic": 13.948085511136318,
+    "Transitional": 14.041226187508368,
+    "Stochastic": 14.22902833811677
+  },
+  "regime_share": {
+    "Deterministic": 0.4361842105263158,
+    "Transitional": 0.39276315789473687,
+    "Stochastic": 0.17105263157894737
+  },
+  "base_drawdown_rates": {
+    "3.0": 0.24751819986763732,
+    "5.0": 0.07809397749834547,
+    "7.0": 0.02316346790205162
+  },
+  "lift_by_regime": {
+    "Deterministic": {
+      "lift_3.0pct": 0.9807282524390742,
+      "lift_5.0pct": 1.2120843576141802,
+      "lift_7.0pct": 1.2523009814612869
+    },
+    "Transitional": {
+      "lift_3.0pct": 0.913592024292586,
+      "lift_5.0pct": 0.900860233370241,
+      "lift_7.0pct": 0.7954534577650156
+    },
+    "Stochastic": {
+      "lift_3.0pct": 1.2479094832036008,
+      "lift_5.0pct": 0.6921667430142007,
+      "lift_7.0pct": 0.8334252619966905
+    }
+  },
+  "ms_index": 0.0701927462101151
+}

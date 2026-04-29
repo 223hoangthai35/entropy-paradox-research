@@ -1,0 +1,46 @@
+{
+  "market": "SPX",
+  "ticker": "^GSPC",
+  "category": "Developed",
+  "common_window": [
+    "2020-01-01",
+    "2026-04-16"
+  ],
+  "n_bars": 1520,
+  "bars_per_year": 252,
+  "raw_flips_per_year": 31.83157894736842,
+  "filtered_flips_per_year": 14.092105263157896,
+  "reduction_pct": 55.729166666666664,
+  "p_det": 0.3986842105263158,
+  "p_tra": 0.4328947368421053,
+  "p_sto": 0.16842105263157894,
+  "p_tra_ci_lo": 0.3519736842105263,
+  "p_tra_ci_hi": 0.5144736842105263,
+  "distance_to_threshold": 0.1671052631578947,
+  "distance_spec": "developed_upper_fail",
+  "threshold_wrong_side_p": 0.0,
+  "h3_verdict_categorical": "PASS",
+  "h3_verdict_refined": "PASS",
+  "T_det_days": 29.257936507936506,
+  "T_tra_days": 23.826388888888886,
+  "T_sto_days": 23.174603174603174,
+  "overall_mean_days": 25.59985234403839,
+  "n_segments": 86,
+  "shuffle_observed": 14.092105263157896,
+  "shuffle_null_mean": 157.58133631578949,
+  "shuffle_null_p05": 152.69210526315788,
+  "shuffle_null_p95": 162.63947368421051,
+  "shuffle_p_value": 0.0,
+  "shuffle_verdict": "STRUCTURED",
+  "shuffle_block_p": {
+    "5": 0.0,
+    "10": 0.0,
+    "20": 0.0
+  },
+  "shuffle_block_null_mean": {
+    "5": 42.83701578947368,
+    "10": 28.205597368421053,
+    "20": 20.722440789473687
+  },
+  "rps": 0.22
+}

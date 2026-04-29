@@ -1,0 +1,46 @@
+{
+  "market": "FTSE",
+  "ticker": "^FTSE",
+  "category": "Developed",
+  "common_window": [
+    "2020-01-01",
+    "2026-04-16"
+  ],
+  "n_bars": 1530,
+  "bars_per_year": 252,
+  "raw_flips_per_year": 28.16470588235294,
+  "filtered_flips_per_year": 10.376470588235295,
+  "reduction_pct": 63.1578947368421,
+  "p_det": 0.4588235294117647,
+  "p_tra": 0.3516339869281046,
+  "p_sto": 0.1895424836601307,
+  "p_tra_ci_lo": 0.2699019607843137,
+  "p_tra_ci_hi": 0.437957516339869,
+  "distance_to_threshold": 0.24836601307189538,
+  "distance_spec": "developed_upper_fail",
+  "threshold_wrong_side_p": 0.0,
+  "h3_verdict_categorical": "PASS",
+  "h3_verdict_refined": "PASS",
+  "T_det_days": 40.67142857142857,
+  "T_tra_days": 26.87055281882868,
+  "T_sto_days": 42.00396825396825,
+  "overall_mean_days": 34.62611607142857,
+  "n_segments": 64,
+  "shuffle_observed": 10.376470588235295,
+  "shuffle_null_mean": 158.72108,
+  "shuffle_null_p05": 153.6705882352941,
+  "shuffle_null_p95": 163.71764705882353,
+  "shuffle_p_value": 0.0,
+  "shuffle_verdict": "STRUCTURED",
+  "shuffle_block_p": {
+    "5": 0.0,
+    "10": 0.0,
+    "20": 0.0
+  },
+  "shuffle_block_null_mean": {
+    "5": 40.28450588235294,
+    "10": 25.471847058823528,
+    "20": 17.89405882352941
+  },
+  "rps": 0.18
+}

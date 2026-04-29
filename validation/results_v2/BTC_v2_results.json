@@ -1,0 +1,159 @@
+{
+  "market": "BTC",
+  "ticker": "BTC-USD",
+  "category": "Crypto",
+  "n_bars": 2465,
+  "start": "2019-07-18",
+  "end": "2026-04-16",
+  "H_stat": 7.130210989101215,
+  "p_value": 0.028294000463874102,
+  "direction": "Inverted",
+  "regime_mean_vol": {
+    "Deterministic": 44.32920751450506,
+    "Transitional": 47.42214300427501,
+    "Stochastic": 46.400315043389675
+  },
+  "regime_median_vol": {
+    "Deterministic": 41.00610301030728,
+    "Transitional": 43.251489691017674,
+    "Stochastic": 43.75619836950416
+  },
+  "regime_share": {
+    "Deterministic": 0.36024340770791075,
+    "Transitional": 0.4900608519269777,
+    "Stochastic": 0.14969574036511157
+  },
+  "base_drawdown_rates": {
+    "3.0": 0.5622964169381107,
+    "5.0": 0.4149022801302932,
+    "7.0": 0.30578175895765475
+  },
+  "lift_by_regime": {
+    "Deterministic": {
+      "lift_3.0pct": 1.0053688735803146,
+      "lift_5.0pct": 0.9662537905913765,
+      "lift_7.0pct": 0.9096459975288204
+    },
+    "Transitional": {
+      "lift_3.0pct": 1.0075748721958697,
+      "lift_5.0pct": 1.0186228709429328,
+      "lift_7.0pct": 1.0556396241506054
+    },
+    "Stochastic": {
+      "lift_3.0pct": 0.9620968412055888,
+      "lift_5.0pct": 1.0207156914793782,
+      "lift_7.0pct": 1.0364905081021298
+    }
+  },
+  "rps": 0.55,
+  "kw_epsilon_sq": 0.0021008235008604485,
+  "dunn_det_sto_z": -1.7063836051057581,
+  "dunn_det_sto_raw": 0.08793668107652097,
+  "dunn_det_sto_holm": 0.17587336215304195,
+  "dunn_det_tra_holm": 0.030326824185518797,
+  "dunn_tra_sto_holm": 0.8929245902841232,
+  "primary_horizon": 20,
+  "primary_U_det_sto": 152374.0,
+  "primary_p_mw_1sided": 0.958860330387305,
+  "primary_cliffs_delta": -0.06233692709102545,
+  "primary_delta_ci_lo": -0.3009813734763163,
+  "primary_delta_ci_hi": 0.1750272166416783,
+  "primary_p_blockperm_1s": 0.6516741629185407,
+  "primary_nw_beta": -2.0711075288846503,
+  "primary_nw_tstat": -0.4935906049623061,
+  "primary_nw_p_two": 0.6215953372083936,
+  "direction_verdict_formal": "n.s.",
+  "direction_across_horizons": "mixed|5d:n.s.;10d:n.s.;20d:n.s.;40d:n.s.;60d:Inverted",
+  "horizons": [
+    {
+      "horizon_days": 5,
+      "n_det": 888,
+      "n_sto": 369,
+      "mean_det": 41.42442950184969,
+      "mean_sto": 41.984215034119146,
+      "cliffs_delta": -0.014184916623941057,
+      "delta_ci_lo": -0.2086119277316066,
+      "delta_ci_hi": 0.18361297142192592,
+      "U_det_sto": 161512.0,
+      "p_mw_1sided": 0.6541712917595437,
+      "p_blockperm_1sided": 0.5542228885557221,
+      "nw_beta": -0.5597855322694265,
+      "nw_se": 4.369796668438224,
+      "nw_tstat": -0.12810333632056506,
+      "nw_p_two": 0.8980671958026964,
+      "direction_verdict_formal": "n.s."
+    },
+    {
+      "horizon_days": 10,
+      "n_det": 888,
+      "n_sto": 366,
+      "mean_det": 43.1514376596915,
+      "mean_sto": 44.410226826359114,
+      "cliffs_delta": -0.027371633929010986,
+      "delta_ci_lo": -0.26292089132527613,
+      "delta_ci_hi": 0.1978413599431519,
+      "U_det_sto": 158056.0,
+      "p_mw_1sided": 0.7772739555658945,
+      "p_blockperm_1sided": 0.5902048975512244,
+      "nw_beta": -1.2587891666675946,
+      "nw_se": 4.420171984829268,
+      "nw_tstat": -0.2847828480402932,
+      "nw_p_two": 0.7758105136292637,
+      "direction_verdict_formal": "n.s."
+    },
+    {
+      "horizon_days": 20,
+      "n_det": 888,
+      "n_sto": 366,
+      "mean_det": 44.32920751450506,
+      "mean_sto": 46.400315043389675,
+      "cliffs_delta": -0.06233692709102545,
+      "delta_ci_lo": -0.3009813734763163,
+      "delta_ci_hi": 0.1750272166416783,
+      "U_det_sto": 152374.0,
+      "p_mw_1sided": 0.958860330387305,
+      "p_blockperm_1sided": 0.6516741629185407,
+      "nw_beta": -2.0711075288846503,
+      "nw_se": 4.196002735997809,
+      "nw_tstat": -0.4935906049623061,
+      "nw_p_two": 0.6215953372083936,
+      "direction_verdict_formal": "n.s."
+    },
+    {
+      "horizon_days": 40,
+      "n_det": 874,
+      "n_sto": 366,
+      "mean_det": 44.45141406651748,
+      "mean_sto": 48.92536820310814,
+      "cliffs_delta": -0.15315551887559242,
+      "delta_ci_lo": -0.38009334910022313,
+      "delta_ci_hi": 0.07451635127101723,
+      "U_det_sto": 135446.0,
+      "p_mw_1sided": 0.9999897350201062,
+      "p_blockperm_1sided": 0.8555722138930535,
+      "nw_beta": -4.473954136590679,
+      "nw_se": 3.594483033640099,
+      "nw_tstat": -1.244672486897218,
+      "nw_p_two": 0.21325216330453722,
+      "direction_verdict_formal": "n.s."
+    },
+    {
+      "horizon_days": 60,
+      "n_det": 855,
+      "n_sto": 366,
+      "mean_det": 44.494062466676624,
+      "mean_sto": 51.08268731879143,
+      "cliffs_delta": -0.2789889112581089,
+      "delta_ci_lo": -0.5040964984323715,
+      "delta_ci_hi": -0.04630071442070754,
+      "U_det_sto": 112813.0,
+      "p_mw_1sided": 0.9999999999999948,
+      "p_blockperm_1sided": 0.9635182408795602,
+      "nw_beta": -6.588624852114822,
+      "nw_se": 3.157500587774677,
+      "nw_tstat": -2.0866583137386874,
+      "nw_p_two": 0.03691903199634505,
+      "direction_verdict_formal": "Inverted"
+    }
+  ]
+}

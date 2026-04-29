@@ -1,0 +1,29 @@
+{
+  "market": "KOSPI",
+  "ticker": "^KS11",
+  "category": "Emerging",
+  "common_window": [
+    "2020-01-01",
+    "2026-04-16"
+  ],
+  "n_bars": 1469,
+  "bars_per_year": 252,
+  "raw_flips_per_year": 34.309053778080326,
+  "filtered_flips_per_year": 14.752893124574541,
+  "reduction_pct": 56.99999999999999,
+  "p_det": 0.2995234853641933,
+  "p_tra": 0.5350578624914908,
+  "p_sto": 0.16541865214431586,
+  "T_det_days": 19.9156746031746,
+  "T_tra_days": 30.768983268983266,
+  "T_sto_days": 19.553571428571427,
+  "overall_mean_days": 24.456531654807517,
+  "n_segments": 87,
+  "shuffle_observed": 14.752893124574541,
+  "shuffle_null_mean": 150.37555343771274,
+  "shuffle_null_p05": 145.641933287951,
+  "shuffle_null_p95": 155.24846834581348,
+  "shuffle_p_value": 0.0,
+  "shuffle_verdict": "STRUCTURED",
+  "ms_index": 0.5727654432796482
+}

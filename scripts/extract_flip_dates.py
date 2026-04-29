@@ -30,6 +30,13 @@ _SOURCE_MAP = {
     "VNINDEX": ("VNINDEX", "vnstock"),
     "SP500":   ("^GSPC",   "yfinance"),
     "BTC":     ("BTC-USD", "yfinance"),
+    # v2-combined extended markets (pre-registration 2026-04-18, hash b130b0f)
+    "PSEI":    ("PSEI.PS", "yfinance"),   # Frontier — Philippines
+    "KOSPI":   ("^KS11",   "yfinance"),   # Emerging — Korea
+    "NIFTY":   ("^NSEI",   "yfinance"),   # Emerging — India
+    "FTSE":    ("^FTSE",   "yfinance"),   # Developed — UK
+    "DAX":     ("^GDAXI",  "yfinance"),   # Developed — Germany
+    "NIKKEI":  ("^N225",   "yfinance"),   # Developed — Japan
 }
 
 

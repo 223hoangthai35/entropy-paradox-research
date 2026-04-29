@@ -1,0 +1,29 @@
+{
+  "market": "PSEI",
+  "ticker": "PSEI.PS",
+  "category": "Frontier",
+  "common_window": [
+    "2020-01-01",
+    "2026-04-16"
+  ],
+  "n_bars": 1460,
+  "bars_per_year": 252,
+  "raw_flips_per_year": 26.926027397260274,
+  "filtered_flips_per_year": 8.802739726027397,
+  "reduction_pct": 67.3076923076923,
+  "p_det": 0.47465753424657536,
+  "p_tra": 0.40342465753424656,
+  "p_sto": 0.12191780821917808,
+  "T_det_days": 52.82894736842105,
+  "T_tra_days": 34.12460317460317,
+  "T_sto_days": 32.22718253968254,
+  "overall_mean_days": 40.66697191697192,
+  "n_segments": 52,
+  "shuffle_observed": 8.802739726027397,
+  "shuffle_null_mean": 150.4746197260274,
+  "shuffle_null_p05": 145.33150684931508,
+  "shuffle_null_p95": 155.5150684931507,
+  "shuffle_p_value": 0.0,
+  "shuffle_verdict": "STRUCTURED",
+  "ms_index": 0.6804575749056068
+}

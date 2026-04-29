@@ -1,0 +1,46 @@
+{
+  "market": "NIFTY",
+  "ticker": "^NSEI",
+  "category": "Emerging",
+  "common_window": [
+    "2020-01-01",
+    "2026-04-16"
+  ],
+  "n_bars": 1478,
+  "bars_per_year": 252,
+  "raw_flips_per_year": 20.80108254397835,
+  "filtered_flips_per_year": 8.866035182679296,
+  "reduction_pct": 57.377049180327866,
+  "p_det": 0.36332882273342354,
+  "p_tra": 0.557510148849797,
+  "p_sto": 0.07916102841677942,
+  "p_tra_ci_lo": 0.4634641407307172,
+  "p_tra_ci_hi": 0.6529262516914749,
+  "distance_to_threshold": NaN,
+  "distance_spec": "n/a",
+  "threshold_wrong_side_p": NaN,
+  "h3_verdict_categorical": "PASS",
+  "h3_verdict_refined": "n/a",
+  "T_det_days": 38.889880952380956,
+  "T_tra_days": 45.90354090354091,
+  "T_sto_days": 24.20918367346939,
+  "overall_mean_days": 40.391584306678645,
+  "n_segments": 53,
+  "shuffle_observed": 8.866035182679296,
+  "shuffle_null_mean": 138.8356148849797,
+  "shuffle_null_p05": 133.84303112313938,
+  "shuffle_null_p95": 143.7320703653586,
+  "shuffle_p_value": 0.0,
+  "shuffle_verdict": "STRUCTURED",
+  "shuffle_block_p": {
+    "5": 0.0,
+    "10": 0.0,
+    "20": 0.0
+  },
+  "shuffle_block_null_mean": {
+    "5": 34.65392151556157,
+    "10": 22.022037889039243,
+    "20": 15.165864682002706
+  },
+  "rps": 0.4
+}

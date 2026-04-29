@@ -1,0 +1,49 @@
+{
+  "market": "NIFTY",
+  "ticker": "^NSEI",
+  "category": "Emerging",
+  "n_bars": 1478,
+  "start": "2020-04-27",
+  "end": "2026-04-16",
+  "H_stat": 13.984688517320137,
+  "p_value": 0.0009188898892127256,
+  "direction": "Inverted",
+  "regime_mean_vol": {
+    "Deterministic": 13.934967133479486,
+    "Transitional": 13.161754354643675,
+    "Stochastic": 15.535669666895208
+  },
+  "regime_median_vol": {
+    "Deterministic": 13.161897953710916,
+    "Transitional": 11.862460620290495,
+    "Stochastic": 12.279733741397706
+  },
+  "regime_share": {
+    "Deterministic": 0.3497970230040595,
+    "Transitional": 0.5696887686062246,
+    "Stochastic": 0.08051420838971583
+  },
+  "base_drawdown_rates": {
+    "3.0": 0.2157930565010211,
+    "5.0": 0.053778080326752895,
+    "7.0": 0.017699115044247787
+  },
+  "lift_by_regime": {
+    "Deterministic": {
+      "lift_3.0pct": 0.9395849375294966,
+      "lift_5.0pct": 1.1713345958337487,
+      "lift_7.0pct": 1.5570866141732282
+    },
+    "Transitional": {
+      "lift_3.0pct": 1.0236780386191806,
+      "lift_5.0pct": 0.9717069064012749,
+      "lift_7.0pct": 0.8052256532066508
+    },
+    "Stochastic": {
+      "lift_3.0pct": 1.0903692707366859,
+      "lift_5.0pct": 0.4687799170301032,
+      "lift_7.0pct": 0.0
+    }
+  },
+  "ms_index": 0.6129588001734408
+}

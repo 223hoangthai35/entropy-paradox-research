@@ -1,0 +1,29 @@
+{
+  "market": "BTC",
+  "ticker": "BTC-USD",
+  "category": "Crypto",
+  "common_window": [
+    "2020-01-01",
+    "2026-04-16"
+  ],
+  "n_bars": 2298,
+  "bars_per_year": 365,
+  "raw_flips_per_year": 28.950391644908617,
+  "filtered_flips_per_year": 10.088772845953002,
+  "reduction_pct": 65.15151515151516,
+  "p_det": 0.41383812010443866,
+  "p_tra": 0.4516971279373368,
+  "p_sto": 0.13446475195822455,
+  "T_det_days": 27.17142857142857,
+  "T_tra_days": 23.066666666666666,
+  "T_sto_days": 23.76923076923077,
+  "overall_mean_days": 24.70967741935484,
+  "n_segments": 93,
+  "shuffle_observed": 10.088772845953002,
+  "shuffle_null_mean": 152.84295665796347,
+  "shuffle_null_p05": 148.69973890339426,
+  "shuffle_null_p95": 156.81462140992167,
+  "shuffle_p_value": 0.0,
+  "shuffle_verdict": "STRUCTURED",
+  "ms_index": 0.20647817481888636
+}
