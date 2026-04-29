@@ -34,6 +34,29 @@ Earlier paper-v1 (3-market, 2015-2024) and paper-v2 draft (3-market,
 maintained in HEAD — recoverable via git tags `v1.0-paper` and
 `v2.0-paper` for provenance.
 
+## Plane-1 phase space — raw GMM vs hysteresis-filtered
+
+![VNINDEX Plane-1 phase space, raw GMM vs hysteresis-filtered](validation/results_v2/regime_phase_space_vnindex_raw_vs_filtered.png)
+
+Both panels show the **same** GMM (k=3, full-covariance,
+random_state=42) fit on `[WPE, SPE_Z]` for VNINDEX over the 2018–2026
+loading window. The dashed ellipses are the 2-σ confidence regions of
+the three GMM clusters and are identical between panels — only the
+**per-bar labelling rule** differs:
+
+- **Left (Raw GMM)** — argmax of the GMM posterior at each bar,
+  independent of temporal context. **91 flips total · 15.23 / year**.
+- **Right (Hysteresis-Filtered)** — Schmitt-trigger state machine over
+  the same posteriors (δ_hard = 0.60, δ_soft = 0.35, t_persist = 8).
+  **39 flips total · 6.53 / year (57 % reduction vs raw)**.
+
+Display window 2020-01-01 → 2026-04-17 (post-COVID), n = 1506 bars.
+Labels differ on 156 bars (10.4 %) — these are the bars where
+hysteresis "holds" the previously-held regime against an
+instantaneous argmax flip. The full hysteresis-impact comparison on
+H1, H2, and H3 (raw vs filtered, all 8 markets) is in
+[paper §9.6](paper_artifacts/paper_v2_1_combined_summary.md).
+
 ## Validation framework
 
 The canonical hypotheses H1–H5 (frozen pre-registration at commit
