@@ -434,6 +434,108 @@ mapping table is
 [pre_registration/critique.md §7](../pre_registration/critique.md)
 (remediation summary). No issue is left undisclosed.
 
+### 9.6 Hysteresis impact on H1, H2, H3 — raw-GMM vs filtered
+
+H4 and H5 are intrinsically about hysteresis (H4 tests temporal
+structure of the filtered label sequence; H5 sweeps the hysteresis
+parameters). H1, H2, H3 each pick a single label source:
+
+- **H1** (`cross_market_v2.py` primary contrast and KW): uses
+  `raw_labels` — direct GMM argmax, no hysteresis.
+- **H2** (`h2_rps_validation.py`): downstream of H1's `H_stat`, so
+  also reflects raw-GMM regime structure.
+- **H3** (`hysteresis_cross_market_v2.py` p_tra and CI): uses
+  `filtered_labels` — post-hysteresis Schmitt-trigger output.
+
+To evaluate the hysteresis filter's effect on the three regime-derived
+claims, the same scripts now emit a parallel "filtered" track for H1
+and H2 and a parallel "raw" track for H3. Numbers from the canonical
+runs in §5–§7 are preserved; the §9.6 columns are additive.
+
+**H1 — KW H, primary 20-day Cliff's δ, formal verdict (raw vs filtered).**
+
+| Market   | Cat.       | H_raw | H_filt | δ_raw  | δ_filt | Direction (raw / filt) |
+|----------|------------|------:|-------:|-------:|-------:|------------------------|
+| VNINDEX  | Frontier   |  83.9 |   96.3 |  0.246 |  0.255 | Paradox / Paradox       |
+| PSEI     | Frontier   |  48.1 |   41.1 |  0.335 |  0.298 | Paradox / Paradox       |
+| KOSPI    | Emerging   |   5.9 |   21.8 |  0.087 |  0.212 | Paradox / Paradox       |
+| NIFTY    | Emerging   |  14.0 |   22.0 | −0.070 | −0.133 | Inverted / Inverted     |
+| SPX      | Developed  |   2.1 |    1.5 | −0.012 |  0.032 | Paradox / Paradox       |
+| FTSE     | Developed  |   4.2 |    1.3 | −0.063 | −0.042 | Paradox / Paradox       |
+| NIKKEI   | Developed  |   4.1 |    2.2 |  0.062 |  0.037 | Paradox / Paradox       |
+| BTC      | Crypto     |   7.1 |   32.2 | −0.062 | −0.126 | Inverted / Inverted     |
+
+Reading the panel:
+- **Direction is invariant under hysteresis** on every market (Paradox
+  vs Inverted labels match across raw and filtered). Hysteresis does
+  not flip any market's paradox sign.
+- **Discrimination magnitude moves both ways.** On three markets
+  hysteresis SHARPENS the regime-vol ordering: BTC H rises 7.1 →
+  32.2 (4.5×), KOSPI 5.9 → 21.8 (3.7×), VNINDEX 83.9 → 96.3 (1.15×).
+  On SPX, FTSE, NIKKEI hysteresis WEAKENS H modestly (smoother label
+  sequence dilutes the small raw signal). On PSEI it weakens H but
+  the formal Paradox verdict survives at the 20d horizon under both
+  label sources.
+- **Formal verdict (CI-based)** stays at "n.s." on 7 markets and
+  "Paradox" on PSEI under both raw and filtered. No verdict flip.
+
+The full per-market filtered statistics (`H_stat_filtered`,
+`p_value_filtered`, `cliffs_delta_filtered`,
+`delta_ci_lo|hi_filtered`, `p_det_sto_1sided_filtered`,
+`bh_fdr_q_20d_filtered`, `direction_verdict_formal_filtered`) are in
+[validation/results_v2/cross_market_summary_v2.csv](../validation/results_v2/cross_market_summary_v2.csv).
+
+**H2 — Spearman ρ(H_stat, RPS), raw vs filtered.**
+
+| Specification              |    n |    ρ    |    p    | 95% CI         |
+|----------------------------|-----:|--------:|--------:|----------------|
+| H_stat_raw  (canonical)    |    8 |  0.754  |  0.0305 | [0.089, 0.994] |
+| H_stat_filtered (parallel) |    8 |  0.814  |  0.0138 | [0.289, 1.000] |
+| Δρ (filtered − raw)        |      | +0.060  |         |                |
+
+Hysteresis tightens the H–RPS coupling: ρ rises from 0.754 to 0.814,
+p drops by roughly half, and the 95% CI's lower bound moves up from
+0.089 to 0.289. The microstructure-gradient claim survives stronger
+under filtered labels than under raw, consistent with the reading that
+hysteresis removes single-bar flicker that adds noise to the per-market
+H statistic. Output:
+[validation/results_v2/h2_rps_validation.json](../validation/results_v2/h2_rps_validation.json)
+key `h2_filtered_labels_post_hoc`.
+
+**H3 — p(Transitional) and 95% CI, raw vs filtered.**
+
+| Market   | Cat.       | p_tra_raw | CI_raw         | p_tra_filt | CI_filt        | Δ (filt − raw) |
+|----------|------------|----------:|----------------|-----------:|----------------|---------------:|
+| VNINDEX  | Frontier   |     0.456 | [0.368, 0.550] |      0.451 | [0.358, 0.550] |        −0.005  |
+| PSEI     | Frontier   |     0.380 | [0.305, 0.455] |      0.403 | [0.315, 0.488] |        +0.023  |
+| KOSPI    | Emerging   |     0.524 | [0.449, 0.601] |      0.535 | [0.455, 0.617] |        +0.011  |
+| NIFTY    | Emerging   |     0.570 | [0.478, 0.654] |      0.558 | [0.463, 0.653] |        −0.012  |
+| SPX      | Developed  |     0.393 | [0.324, 0.468] |      0.433 | [0.352, 0.514] |        +0.040  |
+| FTSE     | Developed  |     0.238 | [0.181, 0.301] |      0.352 | [0.270, 0.438] |        **+0.114** |
+| NIKKEI   | Developed  |     0.398 | [0.310, 0.487] |      0.376 | [0.283, 0.469] |        −0.021  |
+| BTC      | Crypto     |     0.498 | [0.430, 0.567] |      0.452 | [0.377, 0.526] |        −0.047  |
+
+p_tra is stable to within ~0.05 under hysteresis on seven of eight
+markets; FTSE is the outlier with Δ = +0.114, where hysteresis
+absorbs short raw-GMM spurts into the Transitional band. The
+continuous-gradient reading of H3 (Spearman ρ(p_tra, RPS)) is
+unaffected at this magnitude — both raw and filtered versions remain
+in the +0.4 to +0.6 range. Output:
+[validation/results_v2/h3_refined.csv](../validation/results_v2/h3_refined.csv)
+columns `p_tra_raw`, `p_tra_raw_ci_lo`, `p_tra_raw_ci_hi`,
+`delta_p_tra_filt_minus_raw`.
+
+**Net reading.**
+The hysteresis filter does not alter the qualitative conclusions of
+H1, H2, or H3 on this panel. Direction labels are invariant; CI-based
+formal verdicts are invariant; H–RPS coupling sharpens slightly under
+filtering; per-market p_tra is mostly stable with FTSE the only
+notable shift. This is consistent with hysteresis being a Schmitt-
+trigger smoothing pass that removes flicker without creating new
+regime structure — exactly the production claim of the v7.1
+calibration on VNINDEX (~7.8 flips/yr from a raw ~28/yr) generalising
+sensibly to the broader panel.
+
 ---
 
 ## 10. Reproducibility
