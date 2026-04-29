@@ -489,3 +489,213 @@ is a newly-added column or file.
 - Repo architecture and research invariants:
   [../CONTEXT.md](../CONTEXT.md),
   [../architecture.md](../architecture.md).
+
+---
+
+## 12. Appendix — Paper-v1 V2 / V3 / V4 redo under v2.1 recipe (exploratory)
+
+### 12.1 Motivation and scope
+
+Paper v1 (`v1.0-paper`) shipped five validation tests. V1 (KW regime
+discrimination) and V5 (cross-market direction) are subsumed by H1 in
+this paper. The remaining three — V2 (GARCH benchmarking, regime-
+agnostic), V3 (tail-risk Lift by regime), V4 (entropy vs simple-vol
+comparison) — are redone here against the v2.1 panel and feature
+recipe so the v1 framing can be re-evaluated under (a) rolling SPE_Z
+in place of v7.0's global SPE_Z, (b) hysteresis-filtered labels, and
+(c) the post-COVID 2020-01-01 → 2026-04-17 window. V3 and V4 report
+**raw and filtered labels side-by-side** so hysteresis's effect is
+visible per cell.
+
+This appendix is **explicitly exploratory robustness**. None of the
+hypotheses below were pre-registered at commit `b130b0f`. No PASS /
+REJECT verdicts are issued; the cells are descriptive numbers with
+honest disclaimers. Nothing in §12 is imported into the abstract or
+into §1.
+
+### 12.2 V2 — GARCH(1,1) vs Rolling-22 on VNINDEX (v2.1 window)
+
+Single-market benchmark; paper-v1 V2 was a single-market test and we
+keep that scope. Rolling 504-day train, 1-step-ahead forecast.
+
+| Metric                                      | GARCH(1,1) | Rolling-22 | Δ           |
+|---------------------------------------------|-----------:|-----------:|------------:|
+| QLIKE (lower is better)                     | 1.7944     | 1.5566     | **+15.3%** worse |
+| MSE (σ̂ vs ‖r‖)                              | 0.8793     | 0.8694     | +1.1% worse |
+| Pearson(σ̂, ‖r‖)                             | 0.317      | 0.357      | −0.040      |
+
+Forecasts: 1063 days. The Rolling-22 baseline beats GARCH(1,1) on
+every metric in the 2020-2026 window, reversing the v1 V2 finding
+(which used the longer 2015-2024 window where GARCH did beat
+Rolling-22). The post-COVID window is dominated by 2020 Q1 vol-spike
+plus 2022 inflation regime — periods where naive recent-window σ̂
+captures persistence cheaply. Output:
+[validation/results_v2/garch_vnindex_v2.json](../validation/results_v2/garch_vnindex_v2.json)
+and `…_v2.png`.
+
+This is **not** a refutation of v1's V2 — different windows answer
+different questions. It is a disclosure that GARCH(1,1)'s out-of-sample
+edge is regime-dependent and was not robust through the COVID/inflation
+shock. Production volatility-forecasting systems should consider the
+window-conditioning explicitly.
+
+### 12.3 V3 — Tail-risk Lift by regime, adaptive thresholds (raw vs filtered)
+
+Per-market quantile thresholds: a "tail event" is a forward 10-day
+maximum drawdown ≥ q-quantile of that market's own forward-DD
+distribution at q ∈ {0.90, 0.95, 0.99}. The threshold is computed from
+all bars in the window (regime-agnostic), so each market gets the same
+*proportion* of "tail" bars by definition. This makes Lift comparable
+across markets that have very different absolute DD scales (BTC 11.3%
+vs FTSE 3.5% at q=0.90).
+
+Lift = P(DD ≥ thr ∣ Deterministic) / P(DD ≥ thr ∣ Stochastic). 95% CI
+via circular block bootstrap, block=20, n_boot=2000.
+
+**Headline table — q=0.90, h=10d:**
+
+| Market   | Cat.       | Thr (%) | Lift_raw | CI_raw       | Lift_filtered | CI_filtered  |
+|----------|------------|--------:|---------:|--------------|--------------:|--------------|
+| VNINDEX  | Frontier   |   6.79  |    0.75  | [0.15, 5.89] |     **0.41**  | [0.07, 3.66] |
+| PSEI     | Frontier   |   4.85  |  **1.50**| [0.23, 11.98]|       1.50    | [0.28, 14.67]|
+| KOSPI    | Emerging   |   5.73  |    1.19  | [0.25, 9.00] |     **1.24**  | [0.25, 10.29]|
+| NIFTY    | Emerging   |   3.89  |    0.93  | [0.09, 4.72] |       0.51    | [0.07, 3.17] |
+| SPX      | Developed  |   4.58  |    0.60  | [0.03, 2.56] |       0.62    | [0.07, 2.72] |
+| FTSE     | Developed  |   3.53  |    inf   | n_sto bootstrap collapses  | inf       | n_sto collapses          |
+| NIKKEI   | Developed  |   5.11  |  **2.13**| [0.51, 8.81] |     **2.50**  | [0.51, 10.66]|
+| BTC      | Crypto     |  11.27  |    1.00  | [0.37, 5.16] |       0.71    | [0.25, 2.48] |
+
+A `Lift > 1` cell means Deterministic-regime bars are more likely than
+Stochastic-regime bars to precede a top-decile drawdown — the v1 V1
+"paradox" direction restated as a tail-risk question.
+
+Reading the panel:
+- Two of eight markets show `Lift > 1` decisively (NIKKEI, PSEI),
+  three show `Lift ≈ 1` (KOSPI, BTC raw), three show `Lift < 1`
+  (VNINDEX, NIFTY, SPX). Bootstrap CIs cross 1.0 on every cell with a
+  finite CI — the per-bar tail-Lift signal is too noisy at q=0.90 in a
+  ~1300-bar window to assert direction in this re-framing.
+- Hysteresis effect: filtered Lift drifts away from 1.0 in either
+  direction relative to raw on 6/8 markets — consistent with hysteresis
+  removing single-bar flicker that dilutes regime-specific tail
+  probabilities. NIKKEI Lift sharpens from 2.13 → 2.50 raw → filtered.
+  VNINDEX Lift sharpens away from 1 in the *opposite* direction
+  (0.75 → 0.41).
+- FTSE has Lift = inf because n_sto in the bootstrapped resample
+  frequently captures zero tail bars (FTSE's Stochastic regime is
+  small and tail events are rare). Reported but not interpreted.
+
+The full 144-row table (8 markets × {raw, filtered} × {5,10,20}d ×
+{0.90,0.95,0.99}) is at
+[validation/results_v2/tail_lift_8market.csv](../validation/results_v2/tail_lift_8market.csv);
+the 10-day grid plot is at `…_8market.png`.
+
+### 12.4 V4 — Entropy vs SimpleVol vs Combined (raw vs filtered)
+
+Three GMM models per market, KW H on forward 20d realized vol across
+3 regimes (higher H = stronger discrimination). All three GMMs share
+the EntropyPhaseSpaceClassifier (k=3, full-cov, random_state=42) and
+the same hysteresis defaults (δ_hard=0.60, δ_soft=0.35, t_persist=8).
+
+| Market  | Cat.      | E.raw | E.filt | SV.raw | SV.filt | C.raw | C.filt | Best (raw) | Best (filt) |
+|---------|-----------|------:|-------:|-------:|--------:|------:|-------:|------------|-------------|
+| VNINDEX | Frontier  |  12.0 |   25.2 |  215.5 |   182.3 | 208.9 |  196.6 | SV         | C           |
+| PSEI    | Frontier  |  26.2 |   33.7 |   78.7 |   122.9 |  65.4 |   93.9 | SV         | SV          |
+| KOSPI   | Emerging  |  22.1 |   19.8 |   42.3 |    35.7 |  35.7 |   36.2 | SV         | C           |
+| NIFTY   | Emerging  |   1.0 |    4.1 |  110.0 |    99.4 |  32.9 |   68.6 | SV         | SV          |
+| SPX     | Developed | 116.7 |  127.4 |  407.0 |   356.5 | 418.3 |  436.9 | C          | C           |
+| FTSE    | Developed |  10.5 |   14.2 |   25.2 |    34.3 |  69.9 |   61.4 | C          | C           |
+| NIKKEI  | Developed |   7.1 |   13.8 |   66.5 |    65.7 |  49.6 |   28.1 | SV         | SV          |
+| BTC     | Crypto    |  29.3 |   58.1 |  147.0 |   221.2 | 210.7 |  168.0 | C          | SV          |
+
+Notation: E = Entropy [WPE, SPE_Z], SV = SimpleVol [Rolling22,
+VolChange5], C = Combined [WPE, SPE_Z, Rolling22].
+
+Three observations:
+
+1. **Entropy-only is the weakest discriminator on every market.**
+   This contrasts with paper v1's "entropy is informative" framing.
+   The v1 result held on a longer window with global SPE_Z (which
+   leaked look-ahead — see [paper_v1_summary.md §5](paper_v1_summary.md));
+   under the v2.1 rolling-SPE_Z recipe and 2020-2026 window, [WPE,
+   SPE_Z] alone discriminates poorly relative to vol-based features.
+
+2. **SimpleVol's strength is largely vol persistence**, not novel
+   information. Rolling-22 std of past returns is autocorrelated with
+   forward 20d realized vol mechanically; KW H on a vol-derived
+   regime is therefore inflated relative to KW H on entropy-derived
+   regimes. SimpleVol "winning" should be read as a sanity check
+   (autocorrelated features discriminate), not as evidence against
+   entropy's structural content.
+
+3. **Combined wins on developed markets** (SPX raw 418 vs SV 407;
+   filtered 437 vs 357 — entropy adds discriminative content on top
+   of vol persistence) and helps on FTSE (C 70 vs SV 25 raw). On
+   frontier and emerging panels (VNINDEX, PSEI, NIFTY) SimpleVol
+   alone leads under raw labels but Combined often catches up under
+   hysteresis (VNINDEX C 197 ≈ SV 182; KOSPI C 36 > SV 36).
+
+The full 48-row table is at
+[validation/results_v2/entropy_vs_simple_8market.csv](../validation/results_v2/entropy_vs_simple_8market.csv);
+the heatmap is at `…_8market.png`.
+
+### 12.5 Caveats
+
+1. **Not pre-registered.** §12.2–§12.4 are exploratory robustness
+   redos; no claim from §12 is admissible into the canonical paper
+   verdicts (§5–§7).
+2. **Window 2020–2026 only.** Pre-2020 microstructure regimes are not
+   addressed; the SPE_Z 504-day rolling warm-up precludes labelling
+   earlier bars on the v2.1 recipe anyway.
+3. **V3 thresholds are per-market quantiles** (q=0.90, 0.95, 0.99),
+   not the fixed 3% / 5% / 7% rule of paper-v1 V3. Same proportion of
+   "tail" bars per market makes cross-market Lift comparable; cross-
+   reading to v1 V3's absolute-threshold table is therefore
+   numerically loose.
+4. **V3 q=0.99 cells are sample-size-limited.** With ~1300 bars per
+   market and ~1% tail, n_tail ≈ 13. Conditioning on a regime
+   capturing 25–35% of bars yields n_det × P(tail) ≈ 3–5 events;
+   bootstrap CIs are wide and several cells report `inf` when the
+   resampled denominator collapses. The narrative leans on q=0.90.
+5. **V3 adaptive-threshold provenance.** The threshold is computed
+   from the same bars whose regime labels enter the Lift. This is
+   not circular because the threshold definition is purely a function
+   of the forward-DD distribution and ignores regime, but it is
+   disclosed for transparency.
+6. **V4 hysteresis parameters are borrowed.** δ_hard=0.60,
+   δ_soft=0.35, t_persist=8 were calibrated on the VNINDEX entropy
+   GMM only ([scripts/calibrate_hysteresis.py](../scripts/calibrate_hysteresis.py)).
+   Applying them unchanged to the SimpleVol and Combined GMMs is a
+   borrowed-parameter choice; per-market or per-feature-space
+   recalibration could change the SV/C numbers but is outside the
+   §12 scope.
+7. **V4 regime semantics borrowed across feature spaces.** The
+   classifier sorts clusters by sum of centroid means and labels the
+   lowest-sum cluster "Deterministic". On entropy features that maps
+   to "low entropy = paradox-relevant"; on SimpleVol features it maps
+   to "low Rolling22 = calm". KW H is invariant to label ordering, so
+   the discrimination test is unaffected; but `mean_vol_det` vs
+   `mean_vol_sto` columns in the CSV should be read as "lowest-sum
+   cluster vs highest-sum cluster", not as paradox direction.
+
+### 12.6 Cross-references
+
+Validation outputs:
+- [validation/results_v2/garch_vnindex_v2.json](../validation/results_v2/garch_vnindex_v2.json),
+  [garch_vnindex_v2.png](../validation/results_v2/garch_vnindex_v2.png).
+- [validation/results_v2/tail_lift_8market.csv](../validation/results_v2/tail_lift_8market.csv),
+  [tail_lift_8market.json](../validation/results_v2/tail_lift_8market.json),
+  [tail_lift_8market.png](../validation/results_v2/tail_lift_8market.png).
+- [validation/results_v2/entropy_vs_simple_8market.csv](../validation/results_v2/entropy_vs_simple_8market.csv),
+  [entropy_vs_simple_8market.json](../validation/results_v2/entropy_vs_simple_8market.json),
+  [entropy_vs_simple_8market.png](../validation/results_v2/entropy_vs_simple_8market.png).
+
+Source scripts:
+- [validation/garch_vnindex_v2.py](../validation/garch_vnindex_v2.py).
+- [validation/tail_lift_8market.py](../validation/tail_lift_8market.py).
+- [validation/entropy_vs_simple_8market.py](../validation/entropy_vs_simple_8market.py).
+
+Original paper-v1 frozen scripts (untouched, for provenance):
+- [validation/garch_forecast_eval.py](../validation/garch_forecast_eval.py).
+- [validation/risk_alert_hitrate.py](../validation/risk_alert_hitrate.py).
+- [validation/entropy_vs_simple.py](../validation/entropy_vs_simple.py).

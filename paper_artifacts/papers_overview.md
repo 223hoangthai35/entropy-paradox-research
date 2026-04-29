@@ -63,6 +63,11 @@ new tag (see [CLAUDE.md](../CLAUDE.md) "Research invariants").
 - Paper v2.1 results → `validation/results_v2/` (Phase 1, 2, 2.1 scripts).
 - Paper v2.1 earlier 2016-window results archived under
   `validation/results_v2_2016win/` for reference.
+- Paper v2.1 §12 appendix (paper-v1 V2 / V3 / V4 redo under v2.1
+  recipe, exploratory) → `validation/results_v2/garch_vnindex_v2.*`,
+  `tail_lift_8market.*`, `entropy_vs_simple_8market.*`. Source scripts
+  `validation/garch_vnindex_v2.py`, `validation/tail_lift_8market.py`,
+  `validation/entropy_vs_simple_8market.py`.
 
 ## Citation
 
