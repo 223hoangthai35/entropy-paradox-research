@@ -4,71 +4,86 @@
 
 ## Purpose
 
-Research artifacts, validation studies, and paper drafts on the Entropy Paradox — the market-microstructure-dependent relationship between permutation entropy and forward realized volatility.
+Research artifacts, validation studies, and the canonical paper on
+the Entropy Paradox — the market-microstructure-dependent relationship
+between permutation entropy and forward realized volatility, evaluated
+on an 8-market panel under a fixed post-COVID 2020-01-01 → 2026-04-17
+window.
 
 **Companion production software**: [financial-entropy-agent](https://github.com/223hoangthai35/financial-entropy-agent)
 
-## Publications
+## Publication
 
 ### Paper v2.1 (April 2026, canonical)
 
-*The Entropy Paradox — 8-market post-COVID evidence under refined statistical architecture with pre-registration transparency.*
+*The Entropy Paradox — 8-market post-COVID evidence under refined
+statistical architecture with pre-registration transparency.*
 
-**Headline claim**: Paradox magnitude tracks Retail Participation Share (Spearman ρ = 0.754, p = 0.031, n = 8). Pairwise direction (Det > Sto) survives FDR correction on PSEI at the 20-day horizon. Transitional Dominance is a microstructure gradient (continuous ρ(p_tra, RPS) = 0.56).
+**Headline claim**: Paradox magnitude tracks Retail Participation
+Share (Spearman ρ = 0.754, p = 0.031, n = 8). Pairwise direction
+(Det > Sto) survives FDR correction on PSEI at the 20-day horizon.
+Transitional Dominance is a microstructure gradient (continuous
+ρ(p_tra, RPS) = 0.56).
 
-Summary: [paper_artifacts/paper_v2_1_combined_summary.md](paper_artifacts/paper_v2_1_combined_summary.md). Pre-registration audit: [pre_registration/critique.md](pre_registration/critique.md).
+Summary: [paper_artifacts/paper_v2_1_combined_summary.md](paper_artifacts/paper_v2_1_combined_summary.md).
+Pre-registration audit: [pre_registration/critique.md](pre_registration/critique.md).
 
-Reproducibility: `git checkout v2.1.3-prereg-audit` (current HEAD) or `v2.1-paper-combined` (canonical paper tag).
+Earlier paper-v1 (3-market, 2015-2024) and paper-v2 draft (3-market,
+2022-2026) used pre-COVID windows that do not align with v2.1's recipe
+(rolling SPE_Z 504, hysteresis-filtered labels). They are no longer
+maintained in HEAD — recoverable via git tags `v1.0-paper` and
+`v2.0-paper` for provenance.
 
-### Paper v2 (May 2026, draft — historical, superseded by v2.1)
+## Validation framework
 
-*Hysteresis-Filtered Regime Classification and Transitional Dominance*
+The canonical hypotheses H1–H5 (frozen pre-registration at commit
+`b130b0f`, 2026-04-18) are tested by:
 
-**Earlier finding**: VNINDEX spends 67.8% of trading bars in the intermediate entropy regime with 62-day mean spells. Reframed in v2.1 as a microstructure gradient rather than a frontier-specific result.
+- **Phase 1** — H1 (paradox direction) and H2 (microstructure
+  gradient via Retail Participation Share):
+  [validation/cross_market_v2.py](validation/cross_market_v2.py),
+  [validation/h2_rps_validation.py](validation/h2_rps_validation.py).
+- **Phase 2** — H3 (Transitional persistence) and H4 (temporal
+  structure under block-permutation):
+  [validation/hysteresis_cross_market_v2.py](validation/hysteresis_cross_market_v2.py).
+- **Phase 2b** — H5 (parameter robustness with pre-reg dead-zone
+  rule):
+  [validation/hysteresis_robustness_v2.py](validation/hysteresis_robustness_v2.py).
 
-### Paper v1 (April 2026 — historical, superseded by v2.1)
+Paper §12 exploratory robustness appendix (paper-v1 V2/V3/V4 redos
+under v2.1 recipe):
+[validation/garch_vnindex_v2.py](validation/garch_vnindex_v2.py),
+[validation/tail_lift_8market.py](validation/tail_lift_8market.py),
+[validation/entropy_vs_simple_8market.py](validation/entropy_vs_simple_8market.py).
 
-*Entropy-Based Regime Classification for Financial Market Risk Surveillance: Evidence from Frontier, Developed, and Cryptocurrency Markets*
+All outputs land in [validation/results_v2/](validation/results_v2/).
+The frozen pre-registration archive is at
+[validation/results_v2/prereg_b130b0f/](validation/results_v2/prereg_b130b0f/).
 
-**Earlier finding — Entropy Paradox**: Low entropy predicts higher forward volatility on frontier markets (VNINDEX H = 192.43, p < 0.0001), inverts on developed markets (SPX H = 14.25). The 8-market panel in v2.1 sharpens the claim into a microstructure ordering.
-
-## Validation Framework
-
-### Paper v1 Tests (V1-V5)
-- V1: Kruskal-Wallis regime discrimination (H=192.43, p<0.0001)
-- V2: GARCH forecast benchmarking
-- V3: Tail risk Lift ratios (5.5x for >7% drawdowns)
-- V4: Entropy vs simple volatility feature comparison
-- V5: Cross-market paradox direction (VN YES, SPX INVERTED, BTC YES-thin)
-
-### Paper v2 Tests (T1-T4)
-- T1: Event study (pre-registered macro events, null result honestly reported)
-- T2: Cross-market flip rate (rejected initial hypothesis, revealed paradox level 2)
-- T3: Shuffle test for temporal structure (p<1e-4, decisive PASS)
-- T4: Hysteresis parameter robustness (2.7pp spread across configs, PASS)
-
-## Repository Structure
+## Repository structure
 
 ```
-paper_artifacts/        Paper summaries (v1, v2, v2.1 canonical) and rationales
+paper_artifacts/        Canonical paper v2.1 summary + RPS rationale + papers overview
 pre_registration/       Frozen H1-H5 pre-registration and scientific-foundation audit
-validation/             V1-V5, T1-T4, and Phase 1/2/2.1 validation scripts and results
+validation/             H1-H5 validation scripts (cross_market_v2, hysteresis_*) and §12 appendix scripts
+validation/results_v2/  All canonical outputs + prereg_b130b0f/ archive
 skills/                 Core computation modules (quant, ds, data)
-scripts/                Calibration and analysis
-docs/                   Documentation
+scripts/                Calibration and feature-extraction helpers
+docs/                   README images
 CONTEXT.md              Project state anchor for research sessions
-architecture.md         Detailed system architecture (v7.2)
+architecture.md         Detailed system architecture
 ```
 
 ## Reproducibility
 
-All paper results reproducible via tagged commits. All code public for verification.
+All paper results reproducible via tagged commits. All code public
+for verification.
 
 Tags:
 - `v2.1.3-prereg-audit` — current HEAD (canonical paper + pre-registration audit)
 - `v2.1-paper-combined` — canonical v2.1 paper (April 2026)
-- `v2.0-paper` — historical Paper v2 state
-- `v1.0-paper` — historical Paper v1 state
+- `v2.0-paper` — historical paper v2 draft (provenance only)
+- `v1.0-paper` — historical paper v1 (provenance only)
 - `v7.1-production` — v7.1 production baseline
 
 ## Author
@@ -78,4 +93,4 @@ Pre-MSc candidate, Data Science applications 2027
 
 ## License
 
-MIT License for code. Please cite papers if using methodology.
+MIT License for code. Please cite the paper if using methodology.

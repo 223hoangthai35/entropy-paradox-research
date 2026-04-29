@@ -483,9 +483,10 @@ is a newly-added column or file.
   [pre_registration/critique.md](../pre_registration/critique.md).
 - RPS construction and sources:
   [rps_rationale.md](rps_rationale.md).
-- Earlier paper drafts (historical):
-  [paper_v1_summary.md](paper_v1_summary.md),
-  [paper_v2_summary.md](paper_v2_summary.md).
+- Earlier paper drafts (historical, no longer present in HEAD):
+  pre-COVID-window paper-v1 (3 markets, 2015-2024) and paper-v2 draft
+  (3 markets, 2022-2026) — recoverable via git tags `v1.0-paper` and
+  `v2.0-paper` if needed for provenance.
 - Repo architecture and research invariants:
   [../CONTEXT.md](../CONTEXT.md),
   [../architecture.md](../architecture.md).
@@ -615,10 +616,10 @@ Three observations:
 
 1. **Entropy-only is the weakest discriminator on every market.**
    This contrasts with paper v1's "entropy is informative" framing.
-   The v1 result held on a longer window with global SPE_Z (which
-   leaked look-ahead — see [paper_v1_summary.md §5](paper_v1_summary.md));
-   under the v2.1 rolling-SPE_Z recipe and 2020-2026 window, [WPE,
-   SPE_Z] alone discriminates poorly relative to vol-based features.
+   The v1 result held on a longer window with global SPE_Z, which
+   leaked look-ahead; under the v2.1 rolling-SPE_Z recipe and
+   2020-2026 window, [WPE, SPE_Z] alone discriminates poorly relative
+   to vol-based features.
 
 2. **SimpleVol's strength is largely vol persistence**, not novel
    information. Rolling-22 std of past returns is autocorrelated with
@@ -695,7 +696,6 @@ Source scripts:
 - [validation/tail_lift_8market.py](../validation/tail_lift_8market.py).
 - [validation/entropy_vs_simple_8market.py](../validation/entropy_vs_simple_8market.py).
 
-Original paper-v1 frozen scripts (untouched, for provenance):
-- [validation/garch_forecast_eval.py](../validation/garch_forecast_eval.py).
-- [validation/risk_alert_hitrate.py](../validation/risk_alert_hitrate.py).
-- [validation/entropy_vs_simple.py](../validation/entropy_vs_simple.py).
+The original paper-v1 V1-V5 scripts have been removed from HEAD as part
+of the v2.1-only repo cleanup; they remain reachable at git tag
+`v1.0-paper` for anyone who needs to reproduce the v1 numbers.
