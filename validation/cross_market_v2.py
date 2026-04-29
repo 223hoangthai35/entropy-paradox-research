@@ -376,6 +376,7 @@ def analyze_market(cfg: dict[str, Any]) -> Optional[dict[str, Any]]:
 
     ohlcv = out["ohlcv"]
     raw_labels: pd.Series = out["raw_labels"]
+    filt_labels: pd.Series = out["filtered_labels"]
 
     if len(raw_labels) < SPE_Z_WIN:
         print(f"  [SKIP] insufficient labelable bars: {len(raw_labels)} < {SPE_Z_WIN}")
@@ -383,12 +384,15 @@ def analyze_market(cfg: dict[str, Any]) -> Optional[dict[str, Any]]:
 
     # Compute fwd vol at all horizons; join to labels
     labels_arr = raw_labels.astype(int).map(REGIME_NAMES).values
+    filt_labels_arr = filt_labels.astype(int).map(REGIME_NAMES).values
     horizon_frames = {}
+    horizon_frames_filt = {}
     for h in HORIZONS:
         fwd = compute_forward_metrics(ohlcv, horizon=h)
         df = pd.DataFrame({"RegimeName": labels_arr}, index=raw_labels.index)
-        df = df.join(fwd, how="left")
-        horizon_frames[h] = df
+        horizon_frames[h] = df.join(fwd, how="left")
+        df_filt = pd.DataFrame({"RegimeName": filt_labels_arr}, index=filt_labels.index)
+        horizon_frames_filt[h] = df_filt.join(fwd, how="left")
 
     # ------------------------------------------------------------------
     # Axis #2 (legacy KW) + legacy direction at PRIMARY_HORIZON (=20)
@@ -514,10 +518,58 @@ def analyze_market(cfg: dict[str, Any]) -> Optional[dict[str, Any]]:
             row[f"lift_{thr}pct"] = hit / base if base and base > 0 else float("nan")
         lifts[r] = row
 
+    # ------------------------------------------------------------------
+    # FILTERED-LABELS PARALLEL: same statistics computed from
+    # `out["filtered_labels"]` (post-hysteresis Schmitt-trigger output)
+    # so paper §9.6 can compare raw-GMM vs hysteresis side-by-side. All
+    # legacy columns above remain raw-GMM (regression assertion intact).
+    # ------------------------------------------------------------------
+    df20_filt = horizon_frames_filt[PRIMARY_HORIZON]
+    groups_f = {r: df20_filt.loc[df20_filt["RegimeName"] == r, fwd_col].dropna().values
+                for r in REGIME_ORDER}
+    usable_f = {r: v for r, v in groups_f.items() if len(v) >= 5}
+    if len(usable_f) < 2:
+        H_stat_f, p_kw_f = float("nan"), float("nan")
+    else:
+        H_stat_f, p_kw_f = kruskal(*usable_f.values())
+    means_f = {r: float(np.nanmean(groups_f[r])) if len(groups_f[r]) else float("nan")
+               for r in REGIME_ORDER}
+    det_f, sto_f = means_f["Deterministic"], means_f["Stochastic"]
+    if np.isnan(det_f) or np.isnan(sto_f):
+        direction_filtered = "SKIP"
+    elif det_f > sto_f:
+        direction_filtered = "Paradox"
+    else:
+        direction_filtered = "Inverted"
+
+    # Primary-horizon contrast on filtered labels
+    df20_filt_valid = df20_filt[df20_filt[fwd_col].notna()]
+    labels_f_h = df20_filt_valid["RegimeName"].values
+    fwd_f_h = df20_filt_valid[fwd_col].values
+    det_h_f = fwd_f_h[labels_f_h == "Deterministic"]
+    sto_h_f = fwd_f_h[labels_f_h == "Stochastic"]
+    if len(det_h_f) >= 5 and len(sto_h_f) >= 5:
+        U_f, p_mw_f = mannwhitneyu(det_h_f, sto_h_f, alternative="greater")
+        delta_f = _cliffs_delta(det_h_f, sto_h_f)
+        ci_lo_f, ci_hi_f, _ = _block_bootstrap_delta_ci(
+            labels_f_h, fwd_f_h, "Deterministic", "Stochastic",
+            block=BLOCK, n_boot=N_BOOT, rng=np.random.default_rng(RNG_SEED + hash(name + "_filt") % 1000),
+            alpha=ALPHA,
+        )
+        verdict_f = _formal_direction_verdict(delta_f, ci_lo_f, ci_hi_f)
+    else:
+        U_f, p_mw_f = float("nan"), float("nan")
+        delta_f, ci_lo_f, ci_hi_f = float("nan"), float("nan"), float("nan")
+        verdict_f = "SKIP"
+
+    # Filtered regime shares (for H3 raw-vs-filtered p_tra in paper §9.6)
+    n_total_f = len(df20_filt)
+    share_f = {r: float((df20_filt["RegimeName"] == r).sum() / n_total_f) if n_total_f else float("nan")
+               for r in REGIME_ORDER}
+
     elapsed = time.time() - t0
-    print(f"  H={H_stat:.2f}  eps2={eps_sq:.3f}  delta={primary['cliffs_delta']:.3f} "
-          f"CI=[{primary['delta_ci_lo']:.2f},{primary['delta_ci_hi']:.2f}]  "
-          f"verdict={primary['direction_verdict_formal']}  across={across}  ({elapsed:.1f}s)")
+    print(f"  RAW H={H_stat:.2f} delta={primary['cliffs_delta']:.3f} verdict={primary['direction_verdict_formal']}")
+    print(f"  FLT H={H_stat_f:.2f} delta={delta_f:.3f} verdict={verdict_f}  ({elapsed:.1f}s)")
 
     return {
         "market": name,
@@ -556,6 +608,18 @@ def analyze_market(cfg: dict[str, Any]) -> Optional[dict[str, Any]]:
         "direction_verdict_formal":  primary["direction_verdict_formal"],
         "direction_across_horizons": across,
         "horizons": horizon_rows,
+        # Filtered-labels parallel (post-hoc, for §9.6 hysteresis-impact appendix)
+        "H_stat_filtered":              float(H_stat_f),
+        "p_value_filtered":             float(p_kw_f),
+        "direction_filtered":           direction_filtered,
+        "regime_mean_vol_filtered":     means_f,
+        "regime_share_filtered":        share_f,
+        "primary_U_det_sto_filtered":   float(U_f),
+        "primary_p_mw_1sided_filtered": float(p_mw_f),
+        "primary_cliffs_delta_filtered": float(delta_f),
+        "primary_delta_ci_lo_filtered": float(ci_lo_f),
+        "primary_delta_ci_hi_filtered": float(ci_hi_f),
+        "direction_verdict_formal_filtered": verdict_f,
     }
 
 
@@ -574,8 +638,12 @@ def build_summary_csv(results: list[dict[str, Any]]) -> pd.DataFrame:
     p_mw_primary = np.array([r["primary_p_mw_1sided"] for r in results], dtype=float)
     q_bh = _bh_fdr(p_mw_primary)
 
+    # BH-FDR on filtered MW p-values (§9.6 hysteresis-impact comparison)
+    p_mw_primary_filt = np.array([r["primary_p_mw_1sided_filtered"] for r in results], dtype=float)
+    q_bh_filt = _bh_fdr(p_mw_primary_filt)
+
     rows = []
-    for r, q in zip(results, q_bh):
+    for r, q, q_f in zip(results, q_bh, q_bh_filt):
         rows.append({
             # Legacy (preserved -- regression-asserted against archive)
             "market":           r["market"],
@@ -610,6 +678,22 @@ def build_summary_csv(results: list[dict[str, Any]]) -> pd.DataFrame:
             "nw_p_two":               r["primary_nw_p_two"],
             "direction_verdict_formal":  r["direction_verdict_formal"],
             "direction_across_horizons": r["direction_across_horizons"],
+            # Filtered-labels parallel (post-hoc, §9.6 hysteresis-impact)
+            "H_stat_filtered":           round(r["H_stat_filtered"], 2)
+                                          if not np.isnan(r["H_stat_filtered"]) else np.nan,
+            "p_value_filtered":          r["p_value_filtered"],
+            "paradox_direction_filtered": r["direction_filtered"],
+            "det_mean_vol_filtered":     round(r["regime_mean_vol_filtered"]["Deterministic"], 2),
+            "sto_mean_vol_filtered":     round(r["regime_mean_vol_filtered"]["Stochastic"], 2),
+            "p_det_filtered":            round(r["regime_share_filtered"]["Deterministic"], 3),
+            "p_tra_filtered":            round(r["regime_share_filtered"]["Transitional"], 3),
+            "p_sto_filtered":            round(r["regime_share_filtered"]["Stochastic"], 3),
+            "cliffs_delta_filtered":     round(r["primary_cliffs_delta_filtered"], 4),
+            "delta_ci_lo_filtered":      round(r["primary_delta_ci_lo_filtered"], 4),
+            "delta_ci_hi_filtered":      round(r["primary_delta_ci_hi_filtered"], 4),
+            "p_det_sto_1sided_filtered": r["primary_p_mw_1sided_filtered"],
+            "bh_fdr_q_20d_filtered":     float(q_f),
+            "direction_verdict_formal_filtered": r["direction_verdict_formal_filtered"],
         })
     df = pd.DataFrame(rows)
     path = os.path.join(OUTPUT_DIR, "cross_market_summary_v2.csv")

@@ -337,12 +337,23 @@ def analyze_one(cfg: dict[str, Any]) -> dict[str, Any] | None:
         end=str(filt_common.index[-1].date()),
     )
 
-    # H3 #1: bootstrap CI on p_tra
+    # H3 #1: bootstrap CI on p_tra (filtered, canonical)
     arr = filt_common.astype(int).values
     ci_lo, ci_hi, boot_p = _p_tra_bootstrap_ci(arr, BOOT_BLOCK, N_BOOT_P_TRA, RNG_SEED)
     wrong_side_p = _bootstrap_wrong_side_p(boot_p, cfg["category"])
     distance, distance_spec = _distance_to_nearest_threshold(
         float(dur.label_share[1]), cfg["category"]
+    )
+
+    # H3 raw counterpart (§9.6 hysteresis-impact comparison): p_tra and
+    # bootstrap CI on raw_labels, BEFORE hysteresis. Same RNG seed as the
+    # filtered run so the only thing that differs is the label series.
+    arr_raw = raw_common.astype(int).values
+    p_det_raw = float((arr_raw == 0).mean())
+    p_tra_raw = float((arr_raw == 1).mean())
+    p_sto_raw = float((arr_raw == 2).mean())
+    ci_lo_raw, ci_hi_raw, _ = _p_tra_bootstrap_ci(
+        arr_raw, BOOT_BLOCK, N_BOOT_P_TRA, RNG_SEED
     )
 
     # H4 #1: block-permutation shuffle at multiple block sizes
@@ -394,6 +405,12 @@ def analyze_one(cfg: dict[str, Any]) -> dict[str, Any] | None:
         "shuffle_block_null_mean": {str(b): block_shuffle[b]["null_mean"]
                                     for b in SHUFFLE_BLOCKS},
         "rps": _rps(name),
+        # §9.6 hysteresis-impact: raw-labels p_tra counterpart
+        "p_det_raw":         p_det_raw,
+        "p_tra_raw":         p_tra_raw,
+        "p_sto_raw":         p_sto_raw,
+        "p_tra_raw_ci_lo":   ci_lo_raw,
+        "p_tra_raw_ci_hi":   ci_hi_raw,
     }
 
     elapsed = time.time() - t0
@@ -477,6 +494,11 @@ def build_h3_refined_csv(results: list[dict[str, Any]]) -> pd.DataFrame:
             "h3_verdict_categorical":    r["h3_verdict_categorical"],
             "h3_verdict_refined":        r["h3_verdict_refined"],
             "rps":                       round(r["rps"], 3),
+            # §9.6 hysteresis-impact: raw counterpart of p_tra
+            "p_tra_raw":                 round(r["p_tra_raw"], 3),
+            "p_tra_raw_ci_lo":           round(r["p_tra_raw_ci_lo"], 3),
+            "p_tra_raw_ci_hi":           round(r["p_tra_raw_ci_hi"], 3),
+            "delta_p_tra_filt_minus_raw": round(r["p_tra"] - r["p_tra_raw"], 3),
         })
     df = pd.DataFrame(rows)
     path = os.path.join(OUTPUT_DIR, "h3_refined.csv")

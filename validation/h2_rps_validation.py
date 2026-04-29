@@ -111,7 +111,7 @@ RNG_SEED    = 42
 
 
 def load_h_stats() -> pd.DataFrame:
-    """Load H_stat and p_value from cross_market_summary_v2.csv."""
+    """Load H_stat and p_value (raw + filtered) from cross_market_summary_v2.csv."""
     if not os.path.exists(PRIMARY_CSV):
         raise FileNotFoundError(
             f"H1 summary not found: {PRIMARY_CSV}\n"
@@ -122,7 +122,13 @@ def load_h_stats() -> pd.DataFrame:
     missing = needed - set(df.columns)
     if missing:
         raise RuntimeError(f"H1 summary missing columns: {missing}")
-    return df[["market", "H_stat", "p_value"]].copy()
+    cols = ["market", "H_stat", "p_value"]
+    # Filtered cols are optional (only present after the §9.6 cross_market_v2 refactor)
+    if "H_stat_filtered" in df.columns:
+        cols.append("H_stat_filtered")
+    if "p_value_filtered" in df.columns:
+        cols.append("p_value_filtered")
+    return df[cols].copy()
 
 
 def _safe_spearman(x: np.ndarray, y: np.ndarray) -> tuple[float, float]:
@@ -286,6 +292,32 @@ def main() -> int:
     print(f"  min={mc['rho_min']:.3f}  max={mc['rho_max']:.3f}")
     print(f"  P(rho > {RHO_THRESHOLD:.2f}) = {mc['frac_rho_gt_threshold']*100:.2f}% of MC trials")
 
+    # ---- Section C2: filtered-labels parallel (§9.6 hysteresis-impact)
+    filtered_block: dict[str, Any] | None = None
+    if "H_stat_filtered" in df.columns:
+        df_f = df.rename(columns={"H_stat": "H_stat_raw", "H_stat_filtered": "H_stat"})
+        primary_f = h2_spearman(df_f)
+        boot_f = bootstrap_ci(df_f)
+        # Restore raw H_stat in df for the rest of the pipeline
+        rho_raw, p_raw = primary["rho"], primary["p_value"]
+        rho_f, p_f = primary_f["rho"], primary_f["p_value"]
+        filtered_block = {
+            "spec": "H2 — RPS coupling under hysteresis-filtered labels",
+            "n":   primary_f["n"],
+            "rho": primary_f["rho"],
+            "p_value": primary_f["p_value"],
+            "ci95_low": boot_f["ci95_low"],
+            "ci95_high": boot_f["ci95_high"],
+            "verdict": primary_f["verdict"],
+            "delta_rho_filtered_minus_raw": round(rho_f - rho_raw, 4),
+        }
+        print(f"\n[C2] H2 under filtered labels  (rho(H_stat_filtered, RPS))")
+        print("-" * 88)
+        print(f"  rho_raw      = {rho_raw:.4f}   p = {p_raw:.4g}")
+        print(f"  rho_filtered = {rho_f:.4f}   p = {p_f:.4g}")
+        print(f"  Δrho (filt - raw) = {rho_f - rho_raw:+.4f}")
+        print(f"  filtered 95% CI: [{boot_f['ci95_low']:.3f}, {boot_f['ci95_high']:.3f}]")
+
     # ---- Section D: subpanels
     strata = stratified_subpanels(df)
     print(f"\n[D] Stratified robustness — subpanel Spearman")
@@ -318,6 +350,7 @@ def main() -> int:
         "h2_primary": primary,
         "bootstrap_95ci_for_rho": boot,
         "monte_carlo_sensitivity_RPS_noise_sd_0p05": mc,
+        "h2_filtered_labels_post_hoc": filtered_block,
         "stratified_subpanels": strata,
         "rps_sources_note": (
             "Values sourced from VinaCapital 2024, PSE 2023 Annual Report, "

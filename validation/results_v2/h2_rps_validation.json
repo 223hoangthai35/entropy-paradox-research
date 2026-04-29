@@ -32,6 +32,16 @@
     "rho_max": 0.9285714285714287,
     "frac_rho_gt_threshold": 1.0
   },
+  "h2_filtered_labels_post_hoc": {
+    "spec": "H2 \u2014 RPS coupling under hysteresis-filtered labels",
+    "n": 8,
+    "rho": 0.8144,
+    "p_value": 0.013844257377974144,
+    "ci95_low": 0.2894736842105264,
+    "ci95_high": 1.0,
+    "verdict": "PASS",
+    "delta_rho_filtered_minus_raw": 0.0599
+  },
   "stratified_subpanels": [
     {
       "subpanel": "full_panel",
