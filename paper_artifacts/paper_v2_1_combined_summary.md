@@ -48,6 +48,13 @@ effect-size terms than v1 and v2 suggested; its *systematicity* across
 a published, ex-ante microstructure proxy is new to v2.1 and is the
 central scientific contribution.
 
+**Label-source convention.** H1 and H2 are reported on `raw_labels`
+(direct GMM argmax); H3, H4, H5 are reported on `filtered_labels`
+(after the production hysteresis post-filter δ_hard = 0.60,
+δ_soft = 0.35, t_persist = 8). The choice is per-test (see §4); the
+swap-the-other-source robustness check for H1, H2, H3 is in §9.6 and
+none of the qualitative conclusions flip.
+
 ---
 
 ## 2. Motivation
@@ -99,23 +106,54 @@ construction: [rps_rationale.md](rps_rationale.md).
 
 ## 4. Hypotheses (final canonical forms)
 
-| H  | Claim | Primary test |
-|----|-------|--------------|
-| H1 | On frontier markets, the distribution of forward 20-d realised volatility conditional on the Deterministic regime exceeds that conditional on the Stochastic regime (paradox direction). | One-sided Mann-Whitney + Cliff's δ + circular-block (block=20) bootstrap 95 % CI + Newey-West (lag=20) t-test on OLS with Sto as reference. Horizon sweep {5, 10, 20, 40, 60} d. BH-FDR across 8 markets per horizon. |
-| H2 | Kruskal-Wallis H-statistic for regime-vs-forward-vol tracks RPS monotonically. | Spearman ρ(H, RPS) + circular-block bootstrap 95 % CI + RPS ± 0.05 measurement-noise MC sensitivity. |
-| H3 | p(Transitional) scales with retail participation. | Circular-block bootstrap 95 % CI on p_tra per market + continuous Spearman ρ(p_tra, RPS) + BH-FDR across 8-market panel. Pre-registered categorical bands (Frontier > 0.55 / Developed < 0.50 / diff > 10 pp) reported as reference only. |
-| H4 | The filtered regime sequence is temporally structured beyond chance. | Block-permutation shuffle at block ∈ {5, 10, 20} + BH-FDR across 8 markets per block. |
-| H5 | p(Transitional) is robust across hysteresis configurations {A-current, B-looser, C-tighter}. | Joint circular-block bootstrap with shared resample indices → CI on spread + P(spread > 5 pp) + per-config p_tra CI. Pre-registered dead-zone rule: PASS < 5 pp, REJECT > 7 pp, unclassified in [5, 7]. |
+Each test consumes one of two label sources:
+
+- **`raw_labels`** — direct GMM argmax on the Plane-1 feature matrix
+  `[WPE, SPE_Z]`, no post-processing. The canonical labels for H1 and H2.
+- **`filtered_labels`** — `raw_labels` after the Schmitt-trigger
+  hysteresis post-filter (`HysteresisGMMWrapper`) with production
+  defaults δ_hard = 0.60, δ_soft = 0.35, t_persist = 8. The canonical
+  labels for H3, H4, H5.
+
+The split is intentional: H1 and H2 ask whether the *clustering* (where
+the GMM places its three centroids) matches the paradox claim; H3, H4,
+H5 ask whether the *temporal sequence* of regime occupancy carries
+microstructure signal — and that question is meaningful only after
+single-bar flicker has been removed. The robustness check in §9.6
+swaps the label source for each of H1, H2, H3 to confirm conclusions
+are not label-source-dependent.
+
+| H  | Claim | Labels | Primary test | Key parameters |
+|----|-------|--------|--------------|----------------|
+| H1 | On frontier markets, forward 20-d realised vol \| Det > forward 20-d realised vol \| Sto (paradox direction). | **`raw_labels`** (canonical); `filtered_labels` reported in §9.6 | One-sided pairwise Mann-Whitney + Cliff's δ + circular-block bootstrap 95 % CI + Newey-West HAC t-test on OLS with Sto reference. Horizon sweep {5, 10, 20, 40, 60} d. BH-FDR across 8-market panel per horizon. | block = 20; n_boot = 2000; n_perm = 2000; NW lag = 20; primary horizon = 20 d; α = 0.05 |
+| H2 | The Kruskal-Wallis H-statistic from H1 tracks Retail Participation Share monotonically. | **`raw_labels`** via H1's H_stat (canonical); `filtered_labels` via H1's H_stat_filtered in §9.6 | Spearman ρ(H_stat, RPS) on the 8-market panel + bootstrap 95 % CI + RPS ± 0.05 measurement-noise Monte Carlo sensitivity + stratified subpanels. | n = 8; n_boot = 10 000; n_MC = 10 000; RPS noise SD = 0.05; pre-reg reference bars ρ > 0.5 AND p < 0.10 |
+| H3 | p(Transitional) scales with retail participation. | **`filtered_labels`** (canonical); `raw_labels` reported in §9.6 | Circular-block bootstrap 95 % CI on p_tra per market + continuous Spearman ρ(p_tra, RPS) + BH-FDR across 8-market panel on threshold-side bootstrap p. Categorical bands (Frontier > 0.55 / Developed < 0.50 / diff > 10 pp) for reference only. | block = 20; n_boot = 2000; pre-reg PASS / REJECT thresholds Frontier 0.45 / Developed 0.60 |
+| H4 | The filtered regime sequence is temporally structured beyond chance. | **`filtered_labels`** (intrinsic — H4 tests the filtered sequence) | Block-permutation shuffle at block ∈ {5, 10, 20} + BH-FDR across 8-market panel per block. | n_perm = 2000 per block; pre-reg threshold p < 0.05 (reported alongside refined block variants) |
+| H5 | p(Transitional) is robust across hysteresis configurations {A-current, B-looser, C-tighter}. | **`filtered_labels`** for all three configurations (test sweeps the filter parameters) | Joint circular-block bootstrap with shared resample indices → 95 % CI on spread + P(spread > 5 pp) + per-config p_tra CI. Pre-registered dead-zone rule. | block = 20; n_boot = 2000; configs A = (0.60, 0.35, 8), B = (0.50, 0.30, 6), C = (0.70, 0.40, 10); rule PASS < 5 pp / REJECT > 7 pp / [5, 7] dead zone |
 
 Features, GMM, and hysteresis defaults are unchanged from v7.1
-production (WPE m=3/τ=1/win=22; SampEn win=60; rolling SPE_Z win=504;
-GMM k=3 full-covariance; δ_hard=0.60, δ_soft=0.35, t_persist=8). The
-refinement is in the *statistical layer* above the classifier, not in
-the classifier itself.
+production:
+
+| Component | Parameters |
+|-----------|------------|
+| Weighted Permutation Entropy (WPE) | m = 3, τ = 1, rolling window = 22 bars |
+| Price Sample Entropy (SampEn) | rolling window = 60 bars |
+| Standardised SampEn (SPE_Z) | rolling Z-score, window = 504 bars (no global) |
+| Plane-1 features | `[WPE, SPE_Z]`, raw scale, no transformer |
+| Gaussian Mixture Model | k = 3, full covariance, n_init = 10, max_iter = 500, random_state = 42 |
+| Hysteresis post-filter (production default) | δ_hard = 0.60, δ_soft = 0.35, t_persist = 8 (calibrated on VNINDEX post-2020 to ~7.8 flips/yr from raw ~28/yr) |
+
+The refinement reported in this paper is in the *statistical layer*
+above the classifier, not in the classifier itself.
 
 ---
 
 ## 5. H1 — Paradox direction (pairwise, CI-based)
+
+**Label source.** Canonical numbers below come from `raw_labels` (GMM
+argmax with no post-filter). The hysteresis-filtered counterpart of
+the H1 panel (KW H, Cliff's δ, formal verdict) is in §9.6 — direction
+labels and CI-based verdicts are invariant; magnitude moves both ways.
 
 ### 5.1 Primary horizon (20 d), full panel
 
@@ -177,6 +215,12 @@ around zero. Source:
 
 ## 6. H2 — Microstructure gradient (RPS)
 
+**Label source.** Canonical numbers below come from `raw_labels`
+(downstream of H1's `H_stat`, which uses raw GMM argmax). The
+hysteresis-filtered counterpart (ρ on `H_stat_filtered`) is reported
+in §9.6 — ρ rises 0.754 → 0.814 under filtering, microstructure-
+gradient claim sharpens.
+
 **Result.** Spearman ρ(KW H-stat, RPS) = **0.754**, p = 0.031, n = 8.
 Circular-block bootstrap 95 % CI [0.09, 0.99]. Under RPS ± 0.05
 Gaussian measurement-noise Monte Carlo (10k trials) P(ρ > 0.5) =
@@ -213,6 +257,13 @@ Source: `h_rps_correlation` block in
 
 ## 7. H3, H4, H5 — Transitional Dominance and its conditions
 
+**Label source.** All three tests in this section consume
+`filtered_labels` (post-hysteresis). The motivation is in §4: H3, H4,
+H5 are about the temporal sequence of regime occupancy, and that
+question is meaningful only after single-bar flicker is removed. H3's
+raw counterpart (`p_tra_raw` per market) is reported in §9.6 — p_tra
+is stable to within 0.05 on 7 of 8 markets.
+
 ### 7.1 Flip-rate reduction and regime composition
 
 | Market  | raw → filt flips/yr | reduction | p(Det / Tra / Sto)  | T_tra (days) |
@@ -235,6 +286,9 @@ Source:
 [hysteresis_summary_v2.csv](../validation/results_v2/hysteresis_summary_v2.csv).
 
 ### 7.2 H3 — p_tra with CI and continuous companion
+
+Labels: **`filtered_labels`** (canonical). Block-bootstrap CI
+parameters: block = 20, n_boot = 2000.
 
 | Market  | RPS  | p_tra  | 95 % CI            | Distance to nearest pre-reg bound | BH-FDR q |
 |---------|------|--------|--------------------|-----------------------------------|----------|
@@ -272,6 +326,10 @@ Sources:
 
 ### 7.3 H4 — temporal structure (block-permutation)
 
+Labels: **`filtered_labels`** (intrinsic — H4 tests the filtered
+sequence directly). Block-permutation parameters: block ∈ {5, 10, 20},
+n_perm = 2000 per block, BH-FDR across the 8-market panel per block.
+
 Observed filtered-flips-per-year per market remain far below every null
 distribution at block sizes {5, 10, 20}. Every p-value rounds to 0.000
 at n_perm = 2000; BH-FDR q = 0.000 across all 8 markets at every block.
@@ -294,6 +352,14 @@ Source:
 [h4_block_permutation.csv](../validation/results_v2/h4_block_permutation.csv).
 
 ### 7.4 H5 — hysteresis robustness (joint bootstrap, pre-reg rule)
+
+Labels: **`filtered_labels`** for all three configurations (the test
+sweeps the filter parameters themselves). Configurations:
+A-current (δ_hard, δ_soft, t_persist) = (0.60, 0.35, 8) — production
+default; B-looser = (0.50, 0.30, 6); C-tighter = (0.70, 0.40, 10).
+Joint circular-block bootstrap parameters: block = 20, n_boot = 2000,
+shared resample indices across configurations so the spread CI carries
+the per-bar correlation across configs.
 
 Pre-registered falsification rule: PASS iff spread < 5 pp; REJECT iff
 spread > 7 pp; the [5, 7] pp interval is an unclassified dead zone.
