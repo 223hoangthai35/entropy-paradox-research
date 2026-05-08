@@ -1,0 +1,2292 @@
+{
+  "spec": "Phase 2 revision addenda \u2014 MULTI-SCENARIO RPS panel comparison",
+  "panel_n": 8,
+  "scenarios": {
+    "A_original": {
+      "panel_label": "A_original",
+      "panel_values": {
+        "VNINDEX": 0.9,
+        "PSEI": 0.68,
+        "KOSPI": 0.7,
+        "NIFTY": 0.4,
+        "SPX": 0.22,
+        "FTSE": 0.18,
+        "NIKKEI": 0.18,
+        "BTC": 0.55
+      },
+      "headline_h2": {
+        "rho_raw": 0.7545045450053531,
+        "p_raw": 0.030512759033309068,
+        "rho_filt": 0.814385858101016,
+        "p_filt": 0.013844257377974144
+      },
+      "loo_sensitivity_raw": [
+        {
+          "dropped_market": "VNINDEX",
+          "n": 7,
+          "rho": 0.6306562238868914,
+          "p_value": 0.12888769568495795
+        },
+        {
+          "dropped_market": "PSEI",
+          "n": 7,
+          "rho": 0.7387687194103585,
+          "p_value": 0.057858496895692765
+        },
+        {
+          "dropped_market": "KOSPI",
+          "n": 7,
+          "rho": 0.8468812149338255,
+          "p_value": 0.016197127467871626
+        },
+        {
+          "dropped_market": "NIFTY",
+          "n": 7,
+          "rho": 0.7748062179181807,
+          "p_value": 0.04076946252042036
+        },
+        {
+          "dropped_market": "SPX",
+          "n": 7,
+          "rho": 0.7387687194103585,
+          "p_value": 0.057858496895692765
+        },
+        {
+          "dropped_market": "FTSE",
+          "n": 7,
+          "rho": 0.7142857142857144,
+          "p_value": 0.07134356146753766
+        },
+        {
+          "dropped_market": "NIKKEI",
+          "n": 7,
+          "rho": 0.7142857142857144,
+          "p_value": 0.07134356146753766
+        },
+        {
+          "dropped_market": "BTC",
+          "n": 7,
+          "rho": 0.7748062179181807,
+          "p_value": 0.04076946252042036
+        }
+      ],
+      "loo_sensitivity_filtered": [
+        {
+          "dropped_market": "VNINDEX",
+          "n": 7,
+          "rho": 0.7207499701564473,
+          "p_value": 0.06763499473028162
+        },
+        {
+          "dropped_market": "PSEI",
+          "n": 7,
+          "rho": 0.8288624656799143,
+          "p_value": 0.021173515581004283
+        },
+        {
+          "dropped_market": "KOSPI",
+          "n": 7,
+          "rho": 0.9369749612033814,
+          "p_value": 0.0018510301964418927
+        },
+        {
+          "dropped_market": "NIFTY",
+          "n": 7,
+          "rho": 0.8288624656799143,
+          "p_value": 0.021173515581004283
+        },
+        {
+          "dropped_market": "SPX",
+          "n": 7,
+          "rho": 0.7748062179181807,
+          "p_value": 0.04076946252042036
+        },
+        {
+          "dropped_market": "FTSE",
+          "n": 7,
+          "rho": 0.7500000000000002,
+          "p_value": 0.05218140045705778
+        },
+        {
+          "dropped_market": "NIKKEI",
+          "n": 7,
+          "rho": 0.7857142857142859,
+          "p_value": 0.03623846267982715
+        },
+        {
+          "dropped_market": "BTC",
+          "n": 7,
+          "rho": 0.8288624656799143,
+          "p_value": 0.021173515581004283
+        }
+      ],
+      "mc_noise_sensitivity_raw": {
+        "0.05": {
+          "noise_sd": 0.05,
+          "n_trials": 10000,
+          "rho_mean": 0.7957285714285716,
+          "rho_std": 0.04921448091449545,
+          "rho_p05": 0.7380952380952381,
+          "rho_p50": 0.8095238095238096,
+          "rho_p95": 0.880952380952381,
+          "rho_min": 0.5714285714285715,
+          "rho_max": 0.9285714285714287,
+          "frac_rho_gt_0.50": 1.0
+        },
+        "0.10": {
+          "noise_sd": 0.1,
+          "n_trials": 10000,
+          "rho_mean": 0.7763631204024947,
+          "rho_std": 0.09067765273141781,
+          "rho_p05": 0.6190476190476191,
+          "rho_p50": 0.7857142857142858,
+          "rho_p95": 0.9047619047619048,
+          "rho_min": 0.30952380952380953,
+          "rho_max": 0.9761904761904763,
+          "frac_rho_gt_0.50": 0.9932
+        },
+        "0.15": {
+          "noise_sd": 0.15,
+          "n_trials": 10000,
+          "rho_mean": 0.7235507109333169,
+          "rho_std": 0.13465126455123347,
+          "rho_p05": 0.4761904761904762,
+          "rho_p50": 0.7380952380952381,
+          "rho_p95": 0.9047619047619048,
+          "rho_min": 0.023809523809523815,
+          "rho_max": 1.0,
+          "frac_rho_gt_0.50": 0.9372
+        }
+      },
+      "mc_noise_sensitivity_filtered": {
+        "0.05": {
+          "noise_sd": 0.05,
+          "n_trials": 10000,
+          "rho_mean": 0.8371357142857145,
+          "rho_std": 0.04996277669768938,
+          "rho_p05": 0.7619047619047621,
+          "rho_p50": 0.8333333333333335,
+          "rho_p95": 0.9285714285714287,
+          "rho_min": 0.6666666666666669,
+          "rho_max": 0.9761904761904763,
+          "frac_rho_gt_0.50": 1.0
+        },
+        "0.10": {
+          "noise_sd": 0.1,
+          "n_trials": 10000,
+          "rho_mean": 0.8133829831296862,
+          "rho_std": 0.08144069411832505,
+          "rho_p05": 0.6666666666666669,
+          "rho_p50": 0.8333333333333335,
+          "rho_p95": 0.9285714285714287,
+          "rho_min": 0.261904761904762,
+          "rho_max": 1.0,
+          "frac_rho_gt_0.50": 0.9988
+        },
+        "0.15": {
+          "noise_sd": 0.15,
+          "n_trials": 10000,
+          "rho_mean": 0.7618428629937513,
+          "rho_std": 0.12217829281869406,
+          "rho_p05": 0.5476190476190477,
+          "rho_p50": 0.7857142857142858,
+          "rho_p95": 0.9285714285714287,
+          "rho_min": 0.04761904761904763,
+          "rho_max": 1.0,
+          "frac_rho_gt_0.50": 0.9715
+        }
+      },
+      "feature_comparison_spearman": {
+        "Entropy_raw": {
+          "model": "Entropy",
+          "label_source": "raw",
+          "rho": 0.27545404024004955,
+          "p_value": 0.5090540726550732,
+          "n": 8
+        },
+        "Entropy_filtered": {
+          "model": "Entropy",
+          "label_source": "filtered",
+          "rho": 0.29940656547831473,
+          "p_value": 0.4712605287015584,
+          "n": 8
+        },
+        "SimpleVol_raw": {
+          "model": "SimpleVol",
+          "label_source": "raw",
+          "rho": 0.28743030285918214,
+          "p_value": 0.49001548522203403,
+          "n": 8
+        },
+        "SimpleVol_filtered": {
+          "model": "SimpleVol",
+          "label_source": "filtered",
+          "rho": 0.26347777762091695,
+          "p_value": 0.528366470576909,
+          "n": 8
+        },
+        "Combined_raw": {
+          "model": "Combined",
+          "label_source": "raw",
+          "rho": -0.023952525238265177,
+          "p_value": 0.9551061898789129,
+          "n": 8
+        },
+        "Combined_filtered": {
+          "model": "Combined",
+          "label_source": "filtered",
+          "rho": 0.3353353533357125,
+          "p_value": 0.4167915909642739,
+          "n": 8
+        }
+      }
+    },
+    "B_full_correction": {
+      "panel_label": "B_full_correction",
+      "panel_values": {
+        "VNINDEX": 0.85,
+        "PSEI": 0.22,
+        "KOSPI": 0.45,
+        "NIFTY": 0.39,
+        "SPX": 0.3,
+        "FTSE": 0.18,
+        "NIKKEI": 0.2,
+        "BTC": 0.75
+      },
+      "headline_h2": {
+        "rho_raw": 0.5476190476190477,
+        "p_raw": 0.16002564253889653,
+        "rho_filt": 0.6904761904761906,
+        "p_filt": 0.057990318164572716
+      },
+      "loo_sensitivity_raw": [
+        {
+          "dropped_market": "VNINDEX",
+          "n": 7,
+          "rho": 0.3214285714285715,
+          "p_value": 0.4820720382996778
+        },
+        {
+          "dropped_market": "PSEI",
+          "n": 7,
+          "rho": 0.7500000000000002,
+          "p_value": 0.05218140045705778
+        },
+        {
+          "dropped_market": "KOSPI",
+          "n": 7,
+          "rho": 0.5357142857142858,
+          "p_value": 0.21521745567801298
+        },
+        {
+          "dropped_market": "NIFTY",
+          "n": 7,
+          "rho": 0.5714285714285715,
+          "p_value": 0.18020198891152767
+        },
+        {
+          "dropped_market": "SPX",
+          "n": 7,
+          "rho": 0.642857142857143,
+          "p_value": 0.11939237342741109
+        },
+        {
+          "dropped_market": "FTSE",
+          "n": 7,
+          "rho": 0.4642857142857144,
+          "p_value": 0.29393410760025196
+        },
+        {
+          "dropped_market": "NIKKEI",
+          "n": 7,
+          "rho": 0.4642857142857144,
+          "p_value": 0.29393410760025196
+        },
+        {
+          "dropped_market": "BTC",
+          "n": 7,
+          "rho": 0.5357142857142858,
+          "p_value": 0.21521745567801298
+        }
+      ],
+      "loo_sensitivity_filtered": [
+        {
+          "dropped_market": "VNINDEX",
+          "n": 7,
+          "rho": 0.5357142857142858,
+          "p_value": 0.21521745567801298
+        },
+        {
+          "dropped_market": "PSEI",
+          "n": 7,
+          "rho": 0.9285714285714288,
+          "p_value": 0.00251947240379469
+        },
+        {
+          "dropped_market": "KOSPI",
+          "n": 7,
+          "rho": 0.7142857142857144,
+          "p_value": 0.07134356146753766
+        },
+        {
+          "dropped_market": "NIFTY",
+          "n": 7,
+          "rho": 0.7142857142857144,
+          "p_value": 0.07134356146753766
+        },
+        {
+          "dropped_market": "SPX",
+          "n": 7,
+          "rho": 0.7500000000000002,
+          "p_value": 0.05218140045705778
+        },
+        {
+          "dropped_market": "FTSE",
+          "n": 7,
+          "rho": 0.5357142857142858,
+          "p_value": 0.21521745567801298
+        },
+        {
+          "dropped_market": "NIKKEI",
+          "n": 7,
+          "rho": 0.6071428571428572,
+          "p_value": 0.14823116148116164
+        },
+        {
+          "dropped_market": "BTC",
+          "n": 7,
+          "rho": 0.6785714285714287,
+          "p_value": 0.09375025395983135
+        }
+      ],
+      "mc_noise_sensitivity_raw": {
+        "0.05": {
+          "noise_sd": 0.05,
+          "n_trials": 10000,
+          "rho_mean": 0.4948547619047619,
+          "rho_std": 0.11980031690921275,
+          "rho_p05": 0.30952380952380953,
+          "rho_p50": 0.4761904761904762,
+          "rho_p95": 0.7142857142857144,
+          "rho_min": 0.09523809523809526,
+          "rho_max": 0.8333333333333335,
+          "frac_rho_gt_0.50": 0.485
+        },
+        "0.10": {
+          "noise_sd": 0.1,
+          "n_trials": 10000,
+          "rho_mean": 0.4740551155918714,
+          "rho_std": 0.17800333620873318,
+          "rho_p05": 0.1666666666666667,
+          "rho_p50": 0.4523809523809524,
+          "rho_p95": 0.7619047619047621,
+          "rho_min": -0.14285714285714288,
+          "rho_max": 0.9285714285714287,
+          "frac_rho_gt_0.50": 0.4345
+        },
+        "0.15": {
+          "noise_sd": 0.15,
+          "n_trials": 10000,
+          "rho_mean": 0.44266682695673865,
+          "rho_std": 0.21068753098909682,
+          "rho_p05": 0.09523809523809526,
+          "rho_p50": 0.4285714285714286,
+          "rho_p95": 0.7857142857142858,
+          "rho_min": -0.30952380952380953,
+          "rho_max": 0.9285714285714287,
+          "frac_rho_gt_0.50": 0.405
+        }
+      },
+      "mc_noise_sensitivity_filtered": {
+        "0.05": {
+          "noise_sd": 0.05,
+          "n_trials": 10000,
+          "rho_mean": 0.6037285714285715,
+          "rho_std": 0.11652623147104084,
+          "rho_p05": 0.4047619047619048,
+          "rho_p50": 0.6190476190476191,
+          "rho_p95": 0.8095238095238096,
+          "rho_min": 0.2380952380952381,
+          "rho_max": 0.9047619047619048,
+          "frac_rho_gt_0.50": 0.7977
+        },
+        "0.10": {
+          "noise_sd": 0.1,
+          "n_trials": 10000,
+          "rho_mean": 0.5732093667434355,
+          "rho_std": 0.16321052921972115,
+          "rho_p05": 0.30952380952380953,
+          "rho_p50": 0.5714285714285715,
+          "rho_p95": 0.8333333333333335,
+          "rho_min": 0.04761904761904763,
+          "rho_max": 0.9761904761904763,
+          "frac_rho_gt_0.50": 0.6625
+        },
+        "0.15": {
+          "noise_sd": 0.15,
+          "n_trials": 10000,
+          "rho_mean": 0.539279766988567,
+          "rho_std": 0.19178010919941074,
+          "rho_p05": 0.21550837650145305,
+          "rho_p50": 0.5476190476190477,
+          "rho_p95": 0.8333333333333335,
+          "rho_min": -0.28571428571428575,
+          "rho_max": 0.9761904761904763,
+          "frac_rho_gt_0.50": 0.5796
+        }
+      },
+      "feature_comparison_spearman": {
+        "Entropy_raw": {
+          "model": "Entropy",
+          "label_source": "raw",
+          "rho": 0.261904761904762,
+          "p_value": 0.530922861565801,
+          "n": 8
+        },
+        "Entropy_filtered": {
+          "model": "Entropy",
+          "label_source": "filtered",
+          "rho": 0.30952380952380953,
+          "p_value": 0.4556448907375822,
+          "n": 8
+        },
+        "SimpleVol_raw": {
+          "model": "SimpleVol",
+          "label_source": "raw",
+          "rho": 0.5714285714285715,
+          "p_value": 0.13895995716070672,
+          "n": 8
+        },
+        "SimpleVol_filtered": {
+          "model": "SimpleVol",
+          "label_source": "filtered",
+          "rho": 0.5000000000000001,
+          "p_value": 0.20703124999999994,
+          "n": 8
+        },
+        "Combined_raw": {
+          "model": "Combined",
+          "label_source": "raw",
+          "rho": 0.1666666666666667,
+          "p_value": 0.693238811728395,
+          "n": 8
+        },
+        "Combined_filtered": {
+          "model": "Combined",
+          "label_source": "filtered",
+          "rho": 0.4761904761904762,
+          "p_value": 0.23293553465009792,
+          "n": 8
+        }
+      }
+    },
+    "C_only_KOSPI_corrected": {
+      "panel_label": "C_only_KOSPI_corrected",
+      "panel_values": {
+        "VNINDEX": 0.9,
+        "PSEI": 0.68,
+        "KOSPI": 0.45,
+        "NIFTY": 0.4,
+        "SPX": 0.22,
+        "FTSE": 0.18,
+        "NIKKEI": 0.18,
+        "BTC": 0.55
+      },
+      "headline_h2": {
+        "rho_raw": 0.8503146459584139,
+        "p_raw": 0.007471414639953455,
+        "rho_filt": 0.934148484292342,
+        "p_filt": 0.0006791057452310972
+      },
+      "loo_sensitivity_raw": [
+        {
+          "dropped_market": "VNINDEX",
+          "n": 7,
+          "rho": 0.7748062179181807,
+          "p_value": 0.04076946252042036
+        },
+        {
+          "dropped_market": "PSEI",
+          "n": 7,
+          "rho": 0.7748062179181807,
+          "p_value": 0.04076946252042036
+        },
+        {
+          "dropped_market": "KOSPI",
+          "n": 7,
+          "rho": 0.8468812149338255,
+          "p_value": 0.016197127467871626
+        },
+        {
+          "dropped_market": "NIFTY",
+          "n": 7,
+          "rho": 0.8829187134416479,
+          "p_value": 0.008450342381896618
+        },
+        {
+          "dropped_market": "SPX",
+          "n": 7,
+          "rho": 0.8829187134416479,
+          "p_value": 0.008450342381896618
+        },
+        {
+          "dropped_market": "FTSE",
+          "n": 7,
+          "rho": 0.8571428571428573,
+          "p_value": 0.013697326615325618
+        },
+        {
+          "dropped_market": "NIKKEI",
+          "n": 7,
+          "rho": 0.8571428571428573,
+          "p_value": 0.013697326615325618
+        },
+        {
+          "dropped_market": "BTC",
+          "n": 7,
+          "rho": 0.8468812149338255,
+          "p_value": 0.016197127467871626
+        }
+      ],
+      "loo_sensitivity_filtered": [
+        {
+          "dropped_market": "VNINDEX",
+          "n": 7,
+          "rho": 0.900937462695559,
+          "p_value": 0.005620586715345018
+        },
+        {
+          "dropped_market": "PSEI",
+          "n": 7,
+          "rho": 0.900937462695559,
+          "p_value": 0.005620586715345018
+        },
+        {
+          "dropped_market": "KOSPI",
+          "n": 7,
+          "rho": 0.9369749612033814,
+          "p_value": 0.0018510301964418927
+        },
+        {
+          "dropped_market": "NIFTY",
+          "n": 7,
+          "rho": 0.9369749612033814,
+          "p_value": 0.0018510301964418927
+        },
+        {
+          "dropped_market": "SPX",
+          "n": 7,
+          "rho": 0.9549937104572925,
+          "p_value": 0.0008055353363017573
+        },
+        {
+          "dropped_market": "FTSE",
+          "n": 7,
+          "rho": 0.9285714285714288,
+          "p_value": 0.00251947240379469
+        },
+        {
+          "dropped_market": "NIKKEI",
+          "n": 7,
+          "rho": 0.9642857142857145,
+          "p_value": 0.00045414916919416935
+        },
+        {
+          "dropped_market": "BTC",
+          "n": 7,
+          "rho": 0.900937462695559,
+          "p_value": 0.005620586715345018
+        }
+      ],
+      "mc_noise_sensitivity_raw": {
+        "0.05": {
+          "noise_sd": 0.05,
+          "n_trials": 10000,
+          "rho_mean": 0.8720857142857145,
+          "rho_std": 0.0401358407713328,
+          "rho_p05": 0.8333333333333335,
+          "rho_p50": 0.8571428571428572,
+          "rho_p95": 0.9523809523809524,
+          "rho_min": 0.6190476190476191,
+          "rho_max": 1.0,
+          "frac_rho_gt_0.50": 1.0
+        },
+        "0.10": {
+          "noise_sd": 0.1,
+          "n_trials": 10000,
+          "rho_mean": 0.8447299872711618,
+          "rho_std": 0.08744112637714188,
+          "rho_p05": 0.6666666666666669,
+          "rho_p50": 0.8571428571428572,
+          "rho_p95": 0.9523809523809524,
+          "rho_min": 0.28571428571428575,
+          "rho_max": 1.0,
+          "frac_rho_gt_0.50": 0.9982
+        },
+        "0.15": {
+          "noise_sd": 0.15,
+          "n_trials": 10000,
+          "rho_mean": 0.7781394665460623,
+          "rho_std": 0.13617213040164836,
+          "rho_p05": 0.523809523809524,
+          "rho_p50": 0.8095238095238096,
+          "rho_p95": 0.9523809523809524,
+          "rho_min": -0.04761904761904763,
+          "rho_max": 1.0,
+          "frac_rho_gt_0.50": 0.9629
+        }
+      },
+      "mc_noise_sensitivity_filtered": {
+        "0.05": {
+          "noise_sd": 0.05,
+          "n_trials": 10000,
+          "rho_mean": 0.929459523809524,
+          "rho_std": 0.0375327310348523,
+          "rho_p05": 0.880952380952381,
+          "rho_p50": 0.9285714285714287,
+          "rho_p95": 0.9761904761904763,
+          "rho_min": 0.7857142857142858,
+          "rho_max": 1.0,
+          "frac_rho_gt_0.50": 1.0
+        },
+        "0.10": {
+          "noise_sd": 0.1,
+          "n_trials": 10000,
+          "rho_mean": 0.8886641214124958,
+          "rho_std": 0.0722676850046236,
+          "rho_p05": 0.7380952380952381,
+          "rho_p50": 0.9047619047619048,
+          "rho_p95": 0.9761904761904763,
+          "rho_min": 0.4047619047619048,
+          "rho_max": 1.0,
+          "frac_rho_gt_0.50": 0.9995
+        },
+        "0.15": {
+          "noise_sd": 0.15,
+          "n_trials": 10000,
+          "rho_mean": 0.820301672897462,
+          "rho_std": 0.11948678061924711,
+          "rho_p05": 0.5952380952380953,
+          "rho_p50": 0.8503146459584139,
+          "rho_p95": 0.9761904761904763,
+          "rho_min": 0.0,
+          "rho_max": 1.0,
+          "frac_rho_gt_0.50": 0.9834
+        }
+      },
+      "feature_comparison_spearman": {
+        "Entropy_raw": {
+          "model": "Entropy",
+          "label_source": "raw",
+          "rho": 0.34731161595484505,
+          "p_value": 0.39926387420328163,
+          "n": 8
+        },
+        "Entropy_filtered": {
+          "model": "Entropy",
+          "label_source": "filtered",
+          "rho": 0.4191691916696407,
+          "p_value": 0.30126663266334425,
+          "n": 8
+        },
+        "SimpleVol_raw": {
+          "model": "SimpleVol",
+          "label_source": "raw",
+          "rho": 0.4311454542887732,
+          "p_value": 0.28619573480536037,
+          "n": 8
+        },
+        "SimpleVol_filtered": {
+          "model": "SimpleVol",
+          "label_source": "filtered",
+          "rho": 0.45509797952703834,
+          "p_value": 0.25719208545877237,
+          "n": 8
+        },
+        "Combined_raw": {
+          "model": "Combined",
+          "label_source": "raw",
+          "rho": 0.14371515142959107,
+          "p_value": 0.7342214747617433,
+          "n": 8
+        },
+        "Combined_filtered": {
+          "model": "Combined",
+          "label_source": "filtered",
+          "rho": 0.5030030300035688,
+          "p_value": 0.203876682008432,
+          "n": 8
+        }
+      }
+    },
+    "D_KOSPI_SPX_corrected": {
+      "panel_label": "D_KOSPI_SPX_corrected",
+      "panel_values": {
+        "VNINDEX": 0.9,
+        "PSEI": 0.68,
+        "KOSPI": 0.45,
+        "NIFTY": 0.4,
+        "SPX": 0.3,
+        "FTSE": 0.18,
+        "NIKKEI": 0.18,
+        "BTC": 0.55
+      },
+      "headline_h2": {
+        "rho_raw": 0.8503146459584139,
+        "p_raw": 0.007471414639953455,
+        "rho_filt": 0.934148484292342,
+        "p_filt": 0.0006791057452310972
+      },
+      "loo_sensitivity_raw": [
+        {
+          "dropped_market": "VNINDEX",
+          "n": 7,
+          "rho": 0.7748062179181807,
+          "p_value": 0.04076946252042036
+        },
+        {
+          "dropped_market": "PSEI",
+          "n": 7,
+          "rho": 0.7748062179181807,
+          "p_value": 0.04076946252042036
+        },
+        {
+          "dropped_market": "KOSPI",
+          "n": 7,
+          "rho": 0.8468812149338255,
+          "p_value": 0.016197127467871626
+        },
+        {
+          "dropped_market": "NIFTY",
+          "n": 7,
+          "rho": 0.8829187134416479,
+          "p_value": 0.008450342381896618
+        },
+        {
+          "dropped_market": "SPX",
+          "n": 7,
+          "rho": 0.8829187134416479,
+          "p_value": 0.008450342381896618
+        },
+        {
+          "dropped_market": "FTSE",
+          "n": 7,
+          "rho": 0.8571428571428573,
+          "p_value": 0.013697326615325618
+        },
+        {
+          "dropped_market": "NIKKEI",
+          "n": 7,
+          "rho": 0.8571428571428573,
+          "p_value": 0.013697326615325618
+        },
+        {
+          "dropped_market": "BTC",
+          "n": 7,
+          "rho": 0.8468812149338255,
+          "p_value": 0.016197127467871626
+        }
+      ],
+      "loo_sensitivity_filtered": [
+        {
+          "dropped_market": "VNINDEX",
+          "n": 7,
+          "rho": 0.900937462695559,
+          "p_value": 0.005620586715345018
+        },
+        {
+          "dropped_market": "PSEI",
+          "n": 7,
+          "rho": 0.900937462695559,
+          "p_value": 0.005620586715345018
+        },
+        {
+          "dropped_market": "KOSPI",
+          "n": 7,
+          "rho": 0.9369749612033814,
+          "p_value": 0.0018510301964418927
+        },
+        {
+          "dropped_market": "NIFTY",
+          "n": 7,
+          "rho": 0.9369749612033814,
+          "p_value": 0.0018510301964418927
+        },
+        {
+          "dropped_market": "SPX",
+          "n": 7,
+          "rho": 0.9549937104572925,
+          "p_value": 0.0008055353363017573
+        },
+        {
+          "dropped_market": "FTSE",
+          "n": 7,
+          "rho": 0.9285714285714288,
+          "p_value": 0.00251947240379469
+        },
+        {
+          "dropped_market": "NIKKEI",
+          "n": 7,
+          "rho": 0.9642857142857145,
+          "p_value": 0.00045414916919416935
+        },
+        {
+          "dropped_market": "BTC",
+          "n": 7,
+          "rho": 0.900937462695559,
+          "p_value": 0.005620586715345018
+        }
+      ],
+      "mc_noise_sensitivity_raw": {
+        "0.05": {
+          "noise_sd": 0.05,
+          "n_trials": 10000,
+          "rho_mean": 0.8452904761904764,
+          "rho_std": 0.048247083380754355,
+          "rho_p05": 0.7380952380952381,
+          "rho_p50": 0.8571428571428572,
+          "rho_p95": 0.9047619047619048,
+          "rho_min": 0.5476190476190477,
+          "rho_max": 0.9761904761904763,
+          "frac_rho_gt_0.50": 1.0
+        },
+        "0.10": {
+          "noise_sd": 0.1,
+          "n_trials": 10000,
+          "rho_mean": 0.8043691192053924,
+          "rho_std": 0.10496730049639694,
+          "rho_p05": 0.5952380952380953,
+          "rho_p50": 0.8333333333333335,
+          "rho_p95": 0.9285714285714287,
+          "rho_min": 0.261904761904762,
+          "rho_max": 1.0,
+          "frac_rho_gt_0.50": 0.993
+        },
+        "0.15": {
+          "noise_sd": 0.15,
+          "n_trials": 10000,
+          "rho_mean": 0.7371545418355245,
+          "rho_std": 0.1532245828665839,
+          "rho_p05": 0.4523809523809524,
+          "rho_p50": 0.7619047619047621,
+          "rho_p95": 0.9285714285714287,
+          "rho_min": -0.07142857142857144,
+          "rho_max": 1.0,
+          "frac_rho_gt_0.50": 0.9285
+        }
+      },
+      "mc_noise_sensitivity_filtered": {
+        "0.05": {
+          "noise_sd": 0.05,
+          "n_trials": 10000,
+          "rho_mean": 0.9229880952380954,
+          "rho_std": 0.03866371563440344,
+          "rho_p05": 0.8571428571428572,
+          "rho_p50": 0.9285714285714287,
+          "rho_p95": 0.9761904761904763,
+          "rho_min": 0.6428571428571429,
+          "rho_max": 1.0,
+          "frac_rho_gt_0.50": 1.0
+        },
+        "0.10": {
+          "noise_sd": 0.1,
+          "n_trials": 10000,
+          "rho_mean": 0.8712081582529175,
+          "rho_std": 0.08206604910449715,
+          "rho_p05": 0.7142857142857144,
+          "rho_p50": 0.880952380952381,
+          "rho_p95": 0.9761904761904763,
+          "rho_min": 0.4047619047619048,
+          "rho_max": 1.0,
+          "frac_rho_gt_0.50": 0.9988
+        },
+        "0.15": {
+          "noise_sd": 0.15,
+          "n_trials": 10000,
+          "rho_mean": 0.7982820433686529,
+          "rho_std": 0.13122934507934148,
+          "rho_p05": 0.5476190476190477,
+          "rho_p50": 0.8333333333333335,
+          "rho_p95": 0.9523809523809524,
+          "rho_min": 0.0,
+          "rho_max": 1.0,
+          "frac_rho_gt_0.50": 0.9702
+        }
+      },
+      "feature_comparison_spearman": {
+        "Entropy_raw": {
+          "model": "Entropy",
+          "label_source": "raw",
+          "rho": 0.34731161595484505,
+          "p_value": 0.39926387420328163,
+          "n": 8
+        },
+        "Entropy_filtered": {
+          "model": "Entropy",
+          "label_source": "filtered",
+          "rho": 0.4191691916696407,
+          "p_value": 0.30126663266334425,
+          "n": 8
+        },
+        "SimpleVol_raw": {
+          "model": "SimpleVol",
+          "label_source": "raw",
+          "rho": 0.4311454542887732,
+          "p_value": 0.28619573480536037,
+          "n": 8
+        },
+        "SimpleVol_filtered": {
+          "model": "SimpleVol",
+          "label_source": "filtered",
+          "rho": 0.45509797952703834,
+          "p_value": 0.25719208545877237,
+          "n": 8
+        },
+        "Combined_raw": {
+          "model": "Combined",
+          "label_source": "raw",
+          "rho": 0.14371515142959107,
+          "p_value": 0.7342214747617433,
+          "n": 8
+        },
+        "Combined_filtered": {
+          "model": "Combined",
+          "label_source": "filtered",
+          "rho": 0.5030030300035688,
+          "p_value": 0.203876682008432,
+          "n": 8
+        }
+      }
+    },
+    "E_KOSPI_NIFTY_SPX_corrected": {
+      "panel_label": "E_KOSPI_NIFTY_SPX_corrected",
+      "panel_values": {
+        "VNINDEX": 0.9,
+        "PSEI": 0.68,
+        "KOSPI": 0.45,
+        "NIFTY": 0.39,
+        "SPX": 0.3,
+        "FTSE": 0.18,
+        "NIKKEI": 0.18,
+        "BTC": 0.55
+      },
+      "headline_h2": {
+        "rho_raw": 0.8503146459584139,
+        "p_raw": 0.007471414639953455,
+        "rho_filt": 0.934148484292342,
+        "p_filt": 0.0006791057452310972
+      },
+      "loo_sensitivity_raw": [
+        {
+          "dropped_market": "VNINDEX",
+          "n": 7,
+          "rho": 0.7748062179181807,
+          "p_value": 0.04076946252042036
+        },
+        {
+          "dropped_market": "PSEI",
+          "n": 7,
+          "rho": 0.7748062179181807,
+          "p_value": 0.04076946252042036
+        },
+        {
+          "dropped_market": "KOSPI",
+          "n": 7,
+          "rho": 0.8468812149338255,
+          "p_value": 0.016197127467871626
+        },
+        {
+          "dropped_market": "NIFTY",
+          "n": 7,
+          "rho": 0.8829187134416479,
+          "p_value": 0.008450342381896618
+        },
+        {
+          "dropped_market": "SPX",
+          "n": 7,
+          "rho": 0.8829187134416479,
+          "p_value": 0.008450342381896618
+        },
+        {
+          "dropped_market": "FTSE",
+          "n": 7,
+          "rho": 0.8571428571428573,
+          "p_value": 0.013697326615325618
+        },
+        {
+          "dropped_market": "NIKKEI",
+          "n": 7,
+          "rho": 0.8571428571428573,
+          "p_value": 0.013697326615325618
+        },
+        {
+          "dropped_market": "BTC",
+          "n": 7,
+          "rho": 0.8468812149338255,
+          "p_value": 0.016197127467871626
+        }
+      ],
+      "loo_sensitivity_filtered": [
+        {
+          "dropped_market": "VNINDEX",
+          "n": 7,
+          "rho": 0.900937462695559,
+          "p_value": 0.005620586715345018
+        },
+        {
+          "dropped_market": "PSEI",
+          "n": 7,
+          "rho": 0.900937462695559,
+          "p_value": 0.005620586715345018
+        },
+        {
+          "dropped_market": "KOSPI",
+          "n": 7,
+          "rho": 0.9369749612033814,
+          "p_value": 0.0018510301964418927
+        },
+        {
+          "dropped_market": "NIFTY",
+          "n": 7,
+          "rho": 0.9369749612033814,
+          "p_value": 0.0018510301964418927
+        },
+        {
+          "dropped_market": "SPX",
+          "n": 7,
+          "rho": 0.9549937104572925,
+          "p_value": 0.0008055353363017573
+        },
+        {
+          "dropped_market": "FTSE",
+          "n": 7,
+          "rho": 0.9285714285714288,
+          "p_value": 0.00251947240379469
+        },
+        {
+          "dropped_market": "NIKKEI",
+          "n": 7,
+          "rho": 0.9642857142857145,
+          "p_value": 0.00045414916919416935
+        },
+        {
+          "dropped_market": "BTC",
+          "n": 7,
+          "rho": 0.900937462695559,
+          "p_value": 0.005620586715345018
+        }
+      ],
+      "mc_noise_sensitivity_raw": {
+        "0.05": {
+          "noise_sd": 0.05,
+          "n_trials": 10000,
+          "rho_mean": 0.8404547619047622,
+          "rho_std": 0.05101297153868158,
+          "rho_p05": 0.7142857142857144,
+          "rho_p50": 0.8571428571428572,
+          "rho_p95": 0.9047619047619048,
+          "rho_min": 0.5476190476190477,
+          "rho_max": 0.9761904761904763,
+          "frac_rho_gt_0.50": 1.0
+        },
+        "0.10": {
+          "noise_sd": 0.1,
+          "n_trials": 10000,
+          "rho_mean": 0.7991904905762496,
+          "rho_std": 0.10694200051245022,
+          "rho_p05": 0.5952380952380953,
+          "rho_p50": 0.8333333333333335,
+          "rho_p95": 0.9285714285714287,
+          "rho_min": 0.261904761904762,
+          "rho_max": 1.0,
+          "frac_rho_gt_0.50": 0.9922
+        },
+        "0.15": {
+          "noise_sd": 0.15,
+          "n_trials": 10000,
+          "rho_mean": 0.7321554105585004,
+          "rho_std": 0.15462663115649966,
+          "rho_p05": 0.4285714285714286,
+          "rho_p50": 0.7619047619047621,
+          "rho_p95": 0.9285714285714287,
+          "rho_min": -0.04761904761904763,
+          "rho_max": 1.0,
+          "frac_rho_gt_0.50": 0.9246
+        }
+      },
+      "mc_noise_sensitivity_filtered": {
+        "0.05": {
+          "noise_sd": 0.05,
+          "n_trials": 10000,
+          "rho_mean": 0.9204738095238095,
+          "rho_std": 0.0399071550118605,
+          "rho_p05": 0.8333333333333335,
+          "rho_p50": 0.9047619047619048,
+          "rho_p95": 0.9761904761904763,
+          "rho_min": 0.6428571428571429,
+          "rho_max": 1.0,
+          "frac_rho_gt_0.50": 1.0
+        },
+        "0.10": {
+          "noise_sd": 0.1,
+          "n_trials": 10000,
+          "rho_mean": 0.8685486058431079,
+          "rho_std": 0.08350053740450326,
+          "rho_p05": 0.6904761904761906,
+          "rho_p50": 0.880952380952381,
+          "rho_p95": 0.9761904761904763,
+          "rho_min": 0.4047619047619048,
+          "rho_max": 1.0,
+          "frac_rho_gt_0.50": 0.9987
+        },
+        "0.15": {
+          "noise_sd": 0.15,
+          "n_trials": 10000,
+          "rho_mean": 0.7957060673946056,
+          "rho_std": 0.13224134234027582,
+          "rho_p05": 0.5476190476190477,
+          "rho_p50": 0.8333333333333335,
+          "rho_p95": 0.9523809523809524,
+          "rho_min": 0.0,
+          "rho_max": 1.0,
+          "frac_rho_gt_0.50": 0.9688
+        }
+      },
+      "feature_comparison_spearman": {
+        "Entropy_raw": {
+          "model": "Entropy",
+          "label_source": "raw",
+          "rho": 0.34731161595484505,
+          "p_value": 0.39926387420328163,
+          "n": 8
+        },
+        "Entropy_filtered": {
+          "model": "Entropy",
+          "label_source": "filtered",
+          "rho": 0.4191691916696407,
+          "p_value": 0.30126663266334425,
+          "n": 8
+        },
+        "SimpleVol_raw": {
+          "model": "SimpleVol",
+          "label_source": "raw",
+          "rho": 0.4311454542887732,
+          "p_value": 0.28619573480536037,
+          "n": 8
+        },
+        "SimpleVol_filtered": {
+          "model": "SimpleVol",
+          "label_source": "filtered",
+          "rho": 0.45509797952703834,
+          "p_value": 0.25719208545877237,
+          "n": 8
+        },
+        "Combined_raw": {
+          "model": "Combined",
+          "label_source": "raw",
+          "rho": 0.14371515142959107,
+          "p_value": 0.7342214747617433,
+          "n": 8
+        },
+        "Combined_filtered": {
+          "model": "Combined",
+          "label_source": "filtered",
+          "rho": 0.5030030300035688,
+          "p_value": 0.203876682008432,
+          "n": 8
+        }
+      }
+    },
+    "F_KOSPI_corrected_BTC_higher": {
+      "panel_label": "F_KOSPI_corrected_BTC_higher",
+      "panel_values": {
+        "VNINDEX": 0.9,
+        "PSEI": 0.68,
+        "KOSPI": 0.45,
+        "NIFTY": 0.4,
+        "SPX": 0.22,
+        "FTSE": 0.18,
+        "NIKKEI": 0.18,
+        "BTC": 0.75
+      },
+      "headline_h2": {
+        "rho_raw": 0.8024095954818835,
+        "p_raw": 0.01654072280067719,
+        "rho_filt": 0.9101959590540767,
+        "p_filt": 0.0016908608862384288
+      },
+      "loo_sensitivity_raw": [
+        {
+          "dropped_market": "VNINDEX",
+          "n": 7,
+          "rho": 0.702731220902536,
+          "p_value": 0.07823745383207162
+        },
+        {
+          "dropped_market": "PSEI",
+          "n": 7,
+          "rho": 0.7748062179181807,
+          "p_value": 0.04076946252042036
+        },
+        {
+          "dropped_market": "KOSPI",
+          "n": 7,
+          "rho": 0.7748062179181807,
+          "p_value": 0.04076946252042036
+        },
+        {
+          "dropped_market": "NIFTY",
+          "n": 7,
+          "rho": 0.8468812149338255,
+          "p_value": 0.016197127467871626
+        },
+        {
+          "dropped_market": "SPX",
+          "n": 7,
+          "rho": 0.8108437164260032,
+          "p_value": 0.026916328843161995
+        },
+        {
+          "dropped_market": "FTSE",
+          "n": 7,
+          "rho": 0.7857142857142859,
+          "p_value": 0.03623846267982715
+        },
+        {
+          "dropped_market": "NIKKEI",
+          "n": 7,
+          "rho": 0.7857142857142859,
+          "p_value": 0.03623846267982715
+        },
+        {
+          "dropped_market": "BTC",
+          "n": 7,
+          "rho": 0.8468812149338255,
+          "p_value": 0.016197127467871626
+        }
+      ],
+      "loo_sensitivity_filtered": [
+        {
+          "dropped_market": "VNINDEX",
+          "n": 7,
+          "rho": 0.8648999641877367,
+          "p_value": 0.011965034552489668
+        },
+        {
+          "dropped_market": "PSEI",
+          "n": 7,
+          "rho": 0.900937462695559,
+          "p_value": 0.005620586715345018
+        },
+        {
+          "dropped_market": "KOSPI",
+          "n": 7,
+          "rho": 0.900937462695559,
+          "p_value": 0.005620586715345018
+        },
+        {
+          "dropped_market": "NIFTY",
+          "n": 7,
+          "rho": 0.900937462695559,
+          "p_value": 0.005620586715345018
+        },
+        {
+          "dropped_market": "SPX",
+          "n": 7,
+          "rho": 0.9189562119494703,
+          "p_value": 0.0034366261562175354
+        },
+        {
+          "dropped_market": "FTSE",
+          "n": 7,
+          "rho": 0.8928571428571429,
+          "p_value": 0.006807187408935393
+        },
+        {
+          "dropped_market": "NIKKEI",
+          "n": 7,
+          "rho": 0.9285714285714288,
+          "p_value": 0.00251947240379469
+        },
+        {
+          "dropped_market": "BTC",
+          "n": 7,
+          "rho": 0.900937462695559,
+          "p_value": 0.005620586715345018
+        }
+      ],
+      "mc_noise_sensitivity_raw": {
+        "0.05": {
+          "noise_sd": 0.05,
+          "n_trials": 10000,
+          "rho_mean": 0.8339904761904763,
+          "rho_std": 0.04297710760402253,
+          "rho_p05": 0.7857142857142858,
+          "rho_p50": 0.8333333333333335,
+          "rho_p95": 0.9047619047619048,
+          "rho_min": 0.5714285714285715,
+          "rho_max": 0.9761904761904763,
+          "frac_rho_gt_0.50": 1.0
+        },
+        "0.10": {
+          "noise_sd": 0.1,
+          "n_trials": 10000,
+          "rho_mean": 0.8136923818236637,
+          "rho_std": 0.08781247636736418,
+          "rho_p05": 0.6428571428571429,
+          "rho_p50": 0.8333333333333335,
+          "rho_p95": 0.9285714285714287,
+          "rho_min": 0.38095238095238104,
+          "rho_max": 1.0,
+          "frac_rho_gt_0.50": 0.9975
+        },
+        "0.15": {
+          "noise_sd": 0.15,
+          "n_trials": 10000,
+          "rho_mean": 0.7577646341916445,
+          "rho_std": 0.13130381927221557,
+          "rho_p05": 0.5000000000000001,
+          "rho_p50": 0.7857142857142858,
+          "rho_p95": 0.9285714285714287,
+          "rho_min": 0.04761904761904763,
+          "rho_max": 1.0,
+          "frac_rho_gt_0.50": 0.9601
+        }
+      },
+      "mc_noise_sensitivity_filtered": {
+        "0.05": {
+          "noise_sd": 0.05,
+          "n_trials": 10000,
+          "rho_mean": 0.9136357142857144,
+          "rho_std": 0.0361875446225821,
+          "rho_p05": 0.8571428571428572,
+          "rho_p50": 0.9285714285714287,
+          "rho_p95": 0.9761904761904763,
+          "rho_min": 0.7619047619047621,
+          "rho_max": 1.0,
+          "frac_rho_gt_0.50": 1.0
+        },
+        "0.10": {
+          "noise_sd": 0.1,
+          "n_trials": 10000,
+          "rho_mean": 0.8853737524944989,
+          "rho_std": 0.06756905652321024,
+          "rho_p05": 0.7619047619047621,
+          "rho_p50": 0.9047619047619048,
+          "rho_p95": 0.9761904761904763,
+          "rho_min": 0.5476190476190477,
+          "rho_max": 1.0,
+          "frac_rho_gt_0.50": 1.0
+        },
+        "0.15": {
+          "noise_sd": 0.15,
+          "n_trials": 10000,
+          "rho_mean": 0.830230761481847,
+          "rho_std": 0.1061357353965583,
+          "rho_p05": 0.622579754337531,
+          "rho_p50": 0.8571428571428572,
+          "rho_p95": 0.9761904761904763,
+          "rho_min": 0.0,
+          "rho_max": 1.0,
+          "frac_rho_gt_0.50": 0.9921
+        }
+      },
+      "feature_comparison_spearman": {
+        "Entropy_raw": {
+          "model": "Entropy",
+          "label_source": "raw",
+          "rho": 0.37126414119311024,
+          "p_value": 0.36520205801977806,
+          "n": 8
+        },
+        "Entropy_filtered": {
+          "model": "Entropy",
+          "label_source": "filtered",
+          "rho": 0.4431217169079058,
+          "p_value": 0.27150238692257467,
+          "n": 8
+        },
+        "SimpleVol_raw": {
+          "model": "SimpleVol",
+          "label_source": "raw",
+          "rho": 0.4790505047653036,
+          "p_value": 0.2297405453574177,
+          "n": 8
+        },
+        "SimpleVol_filtered": {
+          "model": "SimpleVol",
+          "label_source": "filtered",
+          "rho": 0.5030030300035688,
+          "p_value": 0.203876682008432,
+          "n": 8
+        },
+        "Combined_raw": {
+          "model": "Combined",
+          "label_source": "raw",
+          "rho": 0.2155727271443866,
+          "p_value": 0.6081490663684049,
+          "n": 8
+        },
+        "Combined_filtered": {
+          "model": "Combined",
+          "label_source": "filtered",
+          "rho": 0.5269555552418339,
+          "p_value": 0.1796289671569267,
+          "n": 8
+        }
+      }
+    },
+    "G_VN_higher_KOSPI_corrected": {
+      "panel_label": "G_VN_higher_KOSPI_corrected",
+      "panel_values": {
+        "VNINDEX": 0.92,
+        "PSEI": 0.68,
+        "KOSPI": 0.45,
+        "NIFTY": 0.4,
+        "SPX": 0.22,
+        "FTSE": 0.18,
+        "NIKKEI": 0.18,
+        "BTC": 0.55
+      },
+      "headline_h2": {
+        "rho_raw": 0.8503146459584139,
+        "p_raw": 0.007471414639953455,
+        "rho_filt": 0.934148484292342,
+        "p_filt": 0.0006791057452310972
+      },
+      "loo_sensitivity_raw": [
+        {
+          "dropped_market": "VNINDEX",
+          "n": 7,
+          "rho": 0.7748062179181807,
+          "p_value": 0.04076946252042036
+        },
+        {
+          "dropped_market": "PSEI",
+          "n": 7,
+          "rho": 0.7748062179181807,
+          "p_value": 0.04076946252042036
+        },
+        {
+          "dropped_market": "KOSPI",
+          "n": 7,
+          "rho": 0.8468812149338255,
+          "p_value": 0.016197127467871626
+        },
+        {
+          "dropped_market": "NIFTY",
+          "n": 7,
+          "rho": 0.8829187134416479,
+          "p_value": 0.008450342381896618
+        },
+        {
+          "dropped_market": "SPX",
+          "n": 7,
+          "rho": 0.8829187134416479,
+          "p_value": 0.008450342381896618
+        },
+        {
+          "dropped_market": "FTSE",
+          "n": 7,
+          "rho": 0.8571428571428573,
+          "p_value": 0.013697326615325618
+        },
+        {
+          "dropped_market": "NIKKEI",
+          "n": 7,
+          "rho": 0.8571428571428573,
+          "p_value": 0.013697326615325618
+        },
+        {
+          "dropped_market": "BTC",
+          "n": 7,
+          "rho": 0.8468812149338255,
+          "p_value": 0.016197127467871626
+        }
+      ],
+      "loo_sensitivity_filtered": [
+        {
+          "dropped_market": "VNINDEX",
+          "n": 7,
+          "rho": 0.900937462695559,
+          "p_value": 0.005620586715345018
+        },
+        {
+          "dropped_market": "PSEI",
+          "n": 7,
+          "rho": 0.900937462695559,
+          "p_value": 0.005620586715345018
+        },
+        {
+          "dropped_market": "KOSPI",
+          "n": 7,
+          "rho": 0.9369749612033814,
+          "p_value": 0.0018510301964418927
+        },
+        {
+          "dropped_market": "NIFTY",
+          "n": 7,
+          "rho": 0.9369749612033814,
+          "p_value": 0.0018510301964418927
+        },
+        {
+          "dropped_market": "SPX",
+          "n": 7,
+          "rho": 0.9549937104572925,
+          "p_value": 0.0008055353363017573
+        },
+        {
+          "dropped_market": "FTSE",
+          "n": 7,
+          "rho": 0.9285714285714288,
+          "p_value": 0.00251947240379469
+        },
+        {
+          "dropped_market": "NIKKEI",
+          "n": 7,
+          "rho": 0.9642857142857145,
+          "p_value": 0.00045414916919416935
+        },
+        {
+          "dropped_market": "BTC",
+          "n": 7,
+          "rho": 0.900937462695559,
+          "p_value": 0.005620586715345018
+        }
+      ],
+      "mc_noise_sensitivity_raw": {
+        "0.05": {
+          "noise_sd": 0.05,
+          "n_trials": 10000,
+          "rho_mean": 0.8721023809523812,
+          "rho_std": 0.040123273002790755,
+          "rho_p05": 0.8333333333333335,
+          "rho_p50": 0.8571428571428572,
+          "rho_p95": 0.9523809523809524,
+          "rho_min": 0.6190476190476191,
+          "rho_max": 1.0,
+          "frac_rho_gt_0.50": 1.0
+        },
+        "0.10": {
+          "noise_sd": 0.1,
+          "n_trials": 10000,
+          "rho_mean": 0.8452412235120909,
+          "rho_std": 0.08724502021224632,
+          "rho_p05": 0.6666666666666669,
+          "rho_p50": 0.8571428571428572,
+          "rho_p95": 0.9523809523809524,
+          "rho_min": 0.28571428571428575,
+          "rho_max": 1.0,
+          "frac_rho_gt_0.50": 0.9982
+        },
+        "0.15": {
+          "noise_sd": 0.15,
+          "n_trials": 10000,
+          "rho_mean": 0.7798689746553994,
+          "rho_std": 0.1353834008696587,
+          "rho_p05": 0.523809523809524,
+          "rho_p50": 0.8095238095238096,
+          "rho_p95": 0.9523809523809524,
+          "rho_min": -0.04761904761904763,
+          "rho_max": 1.0,
+          "frac_rho_gt_0.50": 0.964
+        }
+      },
+      "mc_noise_sensitivity_filtered": {
+        "0.05": {
+          "noise_sd": 0.05,
+          "n_trials": 10000,
+          "rho_mean": 0.9294761904761907,
+          "rho_std": 0.0375361091491022,
+          "rho_p05": 0.880952380952381,
+          "rho_p50": 0.9285714285714287,
+          "rho_p95": 0.9761904761904763,
+          "rho_min": 0.7857142857142858,
+          "rho_max": 1.0,
+          "frac_rho_gt_0.50": 1.0
+        },
+        "0.10": {
+          "noise_sd": 0.1,
+          "n_trials": 10000,
+          "rho_mean": 0.889118243396568,
+          "rho_std": 0.07217889019909557,
+          "rho_p05": 0.7380952380952381,
+          "rho_p50": 0.9047619047619048,
+          "rho_p95": 0.9761904761904763,
+          "rho_min": 0.4047619047619048,
+          "rho_max": 1.0,
+          "frac_rho_gt_0.50": 0.9995
+        },
+        "0.15": {
+          "noise_sd": 0.15,
+          "n_trials": 10000,
+          "rho_mean": 0.8218264906027518,
+          "rho_std": 0.11887504183121729,
+          "rho_p05": 0.5952380952380953,
+          "rho_p50": 0.8571428571428572,
+          "rho_p95": 0.9761904761904763,
+          "rho_min": 0.04761904761904763,
+          "rho_max": 1.0,
+          "frac_rho_gt_0.50": 0.9836
+        }
+      },
+      "feature_comparison_spearman": {
+        "Entropy_raw": {
+          "model": "Entropy",
+          "label_source": "raw",
+          "rho": 0.34731161595484505,
+          "p_value": 0.39926387420328163,
+          "n": 8
+        },
+        "Entropy_filtered": {
+          "model": "Entropy",
+          "label_source": "filtered",
+          "rho": 0.4191691916696407,
+          "p_value": 0.30126663266334425,
+          "n": 8
+        },
+        "SimpleVol_raw": {
+          "model": "SimpleVol",
+          "label_source": "raw",
+          "rho": 0.4311454542887732,
+          "p_value": 0.28619573480536037,
+          "n": 8
+        },
+        "SimpleVol_filtered": {
+          "model": "SimpleVol",
+          "label_source": "filtered",
+          "rho": 0.45509797952703834,
+          "p_value": 0.25719208545877237,
+          "n": 8
+        },
+        "Combined_raw": {
+          "model": "Combined",
+          "label_source": "raw",
+          "rho": 0.14371515142959107,
+          "p_value": 0.7342214747617433,
+          "n": 8
+        },
+        "Combined_filtered": {
+          "model": "Combined",
+          "label_source": "filtered",
+          "rho": 0.5030030300035688,
+          "p_value": 0.203876682008432,
+          "n": 8
+        }
+      }
+    }
+  },
+  "summary_table": [
+    {
+      "scenario": "A_original",
+      "rho_raw": 0.7545045450053531,
+      "p_raw": 0.030512759033309068,
+      "rho_filt": 0.814385858101016,
+      "p_filt": 0.013844257377974144,
+      "panel": {
+        "VNINDEX": 0.9,
+        "PSEI": 0.68,
+        "KOSPI": 0.7,
+        "NIFTY": 0.4,
+        "SPX": 0.22,
+        "FTSE": 0.18,
+        "NIKKEI": 0.18,
+        "BTC": 0.55
+      }
+    },
+    {
+      "scenario": "B_full_correction",
+      "rho_raw": 0.5476190476190477,
+      "p_raw": 0.16002564253889653,
+      "rho_filt": 0.6904761904761906,
+      "p_filt": 0.057990318164572716,
+      "panel": {
+        "VNINDEX": 0.85,
+        "PSEI": 0.22,
+        "KOSPI": 0.45,
+        "NIFTY": 0.39,
+        "SPX": 0.3,
+        "FTSE": 0.18,
+        "NIKKEI": 0.2,
+        "BTC": 0.75
+      }
+    },
+    {
+      "scenario": "C_only_KOSPI_corrected",
+      "rho_raw": 0.8503146459584139,
+      "p_raw": 0.007471414639953455,
+      "rho_filt": 0.934148484292342,
+      "p_filt": 0.0006791057452310972,
+      "panel": {
+        "VNINDEX": 0.9,
+        "PSEI": 0.68,
+        "KOSPI": 0.45,
+        "NIFTY": 0.4,
+        "SPX": 0.22,
+        "FTSE": 0.18,
+        "NIKKEI": 0.18,
+        "BTC": 0.55
+      }
+    },
+    {
+      "scenario": "D_KOSPI_SPX_corrected",
+      "rho_raw": 0.8503146459584139,
+      "p_raw": 0.007471414639953455,
+      "rho_filt": 0.934148484292342,
+      "p_filt": 0.0006791057452310972,
+      "panel": {
+        "VNINDEX": 0.9,
+        "PSEI": 0.68,
+        "KOSPI": 0.45,
+        "NIFTY": 0.4,
+        "SPX": 0.3,
+        "FTSE": 0.18,
+        "NIKKEI": 0.18,
+        "BTC": 0.55
+      }
+    },
+    {
+      "scenario": "E_KOSPI_NIFTY_SPX_corrected",
+      "rho_raw": 0.8503146459584139,
+      "p_raw": 0.007471414639953455,
+      "rho_filt": 0.934148484292342,
+      "p_filt": 0.0006791057452310972,
+      "panel": {
+        "VNINDEX": 0.9,
+        "PSEI": 0.68,
+        "KOSPI": 0.45,
+        "NIFTY": 0.39,
+        "SPX": 0.3,
+        "FTSE": 0.18,
+        "NIKKEI": 0.18,
+        "BTC": 0.55
+      }
+    },
+    {
+      "scenario": "F_KOSPI_corrected_BTC_higher",
+      "rho_raw": 0.8024095954818835,
+      "p_raw": 0.01654072280067719,
+      "rho_filt": 0.9101959590540767,
+      "p_filt": 0.0016908608862384288,
+      "panel": {
+        "VNINDEX": 0.9,
+        "PSEI": 0.68,
+        "KOSPI": 0.45,
+        "NIFTY": 0.4,
+        "SPX": 0.22,
+        "FTSE": 0.18,
+        "NIKKEI": 0.18,
+        "BTC": 0.75
+      }
+    },
+    {
+      "scenario": "G_VN_higher_KOSPI_corrected",
+      "rho_raw": 0.8503146459584139,
+      "p_raw": 0.007471414639953455,
+      "rho_filt": 0.934148484292342,
+      "p_filt": 0.0006791057452310972,
+      "panel": {
+        "VNINDEX": 0.92,
+        "PSEI": 0.68,
+        "KOSPI": 0.45,
+        "NIFTY": 0.4,
+        "SPX": 0.22,
+        "FTSE": 0.18,
+        "NIKKEI": 0.18,
+        "BTC": 0.55
+      }
+    }
+  ],
+  "old_panel_results": {
+    "panel_label": "A_original",
+    "panel_values": {
+      "VNINDEX": 0.9,
+      "PSEI": 0.68,
+      "KOSPI": 0.7,
+      "NIFTY": 0.4,
+      "SPX": 0.22,
+      "FTSE": 0.18,
+      "NIKKEI": 0.18,
+      "BTC": 0.55
+    },
+    "headline_h2": {
+      "rho_raw": 0.7545045450053531,
+      "p_raw": 0.030512759033309068,
+      "rho_filt": 0.814385858101016,
+      "p_filt": 0.013844257377974144
+    },
+    "loo_sensitivity_raw": [
+      {
+        "dropped_market": "VNINDEX",
+        "n": 7,
+        "rho": 0.6306562238868914,
+        "p_value": 0.12888769568495795
+      },
+      {
+        "dropped_market": "PSEI",
+        "n": 7,
+        "rho": 0.7387687194103585,
+        "p_value": 0.057858496895692765
+      },
+      {
+        "dropped_market": "KOSPI",
+        "n": 7,
+        "rho": 0.8468812149338255,
+        "p_value": 0.016197127467871626
+      },
+      {
+        "dropped_market": "NIFTY",
+        "n": 7,
+        "rho": 0.7748062179181807,
+        "p_value": 0.04076946252042036
+      },
+      {
+        "dropped_market": "SPX",
+        "n": 7,
+        "rho": 0.7387687194103585,
+        "p_value": 0.057858496895692765
+      },
+      {
+        "dropped_market": "FTSE",
+        "n": 7,
+        "rho": 0.7142857142857144,
+        "p_value": 0.07134356146753766
+      },
+      {
+        "dropped_market": "NIKKEI",
+        "n": 7,
+        "rho": 0.7142857142857144,
+        "p_value": 0.07134356146753766
+      },
+      {
+        "dropped_market": "BTC",
+        "n": 7,
+        "rho": 0.7748062179181807,
+        "p_value": 0.04076946252042036
+      }
+    ],
+    "loo_sensitivity_filtered": [
+      {
+        "dropped_market": "VNINDEX",
+        "n": 7,
+        "rho": 0.7207499701564473,
+        "p_value": 0.06763499473028162
+      },
+      {
+        "dropped_market": "PSEI",
+        "n": 7,
+        "rho": 0.8288624656799143,
+        "p_value": 0.021173515581004283
+      },
+      {
+        "dropped_market": "KOSPI",
+        "n": 7,
+        "rho": 0.9369749612033814,
+        "p_value": 0.0018510301964418927
+      },
+      {
+        "dropped_market": "NIFTY",
+        "n": 7,
+        "rho": 0.8288624656799143,
+        "p_value": 0.021173515581004283
+      },
+      {
+        "dropped_market": "SPX",
+        "n": 7,
+        "rho": 0.7748062179181807,
+        "p_value": 0.04076946252042036
+      },
+      {
+        "dropped_market": "FTSE",
+        "n": 7,
+        "rho": 0.7500000000000002,
+        "p_value": 0.05218140045705778
+      },
+      {
+        "dropped_market": "NIKKEI",
+        "n": 7,
+        "rho": 0.7857142857142859,
+        "p_value": 0.03623846267982715
+      },
+      {
+        "dropped_market": "BTC",
+        "n": 7,
+        "rho": 0.8288624656799143,
+        "p_value": 0.021173515581004283
+      }
+    ],
+    "mc_noise_sensitivity_raw": {
+      "0.05": {
+        "noise_sd": 0.05,
+        "n_trials": 10000,
+        "rho_mean": 0.7957285714285716,
+        "rho_std": 0.04921448091449545,
+        "rho_p05": 0.7380952380952381,
+        "rho_p50": 0.8095238095238096,
+        "rho_p95": 0.880952380952381,
+        "rho_min": 0.5714285714285715,
+        "rho_max": 0.9285714285714287,
+        "frac_rho_gt_0.50": 1.0
+      },
+      "0.10": {
+        "noise_sd": 0.1,
+        "n_trials": 10000,
+        "rho_mean": 0.7763631204024947,
+        "rho_std": 0.09067765273141781,
+        "rho_p05": 0.6190476190476191,
+        "rho_p50": 0.7857142857142858,
+        "rho_p95": 0.9047619047619048,
+        "rho_min": 0.30952380952380953,
+        "rho_max": 0.9761904761904763,
+        "frac_rho_gt_0.50": 0.9932
+      },
+      "0.15": {
+        "noise_sd": 0.15,
+        "n_trials": 10000,
+        "rho_mean": 0.7235507109333169,
+        "rho_std": 0.13465126455123347,
+        "rho_p05": 0.4761904761904762,
+        "rho_p50": 0.7380952380952381,
+        "rho_p95": 0.9047619047619048,
+        "rho_min": 0.023809523809523815,
+        "rho_max": 1.0,
+        "frac_rho_gt_0.50": 0.9372
+      }
+    },
+    "mc_noise_sensitivity_filtered": {
+      "0.05": {
+        "noise_sd": 0.05,
+        "n_trials": 10000,
+        "rho_mean": 0.8371357142857145,
+        "rho_std": 0.04996277669768938,
+        "rho_p05": 0.7619047619047621,
+        "rho_p50": 0.8333333333333335,
+        "rho_p95": 0.9285714285714287,
+        "rho_min": 0.6666666666666669,
+        "rho_max": 0.9761904761904763,
+        "frac_rho_gt_0.50": 1.0
+      },
+      "0.10": {
+        "noise_sd": 0.1,
+        "n_trials": 10000,
+        "rho_mean": 0.8133829831296862,
+        "rho_std": 0.08144069411832505,
+        "rho_p05": 0.6666666666666669,
+        "rho_p50": 0.8333333333333335,
+        "rho_p95": 0.9285714285714287,
+        "rho_min": 0.261904761904762,
+        "rho_max": 1.0,
+        "frac_rho_gt_0.50": 0.9988
+      },
+      "0.15": {
+        "noise_sd": 0.15,
+        "n_trials": 10000,
+        "rho_mean": 0.7618428629937513,
+        "rho_std": 0.12217829281869406,
+        "rho_p05": 0.5476190476190477,
+        "rho_p50": 0.7857142857142858,
+        "rho_p95": 0.9285714285714287,
+        "rho_min": 0.04761904761904763,
+        "rho_max": 1.0,
+        "frac_rho_gt_0.50": 0.9715
+      }
+    },
+    "feature_comparison_spearman": {
+      "Entropy_raw": {
+        "model": "Entropy",
+        "label_source": "raw",
+        "rho": 0.27545404024004955,
+        "p_value": 0.5090540726550732,
+        "n": 8
+      },
+      "Entropy_filtered": {
+        "model": "Entropy",
+        "label_source": "filtered",
+        "rho": 0.29940656547831473,
+        "p_value": 0.4712605287015584,
+        "n": 8
+      },
+      "SimpleVol_raw": {
+        "model": "SimpleVol",
+        "label_source": "raw",
+        "rho": 0.28743030285918214,
+        "p_value": 0.49001548522203403,
+        "n": 8
+      },
+      "SimpleVol_filtered": {
+        "model": "SimpleVol",
+        "label_source": "filtered",
+        "rho": 0.26347777762091695,
+        "p_value": 0.528366470576909,
+        "n": 8
+      },
+      "Combined_raw": {
+        "model": "Combined",
+        "label_source": "raw",
+        "rho": -0.023952525238265177,
+        "p_value": 0.9551061898789129,
+        "n": 8
+      },
+      "Combined_filtered": {
+        "model": "Combined",
+        "label_source": "filtered",
+        "rho": 0.3353353533357125,
+        "p_value": 0.4167915909642739,
+        "n": 8
+      }
+    }
+  },
+  "new_panel_results": {
+    "panel_label": "B_full_correction",
+    "panel_values": {
+      "VNINDEX": 0.85,
+      "PSEI": 0.22,
+      "KOSPI": 0.45,
+      "NIFTY": 0.39,
+      "SPX": 0.3,
+      "FTSE": 0.18,
+      "NIKKEI": 0.2,
+      "BTC": 0.75
+    },
+    "headline_h2": {
+      "rho_raw": 0.5476190476190477,
+      "p_raw": 0.16002564253889653,
+      "rho_filt": 0.6904761904761906,
+      "p_filt": 0.057990318164572716
+    },
+    "loo_sensitivity_raw": [
+      {
+        "dropped_market": "VNINDEX",
+        "n": 7,
+        "rho": 0.3214285714285715,
+        "p_value": 0.4820720382996778
+      },
+      {
+        "dropped_market": "PSEI",
+        "n": 7,
+        "rho": 0.7500000000000002,
+        "p_value": 0.05218140045705778
+      },
+      {
+        "dropped_market": "KOSPI",
+        "n": 7,
+        "rho": 0.5357142857142858,
+        "p_value": 0.21521745567801298
+      },
+      {
+        "dropped_market": "NIFTY",
+        "n": 7,
+        "rho": 0.5714285714285715,
+        "p_value": 0.18020198891152767
+      },
+      {
+        "dropped_market": "SPX",
+        "n": 7,
+        "rho": 0.642857142857143,
+        "p_value": 0.11939237342741109
+      },
+      {
+        "dropped_market": "FTSE",
+        "n": 7,
+        "rho": 0.4642857142857144,
+        "p_value": 0.29393410760025196
+      },
+      {
+        "dropped_market": "NIKKEI",
+        "n": 7,
+        "rho": 0.4642857142857144,
+        "p_value": 0.29393410760025196
+      },
+      {
+        "dropped_market": "BTC",
+        "n": 7,
+        "rho": 0.5357142857142858,
+        "p_value": 0.21521745567801298
+      }
+    ],
+    "loo_sensitivity_filtered": [
+      {
+        "dropped_market": "VNINDEX",
+        "n": 7,
+        "rho": 0.5357142857142858,
+        "p_value": 0.21521745567801298
+      },
+      {
+        "dropped_market": "PSEI",
+        "n": 7,
+        "rho": 0.9285714285714288,
+        "p_value": 0.00251947240379469
+      },
+      {
+        "dropped_market": "KOSPI",
+        "n": 7,
+        "rho": 0.7142857142857144,
+        "p_value": 0.07134356146753766
+      },
+      {
+        "dropped_market": "NIFTY",
+        "n": 7,
+        "rho": 0.7142857142857144,
+        "p_value": 0.07134356146753766
+      },
+      {
+        "dropped_market": "SPX",
+        "n": 7,
+        "rho": 0.7500000000000002,
+        "p_value": 0.05218140045705778
+      },
+      {
+        "dropped_market": "FTSE",
+        "n": 7,
+        "rho": 0.5357142857142858,
+        "p_value": 0.21521745567801298
+      },
+      {
+        "dropped_market": "NIKKEI",
+        "n": 7,
+        "rho": 0.6071428571428572,
+        "p_value": 0.14823116148116164
+      },
+      {
+        "dropped_market": "BTC",
+        "n": 7,
+        "rho": 0.6785714285714287,
+        "p_value": 0.09375025395983135
+      }
+    ],
+    "mc_noise_sensitivity_raw": {
+      "0.05": {
+        "noise_sd": 0.05,
+        "n_trials": 10000,
+        "rho_mean": 0.4948547619047619,
+        "rho_std": 0.11980031690921275,
+        "rho_p05": 0.30952380952380953,
+        "rho_p50": 0.4761904761904762,
+        "rho_p95": 0.7142857142857144,
+        "rho_min": 0.09523809523809526,
+        "rho_max": 0.8333333333333335,
+        "frac_rho_gt_0.50": 0.485
+      },
+      "0.10": {
+        "noise_sd": 0.1,
+        "n_trials": 10000,
+        "rho_mean": 0.4740551155918714,
+        "rho_std": 0.17800333620873318,
+        "rho_p05": 0.1666666666666667,
+        "rho_p50": 0.4523809523809524,
+        "rho_p95": 0.7619047619047621,
+        "rho_min": -0.14285714285714288,
+        "rho_max": 0.9285714285714287,
+        "frac_rho_gt_0.50": 0.4345
+      },
+      "0.15": {
+        "noise_sd": 0.15,
+        "n_trials": 10000,
+        "rho_mean": 0.44266682695673865,
+        "rho_std": 0.21068753098909682,
+        "rho_p05": 0.09523809523809526,
+        "rho_p50": 0.4285714285714286,
+        "rho_p95": 0.7857142857142858,
+        "rho_min": -0.30952380952380953,
+        "rho_max": 0.9285714285714287,
+        "frac_rho_gt_0.50": 0.405
+      }
+    },
+    "mc_noise_sensitivity_filtered": {
+      "0.05": {
+        "noise_sd": 0.05,
+        "n_trials": 10000,
+        "rho_mean": 0.6037285714285715,
+        "rho_std": 0.11652623147104084,
+        "rho_p05": 0.4047619047619048,
+        "rho_p50": 0.6190476190476191,
+        "rho_p95": 0.8095238095238096,
+        "rho_min": 0.2380952380952381,
+        "rho_max": 0.9047619047619048,
+        "frac_rho_gt_0.50": 0.7977
+      },
+      "0.10": {
+        "noise_sd": 0.1,
+        "n_trials": 10000,
+        "rho_mean": 0.5732093667434355,
+        "rho_std": 0.16321052921972115,
+        "rho_p05": 0.30952380952380953,
+        "rho_p50": 0.5714285714285715,
+        "rho_p95": 0.8333333333333335,
+        "rho_min": 0.04761904761904763,
+        "rho_max": 0.9761904761904763,
+        "frac_rho_gt_0.50": 0.6625
+      },
+      "0.15": {
+        "noise_sd": 0.15,
+        "n_trials": 10000,
+        "rho_mean": 0.539279766988567,
+        "rho_std": 0.19178010919941074,
+        "rho_p05": 0.21550837650145305,
+        "rho_p50": 0.5476190476190477,
+        "rho_p95": 0.8333333333333335,
+        "rho_min": -0.28571428571428575,
+        "rho_max": 0.9761904761904763,
+        "frac_rho_gt_0.50": 0.5796
+      }
+    },
+    "feature_comparison_spearman": {
+      "Entropy_raw": {
+        "model": "Entropy",
+        "label_source": "raw",
+        "rho": 0.261904761904762,
+        "p_value": 0.530922861565801,
+        "n": 8
+      },
+      "Entropy_filtered": {
+        "model": "Entropy",
+        "label_source": "filtered",
+        "rho": 0.30952380952380953,
+        "p_value": 0.4556448907375822,
+        "n": 8
+      },
+      "SimpleVol_raw": {
+        "model": "SimpleVol",
+        "label_source": "raw",
+        "rho": 0.5714285714285715,
+        "p_value": 0.13895995716070672,
+        "n": 8
+      },
+      "SimpleVol_filtered": {
+        "model": "SimpleVol",
+        "label_source": "filtered",
+        "rho": 0.5000000000000001,
+        "p_value": 0.20703124999999994,
+        "n": 8
+      },
+      "Combined_raw": {
+        "model": "Combined",
+        "label_source": "raw",
+        "rho": 0.1666666666666667,
+        "p_value": 0.693238811728395,
+        "n": 8
+      },
+      "Combined_filtered": {
+        "model": "Combined",
+        "label_source": "filtered",
+        "rho": 0.4761904761904762,
+        "p_value": 0.23293553465009792,
+        "n": 8
+      }
+    }
+  },
+  "power_analysis_n8": {
+    "n": 8,
+    "df": 6,
+    "alpha": 0.05,
+    "rho_min_alpha_two_sided_no_power_target": 0.706734400730655,
+    "rho_min_alpha_one_sided_no_power_target": 0.6214892451244586,
+    "note": "Approximate minimum |rho| to reject rho=0 at the given alpha via t-statistic transform; does NOT incorporate beta=0.2 power. For alpha=0.05 one-sided at n=8 the threshold is ~0.62 |rho|."
+  },
+  "seeds": {
+    "bootstrap": 42,
+    "mc_05": 43,
+    "mc_10": 44,
+    "mc_15": 45
+  }
+}

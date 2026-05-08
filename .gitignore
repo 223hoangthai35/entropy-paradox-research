@@ -36,3 +36,7 @@ agent_orchestrator.py
 
 # Runtime stdout — research outputs live in JSON / CSV / PNG / MD
 *.log
+
+# Personal research workspace (manuscript drafting, agent harness, working notes).
+# Final artefacts are copied into paper_artifacts/ and validation/.
+research/

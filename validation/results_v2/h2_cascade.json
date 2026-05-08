@@ -1,0 +1,99 @@
+{
+  "spec": "H2 CASCADE TEST - per-market 3-phase data quality cascade (P1 point / P2 uniform / P3 Bayesian)",
+  "cascade_specification": {
+    "VNINDEX": {
+      "tier": "P1",
+      "type": "point",
+      "value": 0.9,
+      "source": "Vietnam SSC + VinaCapital (authoritative source available)"
+    },
+    "PSEI": {
+      "tier": "P1",
+      "type": "point",
+      "value": 0.68,
+      "source": "PSE 2023 Annual Report (authoritative exchange document)"
+    },
+    "KOSPI": {
+      "tier": "P1",
+      "type": "point",
+      "value": 0.45,
+      "source": "KRX 2026 direct turnover-by-investor-type marketplace"
+    },
+    "NIFTY": {
+      "tier": "P1",
+      "type": "point",
+      "value": 0.4,
+      "source": "NSE India Ownership Report (authoritative)"
+    },
+    "SPX": {
+      "tier": "P2",
+      "type": "uniform",
+      "low": 0.18,
+      "high": 0.37,
+      "source": "P1 fails: SIFMA ownership (0.18) vs MEMX order flow (0.30-0.37) metric disagreement; P2 bounds applied"
+    },
+    "FTSE": {
+      "tier": "P2",
+      "type": "uniform",
+      "low": 0.15,
+      "high": 0.25,
+      "source": "P1 fails: UK FCA limited public data; P2 bounds applied"
+    },
+    "NIKKEI": {
+      "tier": "P1",
+      "type": "point",
+      "value": 0.18,
+      "source": "JPX Trading-by-Investor-Type direct (authoritative)"
+    },
+    "BTC": {
+      "tier": "P3",
+      "type": "beta",
+      "mean": 0.55,
+      "kappa": 20,
+      "source": "P1+P2 fail: no central exchange, no authoritative aggregator; P3 Bayesian centered on pre-reg 0.55"
+    }
+  },
+  "phase_distribution": {
+    "P1": 5,
+    "P2": 2,
+    "P3": 1
+  },
+  "n_mc_trials": 10000,
+  "seed": 42,
+  "raw_cascade": {
+    "n_trials": 10000,
+    "mean": 0.8472285714285718,
+    "median": 0.8571428571428572,
+    "sd": 0.02874901985594914,
+    "p025": 0.7857142857142858,
+    "p05": 0.8095238095238096,
+    "p25": 0.8333333333333335,
+    "p75": 0.8571428571428572,
+    "p95": 0.9047619047619048,
+    "p975": 0.9047619047619048,
+    "min": 0.7142857142857144,
+    "max": 0.9047619047619048,
+    "P_rho_gt_0p5": 1.0,
+    "P_rho_gt_0p7": 1.0,
+    "P_p_lt_0p05": 1.0,
+    "P_p_lt_0p10": 1.0
+  },
+  "filtered_cascade": {
+    "n_trials": 10000,
+    "mean": 0.900704761904762,
+    "median": 0.9047619047619048,
+    "sd": 0.037707961992880824,
+    "p025": 0.8333333333333335,
+    "p05": 0.8333333333333335,
+    "p25": 0.880952380952381,
+    "p75": 0.9047619047619048,
+    "p95": 0.9523809523809524,
+    "p975": 0.9523809523809524,
+    "min": 0.5952380952380953,
+    "max": 0.9523809523809524,
+    "P_rho_gt_0p5": 1.0,
+    "P_rho_gt_0p7": 0.9993,
+    "P_p_lt_0p05": 0.9993,
+    "P_p_lt_0p10": 0.9994
+  }
+}

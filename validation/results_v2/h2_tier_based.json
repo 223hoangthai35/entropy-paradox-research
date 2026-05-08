@@ -1,0 +1,100 @@
+{
+  "spec": "H2 PRIMARY E1 reframing \u2014 tier-based H ordering test",
+  "tier_classification": {
+    "VNINDEX": "Frontier",
+    "PSEI": "Frontier",
+    "KOSPI": "Emerging",
+    "NIFTY": "Emerging",
+    "BTC": "Crypto",
+    "SPX": "Developed",
+    "FTSE": "Developed",
+    "NIKKEI": "Developed"
+  },
+  "tier_ordering_rationale": "Frontier > Emerging > Crypto > Developed (retail dominance, per Boehmer-Kelley 2009, Chang 2024, Kang 2026)",
+  "raw_results": {
+    "spearman": {
+      "rho": 0.9265616458263766,
+      "p_value": 0.0009364316381563804,
+      "n": 8
+    },
+    "jonckheere_terpstra": {
+      "JT_statistic": 22.0,
+      "mean_under_H0": 11.5,
+      "variance_under_H0": 14.916666666666666,
+      "z_score": 2.7186506676132494,
+      "p_value_one_sided_increasing": 0.00327743975172734,
+      "n_groups": 4,
+      "group_sizes": [
+        3,
+        1,
+        2,
+        2
+      ],
+      "n_total": 8
+    },
+    "kruskal_wallis": {
+      "H_statistic": 6.25,
+      "p_value": 0.10006083311939494,
+      "df": 3
+    },
+    "tier_means": {
+      "Developed": 3.44,
+      "Crypto": 7.13,
+      "Emerging": 9.93,
+      "Frontier": 66.0
+    },
+    "tier_classification": {
+      "VNINDEX": "Frontier",
+      "PSEI": "Frontier",
+      "KOSPI": "Emerging",
+      "NIFTY": "Emerging",
+      "SPX": "Developed",
+      "FTSE": "Developed",
+      "NIKKEI": "Developed",
+      "BTC": "Crypto"
+    }
+  },
+  "filtered_results": {
+    "spearman": {
+      "rho": 0.8894991799933215,
+      "p_value": 0.003099782378877316,
+      "n": 8
+    },
+    "jonckheere_terpstra": {
+      "JT_statistic": 21.0,
+      "mean_under_H0": 11.5,
+      "variance_under_H0": 14.916666666666666,
+      "z_score": 2.4597315564119877,
+      "p_value_one_sided_increasing": 0.006952048572983038,
+      "n_groups": 4,
+      "group_sizes": [
+        3,
+        1,
+        2,
+        2
+      ],
+      "n_total": 8
+    },
+    "kruskal_wallis": {
+      "H_statistic": 6.5,
+      "p_value": 0.08966250398816791,
+      "df": 3
+    },
+    "tier_means": {
+      "Developed": 1.6900000000000002,
+      "Crypto": 32.24,
+      "Emerging": 21.915,
+      "Frontier": 68.71000000000001
+    },
+    "tier_classification": {
+      "VNINDEX": "Frontier",
+      "PSEI": "Frontier",
+      "KOSPI": "Emerging",
+      "NIFTY": "Emerging",
+      "SPX": "Developed",
+      "FTSE": "Developed",
+      "NIKKEI": "Developed",
+      "BTC": "Crypto"
+    }
+  }
+}
