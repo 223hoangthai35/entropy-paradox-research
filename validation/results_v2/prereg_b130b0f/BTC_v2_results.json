@@ -1,0 +1,49 @@
+{
+  "market": "BTC",
+  "ticker": "BTC-USD",
+  "category": "Crypto",
+  "n_bars": 2465,
+  "start": "2019-07-18",
+  "end": "2026-04-16",
+  "H_stat": 7.130210989101215,
+  "p_value": 0.028294000463874102,
+  "direction": "Inverted",
+  "regime_mean_vol": {
+    "Deterministic": 44.32920751450506,
+    "Transitional": 47.42214300427501,
+    "Stochastic": 46.400315043389675
+  },
+  "regime_median_vol": {
+    "Deterministic": 41.00610301030728,
+    "Transitional": 43.251489691017674,
+    "Stochastic": 43.75619836950416
+  },
+  "regime_share": {
+    "Deterministic": 0.36024340770791075,
+    "Transitional": 0.4900608519269777,
+    "Stochastic": 0.14969574036511157
+  },
+  "base_drawdown_rates": {
+    "3.0": 0.5622964169381107,
+    "5.0": 0.4149022801302932,
+    "7.0": 0.30578175895765475
+  },
+  "lift_by_regime": {
+    "Deterministic": {
+      "lift_3.0pct": 1.0053688735803146,
+      "lift_5.0pct": 0.9662537905913765,
+      "lift_7.0pct": 0.9096459975288204
+    },
+    "Transitional": {
+      "lift_3.0pct": 1.0075748721958697,
+      "lift_5.0pct": 1.0186228709429328,
+      "lift_7.0pct": 1.0556396241506054
+    },
+    "Stochastic": {
+      "lift_3.0pct": 0.9620968412055888,
+      "lift_5.0pct": 1.0207156914793782,
+      "lift_7.0pct": 1.0364905081021298
+    }
+  },
+  "ms_index": 0.20647817481888636
+}

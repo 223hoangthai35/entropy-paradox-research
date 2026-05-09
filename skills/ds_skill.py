@@ -54,6 +54,87 @@ HYSTERESIS_T_PERSIST:  int   = 8      # consecutive bars required for soft flip
 
 
 # ==============================================================================
+# PURE-FUNCTION HYSTERESIS (batch state machine over semantic posteriors)
+# ==============================================================================
+def apply_hysteresis(
+    posteriors: np.ndarray,
+    delta_hard: float = HYSTERESIS_DELTA_HARD,
+    delta_soft: float = HYSTERESIS_DELTA_SOFT,
+    t_persist: int = HYSTERESIS_T_PERSIST,
+) -> np.ndarray:
+    """
+    Schmitt-trigger hysteresis over a (T, K) posterior matrix.
+
+    posteriors: (T, K) float array, rows sum to ~1, columns are SEMANTIC labels
+                (already aggregated from raw GMM clusters if cluster!=label).
+                For raw cluster posteriors, use HysteresisGMMWrapper.transform
+                which aggregates first.
+    returns   : (T,) int64 array of hysteresis-filtered labels in [0, K).
+
+    Algorithm (identical to HysteresisGMMWrapper, extracted for reuse):
+      L[0]   = argmax(posteriors[0])
+      For t >= 1:
+        top    = argmax(posteriors[t])
+        margin = posteriors[t, top] - posteriors[t, L[t-1]]
+        if top == L[t-1]              -> hold
+        elif margin >= delta_hard     -> flip immediately
+        elif margin >= delta_soft for
+             t_persist consecutive bars on the same candidate
+                                       -> flip after the streak
+        else                           -> hold (reset candidate)
+    """
+    if delta_hard < delta_soft:
+        raise ValueError("delta_hard must be >= delta_soft")
+    if t_persist < 1:
+        raise ValueError("t_persist must be >= 1")
+
+    P = np.asarray(posteriors, dtype=np.float64)
+    if P.ndim == 1:
+        P = P.reshape(1, -1)
+    T, K = P.shape
+    if T == 0:
+        return np.empty(0, dtype=np.int64)
+
+    out = np.empty(T, dtype=np.int64)
+    held = int(np.argmax(P[0]))
+    out[0] = held
+    pending_label: int | None = None
+    pending_count = 0
+
+    for t in range(1, T):
+        top = int(np.argmax(P[t]))
+        if top == held:
+            pending_label = None
+            pending_count = 0
+            out[t] = held
+            continue
+
+        margin = float(P[t, top] - P[t, held])
+
+        if margin >= delta_hard:
+            held = top
+            pending_label = None
+            pending_count = 0
+        elif margin >= delta_soft:
+            if pending_label == top:
+                pending_count += 1
+            else:
+                pending_label = top
+                pending_count = 1
+            if pending_count >= t_persist:
+                held = top
+                pending_label = None
+                pending_count = 0
+        else:
+            pending_label = None
+            pending_count = 0
+
+        out[t] = held
+
+    return out
+
+
+# ==============================================================================
 # HYSTERESIS GMM WRAPPER (Schmitt trigger over GMM posteriors)
 # ==============================================================================
 class HysteresisGMMWrapper:
@@ -203,6 +284,9 @@ class HysteresisGMMWrapper:
         Performance: posteriors are computed in a SINGLE vectorized
         predict_proba() call on the full matrix; only the sequential state
         machine (which has loop-carried dependencies) iterates in Python.
+
+        Delegates the state machine to the module-level `apply_hysteresis`
+        pure function so the algorithm has exactly one implementation.
         """
         X = np.asarray(X, dtype=np.float64)
         if X.ndim == 1:
@@ -210,9 +294,12 @@ class HysteresisGMMWrapper:
         self.reset()
         proba_raw = self._gmm().predict_proba(X)            # (T, n_clusters)
         proba_sem = self._aggregate_semantic(proba_raw)     # (T, n_labels)
-        out = np.empty(X.shape[0], dtype=np.int64)
-        for i in range(X.shape[0]):
-            out[i] = self._step_with_proba(proba_sem[i])
+        out = apply_hysteresis(
+            proba_sem, self.delta_hard, self.delta_soft, self.t_persist
+        )
+        # Sync streaming state with the end-of-batch label so downstream
+        # `.step()` calls continue coherently from the last filtered label.
+        self.held_label = int(out[-1]) if len(out) else None
         return out
 
 

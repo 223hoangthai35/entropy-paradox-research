@@ -1,0 +1,49 @@
+{
+  "market": "KOSPI",
+  "ticker": "^KS11",
+  "category": "Emerging",
+  "n_bars": 1469,
+  "start": "2020-04-17",
+  "end": "2026-04-16",
+  "H_stat": 5.884346463426482,
+  "p_value": 0.05275096401045457,
+  "direction": "Paradox",
+  "regime_mean_vol": {
+    "Deterministic": 20.707194907490067,
+    "Transitional": 18.249893825743282,
+    "Stochastic": 19.261712599982268
+  },
+  "regime_median_vol": {
+    "Deterministic": 17.13014570733975,
+    "Transitional": 16.868510474241457,
+    "Stochastic": 16.7836131266617
+  },
+  "regime_share": {
+    "Deterministic": 0.2743362831858407,
+    "Transitional": 0.5241660993873384,
+    "Stochastic": 0.20149761742682096
+  },
+  "base_drawdown_rates": {
+    "3.0": 0.3273972602739726,
+    "5.0": 0.14931506849315068,
+    "7.0": 0.07671232876712329
+  },
+  "lift_by_regime": {
+    "Deterministic": {
+      "lift_3.0pct": 1.314452840400508,
+      "lift_5.0pct": 1.51604363503583,
+      "lift_7.0pct": 1.556503198294243
+    },
+    "Transitional": {
+      "lift_3.0pct": 0.9119375057960974,
+      "lift_5.0pct": 0.8819061516931211,
+      "lift_7.0pct": 0.9347643881542186
+    },
+    "Stochastic": {
+      "lift_3.0pct": 0.7977109663690348,
+      "lift_5.0pct": 0.5983795201614175,
+      "lift_7.0pct": 0.40316642120765833
+    }
+  },
+  "ms_index": 0.5727654432796482
+}

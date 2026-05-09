@@ -1,0 +1,260 @@
+{
+  "spec": "H2 Bayesian UQ \u2014 Layer 1 (RPS posterior MC) + Layer 2 (joint with H bootstrap proxy) + Layer 3 conceptual (aleatoric/epistemic decomposition)",
+  "rps_posterior_specifications": {
+    "VNINDEX": {
+      "type": "beta",
+      "mean": 0.86,
+      "kappa": 200,
+      "rationale": "Vietnam SSC + VinaCapital multi-year convergent (2020-2024)"
+    },
+    "PSEI": {
+      "type": "mixture",
+      "components": [
+        {
+          "weight": 0.5,
+          "mean": 0.21,
+          "kappa": 50,
+          "label": "PSE Stock Market Investor Profile"
+        },
+        {
+          "weight": 0.5,
+          "mean": 0.68,
+          "kappa": 50,
+          "label": "PSE 2023 Annual Report"
+        }
+      ],
+      "rationale": "Bimodal source conflict between two PSE documents \u2014 equal weight in absence of definitive prior"
+    },
+    "KOSPI": {
+      "type": "beta",
+      "mean": 0.45,
+      "kappa": 100,
+      "rationale": "KRX Data Marketplace 2026 direct + multi-period readings (0.30-0.45)"
+    },
+    "NIFTY": {
+      "type": "beta",
+      "mean": 0.39,
+      "kappa": 200,
+      "rationale": "NSE India FY21-FY25 clean time-series, narrow confidence"
+    },
+    "SPX": {
+      "type": "beta",
+      "mean": 0.27,
+      "kappa": 30,
+      "rationale": "SIFMA + MEMX metric disagreement (0.18-0.37); wider posterior"
+    },
+    "FTSE": {
+      "type": "beta",
+      "mean": 0.18,
+      "kappa": 50,
+      "rationale": "Limited UK public data, conservative bounds"
+    },
+    "NIKKEI": {
+      "type": "beta",
+      "mean": 0.2,
+      "kappa": 100,
+      "rationale": "JPX Trading-by-Investor-Type 2024 reading"
+    },
+    "BTC": {
+      "type": "beta",
+      "mean": 0.65,
+      "kappa": 20,
+      "rationale": "Crypto-aggregator estimates, ETF-era market structure shift; widest posterior"
+    }
+  },
+  "rps_posterior_summaries": {
+    "VNINDEX": {
+      "market": "VNINDEX",
+      "mean": 0.8600570188467791,
+      "median": 0.861220931733172,
+      "sd": 0.0244750193995329,
+      "p025": 0.8088465011803546,
+      "p975": 0.904416120644823,
+      "rationale": "Vietnam SSC + VinaCapital multi-year convergent (2020-2024)"
+    },
+    "PSEI": {
+      "market": "PSEI",
+      "mean": 0.445212493377468,
+      "median": 0.4703837620581773,
+      "sd": 0.2430145975379067,
+      "p025": 0.12357669168963727,
+      "p975": 0.783443657621997,
+      "rationale": "Bimodal source conflict between two PSE documents \u2014 equal weight in absence of definitive prior"
+    },
+    "KOSPI": {
+      "market": "KOSPI",
+      "mean": 0.44975857888969795,
+      "median": 0.44917047110864106,
+      "sd": 0.04956002283892929,
+      "p025": 0.3545717236833433,
+      "p975": 0.547677257940544,
+      "rationale": "KRX Data Marketplace 2026 direct + multi-period readings (0.30-0.45)"
+    },
+    "NIFTY": {
+      "market": "NIFTY",
+      "mean": 0.39004471350297243,
+      "median": 0.389537501645987,
+      "sd": 0.03448680104977945,
+      "p025": 0.3237981313545784,
+      "p975": 0.4585247288370867,
+      "rationale": "NSE India FY21-FY25 clean time-series, narrow confidence"
+    },
+    "SPX": {
+      "market": "SPX",
+      "mean": 0.26978766719893477,
+      "median": 0.2643122365039149,
+      "sd": 0.07963125825524739,
+      "p025": 0.12971016072571567,
+      "p975": 0.4386494317259192,
+      "rationale": "SIFMA + MEMX metric disagreement (0.18-0.37); wider posterior"
+    },
+    "FTSE": {
+      "market": "FTSE",
+      "mean": 0.17983670413041727,
+      "median": 0.17540531965773004,
+      "sd": 0.05382759058572395,
+      "p025": 0.08717492652924237,
+      "p975": 0.29583875764429773,
+      "rationale": "Limited UK public data, conservative bounds"
+    },
+    "NIKKEI": {
+      "market": "NIKKEI",
+      "mean": 0.19996991355385077,
+      "median": 0.1978520401834821,
+      "sd": 0.039855006064766295,
+      "p025": 0.12791805631881123,
+      "p975": 0.28312201401840364,
+      "rationale": "JPX Trading-by-Investor-Type 2024 reading"
+    },
+    "BTC": {
+      "market": "BTC",
+      "mean": 0.6501848791515876,
+      "median": 0.6549931396767352,
+      "sd": 0.10419440103178751,
+      "p025": 0.4362716734919121,
+      "p975": 0.8378130123999542,
+      "rationale": "Crypto-aggregator estimates, ETF-era market structure shift; widest posterior"
+    }
+  },
+  "raw_layer1": {
+    "label": "Layer 1 (RPS posterior only, H fixed)",
+    "n": 10000,
+    "mean": 0.6721809523809524,
+    "median": 0.7380952380952381,
+    "sd": 0.19239994509196934,
+    "p025": 0.3333333333333334,
+    "p05": 0.3333333333333334,
+    "p25": 0.523809523809524,
+    "p75": 0.8333333333333335,
+    "p95": 0.9047619047619048,
+    "p975": 0.9047619047619048,
+    "P_rho_gt_0p5": 0.7572,
+    "P_rho_gt_0p7": 0.5447
+  },
+  "raw_layer12": {
+    "label": "Layer 1+2 (RPS posterior x H bootstrap proxy)",
+    "n_outer": 1000,
+    "n_inner": 50,
+    "h_noise_sd_frac": 0.1,
+    "joint_rho_distribution": {
+      "label": "joint",
+      "n": 50000,
+      "mean": 0.681294761904762,
+      "median": 0.7380952380952381,
+      "sd": 0.18983330285811365,
+      "p025": 0.3333333333333334,
+      "p05": 0.3333333333333334,
+      "p25": 0.5476190476190477,
+      "p75": 0.8333333333333335,
+      "p95": 0.9047619047619048,
+      "p975": 0.9285714285714287,
+      "P_rho_gt_0p5": 0.78174,
+      "P_rho_gt_0p7": 0.5698
+    },
+    "outer_marginal_inner_means": {
+      "label": "outer_marginal",
+      "n": 1000,
+      "mean": 0.681294761904762,
+      "median": 0.7395238095238095,
+      "sd": 0.1885853116162527,
+      "p025": 0.3337500000000001,
+      "p05": 0.3409523809523811,
+      "p25": 0.5513095238095239,
+      "p75": 0.8400000000000003,
+      "p95": 0.8974999999999997,
+      "p975": 0.9157142857142859,
+      "P_rho_gt_0p5": 0.771,
+      "P_rho_gt_0p7": 0.576
+    },
+    "variance_decomposition": {
+      "aleatoric_E_Var_rho_given_RPS": 0.0005071068027210883,
+      "epistemic_Var_E_rho_given_RPS": 0.03552885533764173,
+      "total_variance": 0.03603596214036282,
+      "aleatoric_share_pct": 1.4072242632120342,
+      "epistemic_share_pct": 98.59277573678796
+    }
+  },
+  "filtered_layer1": {
+    "label": "Layer 1 (RPS posterior only, H fixed)",
+    "n": 10000,
+    "mean": 0.7627071428571429,
+    "median": 0.8333333333333335,
+    "sd": 0.18652615827593805,
+    "p025": 0.4047619047619048,
+    "p05": 0.4047619047619048,
+    "p25": 0.6190476190476191,
+    "p75": 0.9285714285714287,
+    "p95": 0.9761904761904763,
+    "p975": 0.9761904761904763,
+    "P_rho_gt_0p5": 0.8705,
+    "P_rho_gt_0p7": 0.6233
+  },
+  "filtered_layer12": {
+    "label": "Layer 1+2 (RPS posterior x H bootstrap proxy)",
+    "n_outer": 1000,
+    "n_inner": 50,
+    "h_noise_sd_frac": 0.1,
+    "joint_rho_distribution": {
+      "label": "joint",
+      "n": 50000,
+      "mean": 0.7751504761904763,
+      "median": 0.8571428571428572,
+      "sd": 0.18376957915894965,
+      "p025": 0.4047619047619048,
+      "p05": 0.4285714285714286,
+      "p25": 0.6190476190476191,
+      "p75": 0.9285714285714287,
+      "p95": 0.9761904761904763,
+      "p975": 0.9761904761904763,
+      "P_rho_gt_0p5": 0.88916,
+      "P_rho_gt_0p7": 0.66204
+    },
+    "outer_marginal_inner_means": {
+      "label": "outer_marginal",
+      "n": 1000,
+      "mean": 0.7751504761904762,
+      "median": 0.8454761904761907,
+      "sd": 0.1815953865054019,
+      "p025": 0.4142738095238095,
+      "p05": 0.42514285714285716,
+      "p25": 0.628452380952381,
+      "p75": 0.9304761904761905,
+      "p95": 0.9619047619047619,
+      "p975": 0.977654761904762,
+      "P_rho_gt_0p5": 0.884,
+      "P_rho_gt_0p7": 0.635
+    },
+    "variance_decomposition": {
+      "aleatoric_E_Var_rho_given_RPS": 0.0008266752834467122,
+      "epistemic_Var_E_rho_given_RPS": 0.032943907515646256,
+      "total_variance": 0.033770582799092966,
+      "aleatoric_share_pct": 2.4479153598406826,
+      "epistemic_share_pct": 97.55208464015932
+    }
+  },
+  "n_mc_layer1": 10000,
+  "n_outer_layer12": 1000,
+  "n_inner_layer12": 50,
+  "h_noise_sd_frac": 0.1,
+  "seed": 42
+}

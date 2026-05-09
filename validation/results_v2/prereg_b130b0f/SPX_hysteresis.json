@@ -1,0 +1,29 @@
+{
+  "market": "SPX",
+  "ticker": "^GSPC",
+  "category": "Developed",
+  "common_window": [
+    "2020-01-01",
+    "2026-04-16"
+  ],
+  "n_bars": 1520,
+  "bars_per_year": 252,
+  "raw_flips_per_year": 31.83157894736842,
+  "filtered_flips_per_year": 14.092105263157896,
+  "reduction_pct": 55.729166666666664,
+  "p_det": 0.3986842105263158,
+  "p_tra": 0.4328947368421053,
+  "p_sto": 0.16842105263157894,
+  "T_det_days": 29.257936507936506,
+  "T_tra_days": 23.826388888888886,
+  "T_sto_days": 23.174603174603174,
+  "overall_mean_days": 25.59985234403839,
+  "n_segments": 86,
+  "shuffle_observed": 14.092105263157896,
+  "shuffle_null_mean": 157.58133631578949,
+  "shuffle_null_p05": 152.69210526315788,
+  "shuffle_null_p95": 162.63947368421051,
+  "shuffle_p_value": 0.0,
+  "shuffle_verdict": "STRUCTURED",
+  "ms_index": 0.0701927462101151
+}

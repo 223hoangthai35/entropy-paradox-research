@@ -1,0 +1,161 @@
+{
+  "spec": "H2 re-test with KOSPI RPS corrected to 0.45 (Scenario C)",
+  "correction_basis": "KRX Data Marketplace, March 2026 reading; supersedes ASIFMA 2022 (2021 reporting period)",
+  "rps_panel_old": {
+    "VNINDEX": 0.9,
+    "PSEI": 0.68,
+    "KOSPI": 0.7,
+    "NIFTY": 0.4,
+    "SPX": 0.22,
+    "FTSE": 0.18,
+    "NIKKEI": 0.18,
+    "BTC": 0.55
+  },
+  "rps_panel_new": {
+    "VNINDEX": 0.9,
+    "PSEI": 0.68,
+    "KOSPI": 0.45,
+    "NIFTY": 0.4,
+    "SPX": 0.22,
+    "FTSE": 0.18,
+    "NIKKEI": 0.18,
+    "BTC": 0.55
+  },
+  "results_old": {
+    "primary": {
+      "n": 8,
+      "rho": 0.7545,
+      "p_value": 0.030512759033309068,
+      "verdict": "PASS"
+    },
+    "bootstrap": {
+      "ci95_low": 0.08860759493670887,
+      "ci95_high": 0.9936507294577401,
+      "mean": 0.6905903029708838,
+      "std": 0.23406742090860916
+    },
+    "mc": {
+      "rho_mean": 0.7957285714285716,
+      "rho_p05": 0.7380952380952381,
+      "rho_p50": 0.8095238095238096,
+      "rho_p95": 0.880952380952381,
+      "frac_rho_gt_threshold": 1.0
+    },
+    "strata": [
+      {
+        "subpanel": "full_panel",
+        "n": 8,
+        "rho": 0.7545,
+        "p": 0.030512759033309068,
+        "note": ""
+      },
+      {
+        "subpanel": "circuit_breaker_yes",
+        "n": 6,
+        "rho": 0.7714,
+        "p": 0.07239650145772594,
+        "note": ""
+      },
+      {
+        "subpanel": "circuit_breaker_no",
+        "n": 2,
+        "rho": 1.0,
+        "p": null,
+        "note": "descriptive only \u2014 n<4"
+      },
+      {
+        "subpanel": "frontier_emerging",
+        "n": 4,
+        "rho": 0.4,
+        "p": 0.6000000000000001,
+        "note": ""
+      },
+      {
+        "subpanel": "developed_only",
+        "n": 3,
+        "rho": -0.866,
+        "p": 0.33333333333333326,
+        "note": "descriptive only \u2014 n<4"
+      }
+    ],
+    "panel": {
+      "VNINDEX": 0.9,
+      "PSEI": 0.68,
+      "KOSPI": 0.7,
+      "NIFTY": 0.4,
+      "SPX": 0.22,
+      "FTSE": 0.18,
+      "NIKKEI": 0.18,
+      "BTC": 0.55
+    }
+  },
+  "results_new": {
+    "primary": {
+      "n": 8,
+      "rho": 0.8503,
+      "p_value": 0.007471414639953455,
+      "verdict": "PASS"
+    },
+    "bootstrap": {
+      "ci95_low": 0.3164556962025317,
+      "ci95_high": 1.0,
+      "mean": 0.8007639708028083,
+      "std": 0.18494777941223545
+    },
+    "mc": {
+      "rho_mean": 0.8720857142857145,
+      "rho_p05": 0.8333333333333335,
+      "rho_p50": 0.8571428571428572,
+      "rho_p95": 0.9523809523809524,
+      "frac_rho_gt_threshold": 1.0
+    },
+    "strata": [
+      {
+        "subpanel": "full_panel",
+        "n": 8,
+        "rho": 0.8503,
+        "p": 0.007471414639953455,
+        "note": ""
+      },
+      {
+        "subpanel": "circuit_breaker_yes",
+        "n": 6,
+        "rho": 0.8857,
+        "p": 0.01884548104956266,
+        "note": ""
+      },
+      {
+        "subpanel": "circuit_breaker_no",
+        "n": 2,
+        "rho": 1.0,
+        "p": null,
+        "note": "descriptive only \u2014 n<4"
+      },
+      {
+        "subpanel": "frontier_emerging",
+        "n": 4,
+        "rho": 0.8,
+        "p": 0.2000000000000001,
+        "note": ""
+      },
+      {
+        "subpanel": "developed_only",
+        "n": 3,
+        "rho": -0.866,
+        "p": 0.33333333333333326,
+        "note": "descriptive only \u2014 n<4"
+      }
+    ],
+    "panel": {
+      "VNINDEX": 0.9,
+      "PSEI": 0.68,
+      "KOSPI": 0.45,
+      "NIFTY": 0.4,
+      "SPX": 0.22,
+      "FTSE": 0.18,
+      "NIKKEI": 0.18,
+      "BTC": 0.55
+    }
+  },
+  "delta_rho_raw": 0.0958
+}

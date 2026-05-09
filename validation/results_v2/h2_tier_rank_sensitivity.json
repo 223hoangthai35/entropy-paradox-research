@@ -1,0 +1,95 @@
+{
+  "spec": "Tier-rank sensitivity: Crypto placement \u2208 {1, 2, 3, 4, 5}",
+  "fixed_ranks": {
+    "VNINDEX": 4,
+    "PSEI": 4,
+    "KOSPI": 3,
+    "NIFTY": 3,
+    "SPX": 1,
+    "FTSE": 1,
+    "NIKKEI": 1
+  },
+  "crypto_ranks_tested": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "results": {
+    "raw": {
+      "crypto_rank_1": {
+        "crypto_rank": 1,
+        "n_markets": 8,
+        "rho_H_tier": 0.8486684247915057,
+        "p": 0.007710591383964727,
+        "verdict": "Decisive"
+      },
+      "crypto_rank_2": {
+        "crypto_rank": 2,
+        "n_markets": 8,
+        "rho_H_tier": 0.9265616458263766,
+        "p": 0.0009364316381563804,
+        "verdict": "Decisive"
+      },
+      "crypto_rank_3": {
+        "crypto_rank": 3,
+        "n_markets": 8,
+        "rho_H_tier": 0.944911182523068,
+        "p": 0.00040087754455410884,
+        "verdict": "Decisive"
+      },
+      "crypto_rank_4": {
+        "crypto_rank": 4,
+        "n_markets": 8,
+        "rho_H_tier": 0.8819171036881969,
+        "p": 0.0037603087966665057,
+        "verdict": "Decisive"
+      },
+      "crypto_rank_5": {
+        "crypto_rank": 5,
+        "n_markets": 8,
+        "rho_H_tier": 0.8030200930495263,
+        "p": 0.016395936224995862,
+        "verdict": "Decisive"
+      }
+    },
+    "filtered": {
+      "crypto_rank_1": {
+        "crypto_rank": 1,
+        "n_markets": 8,
+        "rho_H_tier": 0.7715167498104596,
+        "p": 0.02494322329439156,
+        "verdict": "Decisive"
+      },
+      "crypto_rank_2": {
+        "crypto_rank": 2,
+        "n_markets": 8,
+        "rho_H_tier": 0.8894991799933215,
+        "p": 0.003099782378877316,
+        "verdict": "Decisive"
+      },
+      "crypto_rank_3": {
+        "crypto_rank": 3,
+        "n_markets": 8,
+        "rho_H_tier": 0.944911182523068,
+        "p": 0.00040087754455410884,
+        "verdict": "Decisive"
+      },
+      "crypto_rank_4": {
+        "crypto_rank": 4,
+        "n_markets": 8,
+        "rho_H_tier": 0.944911182523068,
+        "p": 0.00040087754455410884,
+        "verdict": "Decisive"
+      },
+      "crypto_rank_5": {
+        "crypto_rank": 5,
+        "n_markets": 8,
+        "rho_H_tier": 0.8894991799933215,
+        "p": 0.003099782378877316,
+        "verdict": "Decisive"
+      }
+    }
+  }
+}

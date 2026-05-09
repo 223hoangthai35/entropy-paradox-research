@@ -59,7 +59,12 @@ from scripts.extract_flip_dates import get_filtered_labels
 
 COMMON_START = "2022-01-01"
 COMMON_END = "2026-04-17"
-NATIVE_BPY = {"VNINDEX": 252, "SP500": 252, "BTC": 365}
+NATIVE_BPY = {
+    "VNINDEX": 252, "SP500": 252, "BTC": 365,
+    # Extended 8-market panel (paper v2.1 H3/H4)
+    "BVB": 252, "PSEI": 252, "KOSPI": 252, "NIFTY": 252,
+    "SPX": 252, "FTSE": 252, "NIKKEI": 252, "DAX": 252,
+}
 
 LABEL_NAMES = {0: "Deterministic", 1: "Transitional", 2: "Stochastic"}
 RESULTS_DIR = os.path.join(os.path.dirname(__file__), "results")

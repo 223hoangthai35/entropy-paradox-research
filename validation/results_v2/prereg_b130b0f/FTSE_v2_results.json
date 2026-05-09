@@ -1,0 +1,49 @@
+{
+  "market": "FTSE",
+  "ticker": "^FTSE",
+  "category": "Developed",
+  "n_bars": 1530,
+  "start": "2020-03-23",
+  "end": "2026-04-16",
+  "H_stat": 4.148309092210184,
+  "p_value": 0.12566262454988397,
+  "direction": "Paradox",
+  "regime_mean_vol": {
+    "Deterministic": 13.189593336678206,
+    "Transitional": 13.07683168246782,
+    "Stochastic": 12.850644298455428
+  },
+  "regime_median_vol": {
+    "Deterministic": 11.011633723036821,
+    "Transitional": 11.35720981645448,
+    "Stochastic": 10.499955001532353
+  },
+  "regime_share": {
+    "Deterministic": 0.49019607843137253,
+    "Transitional": 0.23790849673202613,
+    "Stochastic": 0.2718954248366013
+  },
+  "base_drawdown_rates": {
+    "3.0": 0.14858645627876396,
+    "5.0": 0.0381328073635766,
+    "7.0": 0.012491781722550954
+  },
+  "lift_by_regime": {
+    "Deterministic": {
+      "lift_3.0pct": 1.0947610619469026,
+      "lift_5.0pct": 0.8741379310344827,
+      "lift_7.0pct": 0.7471578947368421
+    },
+    "Transitional": {
+      "lift_3.0pct": 0.9507881254136741,
+      "lift_5.0pct": 1.0170025790428885,
+      "lift_7.0pct": 0.4435048840938912
+    },
+    "Stochastic": {
+      "lift_3.0pct": 0.8699870494280165,
+      "lift_5.0pct": 1.215264928511354,
+      "lift_7.0pct": 1.9525032092426189
+    }
+  },
+  "ms_index": 0.10911863911299449
+}

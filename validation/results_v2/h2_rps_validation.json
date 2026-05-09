@@ -1,0 +1,116 @@
+{
+  "status": "PRIMARY H2 test (supersedes composite pre-registered b130b0f)",
+  "pre_registration_commit": "b130b0f",
+  "pre_registration_specification": "MS_index composite (weights 0.4/0.3/0.3)",
+  "active_specification": "RPS (single variable)",
+  "supersession_reason": "Composite weights chosen qualitatively with no derivation; components measured in incompatible units; rho-magnitude against composite carried uncontrolled author degree of freedom.",
+  "h2_primary": {
+    "spec": "H2 PRIMARY \u2014 MS_microstructure = RPS (single variable)",
+    "n": 8,
+    "rho": 0.7545,
+    "p_value": 0.030512759033309068,
+    "threshold_rho_gt": 0.5,
+    "threshold_p_lt": 0.1,
+    "verdict": "PASS"
+  },
+  "bootstrap_95ci_for_rho": {
+    "n_resamples_effective": 10000,
+    "ci95_low": 0.08860759493670887,
+    "ci95_high": 0.9936507294577401,
+    "mean": 0.6905903029708838,
+    "std": 0.23406742090860916
+  },
+  "monte_carlo_sensitivity_RPS_noise_sd_0p05": {
+    "n_trials_effective": 10000,
+    "noise_sd": 0.05,
+    "rho_mean": 0.7957285714285716,
+    "rho_std": 0.049212020128928544,
+    "rho_p05": 0.7380952380952381,
+    "rho_p50": 0.8095238095238096,
+    "rho_p95": 0.880952380952381,
+    "rho_min": 0.5714285714285715,
+    "rho_max": 0.9285714285714287,
+    "frac_rho_gt_threshold": 1.0
+  },
+  "h2_filtered_labels_post_hoc": {
+    "spec": "H2 \u2014 RPS coupling under hysteresis-filtered labels",
+    "n": 8,
+    "rho": 0.8144,
+    "p_value": 0.013844257377974144,
+    "ci95_low": 0.2894736842105264,
+    "ci95_high": 1.0,
+    "verdict": "PASS",
+    "delta_rho_filtered_minus_raw": 0.0599
+  },
+  "stratified_subpanels": [
+    {
+      "subpanel": "full_panel",
+      "n": 8,
+      "markets": [
+        "VNINDEX",
+        "PSEI",
+        "KOSPI",
+        "NIFTY",
+        "SPX",
+        "FTSE",
+        "NIKKEI",
+        "BTC"
+      ],
+      "rho_RPS": 0.7545,
+      "p_RPS": 0.030512759033309068,
+      "note": ""
+    },
+    {
+      "subpanel": "circuit_breaker_yes",
+      "n": 6,
+      "markets": [
+        "VNINDEX",
+        "PSEI",
+        "KOSPI",
+        "NIFTY",
+        "SPX",
+        "NIKKEI"
+      ],
+      "rho_RPS": 0.7714,
+      "p_RPS": 0.07239650145772594,
+      "note": ""
+    },
+    {
+      "subpanel": "circuit_breaker_no",
+      "n": 2,
+      "markets": [
+        "FTSE",
+        "BTC"
+      ],
+      "rho_RPS": 1.0,
+      "p_RPS": null,
+      "note": "descriptive only \u2014 n<4"
+    },
+    {
+      "subpanel": "frontier_emerging",
+      "n": 4,
+      "markets": [
+        "VNINDEX",
+        "PSEI",
+        "KOSPI",
+        "NIFTY"
+      ],
+      "rho_RPS": 0.4,
+      "p_RPS": 0.6000000000000001,
+      "note": ""
+    },
+    {
+      "subpanel": "developed_only",
+      "n": 3,
+      "markets": [
+        "SPX",
+        "FTSE",
+        "NIKKEI"
+      ],
+      "rho_RPS": -0.866,
+      "p_RPS": 0.33333333333333326,
+      "note": "descriptive only \u2014 n<4"
+    }
+  ],
+  "rps_sources_note": "Values sourced from VinaCapital 2024, PSE 2023 Annual Report, ASIFMA 2022, NSE India FY25, SIFMA 2024, MEMX 2025, SQ Magazine 2026, JPX 2024, and aggregated crypto-exchange data. All ex-ante microstructure facts; none derived from the return series."
+}

@@ -1,0 +1,110 @@
+{
+  "spec": "H2 cascade re-run n=27 with BVB P2 corrected (round-18 consistency)",
+  "panel_n": 27,
+  "cascade_phases": {
+    "P1": {
+      "count": 5,
+      "markets": [
+        "KOSPI",
+        "NIFTY",
+        "NIKKEI",
+        "PSEI",
+        "VNINDEX"
+      ]
+    },
+    "P2": {
+      "count": 3,
+      "markets": [
+        "BVB",
+        "FTSE",
+        "SPX"
+      ],
+      "BVB_correction": "P3 Beta(0.40, 20) \u2192 P2 Uniform[0.20, 0.25] per round-18 BVB IR + ASF Romania authoritative source"
+    },
+    "P3": {
+      "count": 19,
+      "markets": [
+        "ASX",
+        "BNB",
+        "BTC",
+        "CAC",
+        "DAX",
+        "DSEX",
+        "ETH",
+        "HSI",
+        "JKSE",
+        "KSE100",
+        "MERV",
+        "OMXRGI",
+        "OMXVGI",
+        "SBITOP",
+        "SET",
+        "SHANGHAI",
+        "SSMI",
+        "STI",
+        "TWII"
+      ]
+    }
+  },
+  "n_mc": 10000,
+  "seed": 42,
+  "all_p1_reference": {
+    "rps_values": {
+      "VNINDEX": 0.9,
+      "KSE100": 0.6,
+      "DSEX": 0.55,
+      "BVB": 0.225,
+      "SBITOP": 0.3,
+      "OMXVGI": 0.3,
+      "OMXRGI": 0.35,
+      "MERV": 0.55,
+      "KOSPI": 0.45,
+      "NIFTY": 0.4,
+      "PSEI": 0.68,
+      "JKSE": 0.4,
+      "SET": 0.35,
+      "SHANGHAI": 0.65,
+      "TWII": 0.4,
+      "SPX": 0.275,
+      "FTSE": 0.2,
+      "DAX": 0.2,
+      "CAC": 0.2,
+      "SSMI": 0.15,
+      "NIKKEI": 0.18,
+      "ASX": 0.3,
+      "HSI": 0.35,
+      "STI": 0.25,
+      "BTC": 0.55,
+      "ETH": 0.55,
+      "BNB": 0.6
+    },
+    "rho_H_raw": 0.45885450309143616,
+    "p_H_raw": 0.01606531720058527,
+    "rho_H_filt": 0.6335686425450892,
+    "p_H_filt": 0.00038856751143502945
+  },
+  "cascade_composite": {
+    "raw": {
+      "mean": 0.4095128205128205,
+      "median": 0.41208791208791207,
+      "p025": 0.24479548229548231,
+      "p975": 0.5567765567765567,
+      "P_rho_gt_0p5": 0.1228,
+      "P_rho_gt_0p7": 0.0
+    },
+    "filtered": {
+      "mean": 0.5663551282051282,
+      "median": 0.5702075702075702,
+      "p025": 0.4230769230769231,
+      "p975": 0.6947496947496948,
+      "P_rho_gt_0p5": 0.8266,
+      "P_rho_gt_0p7": 0.0202
+    }
+  },
+  "tier_spearman": {
+    "rho_H_raw_tier": 0.5631555941919792,
+    "p_H_raw_tier": 0.0022249387971624273,
+    "rho_H_filt_tier": 0.4819771450574656,
+    "p_H_filt_tier": 0.01090308845202696
+  }
+}

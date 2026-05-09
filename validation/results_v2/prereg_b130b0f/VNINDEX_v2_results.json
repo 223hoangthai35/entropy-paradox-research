@@ -1,0 +1,49 @@
+{
+  "market": "VNINDEX",
+  "ticker": "VNINDEX",
+  "category": "Frontier",
+  "n_bars": 1506,
+  "start": "2020-04-08",
+  "end": "2026-04-17",
+  "H_stat": 83.90018149376192,
+  "p_value": 6.043758097339736e-19,
+  "direction": "Paradox",
+  "regime_mean_vol": {
+    "Deterministic": 20.073812891338633,
+    "Transitional": 16.028660008633484,
+    "Stochastic": 17.212510705285364
+  },
+  "regime_median_vol": {
+    "Deterministic": 18.93307059897189,
+    "Transitional": 13.422801915941793,
+    "Stochastic": 16.304368572024508
+  },
+  "regime_share": {
+    "Deterministic": 0.4814077025232404,
+    "Transitional": 0.45617529880478086,
+    "Stochastic": 0.06241699867197875
+  },
+  "base_drawdown_rates": {
+    "3.0": 0.3239812959251837,
+    "5.0": 0.11222444889779559,
+    "7.0": 0.03674014696058784
+  },
+  "lift_by_regime": {
+    "Deterministic": {
+      "lift_3.0pct": 1.22612442232492,
+      "lift_5.0pct": 1.302807881773399,
+      "lift_7.0pct": 1.614319749216301
+    },
+    "Transitional": {
+      "lift_3.0pct": 0.7466107107015783,
+      "lift_5.0pct": 0.683417614833544,
+      "lift_7.0pct": 0.32115848753016896
+    },
+    "Stochastic": {
+      "lift_3.0pct": 1.0835928931783285,
+      "lift_5.0pct": 0.9479483282674772,
+      "lift_7.0pct": 1.158220502901354
+    }
+  },
+  "ms_index": 0.7270411998265593
+}

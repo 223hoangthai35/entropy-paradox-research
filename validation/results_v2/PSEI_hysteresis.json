@@ -1,0 +1,51 @@
+{
+  "market": "PSEI",
+  "ticker": "PSEI.PS",
+  "category": "Frontier",
+  "common_window": [
+    "2020-01-01",
+    "2026-04-16"
+  ],
+  "n_bars": 1460,
+  "bars_per_year": 252,
+  "raw_flips_per_year": 26.926027397260274,
+  "filtered_flips_per_year": 8.802739726027397,
+  "reduction_pct": 67.3076923076923,
+  "p_det": 0.47465753424657536,
+  "p_tra": 0.40342465753424656,
+  "p_sto": 0.12191780821917808,
+  "p_tra_ci_lo": 0.3150684931506849,
+  "p_tra_ci_hi": 0.4877054794520546,
+  "distance_to_threshold": -0.046575342465753455,
+  "distance_spec": "frontier_lower_fail",
+  "threshold_wrong_side_p": 0.8485,
+  "h3_verdict_categorical": "REJECT",
+  "h3_verdict_refined": "REJECT_BORDERLINE",
+  "T_det_days": 52.82894736842105,
+  "T_tra_days": 34.12460317460317,
+  "T_sto_days": 32.22718253968254,
+  "overall_mean_days": 40.66697191697192,
+  "n_segments": 52,
+  "shuffle_observed": 8.802739726027397,
+  "shuffle_null_mean": 150.4746197260274,
+  "shuffle_null_p05": 145.33150684931508,
+  "shuffle_null_p95": 155.5150684931507,
+  "shuffle_p_value": 0.0,
+  "shuffle_verdict": "STRUCTURED",
+  "shuffle_block_p": {
+    "5": 0.0,
+    "10": 0.0,
+    "20": 0.0
+  },
+  "shuffle_block_null_mean": {
+    "5": 36.589450684931506,
+    "10": 22.816701369863015,
+    "20": 16.18590821917808
+  },
+  "rps": 0.68,
+  "p_det_raw": 0.5054794520547945,
+  "p_tra_raw": 0.3801369863013699,
+  "p_sto_raw": 0.11438356164383562,
+  "p_tra_raw_ci_lo": 0.3054623287671233,
+  "p_tra_raw_ci_hi": 0.4547945205479452
+}

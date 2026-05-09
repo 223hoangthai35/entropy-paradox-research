@@ -1,0 +1,49 @@
+{
+  "market": "NIKKEI",
+  "ticker": "^N225",
+  "category": "Developed",
+  "n_bars": 1459,
+  "start": "2020-04-27",
+  "end": "2026-04-16",
+  "H_stat": 4.052646560651738,
+  "p_value": 0.13181929384632937,
+  "direction": "Paradox",
+  "regime_mean_vol": {
+    "Deterministic": 19.203536725184502,
+    "Transitional": 21.221100132547942,
+    "Stochastic": 18.2222135361894
+  },
+  "regime_median_vol": {
+    "Deterministic": 17.885247330035742,
+    "Transitional": 18.170953732539687,
+    "Stochastic": 17.73470084660969
+  },
+  "regime_share": {
+    "Deterministic": 0.4201507882111035,
+    "Transitional": 0.3975325565455792,
+    "Stochastic": 0.18231665524331733
+  },
+  "base_drawdown_rates": {
+    "3.0": 0.34413793103448276,
+    "5.0": 0.1510344827586207,
+    "7.0": 0.05655172413793103
+  },
+  "lift_by_regime": {
+    "Deterministic": {
+      "lift_3.0pct": 1.2372215883643305,
+      "lift_5.0pct": 1.2961183490133859,
+      "lift_7.0pct": 1.1250149206222895
+    },
+    "Transitional": {
+      "lift_3.0pct": 0.9432477520485999,
+      "lift_5.0pct": 0.9821734522301114,
+      "lift_7.0pct": 1.2035499936151195
+    },
+    "Stochastic": {
+      "lift_3.0pct": 0.5723568348818849,
+      "lift_5.0pct": 0.3511138785111388,
+      "lift_7.0pct": 0.26792313377679233
+    }
+  },
+  "ms_index": 0.11943697499232711
+}

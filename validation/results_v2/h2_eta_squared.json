@@ -1,0 +1,265 @@
+{
+  "spec": "H2 with \u03b7\u00b2 effect size + N_obs per market (sample-size correction)",
+  "n_markets": 8,
+  "horizon": 20,
+  "seed": 42,
+  "elapsed_seconds": 9.389260053634644,
+  "per_market": {
+    "VNINDEX": {
+      "tier_rank": 4,
+      "RPS": 0.9,
+      "raw": {
+        "H_stat": 83.90018149376192,
+        "p_value": 6.043758097339736e-19,
+        "eta_sq": 0.055226015842051196,
+        "N_obs": 1486,
+        "n_per_regime": {
+          "Deterministic": 725,
+          "Transitional": 667,
+          "Stochastic": 94
+        },
+        "fit_status": "ok"
+      },
+      "filtered": {
+        "H_stat": 96.331276255999,
+        "p_value": 1.2076167930324498e-21,
+        "eta_sq": 0.06360841284962845,
+        "N_obs": 1486,
+        "n_per_regime": {
+          "Deterministic": 740,
+          "Transitional": 659,
+          "Stochastic": 87
+        },
+        "fit_status": "ok"
+      }
+    },
+    "PSEI": {
+      "tier_rank": 4,
+      "RPS": 0.68,
+      "raw": {
+        "H_stat": 48.10061221438809,
+        "p_value": 3.589919991424138e-11,
+        "eta_sq": 0.032081149766449615,
+        "N_obs": 1440,
+        "n_per_regime": {
+          "Deterministic": 736,
+          "Transitional": 537,
+          "Stochastic": 167
+        },
+        "fit_status": "ok"
+      },
+      "filtered": {
+        "H_stat": 41.08874397318141,
+        "p_value": 1.195893793729316e-09,
+        "eta_sq": 0.027201631157398334,
+        "N_obs": 1440,
+        "n_per_regime": {
+          "Deterministic": 693,
+          "Transitional": 569,
+          "Stochastic": 178
+        },
+        "fit_status": "ok"
+      }
+    },
+    "KOSPI": {
+      "tier_rank": 3,
+      "RPS": 0.45,
+      "raw": {
+        "H_stat": 5.884346463426482,
+        "p_value": 0.05275096401045457,
+        "eta_sq": 0.0026862700300321453,
+        "N_obs": 1449,
+        "n_per_regime": {
+          "Deterministic": 391,
+          "Transitional": 767,
+          "Stochastic": 291
+        },
+        "fit_status": "ok"
+      },
+      "filtered": {
+        "H_stat": 21.838040689084664,
+        "p_value": 1.8110469807140813e-05,
+        "eta_sq": 0.013719253588578607,
+        "N_obs": 1449,
+        "n_per_regime": {
+          "Deterministic": 422,
+          "Transitional": 786,
+          "Stochastic": 241
+        },
+        "fit_status": "ok"
+      }
+    },
+    "NIFTY": {
+      "tier_rank": 3,
+      "RPS": 0.4,
+      "raw": {
+        "H_stat": 13.984688517320137,
+        "p_value": 0.0009188898892127256,
+        "eta_sq": 0.00823689932461865,
+        "N_obs": 1458,
+        "n_per_regime": {
+          "Deterministic": 499,
+          "Transitional": 840,
+          "Stochastic": 119
+        },
+        "fit_status": "ok"
+      },
+      "filtered": {
+        "H_stat": 21.986229876346442,
+        "p_value": 1.681708980723144e-05,
+        "eta_sq": 0.013736240464842916,
+        "N_obs": 1458,
+        "n_per_regime": {
+          "Deterministic": 524,
+          "Transitional": 817,
+          "Stochastic": 117
+        },
+        "fit_status": "ok"
+      }
+    },
+    "SPX": {
+      "tier_rank": 1,
+      "RPS": 0.275,
+      "raw": {
+        "H_stat": 2.1225545802572015,
+        "p_value": 0.3460135682393804,
+        "eta_sq": 8.186678707895888e-05,
+        "N_obs": 1500,
+        "n_per_regime": {
+          "Deterministic": 651,
+          "Transitional": 597,
+          "Stochastic": 252
+        },
+        "fit_status": "ok"
+      },
+      "filtered": {
+        "H_stat": 1.5070791083808217,
+        "p_value": 0.4706975412506671,
+        "eta_sq": 0.0,
+        "N_obs": 1500,
+        "n_per_regime": {
+          "Deterministic": 606,
+          "Transitional": 658,
+          "Stochastic": 236
+        },
+        "fit_status": "ok"
+      }
+    },
+    "FTSE": {
+      "tier_rank": 1,
+      "RPS": 0.2,
+      "raw": {
+        "H_stat": 4.148309092210184,
+        "p_value": 0.12566262454988397,
+        "eta_sq": 0.0014255534785734465,
+        "N_obs": 1510,
+        "n_per_regime": {
+          "Deterministic": 749,
+          "Transitional": 361,
+          "Stochastic": 400
+        },
+        "fit_status": "ok"
+      },
+      "filtered": {
+        "H_stat": 1.3407657643201674,
+        "p_value": 0.5115126912040784,
+        "eta_sq": 0.0,
+        "N_obs": 1510,
+        "n_per_regime": {
+          "Deterministic": 690,
+          "Transitional": 530,
+          "Stochastic": 290
+        },
+        "fit_status": "ok"
+      }
+    },
+    "NIKKEI": {
+      "tier_rank": 1,
+      "RPS": 0.18,
+      "raw": {
+        "H_stat": 4.052646560651738,
+        "p_value": 0.13181929384632937,
+        "eta_sq": 0.0014294196104817115,
+        "N_obs": 1439,
+        "n_per_regime": {
+          "Deterministic": 609,
+          "Transitional": 566,
+          "Stochastic": 264
+        },
+        "fit_status": "ok"
+      },
+      "filtered": {
+        "H_stat": 2.217065991565505,
+        "p_value": 0.3300427802565387,
+        "eta_sq": 0.00015116016125731553,
+        "N_obs": 1439,
+        "n_per_regime": {
+          "Deterministic": 629,
+          "Transitional": 534,
+          "Stochastic": 276
+        },
+        "fit_status": "ok"
+      }
+    },
+    "BTC": {
+      "tier_rank": 2,
+      "RPS": 0.55,
+      "raw": {
+        "H_stat": 7.130210989101215,
+        "p_value": 0.028294000463874102,
+        "eta_sq": 0.0021008235008604485,
+        "N_obs": 2445,
+        "n_per_regime": {
+          "Deterministic": 888,
+          "Transitional": 1191,
+          "Stochastic": 366
+        },
+        "fit_status": "ok"
+      },
+      "filtered": {
+        "H_stat": 32.24249483715812,
+        "p_value": 9.968531939848486e-08,
+        "eta_sq": 0.01238431402013027,
+        "N_obs": 2445,
+        "n_per_regime": {
+          "Deterministic": 1017,
+          "Transitional": 1075,
+          "Stochastic": 353
+        },
+        "fit_status": "ok"
+      }
+    }
+  },
+  "cross_market": {
+    "raw": {
+      "rho_H_tier": 0.9265616458263766,
+      "p_H_tier": 0.0009364316381563804,
+      "rho_eta_tier": 0.9636241116594317,
+      "p_eta_tier": 0.00011707291460771196,
+      "rho_H_rps": 0.8571428571428572,
+      "p_H_rps": 0.0065300172547152905,
+      "rho_eta_rps": 0.8095238095238096,
+      "p_eta_rps": 0.014902667686230067
+    },
+    "filtered": {
+      "rho_H_tier": 0.8894991799933215,
+      "p_H_tier": 0.003099782378877316,
+      "rho_eta_tier": 0.9694116958983827,
+      "p_eta_tier": 6.991804443028176e-05,
+      "rho_H_rps": 0.9047619047619048,
+      "p_H_rps": 0.002008275505429469,
+      "rho_eta_rps": 0.8263621207201486,
+      "p_eta_rps": 0.011442764999941228
+    }
+  },
+  "n_obs_diagnostics": {
+    "min_N": 1439,
+    "max_N": 2445,
+    "range": 1006,
+    "ratio_max_min": 1.69909659485754,
+    "rho_H_N": -0.07142857142857144,
+    "p_H_N": 0.8665262706759088,
+    "rho_eta_N": -0.3333333333333334,
+    "p_eta_N": 0.4197530864197532
+  }
+}
