@@ -117,97 +117,97 @@
       }
     },
     {
-      "market": "PSEI",
+      "market": "BVB",
       "category": "Frontier",
       "rows": [
         {
-          "market": "PSEI",
+          "market": "BVB",
           "category": "Frontier",
           "config": "A_current",
           "delta_hard": 0.6,
           "delta_soft": 0.35,
           "t_persist": 8,
-          "n_bars": 1460,
-          "flips_per_year": 8.8,
-          "p_det": 0.475,
-          "p_tra": 0.403,
-          "p_sto": 0.122,
-          "T_det_days": 52.8,
-          "T_tra_days": 34.1,
-          "T_sto_days": 32.2,
-          "overall_d": 40.7,
-          "p_tra_spread": 0.056,
-          "H5_verdict": "REJECT"
+          "n_bars": 1398,
+          "flips_per_year": 12.62,
+          "p_det": 0.376,
+          "p_tra": 0.369,
+          "p_sto": 0.255,
+          "T_det_days": 38.1,
+          "T_tra_days": 23.4,
+          "T_sto_days": 27.1,
+          "overall_d": 28.5,
+          "p_tra_spread": 0.014,
+          "H5_verdict": "PASS"
         },
         {
-          "market": "PSEI",
+          "market": "BVB",
           "category": "Frontier",
           "config": "B_looser",
           "delta_hard": 0.5,
           "delta_soft": 0.3,
           "t_persist": 6,
-          "n_bars": 1460,
-          "flips_per_year": 10.87,
-          "p_det": 0.484,
-          "p_tra": 0.394,
-          "p_sto": 0.122,
-          "T_det_days": 42.7,
-          "T_tra_days": 26.9,
-          "T_sto_days": 28.6,
-          "overall_d": 33.0,
-          "p_tra_spread": 0.056,
-          "H5_verdict": "REJECT"
+          "n_bars": 1398,
+          "flips_per_year": 13.16,
+          "p_det": 0.384,
+          "p_tra": 0.361,
+          "p_sto": 0.255,
+          "T_det_days": 37.0,
+          "T_tra_days": 22.1,
+          "T_sto_days": 25.9,
+          "overall_d": 27.4,
+          "p_tra_spread": 0.014,
+          "H5_verdict": "PASS"
         },
         {
-          "market": "PSEI",
+          "market": "BVB",
           "category": "Frontier",
           "config": "C_tighter",
           "delta_hard": 0.7,
           "delta_soft": 0.4,
           "t_persist": 10,
-          "n_bars": 1460,
-          "flips_per_year": 7.08,
-          "p_det": 0.428,
-          "p_tra": 0.45,
-          "p_sto": 0.122,
-          "T_det_days": 60.4,
-          "T_tra_days": 47.6,
-          "T_sto_days": 36.8,
-          "overall_d": 50.3,
-          "p_tra_spread": 0.056,
-          "H5_verdict": "REJECT"
+          "n_bars": 1398,
+          "flips_per_year": 10.82,
+          "p_det": 0.386,
+          "p_tra": 0.375,
+          "p_sto": 0.24,
+          "T_det_days": 45.9,
+          "T_tra_days": 28.1,
+          "T_sto_days": 28.5,
+          "overall_d": 33.2,
+          "p_tra_spread": 0.014,
+          "H5_verdict": "PASS"
         }
       ],
-      "p_tra_spread": 0.055999999999999994,
-      "H5_verdict": "REJECT",
-      "H5_verdict_refined": "REJECT_BORDERLINE",
+      "p_tra_spread": 0.014000000000000012,
+      "H5_verdict": "PASS",
+      "H5_verdict_refined": "PASS_BORDERLINE",
       "bootstrap": {
         "per_config_ci": {
           "A_current": {
-            "ci_lo": 0.3150684931506849,
-            "ci_hi": 0.4877054794520546,
-            "mean": 0.4022743150684932,
-            "std": 0.045050105441142116
+            "ci_lo": 0.2832439198855508,
+            "ci_hi": 0.4570815450643777,
+            "mean": 0.36932904148783974,
+            "std": 0.0438345267317802
           },
           "B_looser": {
-            "ci_lo": 0.30753424657534245,
-            "ci_hi": 0.4773972602739726,
-            "mean": 0.39255308219178087,
-            "std": 0.04341826280510467
+            "ci_lo": 0.278934191702432,
+            "ci_hi": 0.44565450643776816,
+            "mean": 0.36108082975679545,
+            "std": 0.042634554093028985
           },
           "C_tighter": {
-            "ci_lo": 0.3561643835616438,
-            "ci_hi": 0.5424999999999998,
-            "mean": 0.44897328767123285,
-            "std": 0.04753190748162947
+            "ci_lo": 0.287535765379113,
+            "ci_hi": 0.4656652360515021,
+            "mean": 0.3751448497854077,
+            "std": 0.045324779262904714
           }
         },
         "spread_ci": {
-          "ci_lo": 0.014383561643835585,
-          "ci_hi": 0.10547945205479448,
-          "mean": 0.05716095890410959,
-          "std": 0.02277602704710132,
-          "frac_gt_threshold": 0.605
+          "ci_lo": 0.002861230329041453,
+          "ci_hi": 0.05078683834048642,
+          "mean": 0.019119814020028613,
+          "std": 0.012293291378615399,
+          "frac_gt_threshold": 0.028
         }
       }
     },

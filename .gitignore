@@ -38,5 +38,12 @@ agent_orchestrator.py
 *.log
 
 # Personal research workspace (manuscript drafting, agent harness, working notes).
-# Final artefacts are copied into paper_artifacts/ and validation/.
+# Final artefacts are copied into validation/.
 research/
+
+# Paper manuscript drafts and lab notebook live only in the personal research/
+# workspace. The public repo holds code + validation results; the paper file
+# itself stays private.
+paper_artifacts/02_AnonymizedManuscript_*.md
+paper_artifacts/CHANGELOG.md
+paper_artifacts/audits/

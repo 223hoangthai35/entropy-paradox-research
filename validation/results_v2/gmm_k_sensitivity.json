@@ -65,7 +65,8 @@
           ]
         }
       },
-      "bic_optimal_K": 5
+      "bic_optimal_K": 5,
+      "rps": 0.9
     },
     "PSEI": {
       "tier_rank": 4,
@@ -121,7 +122,8 @@
           ]
         }
       },
-      "bic_optimal_K": 2
+      "bic_optimal_K": 2,
+      "rps": 0.68
     },
     "KOSPI": {
       "tier_rank": 3,
@@ -177,7 +179,8 @@
           ]
         }
       },
-      "bic_optimal_K": 4
+      "bic_optimal_K": 4,
+      "rps": 0.45
     },
     "NIFTY": {
       "tier_rank": 3,
@@ -233,7 +236,8 @@
           ]
         }
       },
-      "bic_optimal_K": 5
+      "bic_optimal_K": 5,
+      "rps": 0.4
     },
     "SPX": {
       "tier_rank": 1,
@@ -289,7 +293,8 @@
           ]
         }
       },
-      "bic_optimal_K": 3
+      "bic_optimal_K": 3,
+      "rps": 0.275
     },
     "FTSE": {
       "tier_rank": 1,
@@ -345,7 +350,8 @@
           ]
         }
       },
-      "bic_optimal_K": 5
+      "bic_optimal_K": 5,
+      "rps": 0.2
     },
     "NIKKEI": {
       "tier_rank": 1,
@@ -401,7 +407,8 @@
           ]
         }
       },
-      "bic_optimal_K": 5
+      "bic_optimal_K": 5,
+      "rps": 0.18
     },
     "BTC": {
       "tier_rank": 2,
@@ -457,7 +464,8 @@
           ]
         }
       },
-      "bic_optimal_K": 4
+      "bic_optimal_K": 4,
+      "rps": 0.55
     }
   },
   "cross_market": {
@@ -465,30 +473,40 @@
       "K": 2,
       "n_markets": 8,
       "rho_H_tier": 0.8153742483272115,
-      "p": 0.01363507137379299
+      "rho_H_rps": 0.5476190476190477,
+      "p_rps": 0.16002564253889653,
+      "p_tier": 0.01363507137379299
     },
     "fixed_K_3": {
       "K": 3,
       "n_markets": 8,
       "rho_H_tier": 0.9265616458263766,
-      "p": 0.0009364316381563804
+      "rho_H_rps": 0.8571428571428572,
+      "p_rps": 0.0065300172547152905,
+      "p_tier": 0.0009364316381563804
     },
     "fixed_K_4": {
       "K": 4,
       "n_markets": 8,
       "rho_H_tier": 0.8647908694379515,
-      "p": 0.005569862665877527
+      "rho_H_rps": 0.7142857142857144,
+      "p_rps": 0.046528232284167255,
+      "p_tier": 0.005569862665877527
     },
     "fixed_K_5": {
       "K": 5,
       "n_markets": 8,
       "rho_H_tier": 0.9636241116594317,
-      "p": 0.00011707291460771196
+      "rho_H_rps": 0.9047619047619048,
+      "p_rps": 0.002008275505429469,
+      "p_tier": 0.00011707291460771196
     },
     "market_optimal_K": {
       "n_markets": 8,
       "rho_H_tier": 0.4941662111074008,
-      "p": 0.2132318701318101
+      "rho_H_rps": 0.261904761904762,
+      "p_rps": 0.530922861565801,
+      "p_tier": 0.2132318701318101
     }
   }
 }

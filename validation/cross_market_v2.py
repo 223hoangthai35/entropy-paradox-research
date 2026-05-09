@@ -86,7 +86,7 @@ from skills.ds_skill import REGIME_NAMES
 # ==============================================================================
 MARKETS: list[dict[str, Any]] = [
     {"name": "VNINDEX", "ticker": "VNINDEX", "source": "vnstock",  "category": "Frontier"},
-    {"name": "PSEI",    "ticker": "PSEI.PS", "source": "yfinance", "category": "Frontier"},
+    {"name": "BVB",     "ticker": "BVB.RO",  "source": "yfinance", "category": "Frontier"},
     {"name": "KOSPI",   "ticker": "^KS11",   "source": "yfinance", "category": "Emerging"},
     {"name": "NIFTY",   "ticker": "^NSEI",   "source": "yfinance", "category": "Emerging"},
     {"name": "SPX",     "ticker": "^GSPC",   "source": "yfinance", "category": "Developed"},
@@ -103,11 +103,11 @@ END   = "2026-04-17"
 # paper_artifacts/rps_rationale.md for full sources.
 RPS_VALUE = {
     "VNINDEX": 0.90,
-    "PSEI":    0.68,
-    "KOSPI":   0.70,
+    "BVB":     0.225,    # P2 Uniform[0.20, 0.25] midpoint (BVB IR + ASF Romania monthly market reports)
+    "KOSPI":   0.45,     # KRX 2026 direct turnover-by-investor-type (cascade verification, App D.3)
     "NIFTY":   0.40,
-    "SPX":     0.22,
-    "FTSE":    0.18,
+    "SPX":     0.275,    # P2 Uniform[0.18, 0.37] midpoint
+    "FTSE":    0.20,     # P2 Uniform[0.15, 0.25] midpoint
     "NIKKEI":  0.18,
     "BTC":     0.55,
 }

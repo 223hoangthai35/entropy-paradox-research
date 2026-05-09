@@ -3,7 +3,11 @@ GMM K-selection per market sensitivity (Plan v9 §A.6, Major M-9).
 
 Per market: compute BIC for K ∈ {2, 3, 4, 5}; identify market-optimal K_m.
 Then per market at K = K_m: compute KW H statistic on forward 20-day RV.
-Cross-market: does Spearman ρ(H, tier) survive market-optimal K?
+Cross-market: do Spearman ρ(H, RPS) (primary) and ρ(H, tier) (ordinal robustness)
+survive K choice and market-optimal K?
+
+RPS vector follows the all-P1 reference of §4.2.1 (cascade composite Mean
+equivalent for rank-correlation purposes; see Table 1 + paper §4.2.2 line 167).
 
 Output: validation/results_v2/gmm_k_sensitivity.json
 """
@@ -31,14 +35,14 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 from validation._features import run_full_pipeline, SPE_Z_WIN
 
 MARKETS = [
-    {"name": "VNINDEX", "ticker": "VNINDEX", "source": "vnstock",  "tier_rank": 4},
-    {"name": "PSEI",    "ticker": "PSEI.PS", "source": "yfinance", "tier_rank": 4},
-    {"name": "KOSPI",   "ticker": "^KS11",   "source": "yfinance", "tier_rank": 3},
-    {"name": "NIFTY",   "ticker": "^NSEI",   "source": "yfinance", "tier_rank": 3},
-    {"name": "SPX",     "ticker": "^GSPC",   "source": "yfinance", "tier_rank": 1},
-    {"name": "FTSE",    "ticker": "^FTSE",   "source": "yfinance", "tier_rank": 1},
-    {"name": "NIKKEI",  "ticker": "^N225",   "source": "yfinance", "tier_rank": 1},
-    {"name": "BTC",     "ticker": "BTC-USD", "source": "yfinance", "tier_rank": 2},
+    {"name": "VNINDEX", "ticker": "VNINDEX", "source": "vnstock",  "tier_rank": 4, "rps": 0.90},
+    {"name": "PSEI",    "ticker": "PSEI.PS", "source": "yfinance", "tier_rank": 4, "rps": 0.68},
+    {"name": "KOSPI",   "ticker": "^KS11",   "source": "yfinance", "tier_rank": 3, "rps": 0.45},
+    {"name": "NIFTY",   "ticker": "^NSEI",   "source": "yfinance", "tier_rank": 3, "rps": 0.40},
+    {"name": "SPX",     "ticker": "^GSPC",   "source": "yfinance", "tier_rank": 1, "rps": 0.275},
+    {"name": "FTSE",    "ticker": "^FTSE",   "source": "yfinance", "tier_rank": 1, "rps": 0.20},
+    {"name": "NIKKEI",  "ticker": "^N225",   "source": "yfinance", "tier_rank": 1, "rps": 0.18},
+    {"name": "BTC",     "ticker": "BTC-USD", "source": "yfinance", "tier_rank": 2, "rps": 0.55},
 ]
 
 K_CANDIDATES = [2, 3, 4, 5]
@@ -108,15 +112,17 @@ def main() -> int:
             opt_k = None
         results[name] = {
             "tier_rank": cfg["tier_rank"],
+            "rps": cfg["rps"],
             "k_results": market_results,
             "bic_optimal_K": opt_k,
         }
 
     print("\n" + "=" * 70)
-    print("  CROSS-MARKET SPEARMAN ρ(H, tier_rank) PER FIXED K + MARKET-OPTIMAL")
+    print("  CROSS-MARKET SPEARMAN ρ(H, RPS) [primary] + ρ(H, tier) [robustness]")
     print("=" * 70)
 
     tier_arr = np.array([cfg["tier_rank"] for cfg in MARKETS])
+    rps_arr = np.array([cfg["rps"] for cfg in MARKETS])
     cross = {}
     for K in K_CANDIDATES:
         h_arr = []
@@ -126,10 +132,13 @@ def main() -> int:
         h_arr = np.array(h_arr)
         mask = ~np.isnan(h_arr)
         if mask.sum() >= 4:
-            rho, p = spearmanr(h_arr[mask], tier_arr[mask])
+            rho_rps, p_rps = spearmanr(h_arr[mask], rps_arr[mask])
+            rho_tier, p_tier = spearmanr(h_arr[mask], tier_arr[mask])
             cross[f"fixed_K_{K}"] = {"K": K, "n_markets": int(mask.sum()),
-                                       "rho_H_tier": float(rho), "p": float(p)}
-            print(f"  Fixed K={K}: ρ(H, tier) = {rho:+.4f}  p = {p:.4f}  ({'Decisive' if p<0.05 else 'n.s.'})")
+                                       "rho_H_rps": float(rho_rps), "p_rps": float(p_rps),
+                                       "rho_H_tier": float(rho_tier), "p_tier": float(p_tier)}
+            print(f"  Fixed K={K}: ρ(H, RPS) = {rho_rps:+.4f} p={p_rps:.4f} | "
+                  f"ρ(H, tier) = {rho_tier:+.4f} p={p_tier:.4f}")
         else:
             cross[f"fixed_K_{K}"] = {"K": K, "n_markets": int(mask.sum()), "status": "insufficient"}
 
@@ -143,10 +152,13 @@ def main() -> int:
         h_opt.append(results[cfg["name"]]["k_results"][f"K_{opt_k}"]["H_stat"])
     h_opt = np.array(h_opt)
     mask = ~np.isnan(h_opt)
-    rho_opt, p_opt = spearmanr(h_opt[mask], tier_arr[mask])
+    rho_opt_rps, p_opt_rps = spearmanr(h_opt[mask], rps_arr[mask])
+    rho_opt_tier, p_opt_tier = spearmanr(h_opt[mask], tier_arr[mask])
     cross["market_optimal_K"] = {"n_markets": int(mask.sum()),
-                                   "rho_H_tier": float(rho_opt), "p": float(p_opt)}
-    print(f"\n  Market-optimal K_m: ρ(H, tier) = {rho_opt:+.4f}  p = {p_opt:.4f}  ({'Decisive' if p_opt<0.05 else 'n.s.'})")
+                                   "rho_H_rps": float(rho_opt_rps), "p_rps": float(p_opt_rps),
+                                   "rho_H_tier": float(rho_opt_tier), "p_tier": float(p_opt_tier)}
+    print(f"\n  Market-optimal K_m: ρ(H, RPS) = {rho_opt_rps:+.4f} p={p_opt_rps:.4f} | "
+          f"ρ(H, tier) = {rho_opt_tier:+.4f} p={p_opt_tier:.4f}")
 
     payload = {
         "spec": "GMM K-selection per market sensitivity",

@@ -1,24 +1,24 @@
 {
   "spec": "H3 CONTINUOUS \u2014 Spearman rho(p_tra, RPS) on 8-market panel",
   "n": 8,
-  "rho": 0.5629,
-  "p_value": 0.14633153260555073,
+  "rho": 0.6905,
+  "p_value": 0.057990318164572716,
   "bootstrap_95ci_for_rho": {
     "n_resamples_effective": 10000,
-    "ci95_low": -0.28951532311792144,
-    "ci95_high": 0.9612755239323388,
-    "mean": 0.5200160272724872,
-    "std": 0.3416392020895899
+    "ci95_low": -0.24324324324324323,
+    "ci95_high": 0.9746835443037977,
+    "mean": 0.6147866269319496,
+    "std": 0.2714752340239554
   },
   "monte_carlo_sensitivity_RPS_noise_sd_0p05": {
     "n_trials_effective": 10000,
     "noise_sd": 0.05,
-    "rho_mean": 0.49138809523809535,
-    "rho_std": 0.0683879535728154,
-    "rho_p05": 0.3571428571428572,
-    "rho_p50": 0.4761904761904762,
-    "rho_p95": 0.5714285714285715,
-    "frac_rho_gt_0p5": 0.4501
+    "rho_mean": 0.6870238095238096,
+    "rho_std": 0.06050980974048698,
+    "rho_p05": 0.5714285714285715,
+    "rho_p50": 0.6904761904761906,
+    "rho_p95": 0.7619047619047621,
+    "frac_rho_gt_0p5": 0.9953
   },
   "stratified_subpanels": [
     {
@@ -26,7 +26,7 @@
       "n": 8,
       "markets": [
         "VNINDEX",
-        "PSEI",
+        "BVB",
         "KOSPI",
         "NIFTY",
         "SPX",
@@ -34,23 +34,22 @@
         "NIKKEI",
         "BTC"
       ],
-      "rho": 0.5629,
-      "p_value": 0.14633153260555073,
+      "rho": 0.6905,
+      "p_value": 0.057990318164572716,
       "note": ""
     },
     {
       "subpanel": "circuit_breaker_yes",
-      "n": 6,
+      "n": 5,
       "markets": [
         "VNINDEX",
-        "PSEI",
         "KOSPI",
         "NIFTY",
         "SPX",
         "NIKKEI"
       ],
-      "rho": 0.4857,
-      "p_value": 0.3287230320699708,
+      "rho": 0.6,
+      "p_value": 0.28475697986529386,
       "note": ""
     },
     {
@@ -66,16 +65,15 @@
     },
     {
       "subpanel": "frontier_emerging",
-      "n": 4,
+      "n": 3,
       "markets": [
         "VNINDEX",
-        "PSEI",
         "KOSPI",
         "NIFTY"
       ],
-      "rho": -0.4,
-      "p_value": 0.6000000000000001,
-      "note": ""
+      "rho": -1.0,
+      "p_value": 0.0,
+      "note": "descriptive only \u2014 n<4"
     },
     {
       "subpanel": "developed_only",
@@ -85,8 +83,8 @@
         "FTSE",
         "NIKKEI"
       ],
-      "rho": 0.866,
-      "p_value": 0.33333333333333326,
+      "rho": 0.5,
+      "p_value": 0.6666666666666666,
       "note": "descriptive only \u2014 n<4"
     }
   ],

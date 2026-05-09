@@ -90,6 +90,35 @@ def load_ohlcv(
         df.index = pd.to_datetime(df.index)
         df.index.name = "Date"
         df = df.sort_index().dropna(subset=["Close"])
+    elif source == "tvdatafeed":
+        # ticker format: "EXCHANGE:SYMBOL" (e.g. "PSX:KSE100", "LJSE:SBITOP")
+        try:
+            from tvDatafeed import TvDatafeed, Interval
+        except ImportError as exc:
+            raise ImportError(
+                "tvDatafeed not installed. Run: "
+                "pip install git+https://github.com/rongardF/tvdatafeed.git"
+            ) from exc
+        if ":" not in ticker:
+            raise ValueError(
+                f"tvdatafeed ticker must be 'EXCHANGE:SYMBOL', got {ticker!r}"
+            )
+        exch, sym = ticker.split(":", 1)
+        tv = TvDatafeed()
+        raw = tv.get_hist(symbol=sym, exchange=exch,
+                          interval=Interval.in_daily, n_bars=5000)
+        if raw is None or raw.empty:
+            raise RuntimeError(
+                f"tvdatafeed returned empty data for {ticker}"
+            )
+        # Standardise column names + index
+        raw = raw.rename(columns={"open": "Open", "high": "High",
+                                  "low": "Low", "close": "Close",
+                                  "volume": "Volume"})
+        df = raw[["Open", "High", "Low", "Close", "Volume"]].copy()
+        df.index = pd.to_datetime(df.index).tz_localize(None)
+        df.index.name = "Date"
+        df = df.sort_index().dropna(subset=["Close"])
     else:
         raise ValueError(f"Unknown source: {source!r}")
 
