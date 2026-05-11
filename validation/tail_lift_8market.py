@@ -9,7 +9,7 @@ v1.0-paper, single-market VNINDEX, fixed thresholds 3% / 5% / 7%).
 
 Design choices that differ from v1 V3:
 
-  - Panel: 8 markets (VNINDEX, PSEI, KOSPI, NIFTY, SPX, FTSE, NIKKEI,
+  - Panel: 8 markets (VNINDEX, BVB, KOSPI, NIFTY, SPX, FTSE, NIKKEI,
     BTC) — same as cross_market_v2.py / hysteresis_cross_market_v2.py.
 
   - Labels: BOTH `raw_labels` and `filtered_labels` reported side-by-

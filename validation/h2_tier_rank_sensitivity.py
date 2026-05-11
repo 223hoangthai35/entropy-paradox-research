@@ -31,8 +31,8 @@ SUMMARY_CSV = os.path.join(OUTPUT_DIR, "cross_market_summary_v2.csv")
 
 # Fixed tier ranks per Hybrid C (matches h2_tier_based.py)
 FIXED_RANKS = {
-    "VNINDEX": 4, "PSEI": 4,        # Frontier
-    "KOSPI": 3, "NIFTY": 3,         # Emerging
+    "VNINDEX": 4, "BVB": 4,            # Frontier
+    "KOSPI": 3, "NIFTY": 3,            # Emerging
     "SPX": 1, "FTSE": 1, "NIKKEI": 1,  # Developed
     # BTC = variable (Crypto)
 }

@@ -39,7 +39,7 @@ from skills.ds_skill import REGIME_NAMES
 
 MARKETS = [
     {"name": "VNINDEX", "ticker": "VNINDEX", "source": "vnstock",  "tier_rank": 4},
-    {"name": "PSEI",    "ticker": "PSEI.PS", "source": "yfinance", "tier_rank": 4},
+    {"name": "BVB",     "ticker": "BVB.RO",  "source": "yfinance", "tier_rank": 4},
     {"name": "KOSPI",   "ticker": "^KS11",   "source": "yfinance", "tier_rank": 3},
     {"name": "NIFTY",   "ticker": "^NSEI",   "source": "yfinance", "tier_rank": 3},
     {"name": "SPX",     "ticker": "^GSPC",   "source": "yfinance", "tier_rank": 1},
@@ -48,7 +48,7 @@ MARKETS = [
     {"name": "BTC",     "ticker": "BTC-USD", "source": "yfinance", "tier_rank": 2},
 ]
 
-RPS = {"VNINDEX": 0.90, "PSEI": 0.68, "KOSPI": 0.45, "NIFTY": 0.40,
+RPS = {"VNINDEX": 0.90, "BVB": 0.225, "KOSPI": 0.45, "NIFTY": 0.40,
        "SPX": 0.275, "FTSE": 0.20, "NIKKEI": 0.18, "BTC": 0.55}
 
 START = "2018-01-01"

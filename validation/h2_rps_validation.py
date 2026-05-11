@@ -38,7 +38,7 @@ TEST
 SOURCES (RPS = retail share of trading VALUE, all ex-ante, pre-test)
 ==============================================================================
     VNINDEX  0.90   VinaCapital (2024) "Vietnam's Resilient Stock Market"
-    PSEI     0.68   Philippine Stock Exchange, 2023 Annual Report
+    BVB     0.68   Philippine Stock Exchange, 2023 Annual Report
     KOSPI    0.70   ASIFMA (2022) Korea Capital Markets Report + KRX
     NIFTY    0.40   NSE India Ownership Report, Q1 FY25
     SPX      0.22   SIFMA (2024) ~17.9% + MEMX (2025) 30-37%, midpoint
@@ -80,7 +80,7 @@ PRIMARY_CSV = os.path.join(OUTPUT_DIR, "cross_market_summary_v2.csv")
 # -----------------------------------------------------------------------------
 RPS_VALUE: dict[str, float] = {
     "VNINDEX": 0.90,
-    "PSEI":    0.68,
+    "BVB": 0.225,
     "KOSPI":   0.70,
     "NIFTY":   0.40,
     "SPX":     0.22,
@@ -90,12 +90,12 @@ RPS_VALUE: dict[str, float] = {
 }
 
 HAS_CB: dict[str, bool] = {
-    "VNINDEX": True, "PSEI": True, "KOSPI": True, "NIFTY": True,
+    "VNINDEX": True, "BVB": True, "KOSPI": True, "NIFTY": True,
     "SPX": True, "FTSE": False, "NIKKEI": True, "BTC": False,
 }
 
 CLASSIFICATION: dict[str, str] = {
-    "VNINDEX": "Frontier", "PSEI": "Frontier",
+    "VNINDEX": "Frontier", "BVB": "Frontier",
     "KOSPI":   "Emerging", "NIFTY": "Emerging",
     "SPX":     "Developed", "FTSE": "Developed", "NIKKEI": "Developed",
     "BTC":     "Crypto",

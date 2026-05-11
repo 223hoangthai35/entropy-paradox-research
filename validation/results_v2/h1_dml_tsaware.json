@@ -5,7 +5,7 @@
   "n_bootstrap": 100,
   "horizon": 20,
   "seed": 42,
-  "total_elapsed_seconds": 98.88785243034363,
+  "total_elapsed_seconds": 107.73031425476074,
   "results": {
     "VNINDEX": {
       "market": "VNINDEX",
@@ -33,13 +33,13 @@
         "direction_verdict": "SKIP",
         "n_obs": 819
       },
-      "elapsed_seconds": 4.065348386764526
+      "elapsed_seconds": 4.074908494949341
     },
-    "PSEI": {
-      "market": "PSEI",
-      "n_dml_obs": 903,
-      "n_det": 736,
-      "n_sto": 167,
+    "BVB": {
+      "market": "BVB",
+      "n_dml_obs": 851,
+      "n_det": 503,
+      "n_sto": 348,
       "horizon": 20,
       "linear_dml_tsaware": {
         "spec": "LinearDML+TSSplit+Bootstrap",
@@ -49,19 +49,19 @@
         "ci_lo": NaN,
         "ci_hi": NaN,
         "direction_verdict": "SKIP",
-        "n_obs": 903
+        "n_obs": 851
       },
       "causal_forest_dml_tsaware": {
         "spec": "CausalForestDML+TSSplit",
-        "ate": 2.3399985460576196,
-        "se": 1.2594722111836896,
-        "ci_lo": -0.12852162739143713,
-        "ci_hi": 4.808518719506676,
+        "ate": 1.067530386926959,
+        "se": 2.00122341841946,
+        "ci_lo": -2.854795438193314,
+        "ci_hi": 4.989856212047232,
         "direction_verdict": "n.s.",
-        "n_obs": 903,
+        "n_obs": 851,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 15.447498559951782
+      "elapsed_seconds": 17.33849811553955
     },
     "KOSPI": {
       "market": "KOSPI",
@@ -81,15 +81,15 @@
       },
       "causal_forest_dml_tsaware": {
         "spec": "CausalForestDML+TSSplit",
-        "ate": -2.540590933098021,
-        "se": 2.302200122250861,
-        "ci_lo": -7.052820257913419,
-        "ci_hi": 1.9716383917173763,
+        "ate": -2.3917852021211896,
+        "se": 2.396746257803245,
+        "ci_lo": -7.089321547496702,
+        "ci_hi": 2.3057511432543216,
         "direction_verdict": "n.s.",
         "n_obs": 682,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 14.625094413757324
+      "elapsed_seconds": 17.00326371192932
     },
     "NIFTY": {
       "market": "NIFTY",
@@ -117,7 +117,7 @@
         "direction_verdict": "SKIP",
         "n_obs": 618
       },
-      "elapsed_seconds": 0.5825901031494141
+      "elapsed_seconds": 0.6607823371887207
     },
     "SPX": {
       "market": "SPX",
@@ -137,15 +137,15 @@
       },
       "causal_forest_dml_tsaware": {
         "spec": "CausalForestDML+TSSplit",
-        "ate": 0.9021326334205025,
-        "se": 2.256528569970442,
-        "ci_lo": -3.5205820938072363,
-        "ci_hi": 5.324847360648239,
+        "ate": 0.7054342881029004,
+        "se": 2.1481412437415006,
+        "ci_lo": -3.504845183335519,
+        "ci_hi": 4.915713759541319,
         "direction_verdict": "n.s.",
         "n_obs": 903,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 14.984268426895142
+      "elapsed_seconds": 17.103980541229248
     },
     "FTSE": {
       "market": "FTSE",
@@ -165,15 +165,15 @@
       },
       "causal_forest_dml_tsaware": {
         "spec": "CausalForestDML+TSSplit",
-        "ate": 1.6138827076783209,
-        "se": 1.1599893805119375,
-        "ci_lo": -0.6596547005740054,
-        "ci_hi": 3.887420115930646,
+        "ate": 1.312882679350344,
+        "se": 1.2007177661519373,
+        "ci_lo": -1.0404808979048403,
+        "ci_hi": 3.666246256605528,
         "direction_verdict": "n.s.",
         "n_obs": 1149,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 15.01553750038147
+      "elapsed_seconds": 17.140535831451416
     },
     "NIKKEI": {
       "market": "NIKKEI",
@@ -193,15 +193,15 @@
       },
       "causal_forest_dml_tsaware": {
         "spec": "CausalForestDML+TSSplit",
-        "ate": -1.0966559699612972,
-        "se": 1.1489806683943569,
-        "ci_lo": -3.348616698946996,
-        "ci_hi": 1.155304759024401,
+        "ate": -1.0959717639696094,
+        "se": 1.0060514244388354,
+        "ci_lo": -3.0677963224649467,
+        "ci_hi": 0.8758527945257273,
         "direction_verdict": "n.s.",
         "n_obs": 873,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 16.581713676452637
+      "elapsed_seconds": 16.8785879611969
     },
     "BTC": {
       "market": "BTC",
@@ -221,15 +221,15 @@
       },
       "causal_forest_dml_tsaware": {
         "spec": "CausalForestDML+TSSplit",
-        "ate": -6.8860073914835604,
-        "se": 5.319475226673356,
-        "ci_lo": -17.31198725241638,
-        "ci_hi": 3.539972469449258,
+        "ate": -7.184879657797017,
+        "se": 5.135981134209613,
+        "ci_lo": -17.25121770612504,
+        "ci_hi": 2.8814583905310034,
         "direction_verdict": "n.s.",
         "n_obs": 1254,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 17.583341360092163
+      "elapsed_seconds": 17.526804208755493
     }
   }
 }

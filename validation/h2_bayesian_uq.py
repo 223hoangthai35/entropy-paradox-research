@@ -4,7 +4,7 @@ H2 ENHANCEMENT — Bayesian posterior over RPS + Monte Carlo propagation
 
 Layer 1 (Core): Bayesian Posterior over RPS with Monte Carlo Propagation
   - Per-market Beta posterior parameterized by source-credibility
-  - PSEI: Beta mixture (bimodal) reflecting source conflict
+  - BVB: Beta posterior centred on competing-source bounds (Uniform[0.20, 0.25])
   - Sample RPS from posteriors → propagate through Spearman rho
 
 Layer 2 (Conditional bootstrap on H — partial): use existing per-market H
@@ -34,19 +34,15 @@ PRIMARY_CSV = os.path.join(OUTPUT_DIR, "cross_market_summary_v2.csv")
 # Per-market RPS posterior specifications.
 # Beta(α, β) parameterized by mean and concentration κ = α + β.
 # Higher κ = tighter posterior (more authoritative source).
-# PSEI uses a Beta mixture to reflect bimodal source conflict
-# (PSE Annual Report 0.68 vs PSE Stock Market Investor Profile 0.21).
+# BVB uses a uniform-bound Beta to reflect competing-source bounds
+# (BVB Investor Relations + ASF Romania monthly market reports, trading-value-weighted).
 RPS_POSTERIOR: dict[str, dict] = {
     # Multi-source convergence on 0.80-0.92; high concentration
     "VNINDEX": {"type": "beta", "mean": 0.86, "kappa": 200,
                 "rationale": "Vietnam SSC + VinaCapital multi-year convergent (2020-2024)"},
-    # BIMODAL: PSE Annual Report (0.68) vs PSE Investor Profile (0.21)
-    "PSEI": {"type": "mixture", "components": [
-                 {"weight": 0.5, "mean": 0.21, "kappa": 50,
-                  "label": "PSE Stock Market Investor Profile"},
-                 {"weight": 0.5, "mean": 0.68, "kappa": 50,
-                  "label": "PSE 2023 Annual Report"}],
-             "rationale": "Bimodal source conflict between two PSE documents — equal weight in absence of definitive prior"},
+    # BVB: P2 cascade — Uniform[0.20, 0.25] from competing-source bounds (BVB IR + ASF Romania)
+    "BVB":  {"type": "beta", "mean": 0.225, "kappa": 200,
+             "rationale": "BVB Investor Relations + ASF Romania monthly market reports (trading-value-weighted retail share)"},
     # KRX Data Marketplace direct = authoritative
     "KOSPI": {"type": "beta", "mean": 0.45, "kappa": 100,
               "rationale": "KRX Data Marketplace 2026 direct + multi-period readings (0.30-0.45)"},
