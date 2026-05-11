@@ -37,14 +37,14 @@ TEST
 ==============================================================================
 SOURCES (RPS = retail share of trading VALUE, all ex-ante, pre-test)
 ==============================================================================
-    VNINDEX  0.90   VinaCapital (2024) "Vietnam's Resilient Stock Market"
-    BVB     0.68   Philippine Stock Exchange, 2023 Annual Report
-    KOSPI    0.70   ASIFMA (2022) Korea Capital Markets Report + KRX
-    NIFTY    0.40   NSE India Ownership Report, Q1 FY25
-    SPX      0.22   SIFMA (2024) ~17.9% + MEMX (2025) 30-37%, midpoint
-    FTSE     0.18   LSE/MEMX (2025) retail order-flow estimate
-    NIKKEI   0.18   JPX (2024) retail turnover share
-    BTC      0.55   Aggregated crypto-exchange data, 2024-2025
+    VNINDEX  0.90    VinaCapital (2024) "Vietnam's Resilient Stock Market"
+    BVB      0.225   BVB Investor Relations + ASF Romania monthly market reports (P2 midpoint of Uniform[0.20, 0.25])
+    KOSPI    0.70    ASIFMA (2022) Korea Capital Markets Report + KRX
+    NIFTY    0.40    NSE India Ownership Report, Q1 FY25
+    SPX      0.22    SIFMA (2024) ~17.9% + MEMX (2025) 30-37%, midpoint
+    FTSE     0.18    LSE/MEMX (2025) retail order-flow estimate
+    NIKKEI   0.18    JPX (2024) retail turnover share
+    BTC      0.55    Aggregated crypto-exchange data, 2024-2025
 
 Every value is derived from trade-receipt or account-ownership data, not
 from the return series used to compute H_stat. There is no leakage from
