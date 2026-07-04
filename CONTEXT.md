@@ -22,8 +22,8 @@ gas-thermodynamics intuition. Paper v2.1 reframes this as a
 Participation Share rather than holding uniformly.
 
 Production tooling (Streamlit dashboard, LLM agent orchestrator) lives
-in the companion repo
-[financial-entropy-agent](https://github.com/223hoangthai35/financial-entropy-agent).
+in a companion production repository (reference withheld during
+double-anonymized review; restored upon acceptance).
 This repo is research-only.
 
   - User-facing description: [README.md](README.md)

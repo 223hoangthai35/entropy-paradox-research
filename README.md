@@ -10,9 +10,9 @@ its exact title and author block are withheld from this README until
 acceptance; everything needed to audit the pipeline and reproduce every
 reported number is here.
 
-**Companion production software**: [financial-entropy-agent](https://github.com/223hoangthai35/financial-entropy-agent)
-holds the live Streamlit dashboard and LLM agent layer; this repo is
-research-only.
+A companion production system (live dashboard + agent layer) exists in a
+separate repository; its reference is withheld during double-anonymized
+review and will be restored upon acceptance. This repo is research-only.
 
 **Canonical reproducibility tag for the submitted manuscript:
 `v3.4-jfds-submission`.** Reported numbers reproduce byte-for-byte against the
@@ -218,11 +218,11 @@ Hysteresis was calibrated on VNINDEX post-2020 to a 4–10 flips / yr
 target band (achieves 6.53 / yr on the labeled window); calibration source:
 [scripts/calibrate_hysteresis.py](scripts/calibrate_hysteresis.py).
 
-## Author
+## Authors
 
-Hoang Ngoc Thai — Independent Researcher. Code, validation, and analysis.
-Full author block appears on the manuscript title page (withheld here during
-double-anonymized review).
+Anonymized for double-anonymized peer review. The full author block,
+contact details, and contribution statement appear on the manuscript title
+page and will be restored here upon acceptance.
 
 ## License
 
