@@ -62,7 +62,7 @@ COMMON_END = "2026-04-17"
 NATIVE_BPY = {
     "VNINDEX": 252, "SP500": 252, "BTC": 365,
     # Extended 8-market panel (paper v2.1 H3/H4)
-    "BVB": 252, "PSEI": 252, "KOSPI": 252, "NIFTY": 252,
+    "BVB": 252, "KOSPI": 252, "NIFTY": 252,
     "SPX": 252, "FTSE": 252, "NIKKEI": 252, "DAX": 252,
 }
 

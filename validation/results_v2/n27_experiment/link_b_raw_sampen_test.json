@@ -1,0 +1,468 @@
+{
+  "spec": "RAW SampEn cross-market test (un-Z-normed)",
+  "panels": {
+    "n8": {
+      "panel": "n=8 main panel",
+      "n_markets": 8,
+      "per_market": {
+        "VNINDEX": {
+          "n_obs": 1505,
+          "n_total_sampen": 2009,
+          "mean_raw_SampEn": 0.8529720135121627,
+          "std_raw_SampEn": 0.3485699119362843,
+          "median_raw_SampEn": 0.8250747236024933,
+          "iqr_raw_SampEn": 0.4865305608293852,
+          "p95_raw_SampEn": 1.5023606480379954,
+          "p05_raw_SampEn": 0.35587679230572083,
+          "rps": 0.9
+        },
+        "BVB": {
+          "n_obs": 1529,
+          "n_total_sampen": 2033,
+          "mean_raw_SampEn": 0.8650287795068018,
+          "std_raw_SampEn": 0.5582680072313538,
+          "median_raw_SampEn": 0.7472144018302211,
+          "iqr_raw_SampEn": 0.6000926776792854,
+          "p95_raw_SampEn": 1.9313630913869602,
+          "p05_raw_SampEn": 0.21886561590314724,
+          "rps": 0.225
+        },
+        "KOSPI": {
+          "n_obs": 1468,
+          "n_total_sampen": 1972,
+          "mean_raw_SampEn": 1.1462114252087099,
+          "std_raw_SampEn": 0.49650260226575216,
+          "median_raw_SampEn": 1.13225028811519,
+          "iqr_raw_SampEn": 0.5978370007556204,
+          "p95_raw_SampEn": 2.0518729220799434,
+          "p05_raw_SampEn": 0.3542982364281729,
+          "rps": 0.45
+        },
+        "NIFTY": {
+          "n_obs": 1477,
+          "n_total_sampen": 1981,
+          "mean_raw_SampEn": 1.0568166836401767,
+          "std_raw_SampEn": 0.4427340087023792,
+          "median_raw_SampEn": 0.9858167945227653,
+          "iqr_raw_SampEn": 0.5619148156933981,
+          "p95_raw_SampEn": 1.8718021769015913,
+          "p05_raw_SampEn": 0.4461237706471083,
+          "rps": 0.4
+        },
+        "SPX": {
+          "n_obs": 1519,
+          "n_total_sampen": 2023,
+          "mean_raw_SampEn": 1.076206036736241,
+          "std_raw_SampEn": 0.4139302734766429,
+          "median_raw_SampEn": 1.0169342576538425,
+          "iqr_raw_SampEn": 0.5443130348903884,
+          "p95_raw_SampEn": 1.791759469228055,
+          "p05_raw_SampEn": 0.5128683965080544,
+          "rps": 0.275
+        },
+        "FTSE": {
+          "n_obs": 1529,
+          "n_total_sampen": 2033,
+          "mean_raw_SampEn": 1.1318698090137658,
+          "std_raw_SampEn": 0.4932168486633938,
+          "median_raw_SampEn": 1.072636802264849,
+          "iqr_raw_SampEn": 0.692172996362102,
+          "p95_raw_SampEn": 2.0693144184861176,
+          "p05_raw_SampEn": 0.48887109038647036,
+          "rps": 0.2
+        },
+        "NIKKEI": {
+          "n_obs": 1458,
+          "n_total_sampen": 1962,
+          "mean_raw_SampEn": 1.11711563108743,
+          "std_raw_SampEn": 0.5143805585673001,
+          "median_raw_SampEn": 1.0528355480295977,
+          "iqr_raw_SampEn": 0.6910224646152419,
+          "p95_raw_SampEn": 2.0794415416798357,
+          "p05_raw_SampEn": 0.4344669008207791,
+          "rps": 0.18
+        },
+        "BTC": {
+          "n_obs": 2464,
+          "n_total_sampen": 2968,
+          "mean_raw_SampEn": 0.954940756207029,
+          "std_raw_SampEn": 0.4712220362055619,
+          "median_raw_SampEn": 0.8627064857400486,
+          "iqr_raw_SampEn": 0.6406298683981427,
+          "p95_raw_SampEn": 1.8123787564307907,
+          "p05_raw_SampEn": 0.31516461210166674,
+          "rps": 0.55
+        }
+      },
+      "tests": {
+        "mean_raw_SampEn": {
+          "rho": -0.4523809523809524,
+          "p_perm_2sided": 0.2652,
+          "n_used": 8
+        },
+        "std_raw_SampEn": {
+          "rho": -0.6190476190476191,
+          "p_perm_2sided": 0.1178,
+          "n_used": 8
+        },
+        "median_raw_SampEn": {
+          "rho": -0.3333333333333334,
+          "p_perm_2sided": 0.4277,
+          "n_used": 8
+        },
+        "iqr_raw_SampEn": {
+          "rho": -0.6428571428571429,
+          "p_perm_2sided": 0.1003,
+          "n_used": 8
+        },
+        "p95_raw_SampEn": {
+          "rho": -0.7619047619047621,
+          "p_perm_2sided": 0.0353,
+          "n_used": 8
+        },
+        "p05_raw_SampEn": {
+          "rho": -0.3333333333333334,
+          "p_perm_2sided": 0.4319,
+          "n_used": 8
+        }
+      },
+      "failures": []
+    },
+    "n27": {
+      "panel": "n=27 expansion panel",
+      "n_markets": 27,
+      "per_market": {
+        "VNINDEX": {
+          "n_obs": 1505,
+          "n_total_sampen": 2009,
+          "mean_raw_SampEn": 0.8529720135121627,
+          "std_raw_SampEn": 0.3485699119362843,
+          "median_raw_SampEn": 0.8250747236024933,
+          "iqr_raw_SampEn": 0.4865305608293852,
+          "p95_raw_SampEn": 1.5023606480379954,
+          "p05_raw_SampEn": 0.35587679230572083,
+          "rps": 0.9
+        },
+        "KSE100": {
+          "n_obs": 1476,
+          "n_total_sampen": 1980,
+          "mean_raw_SampEn": 0.9056267020109907,
+          "std_raw_SampEn": 0.47888859410217216,
+          "median_raw_SampEn": 0.8828751003764683,
+          "iqr_raw_SampEn": 0.6754825735601285,
+          "p95_raw_SampEn": 1.7227665977411035,
+          "p05_raw_SampEn": 0.26360762334995813,
+          "rps": 0.6
+        },
+        "DSEX": {
+          "n_obs": 1314,
+          "n_total_sampen": 1818,
+          "mean_raw_SampEn": 0.8784443483010166,
+          "std_raw_SampEn": 0.41180925808575186,
+          "median_raw_SampEn": 0.8235273880027035,
+          "iqr_raw_SampEn": 0.4926656881517699,
+          "p95_raw_SampEn": 1.717651497074333,
+          "p05_raw_SampEn": 0.27417749037310857,
+          "rps": 0.55
+        },
+        "BVB": {
+          "n_obs": 1529,
+          "n_total_sampen": 2033,
+          "mean_raw_SampEn": 0.8650287795068018,
+          "std_raw_SampEn": 0.5582680072313538,
+          "median_raw_SampEn": 0.7472144018302211,
+          "iqr_raw_SampEn": 0.6000926776792854,
+          "p95_raw_SampEn": 1.9313630913869602,
+          "p05_raw_SampEn": 0.21886561590314724,
+          "rps": 0.225
+        },
+        "SBITOP": {
+          "n_obs": 1496,
+          "n_total_sampen": 2000,
+          "mean_raw_SampEn": 0.7853144587997417,
+          "std_raw_SampEn": 0.5020335593391415,
+          "median_raw_SampEn": 0.6459123056836605,
+          "iqr_raw_SampEn": 0.636021663621156,
+          "p95_raw_SampEn": 1.7155116953375282,
+          "p05_raw_SampEn": 0.24868199420597287,
+          "rps": 0.3
+        },
+        "OMXVGI": {
+          "n_obs": 1488,
+          "n_total_sampen": 1992,
+          "mean_raw_SampEn": 0.6642977143817537,
+          "std_raw_SampEn": 0.4067589353105462,
+          "median_raw_SampEn": 0.5389965007326869,
+          "iqr_raw_SampEn": 0.435894108379058,
+          "p95_raw_SampEn": 1.455287232606842,
+          "p05_raw_SampEn": 0.218571411901332,
+          "rps": 0.3
+        },
+        "OMXRGI": {
+          "n_obs": 1171,
+          "n_total_sampen": 1675,
+          "mean_raw_SampEn": 0.934935126868723,
+          "std_raw_SampEn": 0.54809736546905,
+          "median_raw_SampEn": 0.7761441001309132,
+          "iqr_raw_SampEn": 0.7253842929569556,
+          "p95_raw_SampEn": 1.909466291181067,
+          "p05_raw_SampEn": 0.2436852760888273,
+          "rps": 0.35
+        },
+        "MERV": {
+          "n_obs": 1452,
+          "n_total_sampen": 1956,
+          "mean_raw_SampEn": 1.0174144071965363,
+          "std_raw_SampEn": 0.49836883917813996,
+          "median_raw_SampEn": 0.9609365586709586,
+          "iqr_raw_SampEn": 0.663999477392935,
+          "p95_raw_SampEn": 2.001480000210124,
+          "p05_raw_SampEn": 0.34495252418546046,
+          "rps": 0.55
+        },
+        "KOSPI": {
+          "n_obs": 1468,
+          "n_total_sampen": 1972,
+          "mean_raw_SampEn": 1.1462114252087099,
+          "std_raw_SampEn": 0.49650260226575216,
+          "median_raw_SampEn": 1.13225028811519,
+          "iqr_raw_SampEn": 0.5978370007556204,
+          "p95_raw_SampEn": 2.0518729220799434,
+          "p05_raw_SampEn": 0.3542982364281729,
+          "rps": 0.45
+        },
+        "NIFTY": {
+          "n_obs": 1477,
+          "n_total_sampen": 1981,
+          "mean_raw_SampEn": 1.0568166836401767,
+          "std_raw_SampEn": 0.4427340087023792,
+          "median_raw_SampEn": 0.9858167945227653,
+          "iqr_raw_SampEn": 0.5619148156933981,
+          "p95_raw_SampEn": 1.8718021769015913,
+          "p05_raw_SampEn": 0.4461237706471083,
+          "rps": 0.4
+        },
+        "PSEI": {
+          "n_obs": 1459,
+          "n_total_sampen": 1963,
+          "mean_raw_SampEn": 1.1221036441766619,
+          "std_raw_SampEn": 0.3894709376256715,
+          "median_raw_SampEn": 1.1124056108004456,
+          "iqr_raw_SampEn": 0.500331063256005,
+          "p95_raw_SampEn": 1.8084707548509642,
+          "p05_raw_SampEn": 0.5537770557793825,
+          "rps": 0.68
+        },
+        "JKSE": {
+          "n_obs": 1434,
+          "n_total_sampen": 1938,
+          "mean_raw_SampEn": 1.1134153003862135,
+          "std_raw_SampEn": 0.40837648613916633,
+          "median_raw_SampEn": 1.1147511181277845,
+          "iqr_raw_SampEn": 0.5864468493782096,
+          "p95_raw_SampEn": 1.791759469228055,
+          "p05_raw_SampEn": 0.46241770012506894,
+          "rps": 0.4
+        },
+        "SET": {
+          "n_obs": 1441,
+          "n_total_sampen": 1945,
+          "mean_raw_SampEn": 1.0990882692654973,
+          "std_raw_SampEn": 0.4125110314408421,
+          "median_raw_SampEn": 1.0809127115687087,
+          "iqr_raw_SampEn": 0.5182606022535089,
+          "p95_raw_SampEn": 1.8827312474337816,
+          "p05_raw_SampEn": 0.5108256237659907,
+          "rps": 0.35
+        },
+        "SHANGHAI": {
+          "n_obs": 1443,
+          "n_total_sampen": 1947,
+          "mean_raw_SampEn": 1.0532600320356238,
+          "std_raw_SampEn": 0.34593142841902186,
+          "median_raw_SampEn": 1.0826119473216687,
+          "iqr_raw_SampEn": 0.4399512841793337,
+          "p95_raw_SampEn": 1.6079990386888883,
+          "p05_raw_SampEn": 0.39773915691296624,
+          "rps": 0.65
+        },
+        "TWII": {
+          "n_obs": 1438,
+          "n_total_sampen": 1942,
+          "mean_raw_SampEn": 1.0328890195784444,
+          "std_raw_SampEn": 0.45312619189661685,
+          "median_raw_SampEn": 0.9455288451051678,
+          "iqr_raw_SampEn": 0.5630735831115667,
+          "p95_raw_SampEn": 1.8562979903656263,
+          "p05_raw_SampEn": 0.460622772119396,
+          "rps": 0.4
+        },
+        "SPX": {
+          "n_obs": 1519,
+          "n_total_sampen": 2023,
+          "mean_raw_SampEn": 1.076206036736241,
+          "std_raw_SampEn": 0.4139302734766429,
+          "median_raw_SampEn": 1.0169342576538425,
+          "iqr_raw_SampEn": 0.5443130348903884,
+          "p95_raw_SampEn": 1.791759469228055,
+          "p05_raw_SampEn": 0.5128683965080544,
+          "rps": 0.275
+        },
+        "FTSE": {
+          "n_obs": 1529,
+          "n_total_sampen": 2033,
+          "mean_raw_SampEn": 1.1318698090137658,
+          "std_raw_SampEn": 0.4932168486633938,
+          "median_raw_SampEn": 1.072636802264849,
+          "iqr_raw_SampEn": 0.692172996362102,
+          "p95_raw_SampEn": 2.0693144184861176,
+          "p05_raw_SampEn": 0.48887109038647036,
+          "rps": 0.2
+        },
+        "DAX": {
+          "n_obs": 1539,
+          "n_total_sampen": 2043,
+          "mean_raw_SampEn": 1.1089955686079083,
+          "std_raw_SampEn": 0.46223964379992627,
+          "median_raw_SampEn": 1.0663514264498883,
+          "iqr_raw_SampEn": 0.5697681593994407,
+          "p95_raw_SampEn": 2.001480000210124,
+          "p05_raw_SampEn": 0.4430681677098143,
+          "rps": 0.2
+        },
+        "CAC": {
+          "n_obs": 1557,
+          "n_total_sampen": 2061,
+          "mean_raw_SampEn": 1.1009579742527882,
+          "std_raw_SampEn": 0.46970938103587273,
+          "median_raw_SampEn": 1.034896474282002,
+          "iqr_raw_SampEn": 0.6296337748376196,
+          "p95_raw_SampEn": 1.916922612182061,
+          "p05_raw_SampEn": 0.39568322220185254,
+          "rps": 0.2
+        },
+        "SSMI": {
+          "n_obs": 1504,
+          "n_total_sampen": 2008,
+          "mean_raw_SampEn": 1.0723221824003317,
+          "std_raw_SampEn": 0.41626526105411715,
+          "median_raw_SampEn": 1.0518185254216705,
+          "iqr_raw_SampEn": 0.5537847822813786,
+          "p95_raw_SampEn": 1.8092858633503786,
+          "p05_raw_SampEn": 0.47388539621206277,
+          "rps": 0.15
+        },
+        "NIKKEI": {
+          "n_obs": 1458,
+          "n_total_sampen": 1962,
+          "mean_raw_SampEn": 1.11711563108743,
+          "std_raw_SampEn": 0.5143805585673001,
+          "median_raw_SampEn": 1.0528355480295977,
+          "iqr_raw_SampEn": 0.6910224646152419,
+          "p95_raw_SampEn": 2.0794415416798357,
+          "p05_raw_SampEn": 0.4344669008207791,
+          "rps": 0.18
+        },
+        "ASX": {
+          "n_obs": 1532,
+          "n_total_sampen": 2036,
+          "mean_raw_SampEn": 1.1649351836587993,
+          "std_raw_SampEn": 0.4524836704764774,
+          "median_raw_SampEn": 1.0775588794702773,
+          "iqr_raw_SampEn": 0.5521589904852281,
+          "p95_raw_SampEn": 2.0525057234677924,
+          "p05_raw_SampEn": 0.5697155434210126,
+          "rps": 0.3
+        },
+        "HSI": {
+          "n_obs": 1473,
+          "n_total_sampen": 1977,
+          "mean_raw_SampEn": 1.2826667919328727,
+          "std_raw_SampEn": 0.5092272652637011,
+          "median_raw_SampEn": 1.2636920390275583,
+          "iqr_raw_SampEn": 0.6880320798931749,
+          "p95_raw_SampEn": 2.1972245773362196,
+          "p05_raw_SampEn": 0.5371810917086862,
+          "rps": 0.35
+        },
+        "STI": {
+          "n_obs": 1517,
+          "n_total_sampen": 2021,
+          "mean_raw_SampEn": 0.9687577600067289,
+          "std_raw_SampEn": 0.4492035700718229,
+          "median_raw_SampEn": 0.9223330463301177,
+          "iqr_raw_SampEn": 0.5730679326432118,
+          "p95_raw_SampEn": 1.824549292051046,
+          "p05_raw_SampEn": 0.3748473929487934,
+          "rps": 0.25
+        },
+        "BTC": {
+          "n_obs": 2464,
+          "n_total_sampen": 2968,
+          "mean_raw_SampEn": 0.954940756207029,
+          "std_raw_SampEn": 0.4712220362055619,
+          "median_raw_SampEn": 0.8627064857400486,
+          "iqr_raw_SampEn": 0.6406298683981427,
+          "p95_raw_SampEn": 1.8123787564307907,
+          "p05_raw_SampEn": 0.31516461210166674,
+          "rps": 0.55
+        },
+        "ETH": {
+          "n_obs": 2464,
+          "n_total_sampen": 2968,
+          "mean_raw_SampEn": 0.8916855759972164,
+          "std_raw_SampEn": 0.37793613397967746,
+          "median_raw_SampEn": 0.8310408229597612,
+          "iqr_raw_SampEn": 0.5671810691791944,
+          "p95_raw_SampEn": 1.5686159179138452,
+          "p05_raw_SampEn": 0.36114645999605627,
+          "rps": 0.55
+        },
+        "BNB": {
+          "n_obs": 2464,
+          "n_total_sampen": 2968,
+          "mean_raw_SampEn": 0.9272719527989655,
+          "std_raw_SampEn": 0.4283728008479598,
+          "median_raw_SampEn": 0.8924800831804366,
+          "iqr_raw_SampEn": 0.5520227906837782,
+          "p95_raw_SampEn": 1.7032252365188216,
+          "p05_raw_SampEn": 0.3364722366212129,
+          "rps": 0.6
+        }
+      },
+      "tests": {
+        "mean_raw_SampEn": {
+          "rho": -0.2813817193306202,
+          "p_perm_2sided": 0.1558,
+          "n_used": 27
+        },
+        "std_raw_SampEn": {
+          "rho": -0.4303485119174191,
+          "p_perm_2sided": 0.0285,
+          "n_used": 27
+        },
+        "median_raw_SampEn": {
+          "rho": -0.0655944313036522,
+          "p_perm_2sided": 0.7431,
+          "n_used": 27
+        },
+        "iqr_raw_SampEn": {
+          "rho": -0.32889170462064865,
+          "p_perm_2sided": 0.0992,
+          "n_used": 27
+        },
+        "p95_raw_SampEn": {
+          "rho": -0.5128046247476373,
+          "p_perm_2sided": 0.007,
+          "n_used": 27
+        },
+        "p05_raw_SampEn": {
+          "rho": -0.18789432892120933,
+          "p_perm_2sided": 0.3396,
+          "n_used": 27
+        }
+      },
+      "failures": []
+    }
+  }
+}

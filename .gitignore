@@ -41,9 +41,8 @@ agent_orchestrator.py
 # Final artefacts are copied into validation/.
 research/
 
-# Paper manuscript drafts and lab notebook live only in the personal research/
-# workspace. The public repo holds code + validation results; the paper file
-# itself stays private.
-paper_artifacts/02_AnonymizedManuscript_*.md
-paper_artifacts/CHANGELOG.md
-paper_artifacts/audits/
+# Paper artefacts stay private. The public repo serves only the code +
+# validation results for the journal-submission paper; manuscript drafts,
+# version summaries, rationales, audit reports, and lab notebooks live in
+# the personal research/ workspace.
+paper_artifacts/

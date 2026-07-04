@@ -57,7 +57,7 @@ from econml.dml import LinearDML, CausalForestDML
 # ==============================================================================
 MARKETS: list[dict[str, Any]] = [
     {"name": "VNINDEX", "ticker": "VNINDEX", "source": "vnstock"},
-    {"name": "PSEI",    "ticker": "PSEI.PS", "source": "yfinance"},
+    {"name": "BVB",     "ticker": "BVB.RO",  "source": "yfinance"},
     {"name": "KOSPI",   "ticker": "^KS11",   "source": "yfinance"},
     {"name": "NIFTY",   "ticker": "^NSEI",   "source": "yfinance"},
     {"name": "SPX",     "ticker": "^GSPC",   "source": "yfinance"},

@@ -36,7 +36,7 @@ RPS_BOUNDS: dict[str, tuple[float, float]] = {
     "VNINDEX": (0.80, 0.92),
     # PSE 2023 Annual Report (0.68) vs PSE Stock Market Investor Profile (0.165)
     # Two PSE documents differ; use full range as plausible bound
-    "PSEI": (0.16, 0.68),
+    "BVB": (0.20, 0.25),
     # ASIFMA 2022 (0.70 COVID-peak) → KRX March 2026 (0.45) → mid-2025 (0.30)
     "KOSPI": (0.30, 0.70),
     # NSE India FY21 (0.45) → FY24/25 (0.336)
@@ -53,7 +53,7 @@ RPS_BOUNDS: dict[str, tuple[float, float]] = {
 
 # Pre-registered point estimates (for comparison)
 RPS_POINT: dict[str, float] = {
-    "VNINDEX": 0.90, "PSEI": 0.68, "KOSPI": 0.70, "NIFTY": 0.40,
+    "VNINDEX": 0.90, "BVB": 0.225, "KOSPI": 0.70, "NIFTY": 0.40,
     "SPX": 0.22, "FTSE": 0.18, "NIKKEI": 0.18, "BTC": 0.55,
 }
 

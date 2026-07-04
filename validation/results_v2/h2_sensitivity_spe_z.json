@@ -3,7 +3,7 @@
   "n_markets": 8,
   "horizon": 20,
   "seed": 42,
-  "elapsed_seconds": 15.01694130897522,
+  "elapsed_seconds": 19.93226146697998,
   "per_market_per_variant": {
     "rolling_z": {
       "VNINDEX": {
@@ -17,14 +17,14 @@
         },
         "fit_status": "ok"
       },
-      "PSEI": {
-        "H_stat": 48.10061221438809,
-        "p_value": 3.589919991424138e-11,
-        "n_obs": 1440,
+      "BVB": {
+        "H_stat": 72.10608198506394,
+        "p_value": 2.199698917622974e-16,
+        "n_obs": 1378,
         "n_per_regime": {
-          "Deterministic": 736,
-          "Transitional": 537,
-          "Stochastic": 167
+          "Deterministic": 503,
+          "Transitional": 527,
+          "Stochastic": 348
         },
         "fit_status": "ok"
       },
@@ -107,14 +107,14 @@
         },
         "fit_status": "ok"
       },
-      "PSEI": {
-        "H_stat": 10.49911327861355,
-        "p_value": 0.005249845458401731,
-        "n_obs": 1981,
+      "BVB": {
+        "H_stat": 14.486644759309817,
+        "p_value": 0.0007149325326482887,
+        "n_obs": 2054,
         "n_per_regime": {
-          "Deterministic": 236,
-          "Transitional": 831,
-          "Stochastic": 914
+          "Deterministic": 158,
+          "Transitional": 746,
+          "Stochastic": 1150
         },
         "fit_status": "ok"
       },
@@ -197,14 +197,14 @@
         },
         "fit_status": "ok"
       },
-      "PSEI": {
-        "H_stat": 97.32485614726829,
-        "p_value": 7.348116135190559e-22,
-        "n_obs": 1943,
+      "BVB": {
+        "H_stat": 40.83461732238069,
+        "p_value": 1.3579241532275337e-09,
+        "n_obs": 2013,
         "n_per_regime": {
-          "Deterministic": 750,
-          "Transitional": 905,
-          "Stochastic": 288
+          "Deterministic": 688,
+          "Transitional": 1143,
+          "Stochastic": 182
         },
         "fit_status": "ok"
       },
@@ -287,14 +287,14 @@
         },
         "fit_status": "ok"
       },
-      "PSEI": {
-        "H_stat": 99.57152077684168,
-        "p_value": 2.38956575615044e-22,
-        "n_obs": 1943,
+      "BVB": {
+        "H_stat": 40.750564983400565,
+        "p_value": 1.4162086629368967e-09,
+        "n_obs": 2013,
         "n_per_regime": {
-          "Deterministic": 755,
-          "Transitional": 898,
-          "Stochastic": 290
+          "Deterministic": 685,
+          "Transitional": 1146,
+          "Stochastic": 182
         },
         "fit_status": "ok"
       },
@@ -371,29 +371,29 @@
       "n_markets": 8,
       "rho_H_tier": 0.9265616458263766,
       "p_H_tier": 0.0009364316381563804,
-      "rho_H_rps": 0.8571428571428572,
-      "p_H_rps": 0.0065300172547152905
+      "rho_H_rps": 0.5714285714285715,
+      "p_H_rps": 0.13895995716070672
     },
     "wpe_only": {
       "n_markets": 8,
       "rho_H_tier": 0.16060401860990525,
       "p_H_tier": 0.7040056006283464,
-      "rho_H_rps": 0.2142857142857143,
-      "p_H_rps": 0.6103444156452669
+      "rho_H_rps": 0.14285714285714288,
+      "p_H_rps": 0.735764859879812
     },
     "raw_sampen": {
       "n_markets": 8,
       "rho_H_tier": 0.8030200930495263,
       "p_H_tier": 0.016395936224995862,
-      "rho_H_rps": 0.9047619047619048,
-      "p_H_rps": 0.002008275505429469
+      "rho_H_rps": 0.6666666666666669,
+      "p_H_rps": 0.07098765432098755
     },
     "global_z": {
       "n_markets": 8,
       "rho_H_tier": 0.8030200930495263,
       "p_H_tier": 0.016395936224995862,
-      "rho_H_rps": 0.9047619047619048,
-      "p_H_rps": 0.002008275505429469
+      "rho_H_rps": 0.6666666666666669,
+      "p_H_rps": 0.07098765432098755
     }
   }
 }

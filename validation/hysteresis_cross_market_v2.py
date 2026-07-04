@@ -548,9 +548,9 @@ def build_h3_continuous_json(results: list[dict[str, Any]]) -> dict[str, Any]:
     mc = _mc_rho_sensitivity(p_tra, rps, N_MC_RHO, RPS_NOISE_SD, RNG_SEED + 1)
 
     # Subpanels
-    cb_yes = {"VNINDEX", "PSEI", "KOSPI", "NIFTY", "SPX", "NIKKEI"}  # see h2_rps_validation.HAS_CB
+    cb_yes = {"VNINDEX", "BVB", "KOSPI", "NIFTY", "SPX", "NIKKEI"}  # see h2_rps_validation.HAS_CB
     cb_no  = {"FTSE", "BTC"}
-    fe     = {"VNINDEX", "PSEI", "KOSPI", "NIFTY"}
+    fe     = {"VNINDEX", "BVB", "KOSPI", "NIFTY"}
     dev    = {"SPX", "FTSE", "NIKKEI"}
     subpanels = []
     for name, mset in [

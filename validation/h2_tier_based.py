@@ -37,7 +37,7 @@ PRIMARY_CSV = os.path.join(OUTPUT_DIR, "cross_market_summary_v2.csv")
 #       (FTSE classifies Korea as Developed); we follow MSCI for KOSPI.
 TIER: dict[str, str] = {
     "VNINDEX": "Frontier",
-    "PSEI": "Frontier",
+    "BVB": "Frontier",
     "KOSPI": "Emerging",
     "NIFTY": "Emerging",
     "BTC": "Crypto",

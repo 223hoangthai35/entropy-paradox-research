@@ -2,7 +2,7 @@
   "spec": "Tier-rank sensitivity: Crypto placement \u2208 {1, 2, 3, 4, 5}",
   "fixed_ranks": {
     "VNINDEX": 4,
-    "PSEI": 4,
+    "BVB": 4,
     "KOSPI": 3,
     "NIFTY": 3,
     "SPX": 1,

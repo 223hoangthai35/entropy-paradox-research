@@ -14,7 +14,7 @@ and is the harmonised window-average best-estimate.
 
 Other markets keep pre-registered values because:
 - VNINDEX 0.90: VinaCapital 2024 + Vietnam SSC consistent across window
-- PSEI 0.68: PSE 2023 Annual Report (kept; alternative reading from PSE Stock
+- BVB 0.68: PSE 2023 Annual Report (kept; alternative reading from PSE Stock
   Market Investor Profile differs and may reflect different metric definition)
 - NIFTY 0.40: NSE India FY data ~0.39 close enough
 - SPX 0.22: SIFMA + MEMX midpoint defensible (both metrics within range)
@@ -39,7 +39,7 @@ PRIMARY_CSV = os.path.join(OUTPUT_DIR, "cross_market_summary_v2.csv")
 # CORRECTED RPS (Scenario C — KOSPI only correction)
 RPS_VALUE: dict[str, float] = {
     "VNINDEX": 0.90,
-    "PSEI":    0.68,
+    "BVB": 0.225,
     "KOSPI":   0.45,   # ← CORRECTED from 0.70 (KRX March 2026 official reading)
     "NIFTY":   0.40,
     "SPX":     0.22,
@@ -50,16 +50,16 @@ RPS_VALUE: dict[str, float] = {
 
 # Pre-registered for comparison
 RPS_OLD: dict[str, float] = {
-    "VNINDEX": 0.90, "PSEI": 0.68, "KOSPI": 0.70, "NIFTY": 0.40,
+    "VNINDEX": 0.90, "BVB": 0.225, "KOSPI": 0.70, "NIFTY": 0.40,
     "SPX": 0.22, "FTSE": 0.18, "NIKKEI": 0.18, "BTC": 0.55,
 }
 
 HAS_CB: dict[str, bool] = {
-    "VNINDEX": True, "PSEI": True, "KOSPI": True, "NIFTY": True,
+    "VNINDEX": True, "BVB": True, "KOSPI": True, "NIFTY": True,
     "SPX": True, "FTSE": False, "NIKKEI": True, "BTC": False,
 }
 CLASSIFICATION: dict[str, str] = {
-    "VNINDEX": "Frontier", "PSEI": "Frontier",
+    "VNINDEX": "Frontier", "BVB": "Frontier",
     "KOSPI": "Emerging", "NIFTY": "Emerging",
     "SPX": "Developed", "FTSE": "Developed", "NIKKEI": "Developed",
     "BTC": "Crypto",

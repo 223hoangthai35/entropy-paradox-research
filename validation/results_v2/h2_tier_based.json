@@ -2,7 +2,7 @@
   "spec": "H2 PRIMARY E1 reframing \u2014 tier-based H ordering test",
   "tier_classification": {
     "VNINDEX": "Frontier",
-    "PSEI": "Frontier",
+    "BVB": "Frontier",
     "KOSPI": "Emerging",
     "NIFTY": "Emerging",
     "BTC": "Crypto",
@@ -41,11 +41,11 @@
       "Developed": 3.44,
       "Crypto": 7.13,
       "Emerging": 9.93,
-      "Frontier": 66.0
+      "Frontier": 78.005
     },
     "tier_classification": {
       "VNINDEX": "Frontier",
-      "PSEI": "Frontier",
+      "BVB": "Frontier",
       "KOSPI": "Emerging",
       "NIFTY": "Emerging",
       "SPX": "Developed",
@@ -84,11 +84,11 @@
       "Developed": 1.6900000000000002,
       "Crypto": 32.24,
       "Emerging": 21.915,
-      "Frontier": 68.71000000000001
+      "Frontier": 88.85
     },
     "tier_classification": {
       "VNINDEX": "Frontier",
-      "PSEI": "Frontier",
+      "BVB": "Frontier",
       "KOSPI": "Emerging",
       "NIFTY": "Emerging",
       "SPX": "Developed",

@@ -38,7 +38,7 @@ except Exception:
 OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "results_v2")
 DML_PATH = os.path.join(OUTPUT_DIR, "h1_dml.json")
 
-MARKETS = ["VNINDEX", "PSEI", "KOSPI", "NIFTY", "SPX", "FTSE", "NIKKEI", "BTC"]
+MARKETS = ["VNINDEX", "BVB", "KOSPI", "NIFTY", "SPX", "FTSE", "NIKKEI", "BTC"]
 
 
 def _ci_clears_zero(lo: float, hi: float) -> str:

@@ -2,7 +2,7 @@
   "spec": "H1 DML estimation: per-market Det vs Sto effect on forward 20d RV with cross-fitted nuisance + RandomForest controls",
   "markets": [
     "VNINDEX",
-    "PSEI",
+    "BVB",
     "KOSPI",
     "NIFTY",
     "SPX",
@@ -14,7 +14,7 @@
   "horizon": 20,
   "n_folds": 5,
   "seed": 42,
-  "total_elapsed_seconds": 53.78038144111633,
+  "total_elapsed_seconds": 58.82866930961609,
   "results": {
     "VNINDEX": {
       "market": "VNINDEX",
@@ -39,10 +39,10 @@
       ],
       "linear_dml": {
         "spec": "LinearDML",
-        "ate": 0.7110276640417652,
-        "se": 0.9745295366087019,
-        "ci_lo": -1.1990151295817988,
-        "ci_hi": 2.6210704576653288,
+        "ate": 0.5445164606355173,
+        "se": 1.0041606236609153,
+        "ci_lo": -1.4236021964331562,
+        "ci_hi": 2.51263511770419,
         "direction_verdict": "n.s.",
         "n_obs": 819,
         "n_det": 725,
@@ -52,10 +52,10 @@
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML",
-        "ate": 1.358507091241096,
-        "se": 1.8761081114789429,
-        "ci_lo": -2.3185972383610896,
-        "ci_hi": 5.03561142084328,
+        "ate": 1.331507955176692,
+        "se": 2.017151625689246,
+        "ci_lo": -2.62203658253065,
+        "ci_hi": 5.2850524928840334,
         "direction_verdict": "n.s.",
         "n_obs": 819,
         "n_det": 725,
@@ -63,14 +63,14 @@
         "n_features": 12,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 9.563803434371948
+      "elapsed_seconds": 10.67283010482788
     },
-    "PSEI": {
-      "market": "PSEI",
-      "ticker": "PSEI.PS",
-      "n_dml_obs": 903,
-      "n_det": 736,
-      "n_sto": 167,
+    "BVB": {
+      "market": "BVB",
+      "ticker": "BVB.RO",
+      "n_dml_obs": 851,
+      "n_det": 503,
+      "n_sto": 348,
       "horizon": 20,
       "controls": [
         "log_ret_lag1",
@@ -88,31 +88,31 @@
       ],
       "linear_dml": {
         "spec": "LinearDML",
-        "ate": 0.7765778664441266,
-        "se": 0.4229698278903237,
-        "ci_lo": -0.05242776276801331,
-        "ci_hi": 1.605583495656266,
+        "ate": 0.5980692791863588,
+        "se": 0.5120353529514747,
+        "ci_lo": -0.4055015714097866,
+        "ci_hi": 1.601640129782504,
         "direction_verdict": "n.s.",
-        "n_obs": 903,
-        "n_det": 736,
-        "n_sto": 167,
+        "n_obs": 851,
+        "n_det": 503,
+        "n_sto": 348,
         "n_features": 12,
         "fit_status": "ok"
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML",
-        "ate": 0.6225166342092074,
-        "se": 0.7898418398476963,
-        "ci_lo": -0.9255449253751307,
-        "ci_hi": 2.1705781937935456,
+        "ate": 0.6168175480559325,
+        "se": 1.591901000444843,
+        "ci_lo": -2.503251079769241,
+        "ci_hi": 3.7368861758811054,
         "direction_verdict": "n.s.",
-        "n_obs": 903,
-        "n_det": 736,
-        "n_sto": 167,
+        "n_obs": 851,
+        "n_det": 503,
+        "n_sto": 348,
         "n_features": 12,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 7.849966526031494
+      "elapsed_seconds": 7.387497186660767
     },
     "KOSPI": {
       "market": "KOSPI",
@@ -137,10 +137,10 @@
       ],
       "linear_dml": {
         "spec": "LinearDML",
-        "ate": -0.992314170471519,
-        "se": 0.9530270306808228,
-        "ci_lo": -2.860212826899081,
-        "ci_hi": 0.875584485956043,
+        "ate": -1.4779151176868668,
+        "se": 0.8762913638981467,
+        "ci_lo": -3.195414630890717,
+        "ci_hi": 0.23958439551698296,
         "direction_verdict": "n.s.",
         "n_obs": 682,
         "n_det": 391,
@@ -150,10 +150,10 @@
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML",
-        "ate": -0.5074075991675796,
-        "se": 2.0938351023140824,
-        "ci_lo": -4.611248989268921,
-        "ci_hi": 3.596433790933761,
+        "ate": -0.8992724661746082,
+        "se": 1.9764742609248742,
+        "ci_lo": -4.7730908339577836,
+        "ci_hi": 2.9745459016085665,
         "direction_verdict": "n.s.",
         "n_obs": 682,
         "n_det": 391,
@@ -161,7 +161,7 @@
         "n_features": 12,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 6.060133218765259
+      "elapsed_seconds": 6.715127468109131
     },
     "NIFTY": {
       "market": "NIFTY",
@@ -186,10 +186,10 @@
       ],
       "linear_dml": {
         "spec": "LinearDML",
-        "ate": -0.7888261222259406,
-        "se": 0.6157386371402194,
-        "ci_lo": -1.9956516749105475,
-        "ci_hi": 0.41799943045866594,
+        "ate": -0.4598597847091712,
+        "se": 0.6258301673871302,
+        "ci_lo": -1.6864643732266198,
+        "ci_hi": 0.7667448038082771,
         "direction_verdict": "n.s.",
         "n_obs": 618,
         "n_det": 499,
@@ -199,10 +199,10 @@
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML",
-        "ate": -0.7714529726490413,
-        "se": 1.2333178034684589,
-        "ci_lo": -3.1887114489392694,
-        "ci_hi": 1.6458055036411863,
+        "ate": -0.7084030106732565,
+        "se": 1.2850795628550546,
+        "ci_lo": -3.2271126711376406,
+        "ci_hi": 1.8103066497911269,
         "direction_verdict": "n.s.",
         "n_obs": 618,
         "n_det": 499,
@@ -210,7 +210,7 @@
         "n_features": 12,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 5.526350259780884
+      "elapsed_seconds": 6.149152040481567
     },
     "SPX": {
       "market": "SPX",
@@ -235,10 +235,10 @@
       ],
       "linear_dml": {
         "spec": "LinearDML",
-        "ate": 1.5038878321893205,
-        "se": 0.43818114736680885,
-        "ci_lo": 0.6450685646459371,
-        "ci_hi": 2.3627070997327038,
+        "ate": 1.345797679785702,
+        "se": 0.42589929420751466,
+        "ci_lo": 0.5110504020979447,
+        "ci_hi": 2.180544957473459,
         "direction_verdict": "Paradox",
         "n_obs": 903,
         "n_det": 651,
@@ -248,10 +248,10 @@
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML",
-        "ate": 1.3071470379600978,
-        "se": 1.1831132080248739,
-        "ci_lo": -1.0117122394023,
-        "ci_hi": 3.626006315322495,
+        "ate": 1.4477076978961512,
+        "se": 1.2268071096812987,
+        "ci_lo": -0.9567900530568747,
+        "ci_hi": 3.852205448849176,
         "direction_verdict": "n.s.",
         "n_obs": 903,
         "n_det": 651,
@@ -259,7 +259,7 @@
         "n_features": 12,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 6.064951419830322
+      "elapsed_seconds": 6.88180136680603
     },
     "FTSE": {
       "market": "FTSE",
@@ -284,10 +284,10 @@
       ],
       "linear_dml": {
         "spec": "LinearDML",
-        "ate": 1.3442714410950949,
-        "se": 0.2741517930491135,
-        "ci_lo": 0.806943800421754,
-        "ci_hi": 1.8815990817684356,
+        "ate": 1.361703831198174,
+        "se": 0.2734313756325221,
+        "ci_lo": 0.8257881827151877,
+        "ci_hi": 1.8976194796811605,
         "direction_verdict": "Paradox",
         "n_obs": 1149,
         "n_det": 749,
@@ -297,10 +297,10 @@
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML",
-        "ate": 1.2516013983284386,
-        "se": 0.7253908404314441,
-        "ci_lo": -0.1701385236324331,
-        "ci_hi": 2.6733413202893104,
+        "ate": 1.3411453197248693,
+        "se": 0.7859904864000123,
+        "ci_lo": -0.1993677258102744,
+        "ci_hi": 2.8816583652600127,
         "direction_verdict": "n.s.",
         "n_obs": 1149,
         "n_det": 749,
@@ -308,7 +308,7 @@
         "n_features": 12,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 6.1528260707855225
+      "elapsed_seconds": 6.788501501083374
     },
     "NIKKEI": {
       "market": "NIKKEI",
@@ -333,10 +333,10 @@
       ],
       "linear_dml": {
         "spec": "LinearDML",
-        "ate": 1.5276868892843607,
-        "se": 0.5365592867830205,
-        "ci_lo": 0.4760500116191424,
-        "ci_hi": 2.579323766949579,
+        "ate": 1.7248933051490936,
+        "se": 0.534731424156498,
+        "ci_lo": 0.6768389724005461,
+        "ci_hi": 2.7729476378976408,
         "direction_verdict": "Paradox",
         "n_obs": 873,
         "n_det": 609,
@@ -346,10 +346,10 @@
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML",
-        "ate": 1.4524962106253565,
-        "se": 0.956282456221259,
-        "ci_lo": -0.4217829626158123,
-        "ci_hi": 3.326775383866525,
+        "ate": 1.5772430736921272,
+        "se": 1.0364134764579163,
+        "ci_lo": -0.45409001325734,
+        "ci_hi": 3.608576160641594,
         "direction_verdict": "n.s.",
         "n_obs": 873,
         "n_det": 609,
@@ -357,7 +357,7 @@
         "n_features": 12,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 6.045316934585571
+      "elapsed_seconds": 6.965946912765503
     },
     "BTC": {
       "market": "BTC",
@@ -382,11 +382,11 @@
       ],
       "linear_dml": {
         "spec": "LinearDML",
-        "ate": -2.499906773346029,
-        "se": 1.3435123446243613,
-        "ci_lo": -5.133142581594743,
-        "ci_hi": 0.13332903490268366,
-        "direction_verdict": "n.s.",
+        "ate": -2.685036736145356,
+        "se": 1.3276895021330564,
+        "ci_lo": -5.287260342978062,
+        "ci_hi": -0.08281312931265017,
+        "direction_verdict": "Inverted",
         "n_obs": 1254,
         "n_det": 888,
         "n_sto": 366,
@@ -395,10 +395,10 @@
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML",
-        "ate": -2.3644736125671333,
-        "se": 3.685051699768751,
-        "ci_lo": -9.587042225281994,
-        "ci_hi": 4.858095000147726,
+        "ate": -2.181069843542219,
+        "se": 3.6940890882840467,
+        "ci_lo": -9.421351412261355,
+        "ci_hi": 5.059211725176916,
         "direction_verdict": "n.s.",
         "n_obs": 1254,
         "n_det": 888,
@@ -406,7 +406,7 @@
         "n_features": 12,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 6.5153281688690186
+      "elapsed_seconds": 7.265915393829346
     }
   }
 }

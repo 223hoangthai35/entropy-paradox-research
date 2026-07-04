@@ -31,7 +31,7 @@ RESULTS_DIR = HERE / "results_v2"
 # Pre-registered RPS panel (ex-ante; see rps_rationale.md)
 RPS_OLD = {
     "VNINDEX": 0.90,
-    "PSEI": 0.68,
+    "BVB": 0.225,
     "KOSPI": 0.70,
     "NIFTY": 0.40,
     "SPX": 0.22,
@@ -43,7 +43,7 @@ RPS_OLD = {
 # Window-averaged RPS panel (2020-04-17 → 2026-04-17, trading-value share)
 # Sources documented in plan v5 §D.4.5; reasoning per market based on:
 #   VNINDEX: SSC reports + VinaCapital (consistently retail-dominant 80-92%)
-#   PSEI:    PSE Stock Market Investor Profile (2021=29.9%, 2023=16.5%, 3-yr avg 21%)
+#   BVB:    PSE Stock Market Investor Profile (2021=29.9%, 2023=16.5%, 3-yr avg 21%)
 #   KOSPI:   KRX Data Marketplace (2021 COVID peak 0.70 → March 2026 0.45; window-avg ~0.45)
 #   NIFTY:   NSE India FY data (FY21=0.45 → FY24/25=0.336)
 #   SPX:     MEMX retail-order-flow share (30-37% 2024) — NOT SIFMA ownership
@@ -52,7 +52,7 @@ RPS_OLD = {
 #   BTC:     Pre-ETF retail-dominant 85-90%, post-ETF 65-75%; window-avg ~0.75
 RPS_CORRECTED = {
     "VNINDEX": 0.85,
-    "PSEI": 0.22,
+    "BVB": 0.225,
     "KOSPI": 0.45,
     "NIFTY": 0.39,
     "SPX": 0.30,

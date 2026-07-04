@@ -17,18 +17,18 @@ REVISIONS:
 
 Distribution (27 markets, post-revision):
 - MSCI Frontier   (8): VNINDEX, BVB, KSE100, DSEX, SBITOP, OMXVGI, OMXRGI, MERV
-- MSCI Emerging   (7): KOSPI, NIFTY, PSEI, JKSE, SET, SHANGHAI, TWII (Asian-only)
+- MSCI Emerging   (7): KOSPI, NIFTY, BVB, JKSE, SET, SHANGHAI, TWII (Asian-only)
 - MSCI Developed  (9): SPX, FTSE, NIKKEI, DAX, CAC, SSMI, ASX, HSI, STI
 - Crypto          (3): BTC, ETH, BNB
 
 Geographic distribution: 14 Asian, 13 Non-Asian (Asian-prioritised).
-- Asian:    VNINDEX, KSE100, DSEX (Frontier), KOSPI, NIFTY, PSEI, JKSE, SET,
+- Asian:    VNINDEX, KSE100, DSEX (Frontier), KOSPI, NIFTY, BVB, JKSE, SET,
             SHANGHAI, TWII (Emerging), NIKKEI, HSI, ASX, STI (Developed)
 - Non-Asian: BVB, SBITOP, OMXVGI, OMXRGI, MERV (Frontier), SPX, FTSE, DAX,
              CAC, SSMI (Developed), BTC, ETH, BNB (Crypto)
 
 Note on tier reclassifications vs paper canonical panel (n=8):
-- PSEI: paper has Frontier (tier_rank=4); MSCI strict = Emerging (tier_rank=3).
+- BVB: paper has Frontier (tier_rank=4); MSCI strict = Emerging (tier_rank=3).
   This experiment uses MSCI strict.
 - All other paper markets (VNINDEX, KOSPI, NIFTY, SPX, FTSE, NIKKEI, BTC) keep
   the same tier_rank under MSCI as in the paper.
@@ -41,7 +41,7 @@ tier_rank scheme (paper convention, retail-share proxy):
 
 RPS specifications:
 - P1 (authoritative source): 5 markets carried over from paper canonical panel
-  (VNINDEX, PSEI, KOSPI, NIFTY, NIKKEI)
+  (VNINDEX, BVB, KOSPI, NIFTY, NIKKEI)
 - P2 (uniform bounds): SPX, FTSE (carried over from paper)
 - P3 (Beta posterior): all 20 new markets + BTC. Beta means are heuristic priors
   based on regional retail-share patterns; kappa=10 reflects wide uncertainty.
@@ -124,8 +124,8 @@ CASCADE_N27: dict[str, dict] = {
 
     # === P3 (Beta posterior — heuristic priors) =============================
     # ---- Frontier defaults (high retail typical) ----
-    "BVB":      {"tier": "P3", "type": "beta", "mean": 0.40, "kappa": 10,
-                 "source": "Bucharest Stock Exchange (Romania) — EU-integrated, heuristic prior"},
+    "BVB":      {"tier": "P2", "type": "uniform", "low": 0.20, "high": 0.25,
+                 "source": "BVB Investor Relations + ASF Romania monthly market reports (trading-value-weighted retail share)"},
     "KSE100":   {"tier": "P3", "type": "beta", "mean": 0.60, "kappa": 10,
                  "source": "Pakistan Stock Exchange — high retail, heuristic prior"},
     "DSEX":     {"tier": "P3", "type": "beta", "mean": 0.55, "kappa": 10,

@@ -43,7 +43,7 @@ from skills.ds_skill import REGIME_NAMES
 
 MARKETS: list[dict[str, Any]] = [
     {"name": "VNINDEX", "ticker": "VNINDEX", "source": "vnstock"},
-    {"name": "PSEI",    "ticker": "PSEI.PS", "source": "yfinance"},
+    {"name": "BVB",     "ticker": "BVB.RO",  "source": "yfinance"},
     {"name": "KOSPI",   "ticker": "^KS11",   "source": "yfinance"},
     {"name": "NIFTY",   "ticker": "^NSEI",   "source": "yfinance"},
     {"name": "SPX",     "ticker": "^GSPC",   "source": "yfinance"},
@@ -55,7 +55,7 @@ MARKETS: list[dict[str, Any]] = [
 # Cascade-spec RPS values (matches h2_cascade.py CASCADE point estimates;
 # for P2/P3 markets we use the central / mean of their distribution)
 RPS = {
-    "VNINDEX": 0.90, "PSEI": 0.68, "KOSPI": 0.45, "NIFTY": 0.40,
+    "VNINDEX": 0.90, "BVB": 0.225, "KOSPI": 0.45, "NIFTY": 0.40,
     "SPX": 0.275, "FTSE": 0.20, "NIKKEI": 0.18, "BTC": 0.55,
 }
 

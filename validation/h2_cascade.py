@@ -35,8 +35,8 @@ PRIMARY_CSV = os.path.join(OUTPUT_DIR, "cross_market_summary_v2.csv")
 CASCADE: dict[str, dict] = {
     "VNINDEX": {"tier": "P1", "type": "point", "value": 0.90,
                 "source": "Vietnam SSC + VinaCapital (authoritative source available)"},
-    "PSEI": {"tier": "P1", "type": "point", "value": 0.68,
-             "source": "PSE 2023 Annual Report (authoritative exchange document)"},
+    "BVB": {"tier": "P2", "type": "uniform", "low": 0.20, "high": 0.25,
+            "source": "P1 fails: no single authoritative point estimate; P2 bounds from BVB Investor Relations + ASF Romania monthly market reports (trading-value-weighted retail share)"},
     "KOSPI": {"tier": "P1", "type": "point", "value": 0.45,
               "source": "KRX 2026 direct turnover-by-investor-type marketplace"},
     "NIFTY": {"tier": "P1", "type": "point", "value": 0.40,

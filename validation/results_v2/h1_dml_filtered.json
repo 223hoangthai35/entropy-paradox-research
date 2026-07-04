@@ -3,7 +3,7 @@
   "n_markets": 8,
   "horizon": 20,
   "seed": 42,
-  "total_elapsed_seconds": 52.2221999168396,
+  "total_elapsed_seconds": 66.1688666343689,
   "results": {
     "VNINDEX": {
       "market": "VNINDEX",
@@ -14,10 +14,10 @@
       "horizon": 20,
       "linear_dml": {
         "spec": "LinearDML",
-        "ate": -0.09861578915939957,
-        "se": 0.9988533341703795,
-        "ci_lo": -2.056332349971095,
-        "ci_hi": 1.8591007716522951,
+        "ate": 0.37923261045299095,
+        "se": 0.9914483597977384,
+        "ci_lo": -1.563970467281886,
+        "ci_hi": 2.322435688187867,
         "direction_verdict": "n.s.",
         "n_obs": 827,
         "n_det": 740,
@@ -27,10 +27,10 @@
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML",
-        "ate": 1.1127526295655235,
-        "se": 2.0084350163015885,
-        "ci_lo": -2.8237076676747073,
-        "ci_hi": 5.049212926805753,
+        "ate": 0.980293199600915,
+        "se": 1.8796195035198784,
+        "ci_lo": -2.7036933319371044,
+        "ci_hi": 4.664279731138933,
         "direction_verdict": "n.s.",
         "n_obs": 827,
         "n_det": 740,
@@ -38,42 +38,42 @@
         "n_features": 12,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 9.524339199066162
+      "elapsed_seconds": 16.8560152053833
     },
-    "PSEI": {
-      "market": "PSEI",
+    "BVB": {
+      "market": "BVB",
       "label_source": "filtered_schmitt_trigger",
-      "n_dml_obs": 871,
-      "n_det": 693,
-      "n_sto": 178,
+      "n_dml_obs": 873,
+      "n_det": 526,
+      "n_sto": 347,
       "horizon": 20,
       "linear_dml": {
         "spec": "LinearDML",
-        "ate": 0.3369625195532803,
-        "se": 0.5753928987094413,
-        "ci_lo": -0.7907868388773283,
-        "ci_hi": 1.4647118779838888,
-        "direction_verdict": "n.s.",
-        "n_obs": 871,
-        "n_det": 693,
-        "n_sto": 178,
+        "ate": 1.4589864974413096,
+        "se": 0.5219915965901696,
+        "ci_lo": 0.4359017678920163,
+        "ci_hi": 2.4820712269906027,
+        "direction_verdict": "Paradox",
+        "n_obs": 873,
+        "n_det": 526,
+        "n_sto": 347,
         "n_features": 12,
         "fit_status": "ok"
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML",
-        "ate": 0.23825972444151008,
-        "se": 0.9349937668532884,
-        "ci_lo": -1.5942943843603756,
-        "ci_hi": 2.0708138332433954,
+        "ate": 1.8731006892465059,
+        "se": 2.0330794052816623,
+        "ci_lo": -2.111661722815665,
+        "ci_hi": 5.857863101308675,
         "direction_verdict": "n.s.",
-        "n_obs": 871,
-        "n_det": 693,
-        "n_sto": 178,
+        "n_obs": 873,
+        "n_det": 526,
+        "n_sto": 347,
         "n_features": 12,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 6.4773290157318115
+      "elapsed_seconds": 7.910094976425171
     },
     "KOSPI": {
       "market": "KOSPI",
@@ -84,10 +84,10 @@
       "horizon": 20,
       "linear_dml": {
         "spec": "LinearDML",
-        "ate": 1.5767923091810085,
-        "se": 1.7856853377199533,
-        "ci_lo": -1.9230866404713434,
-        "ci_hi": 5.07667125883336,
+        "ate": 2.0099514582981652,
+        "se": 1.6644177902197534,
+        "ci_lo": -1.2522474657602949,
+        "ci_hi": 5.2721503823566245,
         "direction_verdict": "n.s.",
         "n_obs": 663,
         "n_det": 422,
@@ -97,10 +97,10 @@
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML",
-        "ate": 1.3626184417783498,
-        "se": 1.9981829404716371,
-        "ci_lo": -2.5537481560684023,
-        "ci_hi": 5.278985039625101,
+        "ate": 0.9650793759828473,
+        "se": 2.129121485516235,
+        "ci_lo": -3.207922054339392,
+        "ci_hi": 5.138080806305085,
         "direction_verdict": "n.s.",
         "n_obs": 663,
         "n_det": 422,
@@ -108,7 +108,7 @@
         "n_features": 12,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 5.864748477935791
+      "elapsed_seconds": 6.615274667739868
     },
     "NIFTY": {
       "market": "NIFTY",
@@ -119,10 +119,10 @@
       "horizon": 20,
       "linear_dml": {
         "spec": "LinearDML",
-        "ate": -1.149582754985651,
-        "se": 0.6395066782943035,
-        "ci_lo": -2.4029928123153286,
-        "ci_hi": 0.10382730234402637,
+        "ate": -1.0476263515176287,
+        "se": 0.6502523164854008,
+        "ci_lo": -2.322097472692755,
+        "ci_hi": 0.22684476965749778,
         "direction_verdict": "n.s.",
         "n_obs": 641,
         "n_det": 524,
@@ -132,10 +132,10 @@
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML",
-        "ate": -1.5436023505814338,
-        "se": 1.7208105784921954,
-        "ci_lo": -4.916329108641673,
-        "ci_hi": 1.8291244074788044,
+        "ate": -1.9502478135713575,
+        "se": 1.6712434579925763,
+        "ci_lo": -5.225824800634986,
+        "ci_hi": 1.3253291734922703,
         "direction_verdict": "n.s.",
         "n_obs": 641,
         "n_det": 524,
@@ -143,7 +143,7 @@
         "n_features": 12,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 5.750949382781982
+      "elapsed_seconds": 6.679507255554199
     },
     "SPX": {
       "market": "SPX",
@@ -154,10 +154,10 @@
       "horizon": 20,
       "linear_dml": {
         "spec": "LinearDML",
-        "ate": 2.4343756464282076,
-        "se": 0.4309857756515275,
-        "ci_lo": 1.5896590483021538,
-        "ci_hi": 3.279092244554261,
+        "ate": 2.5530743624524144,
+        "se": 0.4193029760346642,
+        "ci_lo": 1.731255630814011,
+        "ci_hi": 3.3748930940908175,
         "direction_verdict": "Paradox",
         "n_obs": 842,
         "n_det": 606,
@@ -167,10 +167,10 @@
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML",
-        "ate": 2.4719766209243974,
-        "se": 1.162554980119147,
-        "ci_lo": 0.1934107298431904,
-        "ci_hi": 4.7505425120056035,
+        "ate": 2.5008173189720004,
+        "se": 1.1626124809921152,
+        "ci_lo": 0.22213872825069636,
+        "ci_hi": 4.7794959096933045,
         "direction_verdict": "Paradox",
         "n_obs": 842,
         "n_det": 606,
@@ -178,7 +178,7 @@
         "n_features": 12,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 5.949151992797852
+      "elapsed_seconds": 7.18451452255249
     },
     "FTSE": {
       "market": "FTSE",
@@ -189,10 +189,10 @@
       "horizon": 20,
       "linear_dml": {
         "spec": "LinearDML",
-        "ate": 1.639241228390652,
-        "se": 0.29107155103311866,
-        "ci_lo": 1.068751471441527,
-        "ci_hi": 2.209730985339777,
+        "ate": 1.5242315553622061,
+        "se": 0.286819470120368,
+        "ci_lo": 0.9620757238614223,
+        "ci_hi": 2.0863873868629894,
         "direction_verdict": "Paradox",
         "n_obs": 980,
         "n_det": 690,
@@ -202,10 +202,10 @@
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML",
-        "ate": 1.5280888702285869,
-        "se": 0.9839921131441765,
-        "ci_lo": -0.4005002326054612,
-        "ci_hi": 3.4566779730626345,
+        "ate": 1.6436718901453748,
+        "se": 0.8898352006259692,
+        "ci_lo": -0.1003730552574984,
+        "ci_hi": 3.3877168355482477,
         "direction_verdict": "n.s.",
         "n_obs": 980,
         "n_det": 690,
@@ -213,7 +213,7 @@
         "n_features": 12,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 5.889531850814819
+      "elapsed_seconds": 6.66642165184021
     },
     "NIKKEI": {
       "market": "NIKKEI",
@@ -224,11 +224,11 @@
       "horizon": 20,
       "linear_dml": {
         "spec": "LinearDML",
-        "ate": 0.8198766975826692,
-        "se": 0.4738202039408982,
-        "ci_lo": -0.10879383728891479,
-        "ci_hi": 1.7485472324542528,
-        "direction_verdict": "n.s.",
+        "ate": 0.9530449782961634,
+        "se": 0.4738688250648857,
+        "ci_lo": 0.024279147772676035,
+        "ci_hi": 1.8818108088196506,
+        "direction_verdict": "Paradox",
         "n_obs": 905,
         "n_det": 629,
         "n_sto": 276,
@@ -237,10 +237,10 @@
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML",
-        "ate": 0.996805664908499,
-        "se": 0.886831477427209,
-        "ci_lo": -0.7413520912052768,
-        "ci_hi": 2.7349634210222744,
+        "ate": 0.9968783270172723,
+        "se": 0.8140455888527928,
+        "ci_lo": -0.5986217089079021,
+        "ci_hi": 2.5923783629424464,
         "direction_verdict": "n.s.",
         "n_obs": 905,
         "n_det": 629,
@@ -248,7 +248,7 @@
         "n_features": 12,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 6.364041566848755
+      "elapsed_seconds": 6.82167387008667
     },
     "BTC": {
       "market": "BTC",
@@ -259,10 +259,10 @@
       "horizon": 20,
       "linear_dml": {
         "spec": "LinearDML",
-        "ate": -7.065100354421905,
-        "se": 1.189181987329225,
-        "ci_lo": -9.395854220650953,
-        "ci_hi": -4.734346488192857,
+        "ate": -6.845942254512268,
+        "se": 1.1903888346017564,
+        "ci_lo": -9.17906149793032,
+        "ci_hi": -4.512823011094221,
         "direction_verdict": "Inverted",
         "n_obs": 1370,
         "n_det": 1017,
@@ -272,18 +272,18 @@
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML",
-        "ate": -7.009182467550657,
-        "se": 3.9611636523238856,
-        "ci_lo": -14.772920562974614,
-        "ci_hi": 0.7545556278732981,
-        "direction_verdict": "n.s.",
+        "ate": -7.012991592445272,
+        "se": 3.4818829332482033,
+        "ci_lo": -13.837356739996434,
+        "ci_hi": -0.18862644489411373,
+        "direction_verdict": "Inverted",
         "n_obs": 1370,
         "n_det": 1017,
         "n_sto": 353,
         "n_features": 12,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 6.400527000427246
+      "elapsed_seconds": 7.433621644973755
     }
   }
 }

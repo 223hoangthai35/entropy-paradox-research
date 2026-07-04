@@ -9,7 +9,7 @@
   },
   "n_bootstrap": 100,
   "seed": 42,
-  "total_elapsed_seconds": 1459.036071062088,
+  "total_elapsed_seconds": 1765.5173947811127,
   "results": {
     "VNINDEX": {
       "market": "VNINDEX",
@@ -34,22 +34,22 @@
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": 1.4147199090314295,
-        "se": 2.3209390388900903,
-        "ci_lo": -3.1342370175061554,
-        "ci_hi": 5.9636768355690135,
+        "ate": 1.8279613598693738,
+        "se": 2.35625378198142,
+        "ci_lo": -2.7902111912505037,
+        "ci_hi": 6.44613391098925,
         "direction_verdict": "n.s.",
         "n_obs": 827,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 18.397172212600708
+      "elapsed_seconds": 19.05342745780945
     },
-    "PSEI": {
-      "market": "PSEI",
+    "BVB": {
+      "market": "BVB",
       "label_source": "filtered_schmitt_trigger",
-      "n_dml_obs": 871,
-      "n_det": 693,
-      "n_sto": 178,
+      "n_dml_obs": 873,
+      "n_det": 526,
+      "n_sto": 347,
       "horizon": 20,
       "purged_kfold_config": {
         "n_splits": 5,
@@ -57,25 +57,27 @@
       },
       "linear_dml": {
         "spec": "LinearDML+PurgedKFold+Bootstrap",
-        "fit_status": "error: AttributeError: Provided crossfit folds contain training splits that don't contain all treatments",
-        "ate": NaN,
-        "se": NaN,
-        "ci_lo": NaN,
-        "ci_hi": NaN,
-        "direction_verdict": "SKIP",
-        "n_obs": 871
+        "ate": 3.7992863878782615,
+        "se": 1.8869215195341424,
+        "ci_lo": 0.10098816793774956,
+        "ci_hi": 7.497584607818773,
+        "direction_verdict": "Paradox",
+        "n_obs": 873,
+        "n_det": 526,
+        "n_sto": 347,
+        "fit_status": "ok"
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": -0.12778826980326166,
-        "se": 0.977130135868133,
-        "ci_lo": -2.042928144313532,
-        "ci_hi": 1.7873516047070086,
+        "ate": 4.07661181467806,
+        "se": 2.2912268814318955,
+        "ci_lo": -0.4141103533384811,
+        "ci_hi": 8.5673339826946,
         "direction_verdict": "n.s.",
-        "n_obs": 871,
+        "n_obs": 873,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 15.463253498077393
+      "elapsed_seconds": 273.3639442920685
     },
     "KOSPI": {
       "market": "KOSPI",
@@ -90,10 +92,10 @@
       },
       "linear_dml": {
         "spec": "LinearDML+PurgedKFold+Bootstrap",
-        "ate": -5.8036751166481935,
-        "se": 9.253374585244597,
-        "ci_lo": -23.939956039185866,
-        "ci_hi": 12.332605805889472,
+        "ate": -6.721596670698987,
+        "se": 8.119674878531601,
+        "ci_lo": -22.635866998795567,
+        "ci_hi": 9.192673657397588,
         "direction_verdict": "n.s.",
         "n_obs": 663,
         "n_det": 422,
@@ -102,15 +104,15 @@
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": -26.686677165706186,
-        "se": 23.621927507990765,
-        "ci_lo": -72.9848043267841,
-        "ci_hi": 19.611449995371682,
+        "ate": -18.662994635170442,
+        "se": 33.92196514296704,
+        "ci_lo": -85.14882460020894,
+        "ci_hi": 47.82283532986808,
         "direction_verdict": "n.s.",
         "n_obs": 663,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 245.1235225200653
+      "elapsed_seconds": 271.15684247016907
     },
     "NIFTY": {
       "market": "NIFTY",
@@ -135,15 +137,15 @@
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": -1.1222982908964616,
-        "se": 1.5154843100387512,
-        "ci_lo": -4.092592957707947,
-        "ci_hi": 1.847996375915024,
+        "ate": -1.2425465786302337,
+        "se": 1.7360994287692988,
+        "ci_lo": -4.6452389325986205,
+        "ci_hi": 2.1601457753381528,
         "direction_verdict": "n.s.",
         "n_obs": 641,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 16.151230812072754
+      "elapsed_seconds": 18.27744770050049
     },
     "SPX": {
       "market": "SPX",
@@ -158,10 +160,10 @@
       },
       "linear_dml": {
         "spec": "LinearDML+PurgedKFold+Bootstrap",
-        "ate": 4.159696075962687,
-        "se": 2.085819802986294,
-        "ci_lo": 0.07156438386911823,
-        "ci_hi": 8.247827768056254,
+        "ate": 4.235508870256489,
+        "se": 2.157451346821512,
+        "ci_lo": 0.0069819320888928615,
+        "ci_hi": 8.464035808424086,
         "direction_verdict": "Paradox",
         "n_obs": 842,
         "n_det": 606,
@@ -170,15 +172,15 @@
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": 3.4805946907963925,
-        "se": 1.3046167673271616,
-        "ci_lo": 0.9235928132080851,
-        "ci_hi": 6.037596568384702,
+        "ate": 3.6715714019097287,
+        "se": 1.1731800985399856,
+        "ci_lo": 1.3721806613922047,
+        "ci_hi": 5.970962142427252,
         "direction_verdict": "Paradox",
         "n_obs": 842,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 280.32690954208374
+      "elapsed_seconds": 296.7969572544098
     },
     "FTSE": {
       "market": "FTSE",
@@ -193,10 +195,10 @@
       },
       "linear_dml": {
         "spec": "LinearDML+PurgedKFold+Bootstrap",
-        "ate": 0.9671729289601876,
-        "se": 1.169949432402561,
-        "ci_lo": -1.325885822281911,
-        "ci_hi": 3.2602316802022857,
+        "ate": 0.9273612242965305,
+        "se": 1.115786110805545,
+        "ci_lo": -1.2595393673323554,
+        "ci_hi": 3.114261815925416,
         "direction_verdict": "n.s.",
         "n_obs": 980,
         "n_det": 690,
@@ -205,15 +207,15 @@
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": 2.577676933679181,
-        "se": 1.5533093279215229,
-        "ci_lo": -0.46675340589711967,
-        "ci_hi": 5.622107273255484,
+        "ate": 2.4995006185746003,
+        "se": 1.354621349440766,
+        "ci_lo": -0.155508439018349,
+        "ci_hi": 5.154509676167548,
         "direction_verdict": "n.s.",
         "n_obs": 980,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 308.3304970264435
+      "elapsed_seconds": 293.5237741470337
     },
     "NIKKEI": {
       "market": "NIKKEI",
@@ -228,10 +230,10 @@
       },
       "linear_dml": {
         "spec": "LinearDML+PurgedKFold+Bootstrap",
-        "ate": 0.924280483610931,
-        "se": 2.16678468310038,
-        "ci_lo": -3.322539457518849,
-        "ci_hi": 5.171100424740709,
+        "ate": 0.9327905950095774,
+        "se": 2.3061670702231623,
+        "ci_lo": -3.587213804960075,
+        "ci_hi": 5.452794994979228,
         "direction_verdict": "n.s.",
         "n_obs": 905,
         "n_det": 629,
@@ -240,15 +242,15 @@
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": 1.2702252636203346,
-        "se": 1.4696548746760276,
-        "ci_lo": -1.610245360448406,
-        "ci_hi": 4.150695887689076,
+        "ate": 1.2686176621121064,
+        "se": 1.413901615896292,
+        "ci_lo": -1.5025785827276108,
+        "ci_hi": 4.039813906951824,
         "direction_verdict": "n.s.",
         "n_obs": 905,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 289.09534907341003
+      "elapsed_seconds": 292.8501601219177
     },
     "BTC": {
       "market": "BTC",
@@ -263,10 +265,10 @@
       },
       "linear_dml": {
         "spec": "LinearDML+PurgedKFold+Bootstrap",
-        "ate": -9.446436022202676,
-        "se": 5.068258756144654,
-        "ci_lo": -19.38004064857597,
-        "ci_hi": 0.48716860417061625,
+        "ate": -9.653526986777354,
+        "se": 5.34408642157477,
+        "ci_lo": -20.12774390333344,
+        "ci_hi": 0.8206899297787285,
         "direction_verdict": "n.s.",
         "n_obs": 1370,
         "n_det": 1017,
@@ -275,15 +277,15 @@
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": -9.337280833339006,
-        "se": 4.453256695234858,
-        "ci_lo": -18.065503569911193,
-        "ci_hi": -0.6090580967668231,
+        "ate": -9.785857066531998,
+        "se": 4.718424930323634,
+        "ci_lo": -19.033799993722234,
+        "ci_hi": -0.5379141393417619,
         "direction_verdict": "Inverted",
         "n_obs": 1370,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 286.1452383995056
+      "elapsed_seconds": 300.49187445640564
     }
   }
 }

@@ -30,7 +30,7 @@ except Exception:
 
 RPS = {
     "VNINDEX": 0.90,
-    "PSEI":    0.68,
+    "BVB": 0.225,
     "KOSPI":   0.45,
     "NIFTY":   0.40,
     "BTC":     0.55,
