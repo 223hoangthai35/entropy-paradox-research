@@ -39,7 +39,8 @@ This repo is research-only.
 |-----------------------------|----------|------------------------------------------------|
 | `master`                    | tracking | Receives `--no-ff` merges from working branch  |
 | `v7.2-case-a-validation`    | **active** | Default working branch                       |
-| `v3.4-jfds-submission`      | tag      | Journal-submission manuscript v3.4 archive (2026-07-04) — canonical reproducibility tag cited on the title page |
+| `v3.4.1-jfds-submission`    | tag      | Journal-submission manuscript v3.4 archive (2026-07-04, reviewer-visible docs anonymized) — canonical tag cited on the title page |
+| `v3.4-jfds-submission`      | tag      | Superseded by v3.4.1 (pre-anonymization README) — safe to delete |
 | `v2.1.3-prereg-audit`       | tag      | Prior canonical HEAD (paper + audit)           |
 | `v2.1-paper-combined`       | tag      | Canonical v2.1 paper (April 2026)              |
 | `v2.0-paper`                | tag      | Historical paper v2 draft (provenance only)    |
