@@ -1,0 +1,80 @@
+{
+  "tier_rank": 2,
+  "category": "Crypto",
+  "frozen_cf": {
+    "spec": "CausalForestDML+PurgedKFold",
+    "ate": 3.9256512094138207,
+    "se": 3.5284510977952337,
+    "ci_lo": -2.9899858634756544,
+    "ci_hi": 10.841288282303294,
+    "direction_verdict": "n.s.",
+    "n_obs": 1610,
+    "fit_status": "ok"
+  },
+  "windows": {
+    "repro": {
+      "status": "ok",
+      "n_obs": 1610,
+      "n_det": 916,
+      "n_sto": 694,
+      "cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": 3.1022176238973076,
+        "se": 3.814896296716101,
+        "ci_lo": -4.37484172242148,
+        "ci_hi": 10.579276970216092,
+        "direction_verdict": "n.s.",
+        "n_obs": 1610,
+        "fit_status": "ok"
+      },
+      "overlap": {
+        "min": 0.2295855761161124,
+        "p05": 0.3601985159982714,
+        "p95": 0.8661888792718355,
+        "max": 0.9482100429508765,
+        "frac_outside_05_95": 0.0
+      },
+      "placebo": {
+        "n_ok": 100,
+        "fp_rate": 0.06,
+        "ate_sd": 5.471158650942599,
+        "p_cal_1sided": 0.37623762376237624,
+        "p_cal_2sided": 0.6435643564356436
+      },
+      "verdict": "indeterminate",
+      "flags": []
+    },
+    "extended": {
+      "status": "ok",
+      "n_obs": 1607,
+      "n_det": 909,
+      "n_sto": 698,
+      "cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": 3.016288592704729,
+        "se": 3.5902384086957837,
+        "ci_lo": -4.020449384251403,
+        "ci_hi": 10.05302656966086,
+        "direction_verdict": "n.s.",
+        "n_obs": 1607,
+        "fit_status": "ok"
+      },
+      "overlap": {
+        "min": 0.24238391003295467,
+        "p05": 0.356619707364609,
+        "p95": 0.8696775621757183,
+        "max": 0.9409540369886156,
+        "frac_outside_05_95": 0.0
+      },
+      "placebo": {
+        "n_ok": 50,
+        "fp_rate": 0.08,
+        "ate_sd": 5.2659881228653,
+        "p_cal_1sided": 0.29411764705882354,
+        "p_cal_2sided": 0.5098039215686274
+      },
+      "verdict": "indeterminate",
+      "flags": []
+    }
+  }
+}

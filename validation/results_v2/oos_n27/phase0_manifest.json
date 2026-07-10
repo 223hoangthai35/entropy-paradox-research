@@ -1,0 +1,527 @@
+{
+  "spec": "oos-n27-rigor phase 0 snapshot manifest",
+  "window": [
+    "2018-01-01",
+    "2026-06-30"
+  ],
+  "n_attempted": 27,
+  "n_ok": 27,
+  "gate_min_markets": 25,
+  "gate_G0": "PASS",
+  "records": [
+    {
+      "market": "VNINDEX",
+      "ticker": "VNINDEX",
+      "source": "vnstock",
+      "tier_rank": 4,
+      "category": "Frontier",
+      "status": "fetched",
+      "n_bars": 2118,
+      "first": "2018-01-02",
+      "last": "2026-06-30",
+      "n_bars_to_repro_end": 2069,
+      "sha256": "f8ab9e6d05677c7ce4698f65aa42221299d939aad9f49698d86319b87f1e6c5b",
+      "checks": {
+        "coverage_end": true,
+        "enough_bars": true,
+        "covers_old_window": true
+      },
+      "gate_ok": true
+    },
+    {
+      "market": "KSE100",
+      "ticker": "PSX:KSE100",
+      "source": "tvdatafeed",
+      "tier_rank": 4,
+      "category": "Frontier",
+      "status": "fetched",
+      "n_bars": 2087,
+      "first": "2018-01-01",
+      "last": "2026-06-29",
+      "n_bars_to_repro_end": 2041,
+      "sha256": "9277b48b7e4be40a2819b5939ed4fc8e16553ea6ad95d4049682454d86a186a6",
+      "checks": {
+        "coverage_end": true,
+        "enough_bars": true,
+        "covers_old_window": true
+      },
+      "gate_ok": true
+    },
+    {
+      "market": "DSEX",
+      "ticker": "DSEBD:DSEX",
+      "source": "tvdatafeed",
+      "tier_rank": 4,
+      "category": "Frontier",
+      "status": "fetched",
+      "n_bars": 1927,
+      "first": "2018-01-01",
+      "last": "2026-06-29",
+      "n_bars_to_repro_end": 1879,
+      "sha256": "cbb6f4a3f94332545af5d8b22748e4d7089175e4e9c1810ffaa16ea7d4c3a6a5",
+      "checks": {
+        "coverage_end": true,
+        "enough_bars": true,
+        "covers_old_window": true
+      },
+      "gate_ok": true
+    },
+    {
+      "market": "BVB",
+      "ticker": "BVB.RO",
+      "source": "yfinance",
+      "tier_rank": 4,
+      "category": "Frontier",
+      "status": "fetched",
+      "n_bars": 2146,
+      "first": "2018-01-01",
+      "last": "2026-06-29",
+      "n_bars_to_repro_end": 2097,
+      "sha256": "c1e1eb92f0d06bc2f3b60cf0ec63c0edc7af9c648512c4c78fbf8ed0efe2c0ed",
+      "checks": {
+        "coverage_end": true,
+        "enough_bars": true,
+        "covers_old_window": true
+      },
+      "gate_ok": true
+    },
+    {
+      "market": "SBITOP",
+      "ticker": "LJSE:SBITOP",
+      "source": "tvdatafeed",
+      "tier_rank": 4,
+      "category": "Frontier",
+      "status": "fetched",
+      "n_bars": 2105,
+      "first": "2018-01-03",
+      "last": "2026-06-29",
+      "n_bars_to_repro_end": 2060,
+      "sha256": "dda63b76315e7eed19873d557fb1755c6444ea9fd3d8fb20e6aefecbf15fb29d",
+      "checks": {
+        "coverage_end": true,
+        "enough_bars": true,
+        "covers_old_window": true
+      },
+      "gate_ok": true
+    },
+    {
+      "market": "OMXVGI",
+      "ticker": "^OMXVGI",
+      "source": "yfinance",
+      "tier_rank": 4,
+      "category": "Frontier",
+      "status": "fetched",
+      "n_bars": 2099,
+      "first": "2018-01-02",
+      "last": "2026-06-29",
+      "n_bars_to_repro_end": 2053,
+      "sha256": "bcda82e606fb7396dc2b94fc4293f7d1c98618db134661b6aaa5e6eca94fe849",
+      "checks": {
+        "coverage_end": true,
+        "enough_bars": true,
+        "covers_old_window": true
+      },
+      "gate_ok": true
+    },
+    {
+      "market": "OMXRGI",
+      "ticker": "^OMXRGI",
+      "source": "yfinance",
+      "tier_rank": 4,
+      "category": "Frontier",
+      "status": "fetched",
+      "n_bars": 1780,
+      "first": "2019-02-08",
+      "last": "2026-06-29",
+      "n_bars_to_repro_end": 1736,
+      "sha256": "4a497039bcd3a9a9a1d9dc9a4295b7f6fb0c188981371b3759c5602df79bbae3",
+      "checks": {
+        "coverage_end": true,
+        "enough_bars": true,
+        "covers_old_window": true
+      },
+      "gate_ok": true
+    },
+    {
+      "market": "MERV",
+      "ticker": "^MERV",
+      "source": "yfinance",
+      "tier_rank": 4,
+      "category": "Frontier",
+      "status": "fetched",
+      "n_bars": 2065,
+      "first": "2018-01-02",
+      "last": "2026-06-29",
+      "n_bars_to_repro_end": 2017,
+      "sha256": "db39758a832b303f23085dd3110ae7f80fc112b31da0d5117c087586820e15ae",
+      "checks": {
+        "coverage_end": true,
+        "enough_bars": true,
+        "covers_old_window": true
+      },
+      "gate_ok": true
+    },
+    {
+      "market": "KOSPI",
+      "ticker": "^KS11",
+      "source": "yfinance",
+      "tier_rank": 3,
+      "category": "Emerging",
+      "status": "fetched",
+      "n_bars": 2080,
+      "first": "2018-01-02",
+      "last": "2026-06-29",
+      "n_bars_to_repro_end": 2033,
+      "sha256": "42469aecce9b09b9a38cfc8a59f594dee8875efcae3076b630e69907019dff9e",
+      "checks": {
+        "coverage_end": true,
+        "enough_bars": true,
+        "covers_old_window": true
+      },
+      "gate_ok": true
+    },
+    {
+      "market": "NIFTY",
+      "ticker": "^NSEI",
+      "source": "yfinance",
+      "tier_rank": 3,
+      "category": "Emerging",
+      "status": "fetched",
+      "n_bars": 2090,
+      "first": "2018-01-02",
+      "last": "2026-06-29",
+      "n_bars_to_repro_end": 2042,
+      "sha256": "f463224d5160d448680183d210dd2187367f357aaa71b9b085b67af95f67031b",
+      "checks": {
+        "coverage_end": true,
+        "enough_bars": true,
+        "covers_old_window": true
+      },
+      "gate_ok": true
+    },
+    {
+      "market": "PSEI",
+      "ticker": "PSEI.PS",
+      "source": "yfinance",
+      "tier_rank": 3,
+      "category": "Emerging",
+      "status": "fetched",
+      "n_bars": 2072,
+      "first": "2018-01-03",
+      "last": "2026-06-29",
+      "n_bars_to_repro_end": 2024,
+      "sha256": "b1f9632609e1ce55430f37ea1b31bb243b3d1324bb35112957c38ec006b72871",
+      "checks": {
+        "coverage_end": true,
+        "enough_bars": true,
+        "covers_old_window": true
+      },
+      "gate_ok": true
+    },
+    {
+      "market": "JKSE",
+      "ticker": "^JKSE",
+      "source": "yfinance",
+      "tier_rank": 3,
+      "category": "Emerging",
+      "status": "fetched",
+      "n_bars": 2043,
+      "first": "2018-01-02",
+      "last": "2026-06-29",
+      "n_bars_to_repro_end": 1999,
+      "sha256": "378ac4ecead00b0da3c715283692e1df74bb3046adf17972a9a06f30653f9410",
+      "checks": {
+        "coverage_end": true,
+        "enough_bars": true,
+        "covers_old_window": true
+      },
+      "gate_ok": true
+    },
+    {
+      "market": "SET",
+      "ticker": "^SET.BK",
+      "source": "yfinance",
+      "tier_rank": 3,
+      "category": "Emerging",
+      "status": "fetched",
+      "n_bars": 2053,
+      "first": "2018-01-03",
+      "last": "2026-06-29",
+      "n_bars_to_repro_end": 2006,
+      "sha256": "bd2d9f231367e5859cff22e32514ee0e1abf22a36ba2c29e900abd9ccc63f64d",
+      "checks": {
+        "coverage_end": true,
+        "enough_bars": true,
+        "covers_old_window": true
+      },
+      "gate_ok": true
+    },
+    {
+      "market": "SHANGHAI",
+      "ticker": "000001.SS",
+      "source": "yfinance",
+      "tier_rank": 3,
+      "category": "Emerging",
+      "status": "fetched",
+      "n_bars": 2055,
+      "first": "2018-01-02",
+      "last": "2026-06-29",
+      "n_bars_to_repro_end": 2008,
+      "sha256": "8a9ae5777fa409d94ae3fb7040c662ca7eec6ad5667db45e6b1d812ead12f496",
+      "checks": {
+        "coverage_end": true,
+        "enough_bars": true,
+        "covers_old_window": true
+      },
+      "gate_ok": true
+    },
+    {
+      "market": "TWII",
+      "ticker": "^TWII",
+      "source": "yfinance",
+      "tier_rank": 3,
+      "category": "Emerging",
+      "status": "fetched",
+      "n_bars": 2059,
+      "first": "2018-01-02",
+      "last": "2026-06-29",
+      "n_bars_to_repro_end": 2010,
+      "sha256": "52248f87a5dc3a8272f1b898a40523edeeec4aad477cba3dd382857332c7aadc",
+      "checks": {
+        "coverage_end": true,
+        "enough_bars": true,
+        "covers_old_window": true
+      },
+      "gate_ok": true
+    },
+    {
+      "market": "SPX",
+      "ticker": "^GSPC",
+      "source": "yfinance",
+      "tier_rank": 1,
+      "category": "Developed",
+      "status": "fetched",
+      "n_bars": 2133,
+      "first": "2018-01-02",
+      "last": "2026-06-29",
+      "n_bars_to_repro_end": 2084,
+      "sha256": "8e503ca878f03d15171be49453d8f23fafa5b5001628c578b8fc7c29bb656d36",
+      "checks": {
+        "coverage_end": true,
+        "enough_bars": true,
+        "covers_old_window": true
+      },
+      "gate_ok": true
+    },
+    {
+      "market": "FTSE",
+      "ticker": "^FTSE",
+      "source": "yfinance",
+      "tier_rank": 1,
+      "category": "Developed",
+      "status": "fetched",
+      "n_bars": 2143,
+      "first": "2018-01-02",
+      "last": "2026-06-29",
+      "n_bars_to_repro_end": 2094,
+      "sha256": "707fbe38e07539bd816f78df1ae43d8ebdc7c57ce32b1b8f2e2427a63467c0bc",
+      "checks": {
+        "coverage_end": true,
+        "enough_bars": true,
+        "covers_old_window": true
+      },
+      "gate_ok": true
+    },
+    {
+      "market": "DAX",
+      "ticker": "^GDAXI",
+      "source": "yfinance",
+      "tier_rank": 1,
+      "category": "Developed",
+      "status": "fetched",
+      "n_bars": 2154,
+      "first": "2018-01-02",
+      "last": "2026-06-29",
+      "n_bars_to_repro_end": 2104,
+      "sha256": "842cac5cff10502854fb51443a0df0c000185f0baf8acfda28a50f4c51325e20",
+      "checks": {
+        "coverage_end": true,
+        "enough_bars": true,
+        "covers_old_window": true
+      },
+      "gate_ok": true
+    },
+    {
+      "market": "CAC",
+      "ticker": "^FCHI",
+      "source": "yfinance",
+      "tier_rank": 1,
+      "category": "Developed",
+      "status": "fetched",
+      "n_bars": 2172,
+      "first": "2018-01-02",
+      "last": "2026-06-29",
+      "n_bars_to_repro_end": 2122,
+      "sha256": "ab8f7078711552138fa0b8b483f4c7ee8fb7cbcc9a1607a454d78f39213a16e4",
+      "checks": {
+        "coverage_end": true,
+        "enough_bars": true,
+        "covers_old_window": true
+      },
+      "gate_ok": true
+    },
+    {
+      "market": "SSMI",
+      "ticker": "^SSMI",
+      "source": "yfinance",
+      "tier_rank": 1,
+      "category": "Developed",
+      "status": "fetched",
+      "n_bars": 2117,
+      "first": "2018-01-03",
+      "last": "2026-06-29",
+      "n_bars_to_repro_end": 2069,
+      "sha256": "7366e935a60d43c7fa60af4f706dc0dffd34c196e75849fa04774099fc4a52e8",
+      "checks": {
+        "coverage_end": true,
+        "enough_bars": true,
+        "covers_old_window": true
+      },
+      "gate_ok": true
+    },
+    {
+      "market": "NIKKEI",
+      "ticker": "^N225",
+      "source": "yfinance",
+      "tier_rank": 1,
+      "category": "Developed",
+      "status": "fetched",
+      "n_bars": 2070,
+      "first": "2018-01-04",
+      "last": "2026-06-29",
+      "n_bars_to_repro_end": 2023,
+      "sha256": "6c71fbdd2ccdab9ec0c444cb876866e9321e58447188e567f67fb5c570957f86",
+      "checks": {
+        "coverage_end": true,
+        "enough_bars": true,
+        "covers_old_window": true
+      },
+      "gate_ok": true
+    },
+    {
+      "market": "ASX",
+      "ticker": "^AXJO",
+      "source": "yfinance",
+      "tier_rank": 1,
+      "category": "Developed",
+      "status": "fetched",
+      "n_bars": 2147,
+      "first": "2018-01-02",
+      "last": "2026-06-29",
+      "n_bars_to_repro_end": 2097,
+      "sha256": "b3930abf5a3abb99b3bbea7dc412bfd4810842547f3c3f8946c301c3d107134a",
+      "checks": {
+        "coverage_end": true,
+        "enough_bars": true,
+        "covers_old_window": true
+      },
+      "gate_ok": true
+    },
+    {
+      "market": "HSI",
+      "ticker": "^HSI",
+      "source": "yfinance",
+      "tier_rank": 1,
+      "category": "Developed",
+      "status": "fetched",
+      "n_bars": 2086,
+      "first": "2018-01-02",
+      "last": "2026-06-29",
+      "n_bars_to_repro_end": 2038,
+      "sha256": "b22c4d46cea2d41e1f28de77d440cf7c9db88c7b4db233d106d88d113ebcc3aa",
+      "checks": {
+        "coverage_end": true,
+        "enough_bars": true,
+        "covers_old_window": true
+      },
+      "gate_ok": true
+    },
+    {
+      "market": "STI",
+      "ticker": "^STI",
+      "source": "yfinance",
+      "tier_rank": 1,
+      "category": "Developed",
+      "status": "fetched",
+      "n_bars": 2130,
+      "first": "2018-01-02",
+      "last": "2026-06-29",
+      "n_bars_to_repro_end": 2082,
+      "sha256": "58ff847ceae075b063ecd8d72f20ebed9e7a25950ba0b328fcf8d5a95b15f086",
+      "checks": {
+        "coverage_end": true,
+        "enough_bars": true,
+        "covers_old_window": true
+      },
+      "gate_ok": true
+    },
+    {
+      "market": "BTC",
+      "ticker": "BTC-USD",
+      "source": "yfinance",
+      "tier_rank": 2,
+      "category": "Crypto",
+      "status": "fetched",
+      "n_bars": 3102,
+      "first": "2018-01-01",
+      "last": "2026-06-29",
+      "n_bars_to_repro_end": 3029,
+      "sha256": "d851055decdb82433a0bd7899f673168f94452fd449c815f73851b2d3ca67586",
+      "checks": {
+        "coverage_end": true,
+        "enough_bars": true,
+        "covers_old_window": true
+      },
+      "gate_ok": true
+    },
+    {
+      "market": "ETH",
+      "ticker": "ETH-USD",
+      "source": "yfinance",
+      "tier_rank": 2,
+      "category": "Crypto",
+      "status": "fetched",
+      "n_bars": 3102,
+      "first": "2018-01-01",
+      "last": "2026-06-29",
+      "n_bars_to_repro_end": 3029,
+      "sha256": "c19043686d20c81d6f30cdf386200a589be28915a7bc1df2d536839aaa171cac",
+      "checks": {
+        "coverage_end": true,
+        "enough_bars": true,
+        "covers_old_window": true
+      },
+      "gate_ok": true
+    },
+    {
+      "market": "BNB",
+      "ticker": "BNB-USD",
+      "source": "yfinance",
+      "tier_rank": 2,
+      "category": "Crypto",
+      "status": "fetched",
+      "n_bars": 3102,
+      "first": "2018-01-01",
+      "last": "2026-06-29",
+      "n_bars_to_repro_end": 3029,
+      "sha256": "ceacff1bee6d8732b463c584cc0561ec98e447df38e49a758907f545004debbc",
+      "checks": {
+        "coverage_end": true,
+        "enough_bars": true,
+        "covers_old_window": true
+      },
+      "gate_ok": true
+    }
+  ],
+  "elapsed_seconds": 7.131148815155029
+}

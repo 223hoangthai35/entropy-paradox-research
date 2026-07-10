@@ -1,0 +1,80 @@
+{
+  "tier_rank": 1,
+  "category": "Developed",
+  "frozen_cf": {
+    "spec": "CausalForestDML+PurgedKFold",
+    "ate": 0.9242998020426173,
+    "se": 1.599273853537942,
+    "ci_lo": -2.2102193523083344,
+    "ci_hi": 4.058818956393568,
+    "direction_verdict": "n.s.",
+    "n_obs": 699,
+    "fit_status": "ok"
+  },
+  "windows": {
+    "repro": {
+      "status": "ok",
+      "n_obs": 699,
+      "n_det": 385,
+      "n_sto": 314,
+      "cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": 0.7179208923647686,
+        "se": 1.68748341215416,
+        "ci_lo": -2.589485819966145,
+        "ci_hi": 4.025327604695682,
+        "direction_verdict": "n.s.",
+        "n_obs": 699,
+        "fit_status": "ok"
+      },
+      "overlap": {
+        "min": 0.2362594107471836,
+        "p05": 0.3508098409923442,
+        "p95": 0.7954642309347132,
+        "max": 0.9357852537949288,
+        "frac_outside_05_95": 0.0
+      },
+      "placebo": {
+        "n_ok": 100,
+        "fp_rate": 0.1,
+        "ate_sd": 1.909539683013351,
+        "p_cal_1sided": 0.45544554455445546,
+        "p_cal_2sided": 0.7722772277227723
+      },
+      "verdict": "indeterminate",
+      "flags": []
+    },
+    "extended": {
+      "status": "ok",
+      "n_obs": 701,
+      "n_det": 384,
+      "n_sto": 317,
+      "cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": 0.11272384921169488,
+        "se": 1.3884168896321556,
+        "ci_lo": -2.6085232499944535,
+        "ci_hi": 2.8339709484178432,
+        "direction_verdict": "n.s.",
+        "n_obs": 701,
+        "fit_status": "ok"
+      },
+      "overlap": {
+        "min": 0.2231881453120968,
+        "p05": 0.32122228238103445,
+        "p95": 0.7854303798803883,
+        "max": 0.9416803626052392,
+        "frac_outside_05_95": 0.0
+      },
+      "placebo": {
+        "n_ok": 50,
+        "fp_rate": 0.02,
+        "ate_sd": 1.2348376018244056,
+        "p_cal_1sided": 0.5098039215686274,
+        "p_cal_2sided": 0.9607843137254902
+      },
+      "verdict": "indeterminate",
+      "flags": []
+    }
+  }
+}

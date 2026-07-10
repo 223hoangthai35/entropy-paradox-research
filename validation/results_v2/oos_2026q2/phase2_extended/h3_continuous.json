@@ -1,0 +1,95 @@
+{
+  "spec": "H3 CONTINUOUS \u2014 Spearman rho(p_tra, RPS) on 8-market panel",
+  "n": 8,
+  "rho": 0.4762,
+  "p_value": 0.23293553465009798,
+  "bootstrap_95ci_for_rho": {
+    "n_resamples_effective": 10000,
+    "ci95_low": -0.3150684931506849,
+    "ci95_high": 1.0,
+    "mean": 0.4626505506078479,
+    "std": 0.36257611799211187
+  },
+  "monte_carlo_sensitivity_RPS_noise_sd_0p05": {
+    "n_trials_effective": 10000,
+    "noise_sd": 0.05,
+    "rho_mean": 0.45425476190476194,
+    "rho_std": 0.10867556177336914,
+    "rho_p05": 0.28571428571428575,
+    "rho_p50": 0.4523809523809524,
+    "rho_p95": 0.6428571428571429,
+    "frac_rho_gt_0p5": 0.3346
+  },
+  "stratified_subpanels": [
+    {
+      "subpanel": "full_panel",
+      "n": 8,
+      "markets": [
+        "VNINDEX",
+        "BVB",
+        "KOSPI",
+        "NIFTY",
+        "SPX",
+        "FTSE",
+        "NIKKEI",
+        "BTC"
+      ],
+      "rho": 0.4762,
+      "p_value": 0.23293553465009798,
+      "note": ""
+    },
+    {
+      "subpanel": "circuit_breaker_yes",
+      "n": 6,
+      "markets": [
+        "VNINDEX",
+        "BVB",
+        "KOSPI",
+        "NIFTY",
+        "SPX",
+        "NIKKEI"
+      ],
+      "rho": 0.8286,
+      "p_value": 0.04156268221574335,
+      "note": ""
+    },
+    {
+      "subpanel": "circuit_breaker_no",
+      "n": 2,
+      "markets": [
+        "FTSE",
+        "BTC"
+      ],
+      "rho": -1.0,
+      "p_value": null,
+      "note": "descriptive only \u2014 n<4"
+    },
+    {
+      "subpanel": "frontier_emerging",
+      "n": 4,
+      "markets": [
+        "VNINDEX",
+        "BVB",
+        "KOSPI",
+        "NIFTY"
+      ],
+      "rho": 0.4,
+      "p_value": 0.6000000000000001,
+      "note": ""
+    },
+    {
+      "subpanel": "developed_only",
+      "n": 3,
+      "markets": [
+        "SPX",
+        "FTSE",
+        "NIKKEI"
+      ],
+      "rho": 0.5,
+      "p_value": 0.6666666666666666,
+      "note": "descriptive only \u2014 n<4"
+    }
+  ],
+  "expected_sign": "positive (higher RPS -> higher p_tra, per pre-reg logic)",
+  "note": "Continuous companion to the pre-reg categorical H3 verdict. Does NOT replace the frontier>0.55 / developed<0.50 / diff>10pp pre-reg rule; it tests whether p_tra tracks RPS monotonically."
+}

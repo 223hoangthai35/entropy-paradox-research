@@ -1,0 +1,82 @@
+{
+  "tier_rank": 3,
+  "category": "Emerging",
+  "frozen_cf": {
+    "spec": "CausalForestDML+PurgedKFold",
+    "ate": -0.776866902331879,
+    "se": 1.1763171386005558,
+    "ci_lo": -3.0824061283861797,
+    "ci_hi": 1.5286723237224211,
+    "direction_verdict": "n.s.",
+    "n_obs": 658,
+    "fit_status": "ok"
+  },
+  "windows": {
+    "repro": {
+      "status": "ok",
+      "n_obs": 658,
+      "n_det": 388,
+      "n_sto": 270,
+      "cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": -0.9671495737998599,
+        "se": 1.0937533160584991,
+        "ci_lo": -3.1108666812457733,
+        "ci_hi": 1.1765675336460533,
+        "direction_verdict": "n.s.",
+        "n_obs": 658,
+        "fit_status": "ok"
+      },
+      "overlap": {
+        "min": 0.21449171967945294,
+        "p05": 0.3205900656447139,
+        "p95": 0.8556106725336704,
+        "max": 0.9231528529609493,
+        "frac_outside_05_95": 0.0
+      },
+      "placebo": {
+        "n_ok": 100,
+        "fp_rate": 0.2,
+        "ate_sd": 1.5839141618005421,
+        "p_cal_1sided": 0.38613861386138615,
+        "p_cal_2sided": 0.5346534653465347
+      },
+      "verdict": "indeterminate",
+      "flags": [
+        "CI"
+      ]
+    },
+    "extended": {
+      "status": "ok",
+      "n_obs": 703,
+      "n_det": 395,
+      "n_sto": 308,
+      "cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": -2.7016327508141895,
+        "se": 1.353354156113142,
+        "ci_lo": -5.354158155123546,
+        "ci_hi": -0.04910734650483395,
+        "direction_verdict": "Inverted",
+        "n_obs": 703,
+        "fit_status": "ok"
+      },
+      "overlap": {
+        "min": 0.10995091728550056,
+        "p05": 0.27643325620199405,
+        "p95": 0.8531814119445945,
+        "max": 0.9287700703553603,
+        "frac_outside_05_95": 0.0
+      },
+      "placebo": {
+        "n_ok": 50,
+        "fp_rate": 0.14,
+        "ate_sd": 1.7989593565190507,
+        "p_cal_1sided": 0.17647058823529413,
+        "p_cal_2sided": 0.19607843137254902
+      },
+      "verdict": "LEANING_model_based",
+      "flags": []
+    }
+  }
+}

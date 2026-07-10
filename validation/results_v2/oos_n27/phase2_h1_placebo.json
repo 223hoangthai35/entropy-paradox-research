@@ -1,0 +1,2245 @@
+{
+  "spec": "oos-n27-rigor phase 2: CF-DML + PurgedKFold real fits, OOF overlap, rotation placebo (repro N=100 / extended N=50), frozen 3-tier verdict scheme.",
+  "n_rot": {
+    "repro": 100,
+    "extended": 50
+  },
+  "results": {
+    "VNINDEX": {
+      "tier_rank": 4,
+      "category": "Frontier",
+      "frozen_cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": 1.223139433055184,
+        "se": 2.4441284903677998,
+        "ci_lo": -3.567264381653956,
+        "ci_hi": 6.013543247764323,
+        "direction_verdict": "n.s.",
+        "n_obs": 827,
+        "fit_status": "ok"
+      },
+      "windows": {
+        "repro": {
+          "status": "ok",
+          "n_obs": 827,
+          "n_det": 740,
+          "n_sto": 87,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": 1.2962122822959743,
+            "se": 2.444157954242304,
+            "ci_lo": -3.4942492805460392,
+            "ci_hi": 6.086673845137987,
+            "direction_verdict": "n.s.",
+            "n_obs": 827,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.2940576158908517,
+            "p05": 0.6964163936971388,
+            "p95": 0.9828667968201192,
+            "max": 0.9966114675019843,
+            "frac_outside_05_95": 0.30350665054413545
+          },
+          "placebo": {
+            "n_ok": 100,
+            "fp_rate": 0.27,
+            "ate_sd": 4.104925650598567,
+            "p_cal_1sided": 0.37623762376237624,
+            "p_cal_2sided": 0.8217821782178217
+          },
+          "verdict": "indeterminate",
+          "flags": [
+            "ovl",
+            "CI"
+          ]
+        },
+        "extended": {
+          "status": "ok",
+          "n_obs": 746,
+          "n_det": 637,
+          "n_sto": 109,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": 1.7322245095031383,
+            "se": 2.605558616009996,
+            "ci_lo": -3.3745765374844825,
+            "ci_hi": 6.839025556490759,
+            "direction_verdict": "n.s.",
+            "n_obs": 746,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.41031142123578823,
+            "p05": 0.6453564194621768,
+            "p95": 0.9709202147770919,
+            "max": 0.9892898477785554,
+            "frac_outside_05_95": 0.15281501340482573
+          },
+          "placebo": {
+            "n_ok": 50,
+            "fp_rate": 0.24,
+            "ate_sd": 3.4293956145395534,
+            "p_cal_1sided": 0.29411764705882354,
+            "p_cal_2sided": 0.6274509803921569
+          },
+          "verdict": "indeterminate",
+          "flags": [
+            "ovl",
+            "CI"
+          ]
+        }
+      }
+    },
+    "KSE100": {
+      "tier_rank": 4,
+      "category": "Frontier",
+      "frozen_cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": 3.9418308189206432,
+        "se": 12.889187780722809,
+        "ci_lo": -21.32051302126981,
+        "ci_hi": 29.204174659111093,
+        "direction_verdict": "n.s.",
+        "n_obs": 503,
+        "fit_status": "ok"
+      },
+      "windows": {
+        "repro": {
+          "status": "ok",
+          "n_obs": 503,
+          "n_det": 448,
+          "n_sto": 55,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": 3.7453533950203717,
+            "se": 10.979032767384657,
+            "ci_lo": -17.773155414138678,
+            "ci_hi": 25.263862204179418,
+            "direction_verdict": "n.s.",
+            "n_obs": 503,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.48933917700401003,
+            "p05": 0.7164683083920564,
+            "p95": 0.9873336468112317,
+            "max": 0.9999062968515742,
+            "frac_outside_05_95": 0.2962226640159046
+          },
+          "placebo": {
+            "n_ok": 100,
+            "fp_rate": 0.26,
+            "ate_sd": 5.210885981297429,
+            "p_cal_1sided": 0.0891089108910891,
+            "p_cal_2sided": 0.5544554455445545
+          },
+          "verdict": "indeterminate",
+          "flags": [
+            "ovl",
+            "CI"
+          ]
+        },
+        "extended": {
+          "status": "ok",
+          "n_obs": 509,
+          "n_det": 455,
+          "n_sto": 54,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": 10.947800549045471,
+            "se": 19.22338221878639,
+            "ci_lo": -26.72933626082353,
+            "ci_hi": 48.62493735891446,
+            "direction_verdict": "n.s.",
+            "n_obs": 509,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.5151458128215856,
+            "p05": 0.7279263897114061,
+            "p95": 0.9862953082694875,
+            "max": 0.9992453937708503,
+            "frac_outside_05_95": 0.3418467583497053
+          },
+          "placebo": {
+            "n_ok": 50,
+            "fp_rate": 0.3,
+            "ate_sd": 5.061034675965186,
+            "p_cal_1sided": 0.0196078431372549,
+            "p_cal_2sided": 0.0784313725490196
+          },
+          "verdict": "indeterminate",
+          "flags": [
+            "ovl",
+            "CI"
+          ]
+        }
+      }
+    },
+    "DSEX": {
+      "tier_rank": 4,
+      "category": "Frontier",
+      "frozen_cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": -0.2948926956117897,
+        "se": 1.1276816718127805,
+        "ci_lo": -2.505108158390757,
+        "ci_hi": 1.9153227671671762,
+        "direction_verdict": "n.s.",
+        "n_obs": 789,
+        "fit_status": "ok"
+      },
+      "windows": {
+        "repro": {
+          "status": "ok",
+          "n_obs": 790,
+          "n_det": 701,
+          "n_sto": 89,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": -0.461006745828321,
+            "se": 1.0880542586674997,
+            "ci_lo": -2.5935539060420485,
+            "ci_hi": 1.6715404143854065,
+            "direction_verdict": "n.s.",
+            "n_obs": 790,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.05254406192394657,
+            "p05": 0.14311025084019915,
+            "p95": 0.9965018119685071,
+            "max": 0.9998637541320469,
+            "frac_outside_05_95": 0.5253164556962026
+          },
+          "placebo": {
+            "n_ok": 100,
+            "fp_rate": 0.15,
+            "ate_sd": 3.4818124112776405,
+            "p_cal_1sided": 0.594059405940594,
+            "p_cal_2sided": 0.8613861386138614
+          },
+          "verdict": "indeterminate",
+          "flags": [
+            "ovl"
+          ]
+        },
+        "extended": {
+          "status": "ok",
+          "n_obs": 816,
+          "n_det": 727,
+          "n_sto": 89,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": 0.11072780709154213,
+            "se": 1.0627455522493154,
+            "ci_lo": -1.9722152000472468,
+            "ci_hi": 2.1936708142303303,
+            "direction_verdict": "n.s.",
+            "n_obs": 816,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.09675960460132024,
+            "p05": 0.26577003914120895,
+            "p95": 0.9966118799819028,
+            "max": 0.9998507416806603,
+            "frac_outside_05_95": 0.5661764705882353
+          },
+          "placebo": {
+            "n_ok": 50,
+            "fp_rate": 0.1,
+            "ate_sd": 3.441447767142518,
+            "p_cal_1sided": 0.2549019607843137,
+            "p_cal_2sided": 0.9215686274509803
+          },
+          "verdict": "indeterminate",
+          "flags": [
+            "ovl"
+          ]
+        }
+      }
+    },
+    "BVB": {
+      "tier_rank": 4,
+      "category": "Frontier",
+      "frozen_cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": 4.168609345421392,
+        "se": 1.8921715067351832,
+        "ci_lo": 0.4600213396475441,
+        "ci_hi": 7.877197351195239,
+        "direction_verdict": "Paradox",
+        "n_obs": 873,
+        "fit_status": "ok"
+      },
+      "windows": {
+        "repro": {
+          "status": "ok",
+          "n_obs": 851,
+          "n_det": 586,
+          "n_sto": 265,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": 2.9285826799977337,
+            "se": 2.2038546999972293,
+            "ci_lo": -1.3908931591561617,
+            "ci_hi": 7.248058519151627,
+            "direction_verdict": "n.s.",
+            "n_obs": 851,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.22371442900979294,
+            "p05": 0.35213463660621136,
+            "p95": 0.9260098723978022,
+            "max": 0.9759547992207642,
+            "frac_outside_05_95": 0.012925969447708578
+          },
+          "placebo": {
+            "n_ok": 100,
+            "fp_rate": 0.24,
+            "ate_sd": 3.000615966873676,
+            "p_cal_1sided": 0.1782178217821782,
+            "p_cal_2sided": 0.3465346534653465
+          },
+          "verdict": "indeterminate",
+          "flags": [
+            "CI"
+          ]
+        },
+        "extended": {
+          "status": "ok",
+          "n_obs": 892,
+          "n_det": 618,
+          "n_sto": 274,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": 2.4371418770332243,
+            "se": 2.0617219449056035,
+            "ci_lo": -1.6037588811176322,
+            "ci_hi": 6.47804263518408,
+            "direction_verdict": "n.s.",
+            "n_obs": 892,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.21285429482766802,
+            "p05": 0.36150484707163233,
+            "p95": 0.9250262972390401,
+            "max": 0.968351934948944,
+            "frac_outside_05_95": 0.01233183856502242
+          },
+          "placebo": {
+            "n_ok": 50,
+            "fp_rate": 0.32,
+            "ate_sd": 3.180408132573985,
+            "p_cal_1sided": 0.27450980392156865,
+            "p_cal_2sided": 0.47058823529411764
+          },
+          "verdict": "indeterminate",
+          "flags": [
+            "CI"
+          ]
+        }
+      }
+    },
+    "SBITOP": {
+      "tier_rank": 4,
+      "category": "Frontier",
+      "frozen_cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": 1.9440430397832502,
+        "se": 1.4868286984465409,
+        "ci_lo": -0.9700876603525348,
+        "ci_hi": 4.858173739919034,
+        "direction_verdict": "n.s.",
+        "n_obs": 1143,
+        "fit_status": "ok"
+      },
+      "windows": {
+        "repro": {
+          "status": "ok",
+          "n_obs": 1143,
+          "n_det": 722,
+          "n_sto": 421,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": 2.191574170201813,
+            "se": 1.4216568340090832,
+            "ci_lo": -0.5948220228312278,
+            "ci_hi": 4.977970363234854,
+            "direction_verdict": "n.s.",
+            "n_obs": 1143,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.2369922408411205,
+            "p05": 0.37894354981323447,
+            "p95": 0.8789259104410918,
+            "max": 0.9859865746667797,
+            "frac_outside_05_95": 0.007874015748031496
+          },
+          "placebo": {
+            "n_ok": 100,
+            "fp_rate": 0.18,
+            "ate_sd": 2.246199386763736,
+            "p_cal_1sided": 0.18811881188118812,
+            "p_cal_2sided": 0.42574257425742573
+          },
+          "verdict": "indeterminate",
+          "flags": [
+            "CI"
+          ]
+        },
+        "extended": {
+          "status": "ok",
+          "n_obs": 1162,
+          "n_det": 733,
+          "n_sto": 429,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": 1.7000918490814647,
+            "se": 1.246193462509182,
+            "ci_lo": -0.7424024552057986,
+            "ci_hi": 4.142586153368727,
+            "direction_verdict": "n.s.",
+            "n_obs": 1162,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.23200753677037778,
+            "p05": 0.39113552668600426,
+            "p95": 0.8494909848350921,
+            "max": 0.9686490277067703,
+            "frac_outside_05_95": 0.0025817555938037868
+          },
+          "placebo": {
+            "n_ok": 50,
+            "fp_rate": 0.14,
+            "ate_sd": 2.0033451674849387,
+            "p_cal_1sided": 0.29411764705882354,
+            "p_cal_2sided": 0.5490196078431373
+          },
+          "verdict": "indeterminate",
+          "flags": []
+        }
+      }
+    },
+    "OMXVGI": {
+      "tier_rank": 4,
+      "category": "Frontier",
+      "frozen_cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": -0.36484205843525647,
+        "se": 1.1988392610901082,
+        "ci_lo": -2.7145238334244794,
+        "ci_hi": 1.9848397165539655,
+        "direction_verdict": "n.s.",
+        "n_obs": 1035,
+        "fit_status": "ok"
+      },
+      "windows": {
+        "repro": {
+          "status": "ok",
+          "n_obs": 1035,
+          "n_det": 936,
+          "n_sto": 99,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": -0.14733642237147188,
+            "se": 1.1291965824793282,
+            "ci_lo": -2.360521055496668,
+            "ci_hi": 2.065848210753724,
+            "direction_verdict": "n.s.",
+            "n_obs": 1035,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.26802214211699943,
+            "p05": 0.6966484977439931,
+            "p95": 0.9845673777949798,
+            "max": 0.9913749810171307,
+            "frac_outside_05_95": 0.2763285024154589
+          },
+          "placebo": {
+            "n_ok": 100,
+            "fp_rate": 0.04,
+            "ate_sd": 1.5238612394932418,
+            "p_cal_1sided": 0.37623762376237624,
+            "p_cal_2sided": 0.9207920792079208
+          },
+          "verdict": "indeterminate",
+          "flags": [
+            "ovl"
+          ]
+        },
+        "extended": {
+          "status": "ok",
+          "n_obs": 1050,
+          "n_det": 956,
+          "n_sto": 94,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": -0.5027705892538658,
+            "se": 1.2358118411643022,
+            "ci_lo": -2.924917289604032,
+            "ci_hi": 1.9193761110963,
+            "direction_verdict": "n.s.",
+            "n_obs": 1050,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.3326807561445642,
+            "p05": 0.7255827130869446,
+            "p95": 0.9856497014019394,
+            "max": 0.994209149672337,
+            "frac_outside_05_95": 0.319047619047619
+          },
+          "placebo": {
+            "n_ok": 50,
+            "fp_rate": 0.0,
+            "ate_sd": 2.888980450504642,
+            "p_cal_1sided": 0.3333333333333333,
+            "p_cal_2sided": 0.6274509803921569
+          },
+          "verdict": "indeterminate",
+          "flags": [
+            "ovl"
+          ]
+        }
+      }
+    },
+    "OMXRGI": {
+      "tier_rank": 4,
+      "category": "Frontier",
+      "frozen_cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": 0.2878778475974415,
+        "se": 2.992371723818893,
+        "ci_lo": -5.5770629594436265,
+        "ci_hi": 6.152818654638509,
+        "direction_verdict": "n.s.",
+        "n_obs": 736,
+        "fit_status": "ok"
+      },
+      "windows": {
+        "repro": {
+          "status": "ok",
+          "n_obs": 736,
+          "n_det": 641,
+          "n_sto": 95,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": -0.26481720261580166,
+            "se": 2.6958865503939484,
+            "ci_lo": -5.548657747793866,
+            "ci_hi": 5.019023342562262,
+            "direction_verdict": "n.s.",
+            "n_obs": 736,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.12401714808344329,
+            "p05": 0.26726417709185973,
+            "p95": 0.9937015890431105,
+            "max": 0.9988517928842142,
+            "frac_outside_05_95": 0.44157608695652173
+          },
+          "placebo": {
+            "n_ok": 100,
+            "fp_rate": 0.13,
+            "ate_sd": 4.190191759267288,
+            "p_cal_1sided": 0.5346534653465347,
+            "p_cal_2sided": 0.9504950495049505
+          },
+          "verdict": "indeterminate",
+          "flags": [
+            "ovl"
+          ]
+        },
+        "extended": {
+          "status": "ok",
+          "n_obs": 741,
+          "n_det": 664,
+          "n_sto": 77,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": 1.5348004791370213,
+            "se": 5.98901763026662,
+            "ci_lo": -10.203458378960978,
+            "ci_hi": 13.273059337235015,
+            "direction_verdict": "n.s.",
+            "n_obs": 741,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.27066800891114273,
+            "p05": 0.46836046797886643,
+            "p95": 0.9937398688503266,
+            "max": 0.9996638755980861,
+            "frac_outside_05_95": 0.46963562753036436
+          },
+          "placebo": {
+            "n_ok": 50,
+            "fp_rate": 0.08,
+            "ate_sd": 4.060347075854228,
+            "p_cal_1sided": 0.3333333333333333,
+            "p_cal_2sided": 0.6470588235294118
+          },
+          "verdict": "indeterminate",
+          "flags": [
+            "ovl"
+          ]
+        }
+      }
+    },
+    "MERV": {
+      "tier_rank": 4,
+      "category": "Frontier",
+      "frozen_cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": 3.595683234274983,
+        "se": 3.408808122697549,
+        "ci_lo": -3.085457916419807,
+        "ci_hi": 10.276824384969771,
+        "direction_verdict": "n.s.",
+        "n_obs": 1148,
+        "fit_status": "ok"
+      },
+      "windows": {
+        "repro": {
+          "status": "ok",
+          "n_obs": 1148,
+          "n_det": 513,
+          "n_sto": 635,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": 3.2925671229378115,
+            "se": 3.271264850152751,
+            "ci_lo": -3.118994167253397,
+            "ci_hi": 9.70412841312902,
+            "direction_verdict": "n.s.",
+            "n_obs": 1148,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.15586094917885202,
+            "p05": 0.2498966612243133,
+            "p95": 0.7001341196620706,
+            "max": 0.8736267240625409,
+            "frac_outside_05_95": 0.0
+          },
+          "placebo": {
+            "n_ok": 100,
+            "fp_rate": 0.03,
+            "ate_sd": 3.4007460699951477,
+            "p_cal_1sided": 0.1485148514851485,
+            "p_cal_2sided": 0.38613861386138615
+          },
+          "verdict": "indeterminate",
+          "flags": []
+        },
+        "extended": {
+          "status": "ok",
+          "n_obs": 1193,
+          "n_det": 544,
+          "n_sto": 649,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": 3.675529501214203,
+            "se": 3.3763762192854685,
+            "ci_lo": -2.9420462868428277,
+            "ci_hi": 10.293105289271232,
+            "direction_verdict": "n.s.",
+            "n_obs": 1193,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.12091096991323569,
+            "p05": 0.2583308915749037,
+            "p95": 0.6995094654613419,
+            "max": 0.8513976080811001,
+            "frac_outside_05_95": 0.0
+          },
+          "placebo": {
+            "n_ok": 50,
+            "fp_rate": 0.1,
+            "ate_sd": 3.278884069094886,
+            "p_cal_1sided": 0.13725490196078433,
+            "p_cal_2sided": 0.37254901960784315
+          },
+          "verdict": "indeterminate",
+          "flags": []
+        }
+      }
+    },
+    "KOSPI": {
+      "tier_rank": 3,
+      "category": "Emerging",
+      "frozen_cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": -16.671833261166597,
+        "se": 32.39986898706759,
+        "ci_lo": -80.17440957963532,
+        "ci_hi": 46.83074305730213,
+        "direction_verdict": "n.s.",
+        "n_obs": 663,
+        "fit_status": "ok"
+      },
+      "windows": {
+        "repro": {
+          "status": "ok",
+          "n_obs": 663,
+          "n_det": 422,
+          "n_sto": 241,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": -14.506001189957693,
+            "se": 29.798398315181554,
+            "ci_lo": -72.90978868469257,
+            "ci_hi": 43.89778630477717,
+            "direction_verdict": "n.s.",
+            "n_obs": 663,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.12078389026420985,
+            "p05": 0.28840000742685457,
+            "p95": 0.9455449926694794,
+            "max": 0.9816250178073972,
+            "frac_outside_05_95": 0.04072398190045249
+          },
+          "placebo": {
+            "n_ok": 100,
+            "fp_rate": 0.19,
+            "ate_sd": 3.487254898341292,
+            "p_cal_1sided": 0.009900990099009901,
+            "p_cal_2sided": 0.009900990099009901
+          },
+          "verdict": "indeterminate",
+          "flags": [
+            "CI"
+          ]
+        },
+        "extended": {
+          "status": "ok",
+          "n_obs": 683,
+          "n_det": 405,
+          "n_sto": 278,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": -8.225182942001062,
+            "se": 5.361499083823231,
+            "ci_lo": -18.733528049439094,
+            "ci_hi": 2.2831621654369663,
+            "direction_verdict": "n.s.",
+            "n_obs": 683,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.10259568633420849,
+            "p05": 0.24592662779374366,
+            "p95": 0.9283747923851399,
+            "max": 0.9756088583506823,
+            "frac_outside_05_95": 0.024890190336749635
+          },
+          "placebo": {
+            "n_ok": 50,
+            "fp_rate": 0.14,
+            "ate_sd": 3.7222246928535823,
+            "p_cal_1sided": 0.0196078431372549,
+            "p_cal_2sided": 0.0196078431372549
+          },
+          "verdict": "indeterminate",
+          "flags": []
+        }
+      }
+    },
+    "NIFTY": {
+      "tier_rank": 3,
+      "category": "Emerging",
+      "frozen_cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": -1.128721741126067,
+        "se": 1.6371810088524092,
+        "ci_lo": -4.337537554649741,
+        "ci_hi": 2.080094072397607,
+        "direction_verdict": "n.s.",
+        "n_obs": 641,
+        "fit_status": "ok"
+      },
+      "windows": {
+        "repro": {
+          "status": "ok",
+          "n_obs": 641,
+          "n_det": 524,
+          "n_sto": 117,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": -0.9870876546416669,
+            "se": 1.478942766459431,
+            "ci_lo": -3.8857622120981845,
+            "ci_hi": 1.9115869028148502,
+            "direction_verdict": "n.s.",
+            "n_obs": 641,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.2978499335591556,
+            "p05": 0.5041251430762879,
+            "p95": 0.993025665002963,
+            "max": 0.9989958074526952,
+            "frac_outside_05_95": 0.1794071762870515
+          },
+          "placebo": {
+            "n_ok": 100,
+            "fp_rate": 0.21,
+            "ate_sd": 3.1266377426133074,
+            "p_cal_1sided": 0.3465346534653465,
+            "p_cal_2sided": 0.7821782178217822
+          },
+          "verdict": "indeterminate",
+          "flags": [
+            "ovl",
+            "CI"
+          ]
+        },
+        "extended": {
+          "status": "ok",
+          "n_obs": 702,
+          "n_det": 585,
+          "n_sto": 117,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": -1.5092340315195336,
+            "se": 2.020269575022719,
+            "ci_lo": -5.468889637626105,
+            "ci_hi": 2.450421574587036,
+            "direction_verdict": "n.s.",
+            "n_obs": 702,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.37619286465199536,
+            "p05": 0.5813817203498695,
+            "p95": 0.9923230887289367,
+            "max": 0.9999107142857143,
+            "frac_outside_05_95": 0.15669515669515668
+          },
+          "placebo": {
+            "n_ok": 50,
+            "fp_rate": 0.32,
+            "ate_sd": 2.607064634347453,
+            "p_cal_1sided": 0.21568627450980393,
+            "p_cal_2sided": 0.7450980392156863
+          },
+          "verdict": "indeterminate",
+          "flags": [
+            "ovl",
+            "CI"
+          ]
+        }
+      }
+    },
+    "PSEI": {
+      "tier_rank": 3,
+      "category": "Emerging",
+      "frozen_cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": -0.22300782727769178,
+        "se": 1.0227995723876782,
+        "ci_lo": -2.227658152560509,
+        "ci_hi": 1.781642498005125,
+        "direction_verdict": "n.s.",
+        "n_obs": 871,
+        "fit_status": "ok"
+      },
+      "windows": {
+        "repro": {
+          "status": "ok",
+          "n_obs": 871,
+          "n_det": 693,
+          "n_sto": 178,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": -0.1480202758153621,
+            "se": 1.0076204585151138,
+            "ci_lo": -2.1229200845907212,
+            "ci_hi": 1.8268795329599965,
+            "direction_verdict": "n.s.",
+            "n_obs": 871,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.15318211607737486,
+            "p05": 0.524906276073667,
+            "p95": 0.931510550041786,
+            "max": 0.9617134983508713,
+            "frac_outside_05_95": 0.012629161882893225
+          },
+          "placebo": {
+            "n_ok": 100,
+            "fp_rate": 0.1,
+            "ate_sd": 1.3428023723417906,
+            "p_cal_1sided": 0.37623762376237624,
+            "p_cal_2sided": 0.9306930693069307
+          },
+          "verdict": "indeterminate",
+          "flags": []
+        },
+        "extended": {
+          "status": "ok",
+          "n_obs": 870,
+          "n_det": 704,
+          "n_sto": 166,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": -0.13526292266641315,
+            "se": 1.1531505825903243,
+            "ci_lo": -2.3953965332948304,
+            "ci_hi": 2.1248706879620034,
+            "direction_verdict": "n.s.",
+            "n_obs": 870,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.24498784322299552,
+            "p05": 0.4336423454413624,
+            "p95": 0.9432791182146216,
+            "max": 0.976038415004109,
+            "frac_outside_05_95": 0.02413793103448276
+          },
+          "placebo": {
+            "n_ok": 50,
+            "fp_rate": 0.2,
+            "ate_sd": 1.6923722358212874,
+            "p_cal_1sided": 0.6666666666666666,
+            "p_cal_2sided": 0.9215686274509803
+          },
+          "verdict": "indeterminate",
+          "flags": [
+            "CI"
+          ]
+        }
+      }
+    },
+    "JKSE": {
+      "tier_rank": 3,
+      "category": "Emerging",
+      "frozen_cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": -0.06977335494689228,
+        "se": 1.3034194684366907,
+        "ci_lo": -2.624428569831148,
+        "ci_hi": 2.4848818599373628,
+        "direction_verdict": "n.s.",
+        "n_obs": 801,
+        "fit_status": "ok"
+      },
+      "windows": {
+        "repro": {
+          "status": "ok",
+          "n_obs": 801,
+          "n_det": 490,
+          "n_sto": 311,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": 0.1463800691304011,
+            "se": 1.2179571954783825,
+            "ci_lo": -2.2407721687186393,
+            "ci_hi": 2.5335323069794407,
+            "direction_verdict": "n.s.",
+            "n_obs": 801,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.19601141782577408,
+            "p05": 0.3218960038186255,
+            "p95": 0.8954936261227039,
+            "max": 0.9808938264257411,
+            "frac_outside_05_95": 0.0012484394506866417
+          },
+          "placebo": {
+            "n_ok": 100,
+            "fp_rate": 0.22,
+            "ate_sd": 2.4168657185138636,
+            "p_cal_1sided": 0.297029702970297,
+            "p_cal_2sided": 0.9504950495049505
+          },
+          "verdict": "indeterminate",
+          "flags": [
+            "CI"
+          ]
+        },
+        "extended": {
+          "status": "ok",
+          "n_obs": 886,
+          "n_det": 551,
+          "n_sto": 335,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": 1.7802283378186379,
+            "se": 2.1382034082543133,
+            "ci_lo": -2.41057333398061,
+            "ci_hi": 5.971030009617886,
+            "direction_verdict": "n.s.",
+            "n_obs": 886,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.23585986482325577,
+            "p05": 0.34823600707976693,
+            "p95": 0.9556663751396473,
+            "max": 0.9951655046223665,
+            "frac_outside_05_95": 0.05869074492099323
+          },
+          "placebo": {
+            "n_ok": 50,
+            "fp_rate": 0.14,
+            "ate_sd": 2.227954348489189,
+            "p_cal_1sided": 0.13725490196078433,
+            "p_cal_2sided": 0.39215686274509803
+          },
+          "verdict": "indeterminate",
+          "flags": []
+        }
+      }
+    },
+    "SET": {
+      "tier_rank": 3,
+      "category": "Emerging",
+      "frozen_cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": 0.6036042738761671,
+        "se": 1.048447153437858,
+        "ci_lo": -1.4513143865555749,
+        "ci_hi": 2.658522934307909,
+        "direction_verdict": "n.s.",
+        "n_obs": 946,
+        "fit_status": "ok"
+      },
+      "windows": {
+        "repro": {
+          "status": "ok",
+          "n_obs": 946,
+          "n_det": 522,
+          "n_sto": 424,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": 0.5765644018554444,
+            "se": 1.1161564840485985,
+            "ci_lo": -1.6110621079906637,
+            "ci_hi": 2.7641909117015526,
+            "direction_verdict": "n.s.",
+            "n_obs": 946,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.20803727393786672,
+            "p05": 0.3223761622391522,
+            "p95": 0.9064939982844447,
+            "max": 0.9726182780379804,
+            "frac_outside_05_95": 0.013742071881606765
+          },
+          "placebo": {
+            "n_ok": 100,
+            "fp_rate": 0.08,
+            "ate_sd": 1.187125643983184,
+            "p_cal_1sided": 0.297029702970297,
+            "p_cal_2sided": 0.7326732673267327
+          },
+          "verdict": "indeterminate",
+          "flags": []
+        },
+        "extended": {
+          "status": "ok",
+          "n_obs": 976,
+          "n_det": 550,
+          "n_sto": 426,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": 0.6270622316708956,
+            "se": 1.0236914613295445,
+            "ci_lo": -1.3793361638161896,
+            "ci_hi": 2.63346062715798,
+            "direction_verdict": "n.s.",
+            "n_obs": 976,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.2520943176700834,
+            "p05": 0.3269556286340801,
+            "p95": 0.8871042152383386,
+            "max": 0.9840192308789331,
+            "frac_outside_05_95": 0.012295081967213115
+          },
+          "placebo": {
+            "n_ok": 50,
+            "fp_rate": 0.18,
+            "ate_sd": 1.0693711148434486,
+            "p_cal_1sided": 0.1568627450980392,
+            "p_cal_2sided": 0.49019607843137253
+          },
+          "verdict": "indeterminate",
+          "flags": [
+            "CI"
+          ]
+        }
+      }
+    },
+    "SHANGHAI": {
+      "tier_rank": 3,
+      "category": "Emerging",
+      "frozen_cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": 6.418476318555061,
+        "se": 2.750911529733893,
+        "ci_lo": 1.026788795620643,
+        "ci_hi": 11.810163841489477,
+        "direction_verdict": "Paradox",
+        "n_obs": 1290,
+        "fit_status": "ok"
+      },
+      "windows": {
+        "repro": {
+          "status": "ok",
+          "n_obs": 1290,
+          "n_det": 148,
+          "n_sto": 1142,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": 6.038921100692392,
+            "se": 2.586801301244397,
+            "ci_lo": 0.9688837150920264,
+            "ci_hi": 11.108958486292757,
+            "direction_verdict": "Paradox",
+            "n_obs": 1290,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.005669504643710748,
+            "p05": 0.009570813124844736,
+            "p95": 0.3314929606553123,
+            "max": 0.92213621073776,
+            "frac_outside_05_95": 0.3015503875968992
+          },
+          "placebo": {
+            "n_ok": 100,
+            "fp_rate": 0.15,
+            "ate_sd": 1.9917365141722332,
+            "p_cal_1sided": 0.019801980198019802,
+            "p_cal_2sided": 0.019801980198019802
+          },
+          "verdict": "DECISIVE_calibrated",
+          "flags": [
+            "ovl"
+          ]
+        },
+        "extended": {
+          "status": "ok",
+          "n_obs": 1319,
+          "n_det": 115,
+          "n_sto": 1204,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": 8.172108105696536,
+            "se": 2.627150512793201,
+            "ci_lo": 3.0229877186559264,
+            "ci_hi": 13.321228492737143,
+            "direction_verdict": "Paradox",
+            "n_obs": 1319,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.0029832270655896337,
+            "p05": 0.004654029987632295,
+            "p95": 0.2782579083353906,
+            "max": 0.8918871594644674,
+            "frac_outside_05_95": 0.6360879454131918
+          },
+          "placebo": {
+            "n_ok": 50,
+            "fp_rate": 0.18,
+            "ate_sd": 2.662212810752341,
+            "p_cal_1sided": 0.0196078431372549,
+            "p_cal_2sided": 0.0196078431372549
+          },
+          "verdict": "DECISIVE_calibrated",
+          "flags": [
+            "ovl",
+            "CI"
+          ]
+        }
+      }
+    },
+    "TWII": {
+      "tier_rank": 3,
+      "category": "Emerging",
+      "frozen_cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": -0.776866902331879,
+        "se": 1.1763171386005558,
+        "ci_lo": -3.0824061283861797,
+        "ci_hi": 1.5286723237224211,
+        "direction_verdict": "n.s.",
+        "n_obs": 658,
+        "fit_status": "ok"
+      },
+      "windows": {
+        "repro": {
+          "status": "ok",
+          "n_obs": 658,
+          "n_det": 388,
+          "n_sto": 270,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": -0.9671495737998599,
+            "se": 1.0937533160584991,
+            "ci_lo": -3.1108666812457733,
+            "ci_hi": 1.1765675336460533,
+            "direction_verdict": "n.s.",
+            "n_obs": 658,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.21449171967945294,
+            "p05": 0.3205900656447139,
+            "p95": 0.8556106725336704,
+            "max": 0.9231528529609493,
+            "frac_outside_05_95": 0.0
+          },
+          "placebo": {
+            "n_ok": 100,
+            "fp_rate": 0.2,
+            "ate_sd": 1.5839141618005421,
+            "p_cal_1sided": 0.38613861386138615,
+            "p_cal_2sided": 0.5346534653465347
+          },
+          "verdict": "indeterminate",
+          "flags": [
+            "CI"
+          ]
+        },
+        "extended": {
+          "status": "ok",
+          "n_obs": 703,
+          "n_det": 395,
+          "n_sto": 308,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": -2.7016327508141895,
+            "se": 1.353354156113142,
+            "ci_lo": -5.354158155123546,
+            "ci_hi": -0.04910734650483395,
+            "direction_verdict": "Inverted",
+            "n_obs": 703,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.10995091728550056,
+            "p05": 0.27643325620199405,
+            "p95": 0.8531814119445945,
+            "max": 0.9287700703553603,
+            "frac_outside_05_95": 0.0
+          },
+          "placebo": {
+            "n_ok": 50,
+            "fp_rate": 0.14,
+            "ate_sd": 1.7989593565190507,
+            "p_cal_1sided": 0.17647058823529413,
+            "p_cal_2sided": 0.19607843137254902
+          },
+          "verdict": "LEANING_model_based",
+          "flags": []
+        }
+      }
+    },
+    "SPX": {
+      "tier_rank": 1,
+      "category": "Developed",
+      "frozen_cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": 3.725097712968935,
+        "se": 1.2074229235817895,
+        "ci_lo": 1.3585922686405691,
+        "ci_hi": 6.0916031572973,
+        "direction_verdict": "Paradox",
+        "n_obs": 842,
+        "fit_status": "ok"
+      },
+      "windows": {
+        "repro": {
+          "status": "ok",
+          "n_obs": 842,
+          "n_det": 606,
+          "n_sto": 236,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": 3.7211572661761365,
+            "se": 1.2398082831262824,
+            "ci_lo": 1.2911776835141846,
+            "ci_hi": 6.151136848838088,
+            "direction_verdict": "Paradox",
+            "n_obs": 842,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.16430115346219284,
+            "p05": 0.28186278173303525,
+            "p95": 0.9715445720777655,
+            "max": 0.9896633774618437,
+            "frac_outside_05_95": 0.14133016627078385
+          },
+          "placebo": {
+            "n_ok": 100,
+            "fp_rate": 0.18,
+            "ate_sd": 2.244751748337774,
+            "p_cal_1sided": 0.06930693069306931,
+            "p_cal_2sided": 0.12871287128712872
+          },
+          "verdict": "LEANING_model_based",
+          "flags": [
+            "ovl",
+            "CI"
+          ]
+        },
+        "extended": {
+          "status": "ok",
+          "n_obs": 865,
+          "n_det": 594,
+          "n_sto": 271,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": 3.204312476104592,
+            "se": 1.2197789019603842,
+            "ci_lo": 0.8135897591604255,
+            "ci_hi": 5.5950351930487585,
+            "direction_verdict": "Paradox",
+            "n_obs": 865,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.16230355926816561,
+            "p05": 0.26662092248273567,
+            "p95": 0.9651095143201721,
+            "max": 0.982550018197764,
+            "frac_outside_05_95": 0.09710982658959537
+          },
+          "placebo": {
+            "n_ok": 50,
+            "fp_rate": 0.14,
+            "ate_sd": 1.9718590095300261,
+            "p_cal_1sided": 0.058823529411764705,
+            "p_cal_2sided": 0.1568627450980392
+          },
+          "verdict": "LEANING_model_based",
+          "flags": []
+        }
+      }
+    },
+    "FTSE": {
+      "tier_rank": 1,
+      "category": "Developed",
+      "frozen_cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": 2.671093514467152,
+        "se": 1.3986101469630825,
+        "ci_lo": -0.07013200199276248,
+        "ci_hi": 5.4123190309270655,
+        "direction_verdict": "n.s.",
+        "n_obs": 980,
+        "fit_status": "ok"
+      },
+      "windows": {
+        "repro": {
+          "status": "ok",
+          "n_obs": 980,
+          "n_det": 690,
+          "n_sto": 290,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": 2.570144503918682,
+            "se": 1.8546966196520525,
+            "ci_lo": -1.0649940728475236,
+            "ci_hi": 6.205283080684888,
+            "direction_verdict": "n.s.",
+            "n_obs": 980,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.2960643199527129,
+            "p05": 0.4629654188246607,
+            "p95": 0.9679323335352332,
+            "max": 0.9970928541697421,
+            "frac_outside_05_95": 0.10612244897959183
+          },
+          "placebo": {
+            "n_ok": 100,
+            "fp_rate": 0.04,
+            "ate_sd": 2.6126516949553245,
+            "p_cal_1sided": 0.0891089108910891,
+            "p_cal_2sided": 0.18811881188118812
+          },
+          "verdict": "indeterminate",
+          "flags": [
+            "ovl"
+          ]
+        },
+        "extended": {
+          "status": "ok",
+          "n_obs": 747,
+          "n_det": 554,
+          "n_sto": 193,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": 0.0701677579123668,
+            "se": 2.481920696740155,
+            "ci_lo": -4.794307420182895,
+            "ci_hi": 4.934642936007628,
+            "direction_verdict": "n.s.",
+            "n_obs": 747,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.29075573256701487,
+            "p05": 0.4838343318233506,
+            "p95": 0.9770801861791861,
+            "max": 0.9912913374081065,
+            "frac_outside_05_95": 0.1646586345381526
+          },
+          "placebo": {
+            "n_ok": 50,
+            "fp_rate": 0.12,
+            "ate_sd": 2.18284754074433,
+            "p_cal_1sided": 0.35294117647058826,
+            "p_cal_2sided": 0.9803921568627451
+          },
+          "verdict": "indeterminate",
+          "flags": [
+            "ovl"
+          ]
+        }
+      }
+    },
+    "DAX": {
+      "tier_rank": 1,
+      "category": "Developed",
+      "frozen_cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": 0.9242998020426173,
+        "se": 1.599273853537942,
+        "ci_lo": -2.2102193523083344,
+        "ci_hi": 4.058818956393568,
+        "direction_verdict": "n.s.",
+        "n_obs": 699,
+        "fit_status": "ok"
+      },
+      "windows": {
+        "repro": {
+          "status": "ok",
+          "n_obs": 699,
+          "n_det": 385,
+          "n_sto": 314,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": 0.7179208923647686,
+            "se": 1.68748341215416,
+            "ci_lo": -2.589485819966145,
+            "ci_hi": 4.025327604695682,
+            "direction_verdict": "n.s.",
+            "n_obs": 699,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.2362594107471836,
+            "p05": 0.3508098409923442,
+            "p95": 0.7954642309347132,
+            "max": 0.9357852537949288,
+            "frac_outside_05_95": 0.0
+          },
+          "placebo": {
+            "n_ok": 100,
+            "fp_rate": 0.1,
+            "ate_sd": 1.909539683013351,
+            "p_cal_1sided": 0.45544554455445546,
+            "p_cal_2sided": 0.7722772277227723
+          },
+          "verdict": "indeterminate",
+          "flags": []
+        },
+        "extended": {
+          "status": "ok",
+          "n_obs": 701,
+          "n_det": 384,
+          "n_sto": 317,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": 0.11272384921169488,
+            "se": 1.3884168896321556,
+            "ci_lo": -2.6085232499944535,
+            "ci_hi": 2.8339709484178432,
+            "direction_verdict": "n.s.",
+            "n_obs": 701,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.2231881453120968,
+            "p05": 0.32122228238103445,
+            "p95": 0.7854303798803883,
+            "max": 0.9416803626052392,
+            "frac_outside_05_95": 0.0
+          },
+          "placebo": {
+            "n_ok": 50,
+            "fp_rate": 0.02,
+            "ate_sd": 1.2348376018244056,
+            "p_cal_1sided": 0.5098039215686274,
+            "p_cal_2sided": 0.9607843137254902
+          },
+          "verdict": "indeterminate",
+          "flags": []
+        }
+      }
+    },
+    "CAC": {
+      "tier_rank": 1,
+      "category": "Developed",
+      "frozen_cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": -0.504773384944342,
+        "se": 2.8763719490976425,
+        "ci_lo": -6.142358811317,
+        "ci_hi": 5.132812041428314,
+        "direction_verdict": "n.s.",
+        "n_obs": 877,
+        "fit_status": "ok"
+      },
+      "windows": {
+        "repro": {
+          "status": "ok",
+          "n_obs": 877,
+          "n_det": 732,
+          "n_sto": 145,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": -0.5480119213559307,
+            "se": 2.3575923336301257,
+            "ci_lo": -5.1688079854987174,
+            "ci_hi": 4.072784142786855,
+            "direction_verdict": "n.s.",
+            "n_obs": 877,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.3722762350748667,
+            "p05": 0.6170998695956348,
+            "p95": 0.9877109470263782,
+            "max": 0.995641840883383,
+            "frac_outside_05_95": 0.24971493728620298
+          },
+          "placebo": {
+            "n_ok": 100,
+            "fp_rate": 0.1,
+            "ate_sd": 2.867286287869636,
+            "p_cal_1sided": 0.5445544554455446,
+            "p_cal_2sided": 0.8811881188118812
+          },
+          "verdict": "indeterminate",
+          "flags": [
+            "ovl"
+          ]
+        },
+        "extended": {
+          "status": "ok",
+          "n_obs": 856,
+          "n_det": 722,
+          "n_sto": 134,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": -2.490911759118606,
+            "se": 6.204578441461987,
+            "ci_lo": -14.651662043637762,
+            "ci_hi": 9.669838525400545,
+            "direction_verdict": "n.s.",
+            "n_obs": 856,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.3946346971541921,
+            "p05": 0.6215759429774372,
+            "p95": 0.9886409039637454,
+            "max": 0.9990672348484848,
+            "frac_outside_05_95": 0.2266355140186916
+          },
+          "placebo": {
+            "n_ok": 50,
+            "fp_rate": 0.2,
+            "ate_sd": 4.710152923435908,
+            "p_cal_1sided": 0.2549019607843137,
+            "p_cal_2sided": 0.37254901960784315
+          },
+          "verdict": "indeterminate",
+          "flags": [
+            "ovl",
+            "CI"
+          ]
+        }
+      }
+    },
+    "SSMI": {
+      "tier_rank": 1,
+      "category": "Developed",
+      "frozen_cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": -0.236430172280526,
+        "se": 1.777713489930145,
+        "ci_lo": -3.720684587374618,
+        "ci_hi": 3.247824242813566,
+        "direction_verdict": "n.s.",
+        "n_obs": 808,
+        "fit_status": "ok"
+      },
+      "windows": {
+        "repro": {
+          "status": "ok",
+          "n_obs": 808,
+          "n_det": 165,
+          "n_sto": 643,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": -0.2899757732928446,
+            "se": 1.5105622168074908,
+            "ci_lo": -3.2506233146425116,
+            "ci_hi": 2.6706717680568217,
+            "direction_verdict": "n.s.",
+            "n_obs": 808,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.04000763501218502,
+            "p05": 0.060750737855901425,
+            "p95": 0.6556146480602881,
+            "max": 0.9421166685731717,
+            "frac_outside_05_95": 0.017326732673267328
+          },
+          "placebo": {
+            "n_ok": 100,
+            "fp_rate": 0.1,
+            "ate_sd": 1.6261040021362962,
+            "p_cal_1sided": 0.594059405940594,
+            "p_cal_2sided": 0.8712871287128713
+          },
+          "verdict": "indeterminate",
+          "flags": []
+        },
+        "extended": {
+          "status": "ok",
+          "n_obs": 855,
+          "n_det": 153,
+          "n_sto": 702,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": 0.6614838210395787,
+            "se": 1.3544958330612704,
+            "ci_lo": -1.9932792289700894,
+            "ci_hi": 3.316246871049246,
+            "direction_verdict": "n.s.",
+            "n_obs": 855,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.027381494961208418,
+            "p05": 0.04710611556990344,
+            "p95": 0.5830551746061793,
+            "max": 0.925,
+            "frac_outside_05_95": 0.05847953216374269
+          },
+          "placebo": {
+            "n_ok": 50,
+            "fp_rate": 0.14,
+            "ate_sd": 1.6494466735695235,
+            "p_cal_1sided": 0.3137254901960784,
+            "p_cal_2sided": 0.6470588235294118
+          },
+          "verdict": "indeterminate",
+          "flags": []
+        }
+      }
+    },
+    "NIKKEI": {
+      "tier_rank": 1,
+      "category": "Developed",
+      "frozen_cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": 1.361274896608438,
+        "se": 1.2870973327286743,
+        "ci_lo": -1.1613895201373303,
+        "ci_hi": 3.883939313354206,
+        "direction_verdict": "n.s.",
+        "n_obs": 905,
+        "fit_status": "ok"
+      },
+      "windows": {
+        "repro": {
+          "status": "ok",
+          "n_obs": 905,
+          "n_det": 629,
+          "n_sto": 276,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": 1.4391863434768624,
+            "se": 1.1979161090548116,
+            "ci_lo": -0.9086860867709246,
+            "ci_hi": 3.787058773724649,
+            "direction_verdict": "n.s.",
+            "n_obs": 905,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.2429619523414218,
+            "p05": 0.3784553765764009,
+            "p95": 0.9462520885498321,
+            "max": 0.9915236326529819,
+            "frac_outside_05_95": 0.0430939226519337
+          },
+          "placebo": {
+            "n_ok": 100,
+            "fp_rate": 0.39,
+            "ate_sd": 3.664524191480483,
+            "p_cal_1sided": 0.3465346534653465,
+            "p_cal_2sided": 0.7623762376237624
+          },
+          "verdict": "indeterminate",
+          "flags": [
+            "CI"
+          ]
+        },
+        "extended": {
+          "status": "ok",
+          "n_obs": 936,
+          "n_det": 650,
+          "n_sto": 286,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": -0.0974912806247344,
+            "se": 1.0957841327366233,
+            "ci_lo": -2.245188715618974,
+            "ci_hi": 2.050206154369505,
+            "direction_verdict": "n.s.",
+            "n_obs": 936,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.28146867775014406,
+            "p05": 0.4174147153810662,
+            "p95": 0.9197829651281745,
+            "max": 0.9771568256551488,
+            "frac_outside_05_95": 0.01282051282051282
+          },
+          "placebo": {
+            "n_ok": 50,
+            "fp_rate": 0.28,
+            "ate_sd": 3.773115730809376,
+            "p_cal_1sided": 0.49019607843137253,
+            "p_cal_2sided": 0.9607843137254902
+          },
+          "verdict": "indeterminate",
+          "flags": [
+            "CI"
+          ]
+        }
+      }
+    },
+    "ASX": {
+      "tier_rank": 1,
+      "category": "Developed",
+      "frozen_cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": -0.9076274620463403,
+        "se": 1.8862364784186492,
+        "ci_lo": -4.6045830260725555,
+        "ci_hi": 2.7893281019798755,
+        "direction_verdict": "n.s.",
+        "n_obs": 1057,
+        "fit_status": "ok"
+      },
+      "windows": {
+        "repro": {
+          "status": "ok",
+          "n_obs": 1057,
+          "n_det": 905,
+          "n_sto": 152,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": -0.9667669112900508,
+            "se": 1.9519940664224695,
+            "ci_lo": -4.792604979513977,
+            "ci_hi": 2.8590711569338745,
+            "direction_verdict": "n.s.",
+            "n_obs": 1057,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.5370914539397258,
+            "p05": 0.6938950889885753,
+            "p95": 0.9783390139223613,
+            "max": 0.9952887466334367,
+            "frac_outside_05_95": 0.24503311258278146
+          },
+          "placebo": {
+            "n_ok": 100,
+            "fp_rate": 0.11,
+            "ate_sd": 2.3085080200565558,
+            "p_cal_1sided": 0.39603960396039606,
+            "p_cal_2sided": 0.7425742574257426
+          },
+          "verdict": "indeterminate",
+          "flags": [
+            "ovl"
+          ]
+        },
+        "extended": {
+          "status": "ok",
+          "n_obs": 1315,
+          "n_det": 629,
+          "n_sto": 686,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": -1.6401325666373592,
+            "se": 1.5528464042618522,
+            "ci_lo": -4.683655592513115,
+            "ci_hi": 1.4033904592383957,
+            "direction_verdict": "n.s.",
+            "n_obs": 1315,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.11045105788081452,
+            "p05": 0.2767445468931949,
+            "p95": 0.7015821703311778,
+            "max": 0.8120244191925546,
+            "frac_outside_05_95": 0.0
+          },
+          "placebo": {
+            "n_ok": 50,
+            "fp_rate": 0.16,
+            "ate_sd": 1.5060240958605675,
+            "p_cal_1sided": 0.19607843137254902,
+            "p_cal_2sided": 0.35294117647058826
+          },
+          "verdict": "indeterminate",
+          "flags": [
+            "CI"
+          ]
+        }
+      }
+    },
+    "HSI": {
+      "tier_rank": 1,
+      "category": "Developed",
+      "frozen_cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": 1.939647983901359,
+        "se": 2.065296356493046,
+        "ci_lo": -2.1082584922268075,
+        "ci_hi": 5.987554460029525,
+        "direction_verdict": "n.s.",
+        "n_obs": 1065,
+        "fit_status": "ok"
+      },
+      "windows": {
+        "repro": {
+          "status": "ok",
+          "n_obs": 1065,
+          "n_det": 480,
+          "n_sto": 585,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": 2.1753226343188885,
+            "se": 1.8297110749491174,
+            "ci_lo": -1.4108451746954498,
+            "ci_hi": 5.761490443333226,
+            "direction_verdict": "n.s.",
+            "n_obs": 1065,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.1479595762811543,
+            "p05": 0.20788998216661267,
+            "p95": 0.8724317421479476,
+            "max": 0.9784652173913044,
+            "frac_outside_05_95": 0.0028169014084507044
+          },
+          "placebo": {
+            "n_ok": 100,
+            "fp_rate": 0.05,
+            "ate_sd": 1.5106913254768553,
+            "p_cal_1sided": 0.06930693069306931,
+            "p_cal_2sided": 0.16831683168316833
+          },
+          "verdict": "indeterminate",
+          "flags": []
+        },
+        "extended": {
+          "status": "ok",
+          "n_obs": 999,
+          "n_det": 484,
+          "n_sto": 515,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": 2.2453379306240544,
+            "se": 2.144424173580111,
+            "ci_lo": -1.9576562171700331,
+            "ci_hi": 6.448332078418141,
+            "direction_verdict": "n.s.",
+            "n_obs": 999,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.18468342496039,
+            "p05": 0.24232639915292856,
+            "p95": 0.8851993161937578,
+            "max": 0.9739616681465881,
+            "frac_outside_05_95": 0.007007007007007007
+          },
+          "placebo": {
+            "n_ok": 50,
+            "fp_rate": 0.2,
+            "ate_sd": 2.1055864084224996,
+            "p_cal_1sided": 0.11764705882352941,
+            "p_cal_2sided": 0.37254901960784315
+          },
+          "verdict": "indeterminate",
+          "flags": [
+            "CI"
+          ]
+        }
+      }
+    },
+    "STI": {
+      "tier_rank": 1,
+      "category": "Developed",
+      "frozen_cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": -5.358600797480989,
+        "se": 3.0854570649867155,
+        "ci_lo": -11.405985520699613,
+        "ci_hi": 0.6887839257376358,
+        "direction_verdict": "n.s.",
+        "n_obs": 790,
+        "fit_status": "ok"
+      },
+      "windows": {
+        "repro": {
+          "status": "ok",
+          "n_obs": 790,
+          "n_det": 534,
+          "n_sto": 256,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": -5.780115045784177,
+            "se": 3.1997534485752275,
+            "ci_lo": -12.05151656439946,
+            "ci_hi": 0.4912864728311037,
+            "direction_verdict": "n.s.",
+            "n_obs": 790,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.27954909264427225,
+            "p05": 0.5162374148481441,
+            "p95": 0.9297460529345305,
+            "max": 0.9665893946439837,
+            "frac_outside_05_95": 0.013924050632911392
+          },
+          "placebo": {
+            "n_ok": 100,
+            "fp_rate": 0.17,
+            "ate_sd": 1.888747216401665,
+            "p_cal_1sided": 0.009900990099009901,
+            "p_cal_2sided": 0.009900990099009901
+          },
+          "verdict": "indeterminate",
+          "flags": [
+            "CI"
+          ]
+        },
+        "extended": {
+          "status": "ok",
+          "n_obs": 938,
+          "n_det": 611,
+          "n_sto": 327,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": -4.036012866296731,
+            "se": 2.402736376736593,
+            "ci_lo": -8.745289629044716,
+            "ci_hi": 0.673263896451255,
+            "direction_verdict": "n.s.",
+            "n_obs": 938,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.28429422057591053,
+            "p05": 0.4292518879289046,
+            "p95": 0.8987085441138578,
+            "max": 0.9848459267960614,
+            "frac_outside_05_95": 0.0021321961620469083
+          },
+          "placebo": {
+            "n_ok": 50,
+            "fp_rate": 0.1,
+            "ate_sd": 1.259903775337619,
+            "p_cal_1sided": 0.0196078431372549,
+            "p_cal_2sided": 0.0196078431372549
+          },
+          "verdict": "indeterminate",
+          "flags": []
+        }
+      }
+    },
+    "BTC": {
+      "tier_rank": 2,
+      "category": "Crypto",
+      "frozen_cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": -9.592804327499742,
+        "se": 4.2267708672282485,
+        "ci_lo": -17.87712299817024,
+        "ci_hi": -1.3084856568292462,
+        "direction_verdict": "Inverted",
+        "n_obs": 1370,
+        "fit_status": "ok"
+      },
+      "windows": {
+        "repro": {
+          "status": "ok",
+          "n_obs": 1370,
+          "n_det": 1017,
+          "n_sto": 353,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": -9.778477526235557,
+            "se": 4.147901804576632,
+            "ci_lo": -17.908215674614453,
+            "ci_hi": -1.6487393778566606,
+            "direction_verdict": "Inverted",
+            "n_obs": 1370,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.369519610445591,
+            "p05": 0.5341409221357927,
+            "p95": 0.9285507242268259,
+            "max": 0.9710658423467002,
+            "frac_outside_05_95": 0.008759124087591242
+          },
+          "placebo": {
+            "n_ok": 100,
+            "fp_rate": 0.1,
+            "ate_sd": 5.067856694621306,
+            "p_cal_1sided": 0.019801980198019802,
+            "p_cal_2sided": 0.06930693069306931
+          },
+          "verdict": "DECISIVE_calibrated",
+          "flags": []
+        },
+        "extended": {
+          "status": "ok",
+          "n_obs": 1336,
+          "n_det": 996,
+          "n_sto": 340,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": -8.847466084905076,
+            "se": 5.13490061742127,
+            "ci_lo": -18.91168635924325,
+            "ci_hi": 1.2167541894330984,
+            "direction_verdict": "n.s.",
+            "n_obs": 1336,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.4023702836895488,
+            "p05": 0.5369185552125469,
+            "p95": 0.9335297139043364,
+            "max": 0.9681290147669372,
+            "frac_outside_05_95": 0.008982035928143712
+          },
+          "placebo": {
+            "n_ok": 50,
+            "fp_rate": 0.12,
+            "ate_sd": 5.286635329803057,
+            "p_cal_1sided": 0.058823529411764705,
+            "p_cal_2sided": 0.09803921568627451
+          },
+          "verdict": "indeterminate",
+          "flags": []
+        }
+      }
+    },
+    "ETH": {
+      "tier_rank": 2,
+      "category": "Crypto",
+      "frozen_cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": 3.9256512094138207,
+        "se": 3.5284510977952337,
+        "ci_lo": -2.9899858634756544,
+        "ci_hi": 10.841288282303294,
+        "direction_verdict": "n.s.",
+        "n_obs": 1610,
+        "fit_status": "ok"
+      },
+      "windows": {
+        "repro": {
+          "status": "ok",
+          "n_obs": 1610,
+          "n_det": 916,
+          "n_sto": 694,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": 3.1022176238973076,
+            "se": 3.814896296716101,
+            "ci_lo": -4.37484172242148,
+            "ci_hi": 10.579276970216092,
+            "direction_verdict": "n.s.",
+            "n_obs": 1610,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.2295855761161124,
+            "p05": 0.3601985159982714,
+            "p95": 0.8661888792718355,
+            "max": 0.9482100429508765,
+            "frac_outside_05_95": 0.0
+          },
+          "placebo": {
+            "n_ok": 100,
+            "fp_rate": 0.06,
+            "ate_sd": 5.471158650942599,
+            "p_cal_1sided": 0.37623762376237624,
+            "p_cal_2sided": 0.6435643564356436
+          },
+          "verdict": "indeterminate",
+          "flags": []
+        },
+        "extended": {
+          "status": "ok",
+          "n_obs": 1607,
+          "n_det": 909,
+          "n_sto": 698,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": 3.016288592704729,
+            "se": 3.5902384086957837,
+            "ci_lo": -4.020449384251403,
+            "ci_hi": 10.05302656966086,
+            "direction_verdict": "n.s.",
+            "n_obs": 1607,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.24238391003295467,
+            "p05": 0.356619707364609,
+            "p95": 0.8696775621757183,
+            "max": 0.9409540369886156,
+            "frac_outside_05_95": 0.0
+          },
+          "placebo": {
+            "n_ok": 50,
+            "fp_rate": 0.08,
+            "ate_sd": 5.2659881228653,
+            "p_cal_1sided": 0.29411764705882354,
+            "p_cal_2sided": 0.5098039215686274
+          },
+          "verdict": "indeterminate",
+          "flags": []
+        }
+      }
+    },
+    "BNB": {
+      "tier_rank": 2,
+      "category": "Crypto",
+      "frozen_cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": -2.2104415929073604,
+        "se": 8.437429792843373,
+        "ci_lo": -18.74750010896562,
+        "ci_hi": 14.326616923150894,
+        "direction_verdict": "n.s.",
+        "n_obs": 1170,
+        "fit_status": "ok"
+      },
+      "windows": {
+        "repro": {
+          "status": "ok",
+          "n_obs": 1170,
+          "n_det": 915,
+          "n_sto": 255,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": -1.5589754905168325,
+            "se": 9.59693061176728,
+            "ci_lo": -20.368613851710656,
+            "ci_hi": 17.250662870676987,
+            "direction_verdict": "n.s.",
+            "n_obs": 1170,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.22512239472383033,
+            "p05": 0.5322819887754525,
+            "p95": 0.9557675504062804,
+            "max": 0.998163376676096,
+            "frac_outside_05_95": 0.06752136752136752
+          },
+          "placebo": {
+            "n_ok": 100,
+            "fp_rate": 0.07,
+            "ate_sd": 9.576457927211472,
+            "p_cal_1sided": 0.37623762376237624,
+            "p_cal_2sided": 0.8316831683168316
+          },
+          "verdict": "indeterminate",
+          "flags": []
+        },
+        "extended": {
+          "status": "ok",
+          "n_obs": 1239,
+          "n_det": 949,
+          "n_sto": 290,
+          "cf": {
+            "spec": "CausalForestDML+PurgedKFold",
+            "ate": 1.3241250733098116,
+            "se": 8.290292294803546,
+            "ci_lo": -14.924549245815056,
+            "ci_hi": 17.572799392434675,
+            "direction_verdict": "n.s.",
+            "n_obs": 1239,
+            "fit_status": "ok"
+          },
+          "overlap": {
+            "min": 0.1932515119407138,
+            "p05": 0.5096111223612082,
+            "p95": 0.9561035547579835,
+            "max": 0.9969797758599718,
+            "frac_outside_05_95": 0.058918482647296204
+          },
+          "placebo": {
+            "n_ok": 50,
+            "fp_rate": 0.08,
+            "ate_sd": 10.490750167382236,
+            "p_cal_1sided": 0.45098039215686275,
+            "p_cal_2sided": 1.0
+          },
+          "verdict": "indeterminate",
+          "flags": []
+        }
+      }
+    }
+  },
+  "elapsed_seconds": 3589.7387533187866
+}

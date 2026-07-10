@@ -1,0 +1,51 @@
+{
+  "market": "BVB",
+  "ticker": "BVB.RO",
+  "category": "Frontier",
+  "common_window": [
+    "2020-01-01",
+    "2026-06-29"
+  ],
+  "n_bars": 1448,
+  "bars_per_year": 252,
+  "raw_flips_per_year": 29.585635359116022,
+  "filtered_flips_per_year": 11.660220994475138,
+  "reduction_pct": 60.58823529411765,
+  "p_det": 0.43784530386740333,
+  "p_tra": 0.3729281767955801,
+  "p_sto": 0.18922651933701656,
+  "p_tra_ci_lo": 0.2879834254143646,
+  "p_tra_ci_hi": 0.4599447513812155,
+  "distance_to_threshold": -0.07707182320441991,
+  "distance_spec": "frontier_lower_fail",
+  "threshold_wrong_side_p": 0.959,
+  "h3_verdict_categorical": "REJECT",
+  "h3_verdict_refined": "REJECT_BORDERLINE",
+  "T_det_days": 39.925810904071774,
+  "T_tra_days": 25.230414746543776,
+  "T_sto_days": 28.347505668934243,
+  "overall_mean_days": 30.84267040149393,
+  "n_segments": 68,
+  "shuffle_observed": 11.660220994475138,
+  "shuffle_null_mean": 159.63098370165747,
+  "shuffle_null_p05": 154.5414364640884,
+  "shuffle_null_p95": 164.80939226519337,
+  "shuffle_p_value": 0.0,
+  "shuffle_verdict": "STRUCTURED",
+  "shuffle_block_p": {
+    "5": 0.0,
+    "10": 0.0,
+    "20": 0.0
+  },
+  "shuffle_block_null_mean": {
+    "5": 41.17807044198895,
+    "10": 26.15457182320442,
+    "20": 18.447774861878454
+  },
+  "rps": 0.225,
+  "p_det_raw": 0.34806629834254144,
+  "p_tra_raw": 0.4647790055248619,
+  "p_sto_raw": 0.1871546961325967,
+  "p_tra_raw_ci_lo": 0.38950276243093923,
+  "p_tra_raw_ci_hi": 0.5379834254143646
+}

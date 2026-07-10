@@ -1,0 +1,2011 @@
+{
+  "spec": "oos-n27-rigor phase 1: pipeline \u00d72 windows + repro-vs-frozen check",
+  "n_markets": 27,
+  "class_summary": {
+    "exact": 25,
+    "minor": 1,
+    "REVISION": 1,
+    "no-frozen-baseline": 0
+  },
+  "per_market": {
+    "VNINDEX": {
+      "repro": {
+        "n_bars": 1506,
+        "kw_raw": {
+          "H_stat": 83.90018149376192,
+          "p_value": 6.043758097339736e-19,
+          "eta_sq": 0.055226015842051196,
+          "N_obs": 1486,
+          "n_per_regime": {
+            "Deterministic": 725,
+            "Transitional": 667,
+            "Stochastic": 94
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 96.331276255999,
+          "p_value": 1.2076167930324498e-21,
+          "eta_sq": 0.06360841284962845,
+          "N_obs": 1486,
+          "n_per_regime": {
+            "Deterministic": 740,
+            "Transitional": 659,
+            "Stochastic": 87
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.4913678618857902,
+          "tra": 0.45086321381142097,
+          "sto": 0.05776892430278884
+        },
+        "flip_rate_filtered": 6.52589641434263
+      },
+      "extended": {
+        "n_bars": 1555,
+        "kw_raw": {
+          "H_stat": 81.72777317651799,
+          "p_value": 1.7907689088464913e-18,
+          "eta_sq": 0.052041627399815917,
+          "N_obs": 1535,
+          "n_per_regime": {
+            "Deterministic": 647,
+            "Transitional": 778,
+            "Stochastic": 110
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 130.9804614185523,
+          "p_value": 3.6137173795586963e-29,
+          "eta_sq": 0.08419090170923779,
+          "N_obs": 1535,
+          "n_per_regime": {
+            "Deterministic": 637,
+            "Transitional": 789,
+            "Stochastic": 109
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.40964630225080384,
+          "tra": 0.5202572347266881,
+          "sto": 0.07009646302250803
+        },
+        "flip_rate_filtered": 6.968488745980707
+      },
+      "repro_vs_frozen": {
+        "H_raw_frozen": 83.90018149376192,
+        "H_raw_repro": 83.90018149376192,
+        "rel_diff": 0.0,
+        "class": "exact"
+      }
+    },
+    "KSE100": {
+      "repro": {
+        "n_bars": 974,
+        "kw_raw": {
+          "H_stat": 55.517786181877,
+          "p_value": 8.799660295756328e-13,
+          "eta_sq": 0.05627527463919769,
+          "N_obs": 954,
+          "n_per_regime": {
+            "Deterministic": 461,
+            "Transitional": 434,
+            "Stochastic": 59
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 100.31514998670127,
+          "p_value": 1.6475627134851234e-22,
+          "eta_sq": 0.1033808096600434,
+          "N_obs": 954,
+          "n_per_regime": {
+            "Deterministic": 448,
+            "Transitional": 451,
+            "Stochastic": 55
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.4702258726899384,
+          "tra": 0.473305954825462,
+          "sto": 0.05646817248459959
+        },
+        "flip_rate_filtered": 8.796714579055442
+      },
+      "extended": {
+        "n_bars": 1020,
+        "kw_raw": {
+          "H_stat": 44.86994492507938,
+          "p_value": 1.8055738566894337e-10,
+          "eta_sq": 0.04299894175033037,
+          "N_obs": 1000,
+          "n_per_regime": {
+            "Deterministic": 470,
+            "Transitional": 473,
+            "Stochastic": 57
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 84.30954224451989,
+          "p_value": 4.925105248388712e-19,
+          "eta_sq": 0.08255721388617843,
+          "N_obs": 1000,
+          "n_per_regime": {
+            "Deterministic": 455,
+            "Transitional": 491,
+            "Stochastic": 54
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.44607843137254904,
+          "tra": 0.5009803921568627,
+          "sto": 0.052941176470588235
+        },
+        "flip_rate_filtered": 8.4
+      },
+      "repro_vs_frozen": {
+        "H_raw_frozen": 55.517786181877,
+        "H_raw_repro": 55.517786181877,
+        "rel_diff": 0.0,
+        "class": "exact"
+      }
+    },
+    "DSEX": {
+      "repro": {
+        "n_bars": 1316,
+        "kw_raw": {
+          "H_stat": 118.23568235992298,
+          "p_value": 2.115669345583629e-26,
+          "eta_sq": 0.08989611938122427,
+          "N_obs": 1296,
+          "n_per_regime": {
+            "Deterministic": 721,
+            "Transitional": 486,
+            "Stochastic": 89
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 155.05729180165463,
+          "p_value": 2.136667262168083e-34,
+          "eta_sq": 0.1183737755619912,
+          "N_obs": 1296,
+          "n_per_regime": {
+            "Deterministic": 701,
+            "Transitional": 506,
+            "Stochastic": 89
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.5440729483282675,
+          "tra": 0.3882978723404255,
+          "sto": 0.067629179331307
+        },
+        "flip_rate_filtered": 5.9361702127659575
+      },
+      "extended": {
+        "n_bars": 1364,
+        "kw_raw": {
+          "H_stat": 133.34750943227573,
+          "p_value": 1.1065122824178853e-29,
+          "eta_sq": 0.09794743432682754,
+          "N_obs": 1344,
+          "n_per_regime": {
+            "Deterministic": 743,
+            "Transitional": 512,
+            "Stochastic": 89
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 170.62371330357655,
+          "p_value": 8.902898358536308e-38,
+          "eta_sq": 0.12574475264994522,
+          "N_obs": 1344,
+          "n_per_regime": {
+            "Deterministic": 727,
+            "Transitional": 528,
+            "Stochastic": 89
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.5476539589442815,
+          "tra": 0.3870967741935484,
+          "sto": 0.06524926686217009
+        },
+        "flip_rate_filtered": 5.912023460410557
+      },
+      "repro_vs_frozen": {
+        "H_raw_frozen": 117.96598469662467,
+        "H_raw_repro": 118.23568235992298,
+        "rel_diff": 0.002286232459228725,
+        "class": "minor"
+      }
+    },
+    "BVB": {
+      "repro": {
+        "n_bars": 1398,
+        "kw_raw": {
+          "H_stat": 57.54374186490859,
+          "p_value": 3.1954734977835954e-13,
+          "eta_sq": 0.04039544862902443,
+          "N_obs": 1378,
+          "n_per_regime": {
+            "Deterministic": 517,
+            "Transitional": 593,
+            "Stochastic": 268
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 63.285321325339204,
+          "p_value": 1.810368904673435e-14,
+          "eta_sq": 0.04457114278206488,
+          "N_obs": 1378,
+          "n_per_regime": {
+            "Deterministic": 586,
+            "Transitional": 527,
+            "Stochastic": 265
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.41917024320457796,
+          "tra": 0.38483547925608014,
+          "sto": 0.19599427753934193
+        },
+        "flip_rate_filtered": 11.17596566523605
+      },
+      "extended": {
+        "n_bars": 1448,
+        "kw_raw": {
+          "H_stat": 46.47170308229927,
+          "p_value": 8.105837505338081e-11,
+          "eta_sq": 0.031208212689332823,
+          "N_obs": 1428,
+          "n_per_regime": {
+            "Deterministic": 499,
+            "Transitional": 658,
+            "Stochastic": 271
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 50.76983779836661,
+          "p_value": 9.450826677170495e-12,
+          "eta_sq": 0.03422444757780113,
+          "N_obs": 1428,
+          "n_per_regime": {
+            "Deterministic": 618,
+            "Transitional": 536,
+            "Stochastic": 274
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.43784530386740333,
+          "tra": 0.3729281767955801,
+          "sto": 0.18922651933701656
+        },
+        "flip_rate_filtered": 11.660220994475138
+      },
+      "repro_vs_frozen": {
+        "H_raw_frozen": 72.10608181972468,
+        "H_raw_repro": 57.54374186490859,
+        "rel_diff": 0.20195716626544738,
+        "class": "REVISION"
+      }
+    },
+    "SBITOP": {
+      "repro": {
+        "n_bars": 1497,
+        "kw_raw": {
+          "H_stat": 25.947273180326192,
+          "p_value": 2.3207118437101435e-06,
+          "eta_sq": 0.016246453989366482,
+          "N_obs": 1477,
+          "n_per_regime": {
+            "Deterministic": 655,
+            "Transitional": 293,
+            "Stochastic": 529
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 3.2092692055693988,
+          "p_value": 0.20096297280670986,
+          "eta_sq": 0.0008203997324080046,
+          "N_obs": 1477,
+          "n_per_regime": {
+            "Deterministic": 722,
+            "Transitional": 334,
+            "Stochastic": 421
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.48229792919171677,
+          "tra": 0.23246492985971945,
+          "sto": 0.2852371409485638
+        },
+        "flip_rate_filtered": 7.575150300601202
+      },
+      "extended": {
+        "n_bars": 1542,
+        "kw_raw": {
+          "H_stat": 29.02938152490151,
+          "p_value": 4.969925691098692e-07,
+          "eta_sq": 0.017794194552272224,
+          "N_obs": 1522,
+          "n_per_regime": {
+            "Deterministic": 672,
+            "Transitional": 295,
+            "Stochastic": 555
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 0.9229255887739782,
+          "p_value": 0.6303608824045654,
+          "eta_sq": 0.0,
+          "N_obs": 1522,
+          "n_per_regime": {
+            "Deterministic": 733,
+            "Transitional": 360,
+            "Stochastic": 429
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.47535667963683526,
+          "tra": 0.24643320363164722,
+          "sto": 0.2782101167315175
+        },
+        "flip_rate_filtered": 7.844357976653696
+      },
+      "repro_vs_frozen": {
+        "H_raw_frozen": 25.947273180326192,
+        "H_raw_repro": 25.947273180326192,
+        "rel_diff": 0.0,
+        "class": "exact"
+      }
+    },
+    "OMXVGI": {
+      "repro": {
+        "n_bars": 1489,
+        "kw_raw": {
+          "H_stat": 14.436069129224961,
+          "p_value": 0.0007332421436307347,
+          "eta_sq": 0.008482993948993834,
+          "N_obs": 1469,
+          "n_per_regime": {
+            "Deterministic": 947,
+            "Transitional": 415,
+            "Stochastic": 107
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 9.300777731961716,
+          "p_value": 0.009557884471673703,
+          "eta_sq": 0.0049800666657310476,
+          "N_obs": 1469,
+          "n_per_regime": {
+            "Deterministic": 936,
+            "Transitional": 434,
+            "Stochastic": 99
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.6312961719274681,
+          "tra": 0.3022162525184688,
+          "sto": 0.06648757555406314
+        },
+        "flip_rate_filtered": 8.12357286769644
+      },
+      "extended": {
+        "n_bars": 1536,
+        "kw_raw": {
+          "H_stat": 15.491277664489644,
+          "p_value": 0.00043262518333091513,
+          "eta_sq": 0.0089169052640381,
+          "N_obs": 1516,
+          "n_per_regime": {
+            "Deterministic": 970,
+            "Transitional": 447,
+            "Stochastic": 99
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 9.175673145901783,
+          "p_value": 0.010174847118747369,
+          "eta_sq": 0.00474267888030521,
+          "N_obs": 1516,
+          "n_per_regime": {
+            "Deterministic": 956,
+            "Transitional": 466,
+            "Stochastic": 94
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.6354166666666666,
+          "tra": 0.3033854166666667,
+          "sto": 0.061197916666666664
+        },
+        "flip_rate_filtered": 8.0390625
+      },
+      "repro_vs_frozen": {
+        "H_raw_frozen": 14.436069129224961,
+        "H_raw_repro": 14.436069129224961,
+        "rel_diff": 0.0,
+        "class": "exact"
+      }
+    },
+    "OMXRGI": {
+      "repro": {
+        "n_bars": 1172,
+        "kw_raw": {
+          "H_stat": 19.768615631648572,
+          "p_value": 5.096824247195817e-05,
+          "eta_sq": 0.015464417433984832,
+          "N_obs": 1152,
+          "n_per_regime": {
+            "Deterministic": 629,
+            "Transitional": 350,
+            "Stochastic": 173
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 30.598679153195008,
+          "p_value": 2.2676772604726846e-07,
+          "eta_sq": 0.024890060185548308,
+          "N_obs": 1152,
+          "n_per_regime": {
+            "Deterministic": 641,
+            "Transitional": 416,
+            "Stochastic": 95
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.5639931740614335,
+          "tra": 0.35494880546075086,
+          "sto": 0.0810580204778157
+        },
+        "flip_rate_filtered": 6.665529010238908
+      },
+      "extended": {
+        "n_bars": 1217,
+        "kw_raw": {
+          "H_stat": 17.80427736795491,
+          "p_value": 0.00013609754536736678,
+          "eta_sq": 0.013236413205992387,
+          "N_obs": 1197,
+          "n_per_regime": {
+            "Deterministic": 652,
+            "Transitional": 359,
+            "Stochastic": 186
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 24.62230611993982,
+          "p_value": 4.5012606320254406e-06,
+          "eta_sq": 0.018946655041825647,
+          "N_obs": 1197,
+          "n_per_regime": {
+            "Deterministic": 664,
+            "Transitional": 456,
+            "Stochastic": 77
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.5456039441248973,
+          "tra": 0.39112571898110104,
+          "sto": 0.06327033689400165
+        },
+        "flip_rate_filtered": 6.833196384552178
+      },
+      "repro_vs_frozen": {
+        "H_raw_frozen": 19.768615631648572,
+        "H_raw_repro": 19.768615631648572,
+        "rel_diff": 0.0,
+        "class": "exact"
+      }
+    },
+    "MERV": {
+      "repro": {
+        "n_bars": 1453,
+        "kw_raw": {
+          "H_stat": 16.83437920916731,
+          "p_value": 0.00022103497642916314,
+          "eta_sq": 0.010373691754662455,
+          "N_obs": 1433,
+          "n_per_regime": {
+            "Deterministic": 526,
+            "Transitional": 246,
+            "Stochastic": 661
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 35.17859366302309,
+          "p_value": 2.296494689710688e-08,
+          "eta_sq": 0.0232018137503658,
+          "N_obs": 1433,
+          "n_per_regime": {
+            "Deterministic": 513,
+            "Transitional": 285,
+            "Stochastic": 635
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.35306262904335856,
+          "tra": 0.2099105299380592,
+          "sto": 0.43702684101858225
+        },
+        "flip_rate_filtered": 5.549896765313145
+      },
+      "extended": {
+        "n_bars": 1502,
+        "kw_raw": {
+          "H_stat": 16.41341726999144,
+          "p_value": 0.0002728171861227257,
+          "eta_sq": 0.009745380169027344,
+          "N_obs": 1482,
+          "n_per_regime": {
+            "Deterministic": 549,
+            "Transitional": 252,
+            "Stochastic": 681
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 31.334642194364278,
+          "p_value": 1.5695273981787047e-07,
+          "eta_sq": 0.019834105608089438,
+          "N_obs": 1482,
+          "n_per_regime": {
+            "Deterministic": 544,
+            "Transitional": 289,
+            "Stochastic": 649
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.3621837549933422,
+          "tra": 0.19241011984021306,
+          "sto": 0.44540612516644473
+        },
+        "flip_rate_filtered": 5.536617842876165
+      },
+      "repro_vs_frozen": {
+        "H_raw_frozen": 16.83437920916731,
+        "H_raw_repro": 16.83437920916731,
+        "rel_diff": 0.0,
+        "class": "exact"
+      }
+    },
+    "KOSPI": {
+      "repro": {
+        "n_bars": 1469,
+        "kw_raw": {
+          "H_stat": 5.884346463426482,
+          "p_value": 0.05275096401045457,
+          "eta_sq": 0.0026862700300321453,
+          "N_obs": 1449,
+          "n_per_regime": {
+            "Deterministic": 391,
+            "Transitional": 767,
+            "Stochastic": 291
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 21.838040689084664,
+          "p_value": 1.8110469807140813e-05,
+          "eta_sq": 0.013719253588578607,
+          "N_obs": 1449,
+          "n_per_regime": {
+            "Deterministic": 422,
+            "Transitional": 786,
+            "Stochastic": 241
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.2995234853641933,
+          "tra": 0.5350578624914908,
+          "sto": 0.16541865214431586
+        },
+        "flip_rate_filtered": 14.752893124574541
+      },
+      "extended": {
+        "n_bars": 1517,
+        "kw_raw": {
+          "H_stat": 5.675228056084961,
+          "p_value": 0.058565234402068615,
+          "eta_sq": 0.0024599920054116206,
+          "N_obs": 1497,
+          "n_per_regime": {
+            "Deterministic": 399,
+            "Transitional": 777,
+            "Stochastic": 321
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 29.519350729668076,
+          "p_value": 3.8900432900822515e-07,
+          "eta_sq": 0.018419913473673413,
+          "N_obs": 1497,
+          "n_per_regime": {
+            "Deterministic": 405,
+            "Transitional": 814,
+            "Stochastic": 278
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.26697429136453527,
+          "tra": 0.5497692814765985,
+          "sto": 0.18325642715886617
+        },
+        "flip_rate_filtered": 14.119973632168755
+      },
+      "repro_vs_frozen": {
+        "H_raw_frozen": 5.884346463426482,
+        "H_raw_repro": 5.884346463426482,
+        "rel_diff": 0.0,
+        "class": "exact"
+      }
+    },
+    "NIFTY": {
+      "repro": {
+        "n_bars": 1478,
+        "kw_raw": {
+          "H_stat": 13.984688517320137,
+          "p_value": 0.0009188898892127256,
+          "eta_sq": 0.00823689932461865,
+          "N_obs": 1458,
+          "n_per_regime": {
+            "Deterministic": 499,
+            "Transitional": 840,
+            "Stochastic": 119
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 21.986229876346442,
+          "p_value": 1.681708980723144e-05,
+          "eta_sq": 0.013736240464842916,
+          "N_obs": 1458,
+          "n_per_regime": {
+            "Deterministic": 524,
+            "Transitional": 817,
+            "Stochastic": 117
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.36332882273342354,
+          "tra": 0.557510148849797,
+          "sto": 0.07916102841677942
+        },
+        "flip_rate_filtered": 8.866035182679296
+      },
+      "extended": {
+        "n_bars": 1527,
+        "kw_raw": {
+          "H_stat": 16.699125114152594,
+          "p_value": 0.00023649995103409665,
+          "eta_sq": 0.009773354464197203,
+          "N_obs": 1507,
+          "n_per_regime": {
+            "Deterministic": 558,
+            "Transitional": 830,
+            "Stochastic": 119
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 23.116867260944673,
+          "p_value": 9.555118003064808e-06,
+          "eta_sq": 0.014040470253287682,
+          "N_obs": 1507,
+          "n_per_regime": {
+            "Deterministic": 585,
+            "Transitional": 805,
+            "Stochastic": 117
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.3929273084479371,
+          "tra": 0.5304518664047151,
+          "sto": 0.07662082514734773
+        },
+        "flip_rate_filtered": 8.911591355599214
+      },
+      "repro_vs_frozen": {
+        "H_raw_frozen": 13.984688517320137,
+        "H_raw_repro": 13.984688517320137,
+        "rel_diff": 0.0,
+        "class": "exact"
+      }
+    },
+    "PSEI": {
+      "repro": {
+        "n_bars": 1460,
+        "kw_raw": {
+          "H_stat": 48.10061221438809,
+          "p_value": 3.589919991424138e-11,
+          "eta_sq": 0.032081149766449615,
+          "N_obs": 1440,
+          "n_per_regime": {
+            "Deterministic": 736,
+            "Transitional": 537,
+            "Stochastic": 167
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 41.08874397318141,
+          "p_value": 1.1958937937293163e-09,
+          "eta_sq": 0.027201631157398334,
+          "N_obs": 1440,
+          "n_per_regime": {
+            "Deterministic": 693,
+            "Transitional": 569,
+            "Stochastic": 178
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.47465753424657536,
+          "tra": 0.40342465753424656,
+          "sto": 0.12191780821917808
+        },
+        "flip_rate_filtered": 8.802739726027397
+      },
+      "extended": {
+        "n_bars": 1509,
+        "kw_raw": {
+          "H_stat": 56.88051144417386,
+          "p_value": 4.4519868818556916e-13,
+          "eta_sq": 0.03693170352905374,
+          "N_obs": 1489,
+          "n_per_regime": {
+            "Deterministic": 761,
+            "Transitional": 575,
+            "Stochastic": 153
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 39.951598203325375,
+          "p_value": 2.111643882283671e-09,
+          "eta_sq": 0.025539433515023805,
+          "N_obs": 1489,
+          "n_per_regime": {
+            "Deterministic": 704,
+            "Transitional": 619,
+            "Stochastic": 166
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.4685222001325381,
+          "tra": 0.41020543406229293,
+          "sto": 0.12127236580516898
+        },
+        "flip_rate_filtered": 9.351888667992048
+      },
+      "repro_vs_frozen": {
+        "H_raw_frozen": 48.10061221438809,
+        "H_raw_repro": 48.10061221438809,
+        "rel_diff": 0.0,
+        "class": "exact"
+      }
+    },
+    "JKSE": {
+      "repro": {
+        "n_bars": 1435,
+        "kw_raw": {
+          "H_stat": 10.554241025308329,
+          "p_value": 0.005107115514815602,
+          "eta_sq": 0.006058244352201366,
+          "N_obs": 1415,
+          "n_per_regime": {
+            "Deterministic": 267,
+            "Transitional": 737,
+            "Stochastic": 411
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 14.138163392667593,
+          "p_value": 0.0008510142399507335,
+          "eta_sq": 0.008596432997639939,
+          "N_obs": 1415,
+          "n_per_regime": {
+            "Deterministic": 490,
+            "Transitional": 614,
+            "Stochastic": 311
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.3554006968641115,
+          "tra": 0.42787456445993033,
+          "sto": 0.21672473867595818
+        },
+        "flip_rate_filtered": 14.4
+      },
+      "extended": {
+        "n_bars": 1480,
+        "kw_raw": {
+          "H_stat": 17.35385842809228,
+          "p_value": 0.00017047375306711909,
+          "eta_sq": 0.01053799480308324,
+          "N_obs": 1460,
+          "n_per_regime": {
+            "Deterministic": 299,
+            "Transitional": 747,
+            "Stochastic": 414
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 26.35616922056124,
+          "p_value": 1.891605515717048e-06,
+          "eta_sq": 0.01671665698048129,
+          "N_obs": 1460,
+          "n_per_regime": {
+            "Deterministic": 551,
+            "Transitional": 574,
+            "Stochastic": 335
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.3810810810810811,
+          "tra": 0.39256756756756755,
+          "sto": 0.22635135135135134
+        },
+        "flip_rate_filtered": 14.132432432432433
+      },
+      "repro_vs_frozen": {
+        "H_raw_frozen": 10.554241025308329,
+        "H_raw_repro": 10.554241025308329,
+        "rel_diff": 0.0,
+        "class": "exact"
+      }
+    },
+    "SET": {
+      "repro": {
+        "n_bars": 1442,
+        "kw_raw": {
+          "H_stat": 36.7648503859391,
+          "p_value": 1.0389967155866806e-08,
+          "eta_sq": 0.02449954220291691,
+          "N_obs": 1422,
+          "n_per_regime": {
+            "Deterministic": 550,
+            "Transitional": 475,
+            "Stochastic": 397
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 43.06048192918661,
+          "p_value": 4.4620574233503476e-10,
+          "eta_sq": 0.028936209957143487,
+          "N_obs": 1422,
+          "n_per_regime": {
+            "Deterministic": 522,
+            "Transitional": 476,
+            "Stochastic": 424
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.36893203883495146,
+          "tra": 0.33703190013869627,
+          "sto": 0.29403606102635227
+        },
+        "flip_rate_filtered": 12.932038834951456
+      },
+      "extended": {
+        "n_bars": 1490,
+        "kw_raw": {
+          "H_stat": 37.444217059850416,
+          "p_value": 7.397612455644845e-09,
+          "eta_sq": 0.02416102049069558,
+          "N_obs": 1470,
+          "n_per_regime": {
+            "Deterministic": 572,
+            "Transitional": 500,
+            "Stochastic": 398
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 50.93645219101836,
+          "p_value": 8.69540756692288e-12,
+          "eta_sq": 0.03335818145263692,
+          "N_obs": 1470,
+          "n_per_regime": {
+            "Deterministic": 550,
+            "Transitional": 494,
+            "Stochastic": 426
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.3691275167785235,
+          "tra": 0.34429530201342284,
+          "sto": 0.2865771812080537
+        },
+        "flip_rate_filtered": 13.699328859060403
+      },
+      "repro_vs_frozen": {
+        "H_raw_frozen": 36.7648503859391,
+        "H_raw_repro": 36.7648503859391,
+        "rel_diff": 0.0,
+        "class": "exact"
+      }
+    },
+    "SHANGHAI": {
+      "repro": {
+        "n_bars": 1444,
+        "kw_raw": {
+          "H_stat": 58.748885978844555,
+          "p_value": 1.749208184427449e-13,
+          "eta_sq": 0.039935880351051764,
+          "N_obs": 1424,
+          "n_per_regime": {
+            "Deterministic": 139,
+            "Transitional": 158,
+            "Stochastic": 1127
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 86.18328969412232,
+          "p_value": 1.9299072018652292e-19,
+          "eta_sq": 0.05924228690649002,
+          "N_obs": 1424,
+          "n_per_regime": {
+            "Deterministic": 148,
+            "Transitional": 134,
+            "Stochastic": 1142
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.10249307479224377,
+          "tra": 0.09626038781163435,
+          "sto": 0.8012465373961218
+        },
+        "flip_rate_filtered": 10.121883656509695
+      },
+      "extended": {
+        "n_bars": 1492,
+        "kw_raw": {
+          "H_stat": 61.18051938244207,
+          "p_value": 5.1858388401855186e-14,
+          "eta_sq": 0.04028626234339147,
+          "N_obs": 1472,
+          "n_per_regime": {
+            "Deterministic": 117,
+            "Transitional": 182,
+            "Stochastic": 1173
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 95.06265969753622,
+          "p_value": 2.2772238788718596e-21,
+          "eta_sq": 0.06335102770424521,
+          "N_obs": 1472,
+          "n_per_regime": {
+            "Deterministic": 115,
+            "Transitional": 153,
+            "Stochastic": 1204
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.07707774798927614,
+          "tra": 0.10254691689008043,
+          "sto": 0.8203753351206434
+        },
+        "flip_rate_filtered": 10.471849865951743
+      },
+      "repro_vs_frozen": {
+        "H_raw_frozen": 58.748885978844555,
+        "H_raw_repro": 58.748885978844555,
+        "rel_diff": 0.0,
+        "class": "exact"
+      }
+    },
+    "TWII": {
+      "repro": {
+        "n_bars": 936,
+        "kw_raw": {
+          "H_stat": 20.418974280540624,
+          "p_value": 3.681934615215964e-05,
+          "eta_sq": 0.020174122979781627,
+          "N_obs": 916,
+          "n_per_regime": {
+            "Deterministic": 386,
+            "Transitional": 221,
+            "Stochastic": 309
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 27.540554643686846,
+          "p_value": 1.0462718598427577e-06,
+          "eta_sq": 0.027974320529777486,
+          "N_obs": 916,
+          "n_per_regime": {
+            "Deterministic": 388,
+            "Transitional": 258,
+            "Stochastic": 270
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.42628205128205127,
+          "tra": 0.27564102564102566,
+          "sto": 0.2980769230769231
+        },
+        "flip_rate_filtered": 8.615384615384615
+      },
+      "extended": {
+        "n_bars": 986,
+        "kw_raw": {
+          "H_stat": 27.422514060323465,
+          "p_value": 1.1098818051441615e-06,
+          "eta_sq": 0.02639928770542416,
+          "N_obs": 966,
+          "n_per_regime": {
+            "Deterministic": 399,
+            "Transitional": 222,
+            "Stochastic": 345
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 49.621879648999766,
+          "p_value": 1.677821454173419e-11,
+          "eta_sq": 0.04945158842056051,
+          "N_obs": 966,
+          "n_per_regime": {
+            "Deterministic": 395,
+            "Transitional": 263,
+            "Stochastic": 308
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.4208924949290061,
+          "tra": 0.2667342799188641,
+          "sto": 0.31237322515212984
+        },
+        "flip_rate_filtered": 8.434077079107505
+      },
+      "repro_vs_frozen": {
+        "H_raw_frozen": 20.418974280540624,
+        "H_raw_repro": 20.418974280540624,
+        "rel_diff": 0.0,
+        "class": "exact"
+      }
+    },
+    "SPX": {
+      "repro": {
+        "n_bars": 1520,
+        "kw_raw": {
+          "H_stat": 2.1225545802572015,
+          "p_value": 0.3460135682393804,
+          "eta_sq": 8.186678707895888e-05,
+          "N_obs": 1500,
+          "n_per_regime": {
+            "Deterministic": 651,
+            "Transitional": 597,
+            "Stochastic": 252
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 1.5070791083808217,
+          "p_value": 0.4706975412506671,
+          "eta_sq": 0.0,
+          "N_obs": 1500,
+          "n_per_regime": {
+            "Deterministic": 606,
+            "Transitional": 658,
+            "Stochastic": 236
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.3986842105263158,
+          "tra": 0.4328947368421053,
+          "sto": 0.16842105263157894
+        },
+        "flip_rate_filtered": 14.092105263157896
+      },
+      "extended": {
+        "n_bars": 1570,
+        "kw_raw": {
+          "H_stat": 2.2015044586087242,
+          "p_value": 0.3326207824681097,
+          "eta_sq": 0.0001302549829403518,
+          "N_obs": 1550,
+          "n_per_regime": {
+            "Deterministic": 670,
+            "Transitional": 608,
+            "Stochastic": 272
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 4.957391752696822,
+          "p_value": 0.08385250835698178,
+          "eta_sq": 0.0019116947334821084,
+          "N_obs": 1550,
+          "n_per_regime": {
+            "Deterministic": 594,
+            "Transitional": 685,
+            "Stochastic": 271
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.3834394904458599,
+          "tra": 0.4439490445859873,
+          "sto": 0.17261146496815286
+        },
+        "flip_rate_filtered": 13.964331210191082
+      },
+      "repro_vs_frozen": {
+        "H_raw_frozen": 2.1225545802572015,
+        "H_raw_repro": 2.1225545802572015,
+        "rel_diff": 0.0,
+        "class": "exact"
+      }
+    },
+    "FTSE": {
+      "repro": {
+        "n_bars": 1530,
+        "kw_raw": {
+          "H_stat": 4.148309092210184,
+          "p_value": 0.12566262454988397,
+          "eta_sq": 0.0014255534785734465,
+          "N_obs": 1510,
+          "n_per_regime": {
+            "Deterministic": 749,
+            "Transitional": 361,
+            "Stochastic": 400
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 1.3407657643201674,
+          "p_value": 0.5115126912040784,
+          "eta_sq": 0.0,
+          "N_obs": 1510,
+          "n_per_regime": {
+            "Deterministic": 690,
+            "Transitional": 530,
+            "Stochastic": 290
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.4588235294117647,
+          "tra": 0.3516339869281046,
+          "sto": 0.1895424836601307
+        },
+        "flip_rate_filtered": 10.376470588235295
+      },
+      "extended": {
+        "n_bars": 1580,
+        "kw_raw": {
+          "H_stat": 0.7045202939189039,
+          "p_value": 0.70309718958665,
+          "eta_sq": 0.0,
+          "N_obs": 1560,
+          "n_per_regime": {
+            "Deterministic": 441,
+            "Transitional": 914,
+            "Stochastic": 205
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 0.334205855624532,
+          "p_value": 0.8461125183446755,
+          "eta_sq": 0.0,
+          "N_obs": 1560,
+          "n_per_regime": {
+            "Deterministic": 554,
+            "Transitional": 813,
+            "Stochastic": 193
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.3531645569620253,
+          "tra": 0.5246835443037975,
+          "sto": 0.12215189873417721
+        },
+        "flip_rate_filtered": 14.673417721518987
+      },
+      "repro_vs_frozen": {
+        "H_raw_frozen": 4.148309092210184,
+        "H_raw_repro": 4.148309092210184,
+        "rel_diff": 0.0,
+        "class": "exact"
+      }
+    },
+    "DAX": {
+      "repro": {
+        "n_bars": 1540,
+        "kw_raw": {
+          "H_stat": 1.3347008424416344,
+          "p_value": 0.5130661877283857,
+          "eta_sq": 0.0,
+          "N_obs": 1520,
+          "n_per_regime": {
+            "Deterministic": 418,
+            "Transitional": 845,
+            "Stochastic": 257
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 6.488339817754422,
+          "p_value": 0.03900092524601112,
+          "eta_sq": 0.002958694672217813,
+          "N_obs": 1520,
+          "n_per_regime": {
+            "Deterministic": 385,
+            "Transitional": 821,
+            "Stochastic": 314
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.25,
+          "tra": 0.5461038961038961,
+          "sto": 0.2038961038961039
+        },
+        "flip_rate_filtered": 17.181818181818183
+      },
+      "extended": {
+        "n_bars": 1591,
+        "kw_raw": {
+          "H_stat": 0.02401324781749281,
+          "p_value": 0.988065167986746,
+          "eta_sq": 0.0,
+          "N_obs": 1571,
+          "n_per_regime": {
+            "Deterministic": 416,
+            "Transitional": 873,
+            "Stochastic": 282
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 4.561354840948297,
+          "p_value": 0.10221494076346217,
+          "eta_sq": 0.0016335171179517204,
+          "N_obs": 1571,
+          "n_per_regime": {
+            "Deterministic": 384,
+            "Transitional": 870,
+            "Stochastic": 317
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.2470144563167819,
+          "tra": 0.5537397862979259,
+          "sto": 0.19924575738529227
+        },
+        "flip_rate_filtered": 19.00691389063482
+      },
+      "repro_vs_frozen": {
+        "H_raw_frozen": 1.3347008424416344,
+        "H_raw_repro": 1.3347008424416344,
+        "rel_diff": 0.0,
+        "class": "exact"
+      }
+    },
+    "CAC": {
+      "repro": {
+        "n_bars": 1558,
+        "kw_raw": {
+          "H_stat": 3.4239655652554575,
+          "p_value": 0.18050753036103276,
+          "eta_sq": 0.0009276648633586043,
+          "N_obs": 1538,
+          "n_per_regime": {
+            "Deterministic": 628,
+            "Transitional": 766,
+            "Stochastic": 144
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 6.311304220414968,
+          "p_value": 0.042610605120106025,
+          "eta_sq": 0.0028086672445700117,
+          "N_obs": 1538,
+          "n_per_regime": {
+            "Deterministic": 732,
+            "Transitional": 661,
+            "Stochastic": 145
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.48267008985879334,
+          "tra": 0.42426187419768935,
+          "sto": 0.09306803594351733
+        },
+        "flip_rate_filtered": 11.160462130937098
+      },
+      "extended": {
+        "n_bars": 1609,
+        "kw_raw": {
+          "H_stat": 0.8168510858922673,
+          "p_value": 0.6646959619520998,
+          "eta_sq": 0.0,
+          "N_obs": 1589,
+          "n_per_regime": {
+            "Deterministic": 617,
+            "Transitional": 830,
+            "Stochastic": 142
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 14.711098055539878,
+          "p_value": 0.0006390364724877739,
+          "eta_sq": 0.008014563717238259,
+          "N_obs": 1589,
+          "n_per_regime": {
+            "Deterministic": 722,
+            "Transitional": 733,
+            "Stochastic": 134
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.4599129894344313,
+          "tra": 0.45680546923555004,
+          "sto": 0.08328154133001865
+        },
+        "flip_rate_filtered": 10.180236171535116
+      },
+      "repro_vs_frozen": {
+        "H_raw_frozen": 3.4239655652554575,
+        "H_raw_repro": 3.4239655652554575,
+        "rel_diff": 0.0,
+        "class": "exact"
+      }
+    },
+    "SSMI": {
+      "repro": {
+        "n_bars": 1505,
+        "kw_raw": {
+          "H_stat": 9.604018968029777,
+          "p_value": 0.008213226108720498,
+          "eta_sq": 0.005130916982476233,
+          "N_obs": 1485,
+          "n_per_regime": {
+            "Deterministic": 129,
+            "Transitional": 634,
+            "Stochastic": 722
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 3.931918894647424,
+          "p_value": 0.14002147891436467,
+          "eta_sq": 0.001303588997737803,
+          "N_obs": 1485,
+          "n_per_regime": {
+            "Deterministic": 165,
+            "Transitional": 677,
+            "Stochastic": 643
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.10963455149501661,
+          "tra": 0.45182724252491696,
+          "sto": 0.43853820598006643
+        },
+        "flip_rate_filtered": 15.069767441860465
+      },
+      "extended": {
+        "n_bars": 1554,
+        "kw_raw": {
+          "H_stat": 11.662963683678754,
+          "p_value": 0.002933726439030025,
+          "eta_sq": 0.0063115373505413155,
+          "N_obs": 1534,
+          "n_per_regime": {
+            "Deterministic": 112,
+            "Transitional": 638,
+            "Stochastic": 784
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 17.087077952089203,
+          "p_value": 0.00019479964755086788,
+          "eta_sq": 0.009854394482096148,
+          "N_obs": 1534,
+          "n_per_regime": {
+            "Deterministic": 153,
+            "Transitional": 679,
+            "Stochastic": 702
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.09845559845559845,
+          "tra": 0.4491634491634492,
+          "sto": 0.4523809523809524
+        },
+        "flip_rate_filtered": 15.08108108108108
+      },
+      "repro_vs_frozen": {
+        "H_raw_frozen": 9.604018968029777,
+        "H_raw_repro": 9.604018968029777,
+        "rel_diff": 0.0,
+        "class": "exact"
+      }
+    },
+    "NIKKEI": {
+      "repro": {
+        "n_bars": 1459,
+        "kw_raw": {
+          "H_stat": 4.052646560651738,
+          "p_value": 0.13181929384632937,
+          "eta_sq": 0.0014294196104817115,
+          "N_obs": 1439,
+          "n_per_regime": {
+            "Deterministic": 609,
+            "Transitional": 566,
+            "Stochastic": 264
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 2.217065991565505,
+          "p_value": 0.3300427802565387,
+          "eta_sq": 0.00015116016125731553,
+          "N_obs": 1439,
+          "n_per_regime": {
+            "Deterministic": 629,
+            "Transitional": 534,
+            "Stochastic": 276
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.43385880740233035,
+          "tra": 0.3762851267991775,
+          "sto": 0.18985606579849212
+        },
+        "flip_rate_filtered": 8.808773132282385
+      },
+      "extended": {
+        "n_bars": 1507,
+        "kw_raw": {
+          "H_stat": 6.572630111839317,
+          "p_value": 0.037391380990509177,
+          "eta_sq": 0.00308128713735803,
+          "N_obs": 1487,
+          "n_per_regime": {
+            "Deterministic": 613,
+            "Transitional": 601,
+            "Stochastic": 273
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 6.90016626738452,
+          "p_value": 0.03174299735580004,
+          "eta_sq": 0.0033019988324693534,
+          "N_obs": 1487,
+          "n_per_regime": {
+            "Deterministic": 650,
+            "Transitional": 551,
+            "Stochastic": 286
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.44061048440610484,
+          "tra": 0.36960849369608495,
+          "sto": 0.1897810218978102
+        },
+        "flip_rate_filtered": 8.86264100862641
+      },
+      "repro_vs_frozen": {
+        "H_raw_frozen": 4.052646560651738,
+        "H_raw_repro": 4.052646560651738,
+        "rel_diff": 0.0,
+        "class": "exact"
+      }
+    },
+    "ASX": {
+      "repro": {
+        "n_bars": 1533,
+        "kw_raw": {
+          "H_stat": 4.955890991751403,
+          "p_value": 0.08391545325519831,
+          "eta_sq": 0.0019575437031466246,
+          "N_obs": 1513,
+          "n_per_regime": {
+            "Deterministic": 585,
+            "Transitional": 771,
+            "Stochastic": 157
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 22.760888368374253,
+          "p_value": 1.1416576449520818e-05,
+          "eta_sq": 0.013748932694287584,
+          "N_obs": 1513,
+          "n_per_regime": {
+            "Deterministic": 905,
+            "Transitional": 456,
+            "Stochastic": 152
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.6001304631441617,
+          "tra": 0.30071754729288974,
+          "sto": 0.09915198956294846
+        },
+        "flip_rate_filtered": 12.32876712328767
+      },
+      "extended": {
+        "n_bars": 1584,
+        "kw_raw": {
+          "H_stat": 4.180127260936388,
+          "p_value": 0.12367926579748238,
+          "eta_sq": 0.001396622204315431,
+          "N_obs": 1564,
+          "n_per_regime": {
+            "Deterministic": 471,
+            "Transitional": 224,
+            "Stochastic": 869
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 40.21298925143401,
+          "p_value": 1.8529356351731174e-09,
+          "eta_sq": 0.024479813742110192,
+          "N_obs": 1564,
+          "n_per_regime": {
+            "Deterministic": 629,
+            "Transitional": 249,
+            "Stochastic": 686
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.4097222222222222,
+          "tra": 0.1571969696969697,
+          "sto": 0.43308080808080807
+        },
+        "flip_rate_filtered": 13.522727272727273
+      },
+      "repro_vs_frozen": {
+        "H_raw_frozen": 4.955890991751403,
+        "H_raw_repro": 4.955890991751403,
+        "rel_diff": 0.0,
+        "class": "exact"
+      }
+    },
+    "HSI": {
+      "repro": {
+        "n_bars": 1474,
+        "kw_raw": {
+          "H_stat": 56.22471530376697,
+          "p_value": 6.17956917983693e-13,
+          "eta_sq": 0.03737058256634526,
+          "N_obs": 1454,
+          "n_per_regime": {
+            "Deterministic": 367,
+            "Transitional": 364,
+            "Stochastic": 723
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 71.20630241424169,
+          "p_value": 3.44943441797006e-16,
+          "eta_sq": 0.04769559091264072,
+          "N_obs": 1454,
+          "n_per_regime": {
+            "Deterministic": 480,
+            "Transitional": 389,
+            "Stochastic": 585
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.3256445047489824,
+          "tra": 0.2734056987788331,
+          "sto": 0.40094979647218454
+        },
+        "flip_rate_filtered": 15.386702849389417
+      },
+      "extended": {
+        "n_bars": 1523,
+        "kw_raw": {
+          "H_stat": 81.14426755581917,
+          "p_value": 2.3974313562608503e-18,
+          "eta_sq": 0.05276284503721278,
+          "N_obs": 1503,
+          "n_per_regime": {
+            "Deterministic": 418,
+            "Transitional": 375,
+            "Stochastic": 710
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 87.89202927416682,
+          "p_value": 8.212745056334995e-20,
+          "eta_sq": 0.057261352849444544,
+          "N_obs": 1503,
+          "n_per_regime": {
+            "Deterministic": 484,
+            "Transitional": 504,
+            "Stochastic": 515
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.31779382797110967,
+          "tra": 0.3309258043335522,
+          "sto": 0.35128036769533816
+        },
+        "flip_rate_filtered": 13.733420879842416
+      },
+      "repro_vs_frozen": {
+        "H_raw_frozen": 56.22471530376697,
+        "H_raw_repro": 56.22471530376697,
+        "rel_diff": 0.0,
+        "class": "exact"
+      }
+    },
+    "STI": {
+      "repro": {
+        "n_bars": 1518,
+        "kw_raw": {
+          "H_stat": 62.225899553873205,
+          "p_value": 3.074805124119099e-14,
+          "eta_sq": 0.04028488264473124,
+          "N_obs": 1498,
+          "n_per_regime": {
+            "Deterministic": 485,
+            "Transitional": 761,
+            "Stochastic": 252
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 56.77330687511676,
+          "p_value": 4.69713510795116e-13,
+          "eta_sq": 0.03663766346161656,
+          "N_obs": 1498,
+          "n_per_regime": {
+            "Deterministic": 534,
+            "Transitional": 708,
+            "Stochastic": 256
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.35177865612648224,
+          "tra": 0.4683794466403162,
+          "sto": 0.17984189723320157
+        },
+        "flip_rate_filtered": 5.478260869565218
+      },
+      "extended": {
+        "n_bars": 1567,
+        "kw_raw": {
+          "H_stat": 57.28924631761856,
+          "p_value": 3.629094071730408e-13,
+          "eta_sq": 0.03580909735597057,
+          "N_obs": 1547,
+          "n_per_regime": {
+            "Deterministic": 527,
+            "Transitional": 723,
+            "Stochastic": 297
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 44.679697857734936,
+          "p_value": 1.9857605732371917e-10,
+          "eta_sq": 0.027642291358636616,
+          "N_obs": 1547,
+          "n_per_regime": {
+            "Deterministic": 611,
+            "Transitional": 609,
+            "Stochastic": 327
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.3899170389278877,
+          "tra": 0.3899170389278877,
+          "sto": 0.22016592214422465
+        },
+        "flip_rate_filtered": 5.146139119336311
+      },
+      "repro_vs_frozen": {
+        "H_raw_frozen": 62.225899553873205,
+        "H_raw_repro": 62.225899553873205,
+        "rel_diff": 0.0,
+        "class": "exact"
+      }
+    },
+    "BTC": {
+      "repro": {
+        "n_bars": 2465,
+        "kw_raw": {
+          "H_stat": 7.130210989101215,
+          "p_value": 0.028294000463874102,
+          "eta_sq": 0.0021008235008604485,
+          "N_obs": 2445,
+          "n_per_regime": {
+            "Deterministic": 888,
+            "Transitional": 1191,
+            "Stochastic": 366
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 32.24249483715812,
+          "p_value": 9.968531939848485e-08,
+          "eta_sq": 0.01238431402013027,
+          "N_obs": 2445,
+          "n_per_regime": {
+            "Deterministic": 1017,
+            "Transitional": 1075,
+            "Stochastic": 353
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.4125760649087221,
+          "tra": 0.44421906693711966,
+          "sto": 0.14320486815415823
+        },
+        "flip_rate_filtered": 9.916430020283975
+      },
+      "extended": {
+        "n_bars": 2539,
+        "kw_raw": {
+          "H_stat": 3.465039525103748,
+          "p_value": 0.1768382576875706,
+          "eta_sq": 0.0005822891594212035,
+          "N_obs": 2519,
+          "n_per_regime": {
+            "Deterministic": 956,
+            "Transitional": 1211,
+            "Stochastic": 352
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 5.623827582924605,
+          "p_value": 0.06008988277497989,
+          "eta_sq": 0.0014403130297792547,
+          "N_obs": 2519,
+          "n_per_regime": {
+            "Deterministic": 996,
+            "Transitional": 1183,
+            "Stochastic": 340
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.39936983064198506,
+          "tra": 0.4667191807798346,
+          "sto": 0.13391098857818037
+        },
+        "flip_rate_filtered": 9.528160693186294
+      },
+      "repro_vs_frozen": {
+        "H_raw_frozen": 7.130210989101215,
+        "H_raw_repro": 7.130210989101215,
+        "rel_diff": 0.0,
+        "class": "exact"
+      }
+    },
+    "ETH": {
+      "repro": {
+        "n_bars": 2465,
+        "kw_raw": {
+          "H_stat": 61.61298889699901,
+          "p_value": 4.1774326255297186e-14,
+          "eta_sq": 0.024411543364864462,
+          "N_obs": 2445,
+          "n_per_regime": {
+            "Deterministic": 860,
+            "Transitional": 999,
+            "Stochastic": 586
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 58.10333426233046,
+          "p_value": 2.415579163862844e-13,
+          "eta_sq": 0.022974338354762678,
+          "N_obs": 2445,
+          "n_per_regime": {
+            "Deterministic": 916,
+            "Transitional": 835,
+            "Stochastic": 694
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.3716024340770791,
+          "tra": 0.34198782961460444,
+          "sto": 0.28640973630831645
+        },
+        "flip_rate_filtered": 11.75659229208925
+      },
+      "extended": {
+        "n_bars": 2539,
+        "kw_raw": {
+          "H_stat": 74.05498790685488,
+          "p_value": 8.301636196403133e-17,
+          "eta_sq": 0.028638707435156945,
+          "N_obs": 2519,
+          "n_per_regime": {
+            "Deterministic": 889,
+            "Transitional": 1047,
+            "Stochastic": 583
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 52.84933156401439,
+          "p_value": 3.341284566914819e-12,
+          "eta_sq": 0.020210386154218756,
+          "N_obs": 2519,
+          "n_per_regime": {
+            "Deterministic": 909,
+            "Transitional": 912,
+            "Stochastic": 698
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.36589208349743996,
+          "tra": 0.3591965340685309,
+          "sto": 0.27491138243402913
+        },
+        "flip_rate_filtered": 11.711697518708153
+      },
+      "repro_vs_frozen": {
+        "H_raw_frozen": 61.61298889699901,
+        "H_raw_repro": 61.61298889699901,
+        "rel_diff": 0.0,
+        "class": "exact"
+      }
+    },
+    "BNB": {
+      "repro": {
+        "n_bars": 2465,
+        "kw_raw": {
+          "H_stat": 3.646648146557709,
+          "p_value": 0.16148805962247534,
+          "eta_sq": 0.0006743030903184721,
+          "N_obs": 2445,
+          "n_per_regime": {
+            "Deterministic": 897,
+            "Transitional": 1272,
+            "Stochastic": 276
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 7.156165692043942,
+          "p_value": 0.027929191522077602,
+          "eta_sq": 0.0021114519623439566,
+          "N_obs": 2445,
+          "n_per_regime": {
+            "Deterministic": 915,
+            "Transitional": 1275,
+            "Stochastic": 255
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.3720081135902637,
+          "tra": 0.5192697768762677,
+          "sto": 0.10872210953346856
+        },
+        "flip_rate_filtered": 9.4052738336714
+      },
+      "extended": {
+        "n_bars": 2539,
+        "kw_raw": {
+          "H_stat": 7.069918036596391,
+          "p_value": 0.029159951989367515,
+          "eta_sq": 0.0020150707617632717,
+          "N_obs": 2519,
+          "n_per_regime": {
+            "Deterministic": 880,
+            "Transitional": 1353,
+            "Stochastic": 286
+          },
+          "fit_status": "ok"
+        },
+        "kw_filtered": {
+          "H_stat": 3.380556619521485,
+          "p_value": 0.18446817755385347,
+          "eta_sq": 0.0005487108980610036,
+          "N_obs": 2519,
+          "n_per_regime": {
+            "Deterministic": 949,
+            "Transitional": 1280,
+            "Stochastic": 290
+          },
+          "fit_status": "ok"
+        },
+        "shares_filtered": {
+          "det": 0.3749507680189051,
+          "tra": 0.50610476565577,
+          "sto": 0.11894446632532493
+        },
+        "flip_rate_filtered": 9.825915714848366
+      },
+      "repro_vs_frozen": {
+        "H_raw_frozen": 3.646648146557709,
+        "H_raw_repro": 3.646648146557709,
+        "rel_diff": 0.0,
+        "class": "exact"
+      }
+    }
+  },
+  "elapsed_seconds": 12.834563732147217
+}
