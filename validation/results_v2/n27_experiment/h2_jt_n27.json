@@ -1,0 +1,45 @@
+{
+  "spec": "JT ordered-alternative on n=27, ascending tier_rank (Developed 1 < Crypto 2 < Emerging 3 < Frontier 4), permutation p with 20000 shuffles, seed 42",
+  "tests": {
+    "H_stat_raw": {
+      "JT": 182.0,
+      "p_perm_one_sided": 0.014149292535373231,
+      "group_sizes": [
+        9,
+        3,
+        7,
+        8
+      ]
+    },
+    "H_stat_filtered": {
+      "JT": 163.0,
+      "p_perm_one_sided": 0.08679566021698915,
+      "group_sizes": [
+        9,
+        3,
+        7,
+        8
+      ]
+    },
+    "eta_sq_raw": {
+      "JT": 187.0,
+      "p_perm_one_sided": 0.007149642517874106,
+      "group_sizes": [
+        9,
+        3,
+        7,
+        8
+      ]
+    },
+    "eta_sq_filtered": {
+      "JT": 166.5,
+      "p_perm_one_sided": 0.0647967601619919,
+      "group_sizes": [
+        9,
+        3,
+        7,
+        8
+      ]
+    }
+  }
+}
