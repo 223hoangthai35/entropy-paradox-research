@@ -7,40 +7,40 @@
   "h2_primary": {
     "spec": "H2 PRIMARY \u2014 MS_microstructure = RPS (single variable)",
     "n": 8,
-    "rho": 0.6826,
-    "p_value": 0.06209269238231715,
+    "rho": 0.5389,
+    "p_value": 0.16811803527951477,
     "threshold_rho_gt": 0.5,
     "threshold_p_lt": 0.1,
-    "verdict": "PASS"
+    "verdict": "FAIL"
   },
   "bootstrap_95ci_for_rho": {
     "n_resamples_effective": 10000,
-    "ci95_low": -0.26315789473684215,
-    "ci95_high": 0.9258200997725514,
-    "mean": 0.5966021829637599,
-    "std": 0.2785227102690323
+    "ci95_low": -0.3076923076923077,
+    "ci95_high": 1.0,
+    "mean": 0.5191869860991654,
+    "std": 0.3604228808661905
   },
   "monte_carlo_sensitivity_RPS_noise_sd_0p05": {
     "n_trials_effective": 10000,
     "noise_sd": 0.05,
-    "rho_mean": 0.5751619047619049,
-    "rho_std": 0.12872744889794582,
-    "rho_p05": 0.3333333333333334,
-    "rho_p50": 0.5714285714285715,
-    "rho_p95": 0.7380952380952381,
+    "rho_mean": 0.5289071428571429,
+    "rho_std": 0.11151873943885732,
+    "rho_p05": 0.3571428571428572,
+    "rho_p50": 0.5476190476190477,
+    "rho_p95": 0.7142857142857144,
     "rho_min": 0.19047619047619052,
-    "rho_max": 0.7857142857142858,
-    "frac_rho_gt_threshold": 0.7507
+    "rho_max": 0.8333333333333335,
+    "frac_rho_gt_threshold": 0.5549
   },
   "h2_filtered_labels_post_hoc": {
     "spec": "H2 \u2014 RPS coupling under hysteresis-filtered labels",
     "n": 8,
-    "rho": 0.7425,
-    "p_value": 0.03485503933666417,
-    "ci95_low": -0.11111111111111113,
+    "rho": 0.7186,
+    "p_value": 0.04462261002441919,
+    "ci95_low": -0.08860759493670887,
     "ci95_high": 1.0,
     "verdict": "PASS",
-    "delta_rho_filtered_minus_raw": 0.0599
+    "delta_rho_filtered_minus_raw": 0.1797
   },
   "stratified_subpanels": [
     {
@@ -56,8 +56,8 @@
         "NIKKEI",
         "BTC"
       ],
-      "rho_RPS": 0.6826,
-      "p_RPS": 0.06209269238231715,
+      "rho_RPS": 0.5389,
+      "p_RPS": 0.16811803527951477,
       "note": ""
     },
     {
@@ -71,8 +71,8 @@
         "SPX",
         "NIKKEI"
       ],
-      "rho_RPS": 0.7143,
-      "p_RPS": 0.11078717201166179,
+      "rho_RPS": 0.5429,
+      "p_RPS": 0.26570262390670546,
       "note": ""
     },
     {
@@ -95,8 +95,8 @@
         "KOSPI",
         "NIFTY"
       ],
-      "rho_RPS": 0.2,
-      "p_RPS": 0.8,
+      "rho_RPS": 0.8,
+      "p_RPS": 0.2000000000000001,
       "note": ""
     },
     {
@@ -107,8 +107,8 @@
         "FTSE",
         "NIKKEI"
       ],
-      "rho_RPS": -0.866,
-      "p_RPS": 0.33333333333333326,
+      "rho_RPS": 0.0,
+      "p_RPS": 1.0,
       "note": "descriptive only \u2014 n<4"
     }
   ],

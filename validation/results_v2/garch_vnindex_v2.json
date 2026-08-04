@@ -1,13 +1,13 @@
 {
   "market": "VNINDEX",
-  "window": "2020-01-01 \u2192 2026-04-17",
+  "window": "2020-01-01 \u2192 2026-06-30",
   "train_window": 504,
-  "n_forecast": 1063,
-  "qlike_garch": 1.794376982948936,
-  "qlike_roll22": 1.5566224953937196,
-  "qlike_advantage_pp": -15.273740952528167,
-  "mse_garch": 0.8793101040142244,
-  "mse_roll22": 0.8694328284495415,
-  "pearson_garch": 0.3168187802397319,
-  "pearson_roll22": 0.35703174091272144
+  "n_forecast": 1112,
+  "qlike_garch": 1.782873485121139,
+  "qlike_roll22": 1.5516474074060185,
+  "qlike_advantage_pp": -14.901973000533344,
+  "mse_garch": 0.8610698188753535,
+  "mse_roll22": 0.8487577234477276,
+  "pearson_garch": 0.3128728015525988,
+  "pearson_roll22": 0.35533073574888346
 }
