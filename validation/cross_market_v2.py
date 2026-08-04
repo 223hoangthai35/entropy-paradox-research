@@ -96,7 +96,7 @@ MARKETS: list[dict[str, Any]] = [
 ]
 
 START = "2018-01-01"
-END   = "2026-04-17"
+END   = "2026-06-30"
 
 # Retail Participation Share (RPS) — single-variable microstructure proxy.
 # Ex-ante, publicly sourced. See h2_rps_validation.py and
@@ -788,7 +788,7 @@ def plot_boxplots(results_with_dfs: list[tuple[dict, pd.DataFrame]]) -> None:
         ax = axes[idx // cols][idx % cols]
         present = [r for r in REGIME_ORDER if r in df["RegimeName"].unique()]
         data = [df.loc[df["RegimeName"] == r, "FwdVol20d"].dropna().values for r in present]
-        bp = ax.boxplot(data, labels=present, patch_artist=True, showfliers=False)
+        bp = ax.boxplot(data, tick_labels=present, patch_artist=True, showfliers=False)
         for patch, lbl in zip(bp["boxes"], present):
             patch.set_facecolor(REGIME_PALETTE[lbl]); patch.set_alpha(0.7)
         H = meta["H_stat"]
