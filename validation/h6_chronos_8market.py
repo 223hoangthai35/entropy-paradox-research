@@ -73,7 +73,7 @@ from skills.ds_skill import REGIME_NAMES  # noqa: E402
 # ==============================================================================
 MARKETS: list[dict[str, Any]] = [
     {"name": "VNINDEX", "ticker": "VNINDEX", "source": "vnstock",  "category": "Frontier",  "tier": 4, "rps": 0.90},
-    {"name": "BVB",     "ticker": "BVB.RO",  "source": "yfinance", "category": "Frontier",  "tier": 4, "rps": 0.225},
+    {"name": "BVB",     "ticker": "BVB:BET",  "source": "tvdatafeed", "category": "Frontier",  "tier": 4, "rps": 0.225},
     {"name": "KOSPI",   "ticker": "^KS11",   "source": "yfinance", "category": "Emerging",  "tier": 3, "rps": 0.45},
     {"name": "NIFTY",   "ticker": "^NSEI",   "source": "yfinance", "category": "Emerging",  "tier": 3, "rps": 0.40},
     {"name": "SPX",     "ticker": "^GSPC",   "source": "yfinance", "category": "Developed", "tier": 1, "rps": 0.275},

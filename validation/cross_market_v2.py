@@ -86,7 +86,7 @@ from skills.ds_skill import REGIME_NAMES
 # ==============================================================================
 MARKETS: list[dict[str, Any]] = [
     {"name": "VNINDEX", "ticker": "VNINDEX", "source": "vnstock",  "category": "Frontier"},
-    {"name": "BVB",     "ticker": "BVB.RO",  "source": "yfinance", "category": "Frontier"},
+    {"name": "BVB",     "ticker": "BVB:BET",  "source": "tvdatafeed", "category": "Frontier"},
     {"name": "KOSPI",   "ticker": "^KS11",   "source": "yfinance", "category": "Emerging"},
     {"name": "NIFTY",   "ticker": "^NSEI",   "source": "yfinance", "category": "Emerging"},
     {"name": "SPX",     "ticker": "^GSPC",   "source": "yfinance", "category": "Developed"},

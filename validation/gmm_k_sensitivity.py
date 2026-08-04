@@ -36,7 +36,7 @@ from validation._features import run_full_pipeline, SPE_Z_WIN
 
 MARKETS = [
     {"name": "VNINDEX", "ticker": "VNINDEX", "source": "vnstock",  "tier_rank": 4, "rps": 0.90},
-    {"name": "BVB",     "ticker": "BVB.RO",  "source": "yfinance", "tier_rank": 4, "rps": 0.68},
+    {"name": "BVB",     "ticker": "BVB:BET",  "source": "tvdatafeed", "tier_rank": 4, "rps": 0.68},
     {"name": "KOSPI",   "ticker": "^KS11",   "source": "yfinance", "tier_rank": 3, "rps": 0.45},
     {"name": "NIFTY",   "ticker": "^NSEI",   "source": "yfinance", "tier_rank": 3, "rps": 0.40},
     {"name": "SPX",     "ticker": "^GSPC",   "source": "yfinance", "tier_rank": 1, "rps": 0.275},

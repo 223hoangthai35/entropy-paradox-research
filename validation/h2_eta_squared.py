@@ -39,7 +39,7 @@ from skills.ds_skill import REGIME_NAMES
 
 MARKETS = [
     {"name": "VNINDEX", "ticker": "VNINDEX", "source": "vnstock",  "tier_rank": 4},
-    {"name": "BVB",     "ticker": "BVB.RO",  "source": "yfinance", "tier_rank": 4},
+    {"name": "BVB",     "ticker": "BVB:BET",  "source": "tvdatafeed", "tier_rank": 4},
     {"name": "KOSPI",   "ticker": "^KS11",   "source": "yfinance", "tier_rank": 3},
     {"name": "NIFTY",   "ticker": "^NSEI",   "source": "yfinance", "tier_rank": 3},
     {"name": "SPX",     "ticker": "^GSPC",   "source": "yfinance", "tier_rank": 1},

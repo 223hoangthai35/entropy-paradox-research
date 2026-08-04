@@ -42,7 +42,7 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 # n=8 panel
 MARKETS_N8 = [
     {"name": "VNINDEX", "ticker": "VNINDEX", "source": "vnstock"},
-    {"name": "BVB",     "ticker": "BVB.RO",  "source": "yfinance"},
+    {"name": "BVB",     "ticker": "BVB:BET",  "source": "tvdatafeed"},
     {"name": "KOSPI",   "ticker": "^KS11",   "source": "yfinance"},
     {"name": "NIFTY",   "ticker": "^NSEI",   "source": "yfinance"},
     {"name": "SPX",     "ticker": "^GSPC",   "source": "yfinance"},
