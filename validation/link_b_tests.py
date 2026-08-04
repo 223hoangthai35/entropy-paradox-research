@@ -60,7 +60,7 @@ RPS = {
 }
 
 START = "2018-01-01"
-END = "2026-04-17"
+END = "2026-06-30"
 RNG_SEED = 42
 N_PERM = 10_000  # permutation iterations for cross-market Spearman CI
 

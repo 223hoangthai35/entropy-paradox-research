@@ -67,7 +67,7 @@ MARKETS: list[dict[str, Any]] = [
 ]
 
 START = "2018-01-01"
-END   = "2026-04-17"
+END   = "2026-06-30"
 PRIMARY_HORIZON = 20
 RNG_SEED = 42
 N_FOLDS = 5
