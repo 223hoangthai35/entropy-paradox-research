@@ -36,7 +36,7 @@ from validation.markets_n27 import MARKETS_N27, CASCADE_N27
 from skills.ds_skill import REGIME_NAMES
 
 START = "2018-01-01"
-END = "2026-04-17"
+END = "2026-06-30"
 RNG_SEED = 42
 N_PERM = 10_000
 

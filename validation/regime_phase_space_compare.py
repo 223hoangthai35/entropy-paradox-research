@@ -61,7 +61,7 @@ SOURCE = "vnstock"
 # 6.53 /yr on VNINDEX).
 START        = "2018-01-01"
 COMMON_START = "2020-01-01"
-END          = "2026-04-17"
+END          = "2026-06-30"
 TRADING_DAYS_PER_YEAR = 252
 
 OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "results_v2")

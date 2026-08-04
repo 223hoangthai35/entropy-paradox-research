@@ -44,7 +44,7 @@ from skills.ds_skill import REGIME_NAMES
 from validation.markets_n27 import MARKETS_N27, CASCADE_N27, panel_summary
 
 START = "2018-01-01"
-END = "2026-04-17"
+END = "2026-06-30"
 HORIZON = 20
 RNG_SEED = 42
 

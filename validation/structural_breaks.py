@@ -49,7 +49,7 @@ MARKETS = [
 ]
 
 START = "2018-01-01"
-END = "2026-04-17"
+END = "2026-06-30"
 ANALYSIS_START = "2020-04-17"  # post-COVID window start (matches paper)
 PELT_PENALTY = 10  # higher = fewer breaks; tunable
 MIN_SIZE = 60  # minimum segment size = ~3 months trading days

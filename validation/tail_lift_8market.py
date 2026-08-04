@@ -65,7 +65,7 @@ from validation._features import run_full_pipeline
 from validation.cross_market_v2 import MARKETS, OUTPUT_DIR
 
 START   = "2020-01-01"
-END     = "2026-04-17"
+END     = "2026-06-30"
 HORIZONS = [5, 10, 20]
 QUANTILES = [0.90, 0.95, 0.99]
 BLOCK    = 20

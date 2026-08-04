@@ -72,7 +72,7 @@ from validation.cross_market_v2 import MARKETS, OUTPUT_DIR
 from skills.ds_skill import EntropyPhaseSpaceClassifier, HysteresisGMMWrapper
 
 START = "2020-01-01"
-END   = "2026-04-17"
+END   = "2026-06-30"
 FWD_VOL_HORIZON = 20
 RNG_SEED = 42
 

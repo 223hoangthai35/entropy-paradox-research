@@ -80,7 +80,7 @@ def run_shuffle_test(
     seed: int = RANDOM_SEED,
     market: str = "VNINDEX",
     start: str = "2020-01-01",
-    end: str = "2026-04-17",
+    end: str = "2026-06-30",
 ) -> ShuffleTestResult:
     arr = labels.astype(int).values
     n_bars = len(arr)
@@ -166,7 +166,7 @@ def save_result(r: ShuffleTestResult, path: str = RESULT_PATH) -> None:
 
 
 def main() -> int:
-    end = "2026-04-17"
+    end = "2026-06-30"
     start = "2020-01-01"
     market = "VNINDEX"
     print(f"  Loading filtered label series for {market} ...")

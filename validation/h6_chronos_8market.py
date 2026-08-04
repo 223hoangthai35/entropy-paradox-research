@@ -83,7 +83,7 @@ MARKETS: list[dict[str, Any]] = [
 ]
 
 START = "2018-01-01"
-END = "2026-04-17"
+END = "2026-06-30"
 
 CHRONOS_MODEL = "amazon/chronos-t5-small"
 CHRONOS_WINDOW = WPE_WINDOW  # 22 — match entropy WPE window

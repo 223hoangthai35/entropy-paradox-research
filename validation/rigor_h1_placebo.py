@@ -55,7 +55,7 @@ from validation.h1_dml_cpcv import (
 )
 from validation._cpcv_splitter import PurgedKFold
 
-END = "2026-04-17"           # canonical paper window — the claim under test
+END = "2026-06-30"           # canonical paper window — the claim under test
 RNG_SEED = 42
 # Rotation counts are overridable via env vars (CF fits are ~3s each, so a
 # properly-powered placebo-calibrated p is cheap).
