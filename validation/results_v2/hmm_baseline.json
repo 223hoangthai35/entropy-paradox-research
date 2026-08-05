@@ -1,0 +1,189 @@
+{
+  "spec": "3-state Gaussian HMM (full cov, seed 42, 200 iter) on identical Plane-1 [WPE, SPE_Z]; states ordered by SPE_Z mean; KW-H on fwd 20d vol; cross-market Spearman vs RPS/tier.",
+  "window": [
+    "2020-01-01",
+    "2026-06-30"
+  ],
+  "seed": 42,
+  "per_market": {
+    "VNINDEX": {
+      "H_hmm": 123.35993067357413,
+      "flips_per_year": 150.875884244373,
+      "N_obs": 1535,
+      "converged": true
+    },
+    "KSE100": {
+      "H_hmm": 46.626698550041965,
+      "flips_per_year": 124.02352941176471,
+      "N_obs": 1000,
+      "converged": true
+    },
+    "DSEX": {
+      "H_hmm": 165.79937514680933,
+      "flips_per_year": 117.31671554252199,
+      "N_obs": 1344,
+      "converged": true
+    },
+    "BVB": {
+      "H_hmm": 2.9772020088294084,
+      "flips_per_year": 155.65183752417795,
+      "N_obs": 1531,
+      "converged": true
+    },
+    "SBITOP": {
+      "H_hmm": 40.723132008500215,
+      "flips_per_year": 126.32684824902724,
+      "N_obs": 1522,
+      "converged": true
+    },
+    "OMXVGI": {
+      "H_hmm": 7.0633950566061685,
+      "flips_per_year": 162.09375,
+      "N_obs": 1516,
+      "converged": true
+    },
+    "OMXRGI": {
+      "H_hmm": 19.48394687062182,
+      "flips_per_year": 140.59819227608875,
+      "N_obs": 1197,
+      "converged": true
+    },
+    "MERV": {
+      "H_hmm": 15.675494301692197,
+      "flips_per_year": 96.97470039946738,
+      "N_obs": 1482,
+      "converged": true
+    },
+    "KOSPI": {
+      "H_hmm": 5.787396731683657,
+      "flips_per_year": 102.82663150955834,
+      "N_obs": 1497,
+      "converged": true
+    },
+    "NIFTY": {
+      "H_hmm": 1.5859964531609876,
+      "flips_per_year": 159.5834970530452,
+      "N_obs": 1507,
+      "converged": true
+    },
+    "PSEI": {
+      "H_hmm": 0.7947397915668262,
+      "flips_per_year": 140.2783300198807,
+      "N_obs": 1489,
+      "converged": true
+    },
+    "JKSE": {
+      "H_hmm": 28.381738527705238,
+      "flips_per_year": 109.31351351351351,
+      "N_obs": 1460,
+      "converged": true
+    },
+    "SET": {
+      "H_hmm": 19.795319777259465,
+      "flips_per_year": 94.71140939597315,
+      "N_obs": 1470,
+      "converged": true
+    },
+    "SHANGHAI": {
+      "H_hmm": 52.69799262564993,
+      "flips_per_year": 177.51474530831098,
+      "N_obs": 1472,
+      "converged": true
+    },
+    "TWII": {
+      "H_hmm": 4.60367391745649,
+      "flips_per_year": 117.05476673427992,
+      "N_obs": 966,
+      "converged": true
+    },
+    "SPX": {
+      "H_hmm": 0.4058012792029331,
+      "flips_per_year": 96.46624203821656,
+      "N_obs": 1550,
+      "converged": true
+    },
+    "FTSE": {
+      "H_hmm": 0.7641827181123517,
+      "flips_per_year": 146.73417721518987,
+      "N_obs": 1560,
+      "converged": true
+    },
+    "DAX": {
+      "H_hmm": 13.122997341181872,
+      "flips_per_year": 91.07479572595852,
+      "N_obs": 1571,
+      "converged": true
+    },
+    "CAC": {
+      "H_hmm": 1.6476147155235594,
+      "flips_per_year": 96.16407706650094,
+      "N_obs": 1589,
+      "converged": true
+    },
+    "SSMI": {
+      "H_hmm": 36.008227096358496,
+      "flips_per_year": 123.4054054054054,
+      "N_obs": 1534,
+      "converged": true
+    },
+    "NIKKEI": {
+      "H_hmm": 1.9370906054909938,
+      "flips_per_year": 137.28732581287326,
+      "N_obs": 1487,
+      "converged": true
+    },
+    "ASX": {
+      "H_hmm": 11.67182317541301,
+      "flips_per_year": 161.0,
+      "N_obs": 1564,
+      "converged": true
+    },
+    "HSI": {
+      "H_hmm": 45.479090956314394,
+      "flips_per_year": 119.96060407091267,
+      "N_obs": 1503,
+      "converged": true
+    },
+    "STI": {
+      "H_hmm": 61.2314076698849,
+      "flips_per_year": 167.57115507338864,
+      "N_obs": 1547,
+      "converged": true
+    },
+    "BTC": {
+      "H_hmm": 5.20512147772024,
+      "flips_per_year": 122.70657672849916,
+      "N_obs": 2352,
+      "converged": true
+    },
+    "ETH": {
+      "H_hmm": 68.46966523283481,
+      "flips_per_year": 131.52445193929174,
+      "N_obs": 2352,
+      "converged": true
+    },
+    "BNB": {
+      "H_hmm": 23.850063656720522,
+      "flips_per_year": 127.91231028667791,
+      "N_obs": 2352,
+      "converged": true
+    }
+  },
+  "cross_market": {
+    "n8": {
+      "n": 8,
+      "rho_H_rps": 0.6666666666666669,
+      "p_rps": 0.07098765432098755,
+      "rho_H_tier": 0.7041868508280461,
+      "p_tier": 0.05120529957628865
+    },
+    "n27": {
+      "n": 27,
+      "rho_H_rps": 0.3124723656172659,
+      "p_rps": 0.11254557302908966,
+      "rho_H_tier": 0.27568838019799546,
+      "p_tier": 0.1639587458893139
+    }
+  },
+  "elapsed_min": 0.6
+}
