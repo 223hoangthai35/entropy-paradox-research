@@ -62,7 +62,7 @@ RNG_SEED = 42
 N_ROT_FOCUS = int(os.environ.get("PLACEBO_ROT_FOCUS", "8"))
 N_ROT_OTHER = int(os.environ.get("PLACEBO_ROT_OTHER", "3"))
 OUT_SUFFIX = os.environ.get("PLACEBO_OUT_SUFFIX", "")
-FOCUS = {"SPX", "BTC", "BVB"}
+FOCUS = set(os.environ.get("PLACEBO_FOCUS_MARKETS", "SPX,BTC,BVB").split(","))
 
 OOS_DIR = os.path.join(os.path.dirname(__file__), "results_v2", "oos_2026q2")
 os.makedirs(OOS_DIR, exist_ok=True)
