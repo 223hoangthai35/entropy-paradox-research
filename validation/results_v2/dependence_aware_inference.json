@@ -1,0 +1,110 @@
+{
+  "spec": "Dependence-aware inference: between-block and within-block permutation over market strata, plus cluster bootstrap.",
+  "window": [
+    "2018-01-01",
+    "2026-06-30"
+  ],
+  "n_markets": 27,
+  "n_markets_in_corr_matrix": 23,
+  "corr_matrix_markets": [
+    "VNINDEX",
+    "OMXVGI",
+    "OMXRGI",
+    "MERV",
+    "KOSPI",
+    "NIFTY",
+    "PSEI",
+    "JKSE",
+    "SET",
+    "SHANGHAI",
+    "TWII",
+    "SPX",
+    "FTSE",
+    "DAX",
+    "CAC",
+    "SSMI",
+    "NIKKEI",
+    "ASX",
+    "HSI",
+    "STI",
+    "BTC",
+    "ETH",
+    "BNB"
+  ],
+  "mean_pairwise_return_corr": 0.2664804016287603,
+  "median_pairwise_return_corr": 0.2429655399532,
+  "n_effective_context_only": 3.405440190201556,
+  "n_blocks": 4,
+  "between_block_p_floor": 0.041666666666666664,
+  "seed": 42,
+  "n_perm": 20000,
+  "n_boot": 20000,
+  "strata": {
+    "asian-emerging": [
+      "KOSPI",
+      "NIFTY",
+      "PSEI",
+      "JKSE",
+      "SET",
+      "SHANGHAI",
+      "TWII"
+    ],
+    "crypto": [
+      "BTC",
+      "ETH",
+      "BNB"
+    ],
+    "developed": [
+      "SPX",
+      "FTSE",
+      "DAX",
+      "CAC",
+      "SSMI",
+      "NIKKEI",
+      "ASX",
+      "HSI",
+      "STI"
+    ],
+    "frontier": [
+      "VNINDEX",
+      "KSE100",
+      "DSEX",
+      "BVB",
+      "SBITOP",
+      "OMXVGI",
+      "OMXRGI",
+      "MERV"
+    ]
+  },
+  "tests": {
+    "raw": {
+      "rho": 0.5833000129478978,
+      "p_free_permutation": 0.0014057002284725542,
+      "p_between_block": 0.12374381280935953,
+      "p_within_block": 0.0023998800059997,
+      "cluster_bootstrap": {
+        "mean": 0.5091471393421139,
+        "ci_lo": 0.13265563933768904,
+        "ci_hi": 0.7238608367707835,
+        "P_gt_0": 1.0,
+        "P_gt_0.5": 0.5264267429603975,
+        "n_draws": 19923
+      }
+    },
+    "filtered": {
+      "rho": 0.5489702171254257,
+      "p_free_permutation": 0.003022814454636295,
+      "p_between_block": 0.12374381280935953,
+      "p_within_block": 0.0006499675016249188,
+      "cluster_bootstrap": {
+        "mean": 0.47846801387383986,
+        "ci_lo": -0.1689023383250514,
+        "ci_hi": 0.7816866191449393,
+        "P_gt_0": 0.9694323144104804,
+        "P_gt_0.5": 0.5452492094564072,
+        "n_draws": 19923
+      }
+    }
+  },
+  "elapsed_min": 0.6
+}
