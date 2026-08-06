@@ -205,6 +205,57 @@ def main() -> int:
             "early": {"rho": float(re_), "p": float(pe)}}
         print(f"  {lab:34} {g.sum():3} {rl:+9.3f} {pl:8.4f} {re_:+10.3f} {pe:8.4f}")
 
+    # The cut date is a free parameter, and a single hand-picked cut is not a
+    # result. This scans quarterly cuts across the window on the calendar-clean
+    # subset and records, for each, how balanced the two segments are in bars.
+    #
+    # Balance is the right selection criterion because it depends only on the
+    # trading calendar -- not on H, not on participation -- so choosing the most
+    # balanced cut is outcome-independent and can be stated in advance. A cut
+    # chosen for its result could not be.
+    print(f"\n  {'cut date':12} {'bars bef':>9} {'bars aft':>9} {'balance':>8} "
+          f"{'rho before':>11} {'p':>8} {'rho after':>10} {'p':>8}")
+    clean = [m for m in ms if m not in (CRY | GAPPED)]
+    vv = np.array([RPS[m] for m in clean])
+    out["cut_date_scan"] = {"subset": clean, "n_markets": len(clean), "cuts": {}}
+    best = None
+    for cut in pd.date_range("2022-07-01", "2025-01-01", freq="3MS"):
+        Hb, Ha, nb, na = [], [], [], []
+        for m in clean:
+            lab, y, ok, idx = data[m]
+            b = (idx < cut) & ok
+            a = (idx >= cut) & ok
+            Hb.append(kw(lab[b], y[b])[0])
+            Ha.append(kw(lab[a], y[a])[0])
+            nb.append(int(b.sum()))
+            na.append(int(a.sum()))
+        Hb, Ha = np.array(Hb), np.array(Ha)
+        g = np.isfinite(Hb) & np.isfinite(Ha)
+        rb, pb = stats.spearmanr(Hb[g], vv[g])
+        ra, pa = stats.spearmanr(Ha[g], vv[g])
+        bal = float(np.median(nb) / max(np.median(na), 1))
+        out["cut_date_scan"]["cuts"][str(cut.date())] = {
+            "median_bars_before": float(np.median(nb)),
+            "median_bars_after": float(np.median(na)),
+            "balance": bal,
+            "before": {"rho": float(rb), "p": float(pb)},
+            "after": {"rho": float(ra), "p": float(pa)}}
+        if best is None or abs(np.log(bal)) < best[0]:
+            best = (abs(np.log(bal)), str(cut.date()))
+        print(f"  {str(cut.date()):12} {np.median(nb):9.0f} {np.median(na):9.0f} "
+              f"{bal:8.2f} {rb:+11.3f} {pb:8.4f} {ra:+10.3f} {pa:8.4f}")
+    out["cut_date_scan"]["most_balanced_cut"] = best[1]
+    bc = out["cut_date_scan"]["cuts"][best[1]]
+    print(f"\n  most size-balanced cut: {best[1]} (balance {bc['balance']:.2f}) -> "
+          f"before {bc['before']['rho']:+.3f} (p = {bc['before']['p']:.4f}), "
+          f"after {bc['after']['rho']:+.3f} (p = {bc['after']['p']:.4f})")
+    rbs = [c["before"]["rho"] for c in out["cut_date_scan"]["cuts"].values()]
+    ras = [c["after"]["rho"] for c in out["cut_date_scan"]["cuts"].values()]
+    out["cut_date_scan"]["before_rho_range"] = [float(min(rbs)), float(max(rbs))]
+    out["cut_date_scan"]["after_rho_range"] = [float(min(ras)), float(max(ras))]
+    print(f"  early-segment rho across all cuts: [{min(rbs):+.3f}, {max(rbs):+.3f}] "
+          f"| late-segment rho: [{min(ras):+.3f}, {max(ras):+.3f}]")
+
     out["elapsed_min"] = round((time.time() - t0) / 60, 1)
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump(out, f, indent=2)
