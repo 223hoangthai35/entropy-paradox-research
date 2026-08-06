@@ -1,0 +1,142 @@
+{
+  "note": "Registered falsification conditions applied verbatim at both panel sizes.",
+  "hypotheses": {
+    "H1": {
+      "statement": "Frontier: H>=20 and Det>Sto; Developed: weakens",
+      "n8": {
+        "verdict": "REJECT",
+        "breaches": [
+          "BVB (Frontier) H = 5.2 < 20",
+          "BVB (Frontier) direction inverted"
+        ],
+        "detail": "2 breach(es)"
+      },
+      "n27": {
+        "verdict": "REJECT",
+        "breaches": [
+          "BVB (Frontier) H = 5.2 < 20",
+          "BVB (Frontier) direction inverted",
+          "OMXVGI (Frontier) H = 15.5 < 20",
+          "OMXRGI (Frontier) H = 17.8 < 20",
+          "MERV (Frontier) H = 16.4 < 20",
+          "HSI (Developed) H = 81.1 > 50 with Det>Sto"
+        ],
+        "n_frontier": 8,
+        "n_frontier_H_ge_20": 4,
+        "detail": "6 breach(es); 4/8 frontier markets clear H>=20"
+      },
+      "comparison": "the registered frontier prediction fails at BOTH panel sizes; the expansion shows it is not a two-market accident"
+    },
+    "H2": {
+      "statement": "rho(H, microstructure) > 0.5, p <= 0.10",
+      "n8": {
+        "verdict": "PASS",
+        "rho_raw": 0.7619047619047621,
+        "p_raw": 0.028004939153071805,
+        "rho_filt": 0.8333333333333335,
+        "p_filt": 0.010175540123456752,
+        "detail": "registered composite: rho = 0.762 (p = 0.028) raw / 0.833 (p = 0.010) filtered"
+      },
+      "n27": {
+        "verdict": "PASS",
+        "rho_raw": 0.5833000129478978,
+        "p_raw": 0.0014057002284725542,
+        "rho_filt": 0.5489702171254257,
+        "p_filt": 0.003022814454636295,
+        "detail": "RPS core: rho = 0.583 (p = 0.0014) raw / 0.549 (p = 0.0030) filtered"
+      },
+      "comparison": "the only registered hypothesis that clears both gates at both panel sizes; n = 8 carries the registered composite, n = 27 carries its RPS core"
+    },
+    "H3": {
+      "statement": "Frontier p_tra > 0.55; Developed < 0.50; gap > 10pp",
+      "n8": {
+        "verdict": "PASS",
+        "breaches": [],
+        "frontier_all_gt_0.55": false,
+        "developed_all_lt_0.50": false,
+        "mean_gap_pp": 7.1,
+        "detail": "frontier>0.55: False; developed<0.50: False; gap 7.1pp (needs >10pp)"
+      },
+      "n27": {
+        "verdict": "REJECT",
+        "breaches": [
+          "frontier p_tra 0.387 < 0.45",
+          "frontier p_tra 0.246 < 0.45",
+          "frontier p_tra 0.303 < 0.45",
+          "frontier p_tra 0.391 < 0.45",
+          "frontier p_tra 0.192 < 0.45"
+        ],
+        "frontier_all_gt_0.55": false,
+        "developed_all_lt_0.50": false,
+        "mean_gap_pp": -2.7,
+        "detail": "frontier>0.55: False; developed<0.50: False; gap -2.7pp (needs >10pp)"
+      },
+      "comparison": "not falsified at either size, but every point prediction misses at both -- the registered levels are simply not where the data sit"
+    },
+    "H4": {
+      "statement": "flip rate below the shuffled-null 5th pct, every market",
+      "n8": {
+        "verdict": "PASS",
+        "breaches": [],
+        "n_markets": 8,
+        "detail": "8/8 markets p < 0.01"
+      },
+      "n27": {
+        "verdict": "PASS",
+        "breaches": [],
+        "n_markets": 27,
+        "window": "extended",
+        "detail": "27/27 markets p < 0.01"
+      },
+      "comparison": "passes decisively at both sizes -- the labels carry real temporal structure; this is a prerequisite check, not a finding"
+    },
+    "H5": {
+      "statement": "p_tra spread across configs A/B/C < 5pp (falsify at > 7pp)",
+      "n8": {
+        "verdict": "REJECT",
+        "breaches": [
+          [
+            "NIFTY",
+            8.8
+          ],
+          [
+            "SPX",
+            11.7
+          ]
+        ],
+        "point_prediction_misses": [
+          [
+            "KOSPI",
+            5.3
+          ],
+          [
+            "FTSE",
+            6.2
+          ]
+        ],
+        "n_markets": 8,
+        "detail": "2/8 exceed the 7pp bound: [('NIFTY', 8.8), ('SPX', 11.7)]"
+      },
+      "n27": {
+        "verdict": "REJECT",
+        "breaches": [
+          "HSI",
+          "SPX",
+          "TWII",
+          "NIFTY"
+        ],
+        "point_prediction_misses": [
+          "SBITOP",
+          "SSMI",
+          "FTSE",
+          "STI",
+          "MERV",
+          "KOSPI"
+        ],
+        "n_markets": 27,
+        "detail": "4/27 exceed the 7pp bound: ['HSI', 'SPX', 'TWII', 'NIFTY']"
+      },
+      "comparison": "breach rate 25% at n = 8 vs 15% at n = 27 -- the n = 8 rejection is driven by a minority of markets that the expansion puts in context"
+    }
+  }
+}

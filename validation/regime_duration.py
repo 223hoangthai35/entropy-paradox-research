@@ -59,11 +59,20 @@ from scripts.extract_flip_dates import get_filtered_labels
 
 COMMON_START = "2022-01-01"
 COMMON_END = "2026-06-30"
+# Bars per year, by market. Kept explicit rather than defaulted, so a market
+# added to a panel without a calendar entry fails loudly instead of silently
+# inheriting an equity calendar -- which would understate crypto flip rates by
+# roughly a third.
 NATIVE_BPY = {
     "VNINDEX": 252, "SP500": 252, "BTC": 365,
     # Extended 8-market panel (paper v2.1 H3/H4)
     "BVB": 252, "KOSPI": 252, "NIFTY": 252,
     "SPX": 252, "FTSE": 252, "NIKKEI": 252, "DAX": 252,
+    # n = 27 expansion panel
+    "KSE100": 252, "DSEX": 252, "SBITOP": 252, "OMXVGI": 252, "OMXRGI": 252,
+    "MERV": 252, "PSEI": 252, "JKSE": 252, "SET": 252, "SHANGHAI": 252,
+    "TWII": 252, "CAC": 252, "SSMI": 252, "ASX": 252, "HSI": 252, "STI": 252,
+    "ETH": 365, "BNB": 365,
 }
 
 LABEL_NAMES = {0: "Deterministic", 1: "Transitional", 2: "Stochastic"}

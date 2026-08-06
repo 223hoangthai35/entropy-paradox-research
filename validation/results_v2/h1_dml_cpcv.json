@@ -9,7 +9,7 @@
   },
   "n_bootstrap": 100,
   "seed": 42,
-  "total_elapsed_seconds": 1014.9194269180298,
+  "total_elapsed_seconds": 1111.7016932964325,
   "results": {
     "VNINDEX": {
       "market": "VNINDEX",
@@ -34,15 +34,15 @@
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": 1.5012859642830219,
-        "se": 2.751324632956416,
-        "ci_lo": -3.891211226089438,
-        "ci_hi": 6.8937831546554795,
+        "ate": 1.8929830295134935,
+        "se": 2.688094907149434,
+        "ci_lo": -3.3755861755249392,
+        "ci_hi": 7.161552234551925,
         "direction_verdict": "n.s.",
         "n_obs": 746,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 13.323329448699951
+      "elapsed_seconds": 14.148775815963745
     },
     "BVB": {
       "market": "BVB",
@@ -57,10 +57,10 @@
       },
       "linear_dml": {
         "spec": "LinearDML+PurgedKFold+Bootstrap",
-        "ate": 1.0942873307585508,
-        "se": 2.4328796535125883,
-        "ci_lo": -3.674069168846408,
-        "ci_hi": 5.862643830363509,
+        "ate": 0.956655495822073,
+        "se": 2.379968420242815,
+        "ci_lo": -3.707996892196533,
+        "ci_hi": 5.621307883840678,
         "direction_verdict": "n.s.",
         "n_obs": 741,
         "n_det": 555,
@@ -69,15 +69,15 @@
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": -0.6628281179426618,
-        "se": 1.3322179387267872,
-        "ci_lo": -3.2739272974053537,
-        "ci_hi": 1.9482710615200287,
+        "ate": -0.5059915083647983,
+        "se": 1.3012659888079037,
+        "ci_lo": -3.056425980735191,
+        "ci_hi": 2.0444429640055937,
         "direction_verdict": "n.s.",
         "n_obs": 741,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 165.94383573532104
+      "elapsed_seconds": 184.55361413955688
     },
     "KOSPI": {
       "market": "KOSPI",
@@ -92,10 +92,10 @@
       },
       "linear_dml": {
         "spec": "LinearDML+PurgedKFold+Bootstrap",
-        "ate": -8.47399836461629,
-        "se": 4.714016598702662,
-        "ci_lo": -17.713301120597514,
-        "ci_hi": 0.7653043913649284,
+        "ate": -8.263707740649604,
+        "se": 5.273719116322643,
+        "ci_lo": -18.600007273222385,
+        "ci_hi": 2.0725917919231733,
         "direction_verdict": "n.s.",
         "n_obs": 683,
         "n_det": 405,
@@ -104,15 +104,15 @@
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": -9.156083619713762,
-        "se": 5.819882583253228,
-        "ci_lo": -20.562843877142022,
-        "ci_hi": 2.250676637714495,
+        "ate": -9.619140359294184,
+        "se": 6.5425961518493345,
+        "ci_lo": -22.44239318230923,
+        "ci_hi": 3.204112463720861,
         "direction_verdict": "n.s.",
         "n_obs": 683,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 167.6123607158661
+      "elapsed_seconds": 177.30577325820923
     },
     "NIFTY": {
       "market": "NIFTY",
@@ -137,15 +137,15 @@
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": -1.6904769751849829,
-        "se": 1.9824408528061392,
-        "ci_lo": -5.575989648165886,
-        "ci_hi": 2.1950356977959204,
+        "ate": -2.0886044700396553,
+        "se": 2.0189183931232764,
+        "ci_lo": -6.045611808286756,
+        "ci_hi": 1.8684028682074438,
         "direction_verdict": "n.s.",
         "n_obs": 702,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 8.734316110610962
+      "elapsed_seconds": 9.600573778152466
     },
     "SPX": {
       "market": "SPX",
@@ -160,10 +160,10 @@
       },
       "linear_dml": {
         "spec": "LinearDML+PurgedKFold+Bootstrap",
-        "ate": 3.4845709347993807,
-        "se": 2.187646132503015,
-        "ci_lo": -0.8031366958248682,
-        "ci_hi": 7.772278565423629,
+        "ate": 3.446674629297729,
+        "se": 2.1093966480379187,
+        "ci_lo": -0.6876668299661044,
+        "ci_hi": 7.581016088561562,
         "direction_verdict": "n.s.",
         "n_obs": 865,
         "n_det": 594,
@@ -172,15 +172,15 @@
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": 3.2574430071248126,
-        "se": 1.2067842687051724,
-        "ci_lo": 0.8921893033531676,
-        "ci_hi": 5.622696710896458,
+        "ate": 3.2189312234884633,
+        "se": 1.117802869079804,
+        "ci_lo": 1.028077858276506,
+        "ci_hi": 5.40978458870042,
         "direction_verdict": "Paradox",
         "n_obs": 865,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 161.29245615005493
+      "elapsed_seconds": 172.06993126869202
     },
     "FTSE": {
       "market": "FTSE",
@@ -195,10 +195,10 @@
       },
       "linear_dml": {
         "spec": "LinearDML+PurgedKFold+Bootstrap",
-        "ate": 1.122741651875795,
-        "se": 1.728310917645152,
-        "ci_lo": -2.2646855007960753,
-        "ci_hi": 4.510168804547664,
+        "ate": 0.9887256142216854,
+        "se": 1.7459757880834021,
+        "ci_lo": -2.4333240483007206,
+        "ci_hi": 4.410775276744091,
         "direction_verdict": "n.s.",
         "n_obs": 747,
         "n_det": 554,
@@ -207,15 +207,15 @@
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": -0.028324102302460144,
-        "se": 2.721751301673714,
-        "ci_lo": -5.362858628457952,
-        "ci_hi": 5.306210423853029,
+        "ate": 0.10900239914310997,
+        "se": 2.6120504695187687,
+        "ci_lo": -5.0105224469146155,
+        "ci_hi": 5.2285272452008345,
         "direction_verdict": "n.s.",
         "n_obs": 747,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 160.70948004722595
+      "elapsed_seconds": 180.06783485412598
     },
     "NIKKEI": {
       "market": "NIKKEI",
@@ -230,10 +230,10 @@
       },
       "linear_dml": {
         "spec": "LinearDML+PurgedKFold+Bootstrap",
-        "ate": -0.17620504085438596,
-        "se": 1.7984809395064005,
-        "ci_lo": -3.701162909168691,
-        "ci_hi": 3.348752827459918,
+        "ate": -0.12401463452357156,
+        "se": 1.8206170539940607,
+        "ci_lo": -3.692358489991346,
+        "ci_hi": 3.444329220944202,
         "direction_verdict": "n.s.",
         "n_obs": 936,
         "n_det": 650,
@@ -242,15 +242,15 @@
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": 0.029036854343759966,
-        "se": 1.047490491485866,
-        "ci_lo": -2.024006783116698,
-        "ci_hi": 2.0820804918042173,
+        "ate": -0.12460952290602977,
+        "se": 1.0706695631605245,
+        "ci_lo": -2.2230833060438906,
+        "ci_hi": 1.9738642602318308,
         "direction_verdict": "n.s.",
         "n_obs": 936,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 162.42051243782043
+      "elapsed_seconds": 188.87070155143738
     },
     "BTC": {
       "market": "BTC",
@@ -265,10 +265,10 @@
       },
       "linear_dml": {
         "spec": "LinearDML+PurgedKFold+Bootstrap",
-        "ate": -8.49202683358345,
-        "se": 5.965127961333689,
-        "ci_lo": -20.183462800970318,
-        "ci_hi": 3.1994091338034156,
+        "ate": -8.826855129807022,
+        "se": 5.592154869546278,
+        "ci_lo": -19.787277270088012,
+        "ci_hi": 2.1335670104739677,
         "direction_verdict": "n.s.",
         "n_obs": 1336,
         "n_det": 996,
@@ -277,15 +277,15 @@
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": -9.153537437453746,
-        "se": 4.489241595568569,
-        "ci_lo": -17.95228928266727,
-        "ci_hi": -0.35478559224022455,
-        "direction_verdict": "Inverted",
+        "ate": -8.952698556230128,
+        "se": 4.840067732520266,
+        "ci_lo": -18.439056994704295,
+        "ci_hi": 0.5336598822440344,
+        "direction_verdict": "n.s.",
         "n_obs": 1336,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 174.88013553619385
+      "elapsed_seconds": 185.08248233795166
     }
   }
 }

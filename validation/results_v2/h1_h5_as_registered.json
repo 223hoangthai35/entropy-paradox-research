@@ -1,0 +1,303 @@
+{
+  "registered_commit_date": "2026-04-18",
+  "hypotheses": {
+    "H1": {
+      "statement": "Direction: frontier significant + Det>Sto; developed weakens",
+      "verdict": "REJECT",
+      "breaches": [
+        "BVB (Frontier) H = 6.4 < 20"
+      ],
+      "per_market": [
+        {
+          "market": "BTC",
+          "category": "Crypto",
+          "H_filt": 5.623827582924605,
+          "p": 0.06008988277497989,
+          "mean_det": 43.71752989294129,
+          "mean_sto": 46.56807744498032,
+          "direction": "Sto>=Det",
+          "registered_expectation": "not specified",
+          "meets": null
+        },
+        {
+          "market": "BVB",
+          "category": "Frontier",
+          "H_filt": 6.39465917159032,
+          "p": 0.040871201416271125,
+          "mean_det": 12.821311332629321,
+          "mean_sto": 12.608793637256824,
+          "direction": "Det>Sto",
+          "registered_expectation": "H>=20 and Det>Sto",
+          "meets": false
+        },
+        {
+          "market": "FTSE",
+          "category": "Developed",
+          "H_filt": 0.334205855624532,
+          "p": 0.8461125183446755,
+          "mean_det": 13.4048018583779,
+          "mean_sto": 13.118362277174848,
+          "direction": "Det>Sto",
+          "registered_expectation": "H<20 or Sto>=Det",
+          "meets": true
+        },
+        {
+          "market": "KOSPI",
+          "category": "Emerging",
+          "H_filt": 29.519350729668076,
+          "p": 3.8900432900822515e-07,
+          "mean_det": 23.121777975442164,
+          "mean_sto": 18.829620953816004,
+          "direction": "Det>Sto",
+          "registered_expectation": "not specified",
+          "meets": null
+        },
+        {
+          "market": "NIFTY",
+          "category": "Emerging",
+          "H_filt": 23.116867260944673,
+          "p": 9.555118003064808e-06,
+          "mean_det": 13.972009073149774,
+          "mean_sto": 16.43414976308448,
+          "direction": "Sto>=Det",
+          "registered_expectation": "not specified",
+          "meets": null
+        },
+        {
+          "market": "NIKKEI",
+          "category": "Developed",
+          "H_filt": 6.90016626738452,
+          "p": 0.03174299735580004,
+          "mean_det": 19.174766483209403,
+          "mean_sto": 18.797441198446656,
+          "direction": "Det>Sto",
+          "registered_expectation": "H<20 or Sto>=Det",
+          "meets": true
+        },
+        {
+          "market": "SPX",
+          "category": "Developed",
+          "H_filt": 4.957391752696822,
+          "p": 0.08385250835698178,
+          "mean_det": 15.903537302212058,
+          "mean_sto": 14.646486392460782,
+          "direction": "Det>Sto",
+          "registered_expectation": "H<20 or Sto>=Det",
+          "meets": true
+        },
+        {
+          "market": "VNINDEX",
+          "category": "Frontier",
+          "H_filt": 130.9804614185523,
+          "p": 3.6137173795586963e-29,
+          "mean_det": 20.44395505387978,
+          "mean_sto": 17.51145966901703,
+          "direction": "Det>Sto",
+          "registered_expectation": "H>=20 and Det>Sto",
+          "meets": true
+        }
+      ],
+      "note": "Scored on filtered labels, the canonical deployment track; means are the marginal Det/Sto forward-vol means the registration names, not the covariate-adjusted DML contrast."
+    },
+    "H2": {
+      "statement": "Microstructure ordering: rho(H, MS_index) > 0.5, p <= 0.10",
+      "per_track": {
+        "raw": {
+          "rho": 0.7619047619047621,
+          "p": 0.028004939153071805,
+          "gate_rho_gt_0.5": true,
+          "gate_p_le_0.10": true,
+          "verdict": "PASS"
+        },
+        "filtered": {
+          "rho": 0.8333333333333335,
+          "p": 0.010175540123456752,
+          "gate_rho_gt_0.5": true,
+          "gate_p_le_0.10": true,
+          "verdict": "PASS"
+        }
+      },
+      "verdict": "PASS",
+      "note": "Scored on the registered composite itself, on the registered-scale eight-market panel -- not on the RPS single-variable substitution the paper reports as primary."
+    },
+    "H3": {
+      "statement": "Transitional Dominance: frontier p_tra > 0.55, developed < 0.50",
+      "verdict": "PASS",
+      "breaches": [],
+      "registered_predictions_met": {
+        "frontier_all_gt_0.55": false,
+        "developed_all_lt_0.50": false,
+        "mean_gap_pp": 7.1,
+        "gap_gt_10pp": false
+      },
+      "per_market": [
+        {
+          "market": "VNINDEX",
+          "category": "Frontier",
+          "p_tra": 0.52
+        },
+        {
+          "market": "BVB",
+          "category": "Frontier",
+          "p_tra": 0.515
+        },
+        {
+          "market": "KOSPI",
+          "category": "Emerging",
+          "p_tra": 0.55
+        },
+        {
+          "market": "NIFTY",
+          "category": "Emerging",
+          "p_tra": 0.53
+        },
+        {
+          "market": "SPX",
+          "category": "Developed",
+          "p_tra": 0.444
+        },
+        {
+          "market": "FTSE",
+          "category": "Developed",
+          "p_tra": 0.525
+        },
+        {
+          "market": "NIKKEI",
+          "category": "Developed",
+          "p_tra": 0.37
+        },
+        {
+          "market": "BTC",
+          "category": "Crypto",
+          "p_tra": 0.476
+        }
+      ],
+      "note": "Registered H3 is a LEVEL prediction on p(Transitional) with fixed thresholds, not the band-width ordering the manuscript reports. Falsification turns only on the 0.45 / 0.60 bounds; the 0.55 / 0.50 / 10pp clauses are the point predictions."
+    },
+    "H4": {
+      "statement": "Temporal structure: flip rate below the shuffled-null 5th pct",
+      "verdict": "PASS",
+      "breaches": [],
+      "per_market": [
+        {
+          "market": "VNINDEX",
+          "category": "Frontier",
+          "observed": 6.97,
+          "null_mean_block20": 13.59,
+          "p_block20": 0.0,
+          "p_label_shuffle": 0.0
+        },
+        {
+          "market": "BVB",
+          "category": "Frontier",
+          "observed": 7.64,
+          "null_mean_block20": 14.5,
+          "p_block20": 0.0,
+          "p_label_shuffle": 0.0
+        },
+        {
+          "market": "KOSPI",
+          "category": "Emerging",
+          "observed": 14.12,
+          "null_mean_block20": 20.16,
+          "p_block20": 0.0,
+          "p_label_shuffle": 0.0
+        },
+        {
+          "market": "NIFTY",
+          "category": "Emerging",
+          "observed": 8.91,
+          "null_mean_block20": 15.45,
+          "p_block20": 0.0,
+          "p_label_shuffle": 0.0
+        },
+        {
+          "market": "SPX",
+          "category": "Developed",
+          "observed": 13.96,
+          "null_mean_block20": 20.7,
+          "p_block20": 0.0,
+          "p_label_shuffle": 0.0
+        },
+        {
+          "market": "FTSE",
+          "category": "Developed",
+          "observed": 14.67,
+          "null_mean_block20": 21.58,
+          "p_block20": 0.0,
+          "p_label_shuffle": 0.0
+        },
+        {
+          "market": "NIKKEI",
+          "category": "Developed",
+          "observed": 8.86,
+          "null_mean_block20": 16.4,
+          "p_block20": 0.0,
+          "p_label_shuffle": 0.0
+        },
+        {
+          "market": "BTC",
+          "category": "Crypto",
+          "observed": 9.67,
+          "null_mean_block20": 16.91,
+          "p_block20": 0.0,
+          "p_label_shuffle": 0.0
+        }
+      ]
+    },
+    "H5": {
+      "statement": "Parameter robustness: p_tra spread < 5pp across A/B/C",
+      "verdict": "REJECT",
+      "breaches": [
+        "NIFTY spread 8.8pp > 7pp",
+        "SPX spread 11.7pp > 7pp"
+      ],
+      "point_prediction_misses": [
+        "KOSPI spread 5.3pp (exceeds the 5pp point prediction, within the 7pp bound)",
+        "FTSE spread 6.2pp (exceeds the 5pp point prediction, within the 7pp bound)"
+      ],
+      "per_market": [
+        {
+          "market": "VNINDEX",
+          "category": "Frontier",
+          "p_tra_spread_pp": 2.0
+        },
+        {
+          "market": "BVB",
+          "category": "Frontier",
+          "p_tra_spread_pp": 2.3
+        },
+        {
+          "market": "KOSPI",
+          "category": "Emerging",
+          "p_tra_spread_pp": 5.3
+        },
+        {
+          "market": "NIFTY",
+          "category": "Emerging",
+          "p_tra_spread_pp": 8.8
+        },
+        {
+          "market": "SPX",
+          "category": "Developed",
+          "p_tra_spread_pp": 11.7
+        },
+        {
+          "market": "FTSE",
+          "category": "Developed",
+          "p_tra_spread_pp": 6.2
+        },
+        {
+          "market": "NIKKEI",
+          "category": "Developed",
+          "p_tra_spread_pp": 1.8
+        },
+        {
+          "market": "BTC",
+          "category": "Crypto",
+          "p_tra_spread_pp": 2.4
+        }
+      ]
+    }
+  }
+}

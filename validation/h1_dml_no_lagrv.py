@@ -15,6 +15,7 @@ from __future__ import annotations
 import json
 import os
 import sys
+import zlib
 import time
 from typing import Any
 
@@ -75,7 +76,7 @@ def build_dml_dataset_no_lagrv(
 def analyze_market(cfg: dict[str, Any]) -> dict[str, Any] | None:
     name = cfg["name"]
     print(f"\n[{name}] {cfg['ticker']} via {cfg['source']}")
-    rng = np.random.default_rng(RNG_SEED + hash(name) % 1000)
+    rng = np.random.default_rng(RNG_SEED + zlib.crc32((name).encode()) % 1000)
 
     t0 = time.time()
     try:

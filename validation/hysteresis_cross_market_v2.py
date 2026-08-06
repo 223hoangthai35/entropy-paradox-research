@@ -76,6 +76,7 @@ except Exception:
     pass
 
 from validation._features import run_full_pipeline, flip_rate_per_year, SPE_Z_WIN
+from validation._regression_guard import guard as _reg_guard
 from validation.regime_duration import regime_duration_stats, NATIVE_BPY
 from validation.shuffle_test import run_shuffle_test
 from validation.cross_market_v2 import (
@@ -645,48 +646,15 @@ def plot_p_tra_vs_rps(results: list[dict]) -> None:
 # REGRESSION CHECK AGAINST PRE-REG ARCHIVE
 # ==============================================================================
 def regression_check_legacy(df_new: pd.DataFrame) -> None:
-    """Diff legacy columns against prereg_b130b0f/hysteresis_summary_v2.csv.
-    Assertion ensures the refactor is additive, not altering."""
-    arch = os.path.join(ARCHIVE_DIR, "hysteresis_summary_v2.csv")
-    if not os.path.exists(arch):
-        print(f"[WARN] archive missing, skipping regression check: {arch}")
-        return
-    old = pd.read_csv(arch)
-    legacy_cols = [
-        "market", "category", "raw_flips_per_year", "filtered_flips_per_year",
-        "reduction_pct", "p_det", "p_tra", "p_sto",
-        "T_det_days", "T_tra_days", "T_sto_days", "overall_mean_days",
-        "shuffle_observed", "shuffle_null_mean", "shuffle_p_value",
-        "shuffle_verdict",
-    ]
-    missing = [c for c in legacy_cols if c not in df_new.columns or c not in old.columns]
-    if missing:
-        print(f"[WARN] regression check skipped, missing cols: {missing}")
-        return
-    new = df_new[legacy_cols].sort_values("market").reset_index(drop=True)
-    old = old[legacy_cols].sort_values("market").reset_index(drop=True)
-    if len(new) != len(old):
-        print(f"[WARN] regression row-count mismatch: new={len(new)} archive={len(old)}")
-        return
-    numeric = [c for c in legacy_cols
-               if c not in ("market", "category", "shuffle_verdict")]
-    diffs = (new[numeric].to_numpy(dtype=float)
-             - old[numeric].to_numpy(dtype=float))
-    max_abs = float(np.nanmax(np.abs(diffs)))
-    str_mismatch = (new[["market", "category", "shuffle_verdict"]].to_numpy()
-                    != old[["market", "category", "shuffle_verdict"]].to_numpy()).any()
-    if max_abs > 1e-4 or str_mismatch:
-        print(f"[FAIL] regression check: max abs diff = {max_abs:.2e}"
-              f" str_mismatch={str_mismatch}")
-        print("  rows:")
-        print(new.to_string(index=False))
-        print("  archive:")
-        print(old.to_string(index=False))
-        raise AssertionError("legacy columns drift from pre-reg archive")
-    print(f"[OK] legacy H3/H4 columns match pre-reg archive for "
-          f"{len(new)} markets (max abs diff {max_abs:.2e}).")
-
-
+    """Guard the pre-registered legacy columns (see validation/_regression_guard)."""
+    _reg_guard(
+        df_new, "hysteresis_summary_v2.csv",
+        num_cols=["raw_flips_per_year", "filtered_flips_per_year", "reduction_pct",
+                  "p_det", "p_tra", "p_sto", "T_det_days", "T_tra_days",
+                  "T_sto_days", "overall_mean_days", "shuffle_observed",
+                  "shuffle_null_mean", "shuffle_p_value"],
+        str_cols=["category", "shuffle_verdict"],
+    )
 # ==============================================================================
 # MAIN
 # ==============================================================================

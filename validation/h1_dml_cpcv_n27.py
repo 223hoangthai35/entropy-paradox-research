@@ -25,6 +25,7 @@ from __future__ import annotations
 import json
 import os
 import sys
+import zlib
 import time
 import warnings
 
@@ -57,7 +58,7 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 def analyze_market(cfg: dict) -> dict | None:
     name = cfg["name"]
     print(f"\n[{name}] {cfg['ticker']} via {cfg['source']} ({cfg['category']})")
-    rng = np.random.default_rng(RNG_SEED + hash(name) % 1000)
+    rng = np.random.default_rng(RNG_SEED + zlib.crc32((name).encode()) % 1000)
 
     t0 = time.time()
     try:

@@ -18,6 +18,7 @@ Output: validation/results_v2/h2_calibrated_kwh.json
 import json
 import os
 import sys
+import zlib
 import time
 
 import numpy as np
@@ -104,7 +105,7 @@ def main() -> int:
             df = pd.DataFrame({"lab": series, "fv": fv}).loc[ANALYSIS_START:].dropna()
             labs, y = df["lab"].to_numpy(), df["fv"].to_numpy()
             h_obs = kw_h(labs, y)
-            rng = np.random.default_rng(SEED + hash(name) % 1000)
+            rng = np.random.default_rng(SEED + zlib.crc32((name).encode()) % 1000)
             nulls = []
             n = len(labs)
             for _ in range(N_ROT):

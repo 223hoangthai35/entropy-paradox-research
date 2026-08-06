@@ -56,6 +56,7 @@ from __future__ import annotations
 import json
 import os
 import sys
+import zlib
 import time
 import warnings
 from typing import Any, Optional
@@ -79,6 +80,7 @@ except Exception:
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 from validation._features import run_full_pipeline, SPE_Z_WIN
+from validation._regression_guard import guard as _reg_guard
 from skills.ds_skill import REGIME_NAMES
 
 # ==============================================================================
@@ -362,7 +364,7 @@ def _formal_direction_verdict(delta: float, ci_lo: float, ci_hi: float) -> str:
 def analyze_market(cfg: dict[str, Any]) -> Optional[dict[str, Any]]:
     name = cfg["name"]
     print(f"\n[{name}] {cfg['ticker']} via {cfg['source']}")
-    rng = np.random.default_rng(RNG_SEED + hash(name) % 1000)
+    rng = np.random.default_rng(RNG_SEED + zlib.crc32((name).encode()) % 1000)
 
     t0 = time.time()
     try:
@@ -553,7 +555,7 @@ def analyze_market(cfg: dict[str, Any]) -> Optional[dict[str, Any]]:
         delta_f = _cliffs_delta(det_h_f, sto_h_f)
         ci_lo_f, ci_hi_f, _ = _block_bootstrap_delta_ci(
             labels_f_h, fwd_f_h, "Deterministic", "Stochastic",
-            block=BLOCK, n_boot=N_BOOT, rng=np.random.default_rng(RNG_SEED + hash(name + "_filt") % 1000),
+            block=BLOCK, n_boot=N_BOOT, rng=np.random.default_rng(RNG_SEED + zlib.crc32((name + "_filt").encode()) % 1000),
             alpha=ALPHA,
         )
         verdict_f = _formal_direction_verdict(delta_f, ci_lo_f, ci_hi_f)
@@ -838,37 +840,13 @@ def plot_h_vs_rps(results: list[dict]) -> None:
 # REGRESSION ASSERTION (legacy cols vs archived pre-reg)
 # ==============================================================================
 def assert_legacy_unchanged(new_summary: pd.DataFrame) -> None:
-    """Fail loudly if legacy H_stat / p_value / direction drift from pre-reg archive."""
-    archive_csv = os.path.join(ARCHIVE_DIR, "cross_market_summary_v2.csv")
-    if not os.path.exists(archive_csv):
-        print(f"  [WARN] archive not found at {archive_csv}; skipping regression check.")
-        return
-    old = pd.read_csv(archive_csv).set_index("market")
-    new = new_summary.set_index("market")
-    common = sorted(set(old.index) & set(new.index))
-    mismatches = []
-    tol = 1e-4
-    for m in common:
-        for col in ["H_stat", "p_value", "det_mean_vol", "sto_mean_vol", "trans_mean_vol"]:
-            if col not in old.columns or col not in new.columns:
-                continue
-            ov, nv = float(old.loc[m, col]), float(new.loc[m, col])
-            if np.isnan(ov) and np.isnan(nv):
-                continue
-            if not np.isclose(ov, nv, rtol=0, atol=tol, equal_nan=False):
-                mismatches.append((m, col, ov, nv))
-        if old.loc[m, "paradox_direction"] != new.loc[m, "paradox_direction"]:
-            mismatches.append((m, "paradox_direction",
-                               old.loc[m, "paradox_direction"], new.loc[m, "paradox_direction"]))
-    if mismatches:
-        print("\n[REGRESSION FAIL] legacy columns drifted from pre-reg archive:")
-        for m, c, ov, nv in mismatches:
-            print(f"  {m:8s}  {c:20s}  archive={ov}  new={nv}")
-        raise AssertionError("Refactor altered pre-registered legacy columns. "
-                             "Aborting to preserve pre-reg auditability.")
-    print(f"  [OK] legacy columns match pre-reg archive for {len(common)} markets (atol={tol}).")
-
-
+    """Guard the pre-registered legacy columns (see validation/_regression_guard)."""
+    _reg_guard(
+        new_summary, "cross_market_summary_v2.csv",
+        num_cols=["H_stat", "p_value", "det_mean_vol", "sto_mean_vol",
+                  "trans_mean_vol"],
+        str_cols=["paradox_direction"],
+    )
 # ==============================================================================
 # MAIN
 # ==============================================================================

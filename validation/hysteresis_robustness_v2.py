@@ -64,6 +64,7 @@ from skills.ds_skill import (
 from validation._features import (
     load_ohlcv, build_plane1_features, flip_rate_per_year, SPE_Z_WIN,
 )
+from validation._regression_guard import guard as _reg_guard
 from validation.regime_duration import regime_duration_stats, NATIVE_BPY
 from validation.cross_market_v2 import (
     MARKETS, START, END,
@@ -278,43 +279,18 @@ def build_h5_refined_csv(market_results: list[dict[str, Any]]) -> pd.DataFrame:
 
 
 def regression_check_legacy(df_new: pd.DataFrame) -> None:
-    """Diff legacy columns against prereg_b130b0f/hysteresis_robustness_v2.csv."""
-    arch = os.path.join(ARCHIVE_DIR, "hysteresis_robustness_v2.csv")
-    if not os.path.exists(arch):
-        print(f"[WARN] archive missing, skipping regression check: {arch}")
-        return
-    old = pd.read_csv(arch)
-    legacy_cols = [
-        "market", "category", "config", "delta_hard", "delta_soft", "t_persist",
-        "n_bars", "flips_per_year", "p_det", "p_tra", "p_sto",
-        "T_det_days", "T_tra_days", "T_sto_days", "overall_d",
-        "p_tra_spread", "H5_verdict",
-    ]
-    missing = [c for c in legacy_cols
-               if c not in df_new.columns or c not in old.columns]
-    if missing:
-        print(f"[WARN] regression check skipped, missing cols: {missing}")
-        return
-    new = df_new[legacy_cols].sort_values(["market", "config"]).reset_index(drop=True)
-    old = old[legacy_cols].sort_values(["market", "config"]).reset_index(drop=True)
-    if len(new) != len(old):
-        print(f"[WARN] row-count mismatch: new={len(new)} archive={len(old)}")
-        return
-    numeric = [c for c in legacy_cols
-               if c not in ("market", "category", "config", "H5_verdict")]
-    diffs = (new[numeric].to_numpy(dtype=float)
-             - old[numeric].to_numpy(dtype=float))
-    max_abs = float(np.nanmax(np.abs(diffs)))
-    str_mismatch = (new[["market", "category", "config", "H5_verdict"]].to_numpy()
-                    != old[["market", "category", "config", "H5_verdict"]].to_numpy()).any()
-    if max_abs > 1e-4 or str_mismatch:
-        print(f"[FAIL] regression check: max abs diff = {max_abs:.2e}"
-              f" str_mismatch={str_mismatch}")
-        raise AssertionError("legacy H5 columns drift from pre-reg archive")
-    print(f"[OK] legacy H5 columns match pre-reg archive for "
-          f"{len(new)} rows (max abs diff {max_abs:.2e}).")
+    """Guard the pre-registered legacy columns (see validation/_regression_guard).
 
-
+    Keyed on market+config, since this artifact carries one row per hysteresis
+    configuration rather than one row per market.
+    """
+    _reg_guard(
+        df_new, "hysteresis_robustness_v2.csv", key=["market", "config"],
+        num_cols=["delta_hard", "delta_soft", "t_persist", "n_bars",
+                  "flips_per_year", "p_det", "p_tra", "p_sto", "T_det_days",
+                  "T_tra_days", "T_sto_days", "overall_d", "p_tra_spread"],
+        str_cols=["category", "H5_verdict"],
+    )
 def main() -> int:
     print("=" * 78)
     print("PHASE 2b — HYSTERESIS ROBUSTNESS (H5 REFINED) × 8 markets × 3 configs")
