@@ -1,0 +1,178 @@
+{
+  "spec": "Sub-period stability of the cross-market ordering. Labels are the full-sample mixture, held fixed; only the segment on which H is evaluated moves. Two split designs, with power and partition-degeneracy controls.",
+  "window": [
+    "2018-01-01",
+    "2026-06-30"
+  ],
+  "seed": 42,
+  "n_markets": 27,
+  "by_bar_fraction": {
+    "early_30pct": {
+      "rho": 0.44659386172626747,
+      "p": 0.01953194344425768,
+      "n_markets": 27,
+      "median_H": 22.457673094016627,
+      "median_bars": 460.0,
+      "markets_with_3_groups": 26
+    },
+    "late_30pct": {
+      "rho": -0.26850804589719307,
+      "p": 0.175668643570033,
+      "n_markets": 27,
+      "median_H": 15.32751678492059,
+      "median_bars": 441.0,
+      "markets_with_3_groups": 27
+    },
+    "early_40pct": {
+      "rho": 0.5756371120946674,
+      "p": 0.0016797780556609932,
+      "n_markets": 27,
+      "median_H": 16.30775528787808,
+      "median_bars": 614.0,
+      "markets_with_3_groups": 27
+    },
+    "late_40pct": {
+      "rho": -0.06988565578146122,
+      "p": 0.7290591822465783,
+      "n_markets": 27,
+      "median_H": 14.048264392952433,
+      "median_bars": 595.0,
+      "markets_with_3_groups": 27
+    },
+    "early_50pct": {
+      "rho": 0.5474376369547795,
+      "p": 0.003122095143020912,
+      "n_markets": 27,
+      "median_H": 22.63604497891356,
+      "median_bars": 768.0,
+      "markets_with_3_groups": 27
+    },
+    "late_50pct": {
+      "rho": 0.14130389173356853,
+      "p": 0.48203499288723384,
+      "n_markets": 27,
+      "median_H": 10.599243167466284,
+      "median_bars": 748.0,
+      "markets_with_3_groups": 27
+    },
+    "early_60pct": {
+      "rho": 0.6179363248044992,
+      "p": 0.0005932747929598601,
+      "n_markets": 27,
+      "median_H": 16.121042942406802,
+      "median_bars": 921.0,
+      "markets_with_3_groups": 27
+    },
+    "late_60pct": {
+      "rho": 0.3233744160063228,
+      "p": 0.09989909600361416,
+      "n_markets": 27,
+      "median_H": 16.569063248247858,
+      "median_bars": 902.0,
+      "markets_with_3_groups": 27
+    }
+  },
+  "by_calendar": {
+    "before_2023-01-01": {
+      "rho": 0.5005406837330095,
+      "p": 0.007834949746824069,
+      "n_markets": 27,
+      "median_H": 19.286169391825297,
+      "median_bars": 681.0,
+      "markets_with_3_groups": 27
+    },
+    "after_2023-01-01": {
+      "rho": 0.2449063112692435,
+      "p": 0.2182444567202728,
+      "n_markets": 27,
+      "median_H": 10.572808376945432,
+      "median_bars": 838.0,
+      "markets_with_3_groups": 27
+    },
+    "before_2024-01-01": {
+      "rho": 0.6231470973846959,
+      "p": 0.0005165081399254784,
+      "n_markets": 27,
+      "median_H": 18.31422383162362,
+      "median_bars": 930.0,
+      "markets_with_3_groups": 27
+    },
+    "after_2024-01-01": {
+      "rho": -0.13364099088033812,
+      "p": 0.5063377798781498,
+      "n_markets": 27,
+      "median_H": 13.905048903108082,
+      "median_bars": 593.0,
+      "markets_with_3_groups": 27
+    },
+    "before_2025-01-01": {
+      "rho": 0.4723412085931217,
+      "p": 0.012854661911188461,
+      "n_markets": 27,
+      "median_H": 19.426625226487886,
+      "median_bars": 1177.0,
+      "markets_with_3_groups": 27
+    },
+    "after_2025-01-01": {
+      "rho": -0.25164966402008626,
+      "p": 0.20543028683594985,
+      "n_markets": 27,
+      "median_H": 12.8736119693815,
+      "median_bars": 346.0,
+      "markets_with_3_groups": 27
+    }
+  },
+  "full_window": {
+    "rho": 0.5833000129478978,
+    "p": 0.0014057002284725542,
+    "n_markets": 27,
+    "median_H": 16.699125114152594
+  },
+  "calendar_anomaly_control": {
+    "all markets": {
+      "n_markets": 27,
+      "late": {
+        "rho": -0.13364099088033812,
+        "p": 0.5063377798781498
+      },
+      "early": {
+        "rho": 0.6231470973846959,
+        "p": 0.0005165081399254784
+      }
+    },
+    "drop gapped (TWII)": {
+      "n_markets": 26,
+      "late": {
+        "rho": -0.1434958965920125,
+        "p": 0.4843423820414613
+      },
+      "early": {
+        "rho": 0.6206712465032503,
+        "p": 0.0007166998886853251
+      }
+    },
+    "drop crypto (365-day calendar)": {
+      "n_markets": 24,
+      "late": {
+        "rho": 0.01440114642449389,
+        "p": 0.9467505862335882
+      },
+      "early": {
+        "rho": 0.6257952719007346,
+        "p": 0.0010727072207769057
+      }
+    },
+    "drop both": {
+      "n_markets": 23,
+      "late": {
+        "rho": -0.001983155225071109,
+        "p": 0.9928347262899956
+      },
+      "early": {
+        "rho": 0.6202317966409894,
+        "p": 0.0015927984909237265
+      }
+    }
+  },
+  "elapsed_min": 0.4
+}

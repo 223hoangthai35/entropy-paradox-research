@@ -1,0 +1,257 @@
+{
+  "spec": "Out-of-sample labeling control: mixture and Schmitt trigger fitted on the first 60% of each market's bars, applied forward, scored on the held-out remainder. The full-sample labels are scored on the same held-out bars for comparison.",
+  "window": [
+    "2018-01-01",
+    "2026-06-30"
+  ],
+  "train_frac": 0.6,
+  "seed": 42,
+  "n_markets": 27,
+  "per_market": {
+    "VNINDEX": {
+      "n_train": 933,
+      "n_test_scored": 602,
+      "H_causal_raw": 17.1191817660806,
+      "H_causal_filt": 16.990272144844084,
+      "H_fullsample_raw": 18.57760103299688,
+      "H_fullsample_filt": 26.347595630383466
+    },
+    "KSE100": {
+      "n_train": 612,
+      "n_test_scored": 388,
+      "H_causal_raw": 3.4722256088775794,
+      "H_causal_filt": 3.0481297689327675,
+      "H_fullsample_raw": 12.474388721939249,
+      "H_fullsample_filt": 11.229378207084437
+    },
+    "DSEX": {
+      "n_train": 818,
+      "n_test_scored": 526,
+      "H_causal_raw": 99.10862960702661,
+      "H_causal_filt": 86.8034434565775,
+      "H_fullsample_raw": 95.65034534033771,
+      "H_fullsample_filt": 84.04776328106118
+    },
+    "BVB": {
+      "n_train": 930,
+      "n_test_scored": 601,
+      "H_causal_raw": 33.02671497850815,
+      "H_causal_filt": 29.117373229755003,
+      "H_fullsample_raw": 24.241157239284803,
+      "H_fullsample_filt": 21.362563567045527
+    },
+    "SBITOP": {
+      "n_train": 925,
+      "n_test_scored": 597,
+      "H_causal_raw": 80.80129252072197,
+      "H_causal_filt": 71.34465583888618,
+      "H_fullsample_raw": 44.890285450327156,
+      "H_fullsample_filt": 25.459674712249353
+    },
+    "OMXVGI": {
+      "n_train": 921,
+      "n_test_scored": 595,
+      "H_causal_raw": 5.85011023686161,
+      "H_causal_filt": 30.5118910476192,
+      "H_fullsample_raw": 8.055446222056844,
+      "H_fullsample_filt": 10.472819449687222
+    },
+    "OMXRGI": {
+      "n_train": 730,
+      "n_test_scored": 467,
+      "H_causal_raw": 62.200654281036805,
+      "H_causal_filt": 68.00890038660214,
+      "H_fullsample_raw": 52.41912894473535,
+      "H_fullsample_filt": 53.56384196863132
+    },
+    "MERV": {
+      "n_train": 901,
+      "n_test_scored": 581,
+      "H_causal_raw": 5.100941895330152,
+      "H_causal_filt": 13.612571313442913,
+      "H_fullsample_raw": 12.368488563080746,
+      "H_fullsample_filt": 17.029044915981785
+    },
+    "KOSPI": {
+      "n_train": 910,
+      "n_test_scored": 587,
+      "H_causal_raw": 2.164792674840328,
+      "H_causal_filt": 5.150432414850684,
+      "H_fullsample_raw": 6.5195018293388785,
+      "H_fullsample_filt": 0.14732556273315822
+    },
+    "NIFTY": {
+      "n_train": 916,
+      "n_test_scored": 591,
+      "H_causal_raw": 8.600555411236428,
+      "H_causal_filt": 5.499675846145237,
+      "H_fullsample_raw": 11.199933329322903,
+      "H_fullsample_filt": 15.549227005069497
+    },
+    "PSEI": {
+      "n_train": 905,
+      "n_test_scored": 584,
+      "H_causal_raw": 17.43892598616435,
+      "H_causal_filt": 28.109911159781177,
+      "H_fullsample_raw": 10.67951808671387,
+      "H_fullsample_filt": 12.432550851042379
+    },
+    "JKSE": {
+      "n_train": 888,
+      "n_test_scored": 572,
+      "H_causal_raw": 27.244544526433856,
+      "H_causal_filt": 16.98331000756275,
+      "H_fullsample_raw": 47.031782606988145,
+      "H_fullsample_filt": 20.34902274372962
+    },
+    "SET": {
+      "n_train": 894,
+      "n_test_scored": 576,
+      "H_causal_raw": 112.67149258720224,
+      "H_causal_filt": 120.81889319725815,
+      "H_fullsample_raw": 54.69834249822361,
+      "H_fullsample_filt": 57.60450790500454
+    },
+    "SHANGHAI": {
+      "n_train": 895,
+      "n_test_scored": 577,
+      "H_causal_raw": 0.6697138681004162,
+      "H_causal_filt": 1.3558684777406143,
+      "H_fullsample_raw": 70.96337634879342,
+      "H_fullsample_filt": 96.72977752647671
+    },
+    "TWII": {
+      "n_train": 591,
+      "n_test_scored": 375,
+      "H_causal_raw": 32.24702554173973,
+      "H_causal_filt": 35.02568157033534,
+      "H_fullsample_raw": 29.657777609634877,
+      "H_fullsample_filt": 52.81419021208171
+    },
+    "SPX": {
+      "n_train": 942,
+      "n_test_scored": 608,
+      "H_causal_raw": 2.808185239255863,
+      "H_causal_filt": 1.24514735350931,
+      "H_fullsample_raw": 1.2295577969614442,
+      "H_fullsample_filt": 1.0838330601975485
+    },
+    "FTSE": {
+      "n_train": 948,
+      "n_test_scored": 612,
+      "H_causal_raw": 34.51707685942915,
+      "H_causal_filt": 41.873462100588085,
+      "H_fullsample_raw": 20.399739360047533,
+      "H_fullsample_filt": 63.15856193471723
+    },
+    "DAX": {
+      "n_train": 954,
+      "n_test_scored": 617,
+      "H_causal_raw": 5.688790085126584,
+      "H_causal_filt": 2.3863049294886878,
+      "H_fullsample_raw": 7.141934384974547,
+      "H_fullsample_filt": 12.74563537612994
+    },
+    "CAC": {
+      "n_train": 965,
+      "n_test_scored": 624,
+      "H_causal_raw": 3.0075508258498758,
+      "H_causal_filt": 34.96612899994011,
+      "H_fullsample_raw": 19.89679048881453,
+      "H_fullsample_filt": 11.485104731473712
+    },
+    "SSMI": {
+      "n_train": 932,
+      "n_test_scored": 602,
+      "H_causal_raw": 17.819762401365324,
+      "H_causal_filt": 27.34335738261575,
+      "H_fullsample_raw": 14.048264392952433,
+      "H_fullsample_filt": 23.220047186827742
+    },
+    "NIKKEI": {
+      "n_train": 904,
+      "n_test_scored": 583,
+      "H_causal_raw": 34.32145877082348,
+      "H_causal_filt": 49.205927257927215,
+      "H_fullsample_raw": 37.25950733023319,
+      "H_fullsample_filt": 49.050182260463544
+    },
+    "ASX": {
+      "n_train": 950,
+      "n_test_scored": 614,
+      "H_causal_raw": 36.13213079288607,
+      "H_causal_filt": 41.89139641355314,
+      "H_fullsample_raw": 0.313761765206209,
+      "H_fullsample_filt": 11.323000650446147
+    },
+    "HSI": {
+      "n_train": 913,
+      "n_test_scored": 590,
+      "H_causal_raw": 8.464502276599205,
+      "H_causal_filt": 4.223692971564333,
+      "H_fullsample_raw": 8.96994673404356,
+      "H_fullsample_filt": 0.8179849675557307
+    },
+    "STI": {
+      "n_train": 940,
+      "n_test_scored": 607,
+      "H_causal_raw": 56.71617592114262,
+      "H_causal_filt": 50.69233467394042,
+      "H_fullsample_raw": 60.277733809515894,
+      "H_fullsample_filt": 74.57104965540111
+    },
+    "BTC": {
+      "n_train": 1523,
+      "n_test_scored": 996,
+      "H_causal_raw": 7.955519262666257,
+      "H_causal_filt": 29.904131689805126,
+      "H_fullsample_raw": 8.007004005231465,
+      "H_fullsample_filt": 15.694090922372197
+    },
+    "ETH": {
+      "n_train": 1523,
+      "n_test_scored": 996,
+      "H_causal_raw": 2.2415402803476354,
+      "H_causal_filt": 13.705190656315153,
+      "H_fullsample_raw": 1.4304389676099163,
+      "H_fullsample_filt": 7.322128217983391
+    },
+    "BNB": {
+      "n_train": 1523,
+      "n_test_scored": 996,
+      "H_causal_raw": 12.412707342509293,
+      "H_causal_filt": 23.233746808685737,
+      "H_fullsample_raw": 3.693621911218088,
+      "H_fullsample_filt": 4.736957643855931
+    }
+  },
+  "cross_market": {
+    "H_causal_raw": {
+      "rho": -0.2798491391599741,
+      "p": 0.1574315763020256,
+      "n": 27
+    },
+    "H_causal_filt": {
+      "rho": -0.29027068432036746,
+      "p": 0.14189832540973846,
+      "n": 27
+    },
+    "H_fullsample_raw": {
+      "rho": -0.06988565578146122,
+      "p": 0.7290591822465783,
+      "n": 27
+    },
+    "H_fullsample_filt": {
+      "rho": -0.09287435834115242,
+      "p": 0.6449766115039479,
+      "n": 27
+    }
+  },
+  "retention": {
+    "median": 0.993570036616496,
+    "mean": 5.343305924843639,
+    "rho_vs_RPS": -0.14927330862092814,
+    "p_vs_RPS": 0.45740716879659665
+  },
+  "elapsed_min": 0.5
+}
