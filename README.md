@@ -122,31 +122,31 @@ this tag has corrected. Outputs land in
 
 ```bash
 # Pre-registered suite, scored as registered
-python validation/score_h1_h5_as_registered.py   # H1-H5 verbatim against b130b0f
-python validation/compare_n8_vs_n27.py           # both panel sizes side by side
+python validation/scoring/score_h1_h5_as_registered.py   # H1-H5 verbatim against b130b0f
+python validation/scoring/compare_n8_vs_n27.py           # both panel sizes side by side
 
 # The finding (H2) and its controls
-python validation/h2_eta_squared_n27.py          # Eq. (1): rho(H, RPS) at n = 27
-python validation/h2_calibrated_kwh.py           # the same statistic under its own rotation null
-python validation/h2_simplevol_control.py        # rolling-volatility feature control
-python validation/h6_chronos_8market.py          # foundation-model head-to-head
+python validation/h2_magnitude/h2_eta_squared_n27.py          # Eq. (1): rho(H, RPS) at n = 27
+python validation/h2_magnitude/h2_calibrated_kwh.py           # the same statistic under its own rotation null
+python validation/controls/h2_simplevol_control.py        # rolling-volatility feature control
+python validation/controls/h6_chronos_8market.py          # foundation-model head-to-head
 
 # Direction (H1) and the calibration that grades it
-python validation/h1_dml_cpcv.py                 # canonical CF-DML + Purged K-Fold
-python validation/h1_dml_cpcv_n27.py             # expanded panel
-python validation/dml_monte_carlo_stability.py   # estimator Monte-Carlo noise
+python validation/h1_direction/h1_dml_cpcv.py                 # canonical CF-DML + Purged K-Fold
+python validation/h1_direction/h1_dml_cpcv_n27.py             # expanded panel
+python validation/h1_direction/dml_monte_carlo_stability.py   # estimator Monte-Carlo noise
 
 # Supporting hypotheses
-python validation/hysteresis_cross_market_v2.py  # H3 + H4
-python validation/hysteresis_robustness_v2.py    # H5 (n = 8)
-python validation/h5_n27.py                      # H5 (n = 27)
+python validation/h3_h4_h5/hysteresis_cross_market_v2.py  # H3 + H4
+python validation/h3_h4_h5/hysteresis_robustness_v2.py    # H5 (n = 8)
+python validation/h3_h4_h5/h5_n27.py                      # H5 (n = 27)
 
 # Panel properties reported in the data section and limitations
-python validation/dependence_aware_inference.py  # cross-market dependence, block nulls
-python validation/h_comovement_check.py          # is that dependence present in H itself?
-python validation/series_length_diagnostic.py    # usable-history confound
-python validation/subperiod_stability.py         # is the ordering uniform in time?
-python validation/causal_labeling_check.py       # out-of-sample labeling control
+python validation/panel_properties/dependence_aware_inference.py  # cross-market dependence, block nulls
+python validation/panel_properties/h_comovement_check.py          # is that dependence present in H itself?
+python validation/panel_properties/series_length_diagnostic.py    # usable-history confound
+python validation/panel_properties/subperiod_stability.py         # is the ordering uniform in time?
+python validation/panel_properties/causal_labeling_check.py       # out-of-sample labeling control
 ```
 
 Scripts superseded during revision are retained under
@@ -198,7 +198,7 @@ This figure is a mechanism illustration and was rendered on the registration-era
 window; the flip rates quoted in the manuscript are computed on the canonical
 window, where VNINDEX carries 6.97 filtered flips per year against a shuffled-null
 mean of 140.25. Reproduced by
-[`regime_phase_space_compare.py`](validation/regime_phase_space_compare.py).
+[`regime_phase_space_compare.py`](validation/diagnostics/regime_phase_space_compare.py).
 
 ## Pre-registration
 

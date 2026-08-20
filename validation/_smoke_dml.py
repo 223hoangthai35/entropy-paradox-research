@@ -4,7 +4,7 @@ import os, sys, time
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from validation._features import run_full_pipeline
-from validation.h1_dml import build_dml_dataset, fit_linear_dml, fit_causal_forest_dml, PRIMARY_HORIZON
+from validation.h1_direction.h1_dml import build_dml_dataset, fit_linear_dml, fit_causal_forest_dml, PRIMARY_HORIZON
 import numpy as np
 
 print("Loading VNINDEX...")
