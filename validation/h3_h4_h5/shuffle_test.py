@@ -47,8 +47,6 @@ RANDOM_SEED:    int = 42
 TRADING_DAYS:   int = 252
 
 P_VALUE_THRESHOLD = 0.01    # T3 PASS iff p-value below this
-RESULTS_DIR = os.path.join(_VALIDATION, "results")
-RESULT_PATH = os.path.join(RESULTS_DIR, "shuffle_test_result.json")
 
 
 @dataclass
@@ -143,42 +141,36 @@ def format_result(r: ShuffleTestResult) -> str:
     return "\n".join(lines)
 
 
-def save_result(r: ShuffleTestResult, path: str = RESULT_PATH) -> None:
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    payload = {
-        "market": r.market, "start": r.start, "end": r.end,
-        "n_bars": r.n_bars,
-        "label_marginals": r.label_marginals,
-        "observed_flip_rate": r.observed_flip_rate,
-        "null_mean": r.null_mean,
-        "null_std": r.null_std,
-        "null_p05": r.null_p05,
-        "null_p95": r.null_p95,
-        "null_min": r.null_min,
-        "null_max": r.null_max,
-        "p_value": r.p_value,
-        "n_permutations": r.n_permutations,
-        "seed": r.seed,
-        "p_value_threshold": P_VALUE_THRESHOLD,
-        "verdict": r.verdict,
-    }
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(payload, f, indent=2)
-
-
 def main() -> int:
+    """Single-market smoke check. NOT the paper's H4 result.
+
+    This block loads labels through scripts.extract_flip_dates rather than the
+    pinned recipe in validation/_features.py, so it sees a different bar count
+    and reports a different flip rate -- 10.75 per year on 1,055 bars for
+    VNINDEX, against the 6.97 the paper reports. The two do not conflict; they
+    are two different label series, and only one of them is the paper's.
+
+    The canonical H4 test is hysteresis_cross_market_v2.py, which calls
+    run_shuffle_test() above on labels built by the pinned pipeline and writes
+    h4_block_permutation.csv. Read that, not this.
+
+    Nothing is written to disk here, deliberately. An artifact from this path
+    used to sit in the archive reporting 10.75 while the manuscript reported
+    6.97, and a reader who found it had no way to tell which number was the
+    paper's.
+    """
     end = "2026-06-30"
     start = "2020-01-01"
     market = "VNINDEX"
+    print("  NOTE: smoke check on a non-canonical label path.")
+    print("        The paper's H4 numbers come from hysteresis_cross_market_v2.py.")
     print(f"  Loading filtered label series for {market} ...")
     labels = get_filtered_labels(market=market, start=start, end=end)
     print(f"  Got {len(labels)} labeled bars.")
-    result = run_shuffle_test(
-        labels, market=market, start=start, end=end
-    )
+    result = run_shuffle_test(labels, market=market, start=start, end=end)
     print(format_result(result))
-    save_result(result)
-    print(f"\n  Result saved to: {RESULT_PATH}")
+    print()
+    print("  Not saved -- see main().__doc__ for why.")
     return 0
 
 
