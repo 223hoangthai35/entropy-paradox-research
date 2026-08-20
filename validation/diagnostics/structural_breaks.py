@@ -165,7 +165,7 @@ def main() -> int:
         "per_market": results,
         "known_events_for_context": KNOWN_EVENTS,
     }
-    out_path = os.path.join(OUTPUT_DIR, "structural_breaks.json")
+    out_path = os.path.join(OUTPUT_DIR, "diagnostics/structural_breaks.json")
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, default=float)
     print(f"\nJSON: {out_path}")

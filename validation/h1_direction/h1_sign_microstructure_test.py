@@ -79,7 +79,7 @@ def main() -> int:
         print(f"{pred_name:>9}: rho(ATE)={r_ate:+.3f} p={p_ate:.4f} | "
               f"rho(sign)={r_sgn:+.3f} p={p_sgn:.4f} | Fisher p={p_fisher:.4f} {table}")
 
-    path = os.path.join(RES, "h1_sign_microstructure_test.json")
+    path = os.path.join(RES, "h1_direction/h1_sign_microstructure_test.json")
     with open(path, "w", encoding="utf-8") as f:
         json.dump(out, f, indent=2, default=float)
     print("JSON:", path)

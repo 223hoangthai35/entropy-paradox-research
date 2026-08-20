@@ -180,7 +180,7 @@ def main() -> None:
     )
     plt.tight_layout()
     out_path = os.path.join(
-        OUTPUT_DIR, "regime_phase_space_vnindex_raw_vs_filtered.png"
+        OUTPUT_DIR, "diagnostics/regime_phase_space_vnindex_raw_vs_filtered.png"
     )
     plt.savefig(out_path, dpi=150, bbox_inches="tight",
                 facecolor=fig.get_facecolor())

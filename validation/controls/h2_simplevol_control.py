@@ -114,7 +114,7 @@ def main() -> int:
                "window": [ANALYSIS_START, END], "seed": SEED,
                "per_market": per_market, "cross_market": cross,
                "elapsed_min": round((time.time() - t0) / 60, 1)}
-    path = os.path.join(RES, "h2_simplevol_control.json")
+    path = os.path.join(RES, "controls/h2_simplevol_control.json")
     with open(path, "w", encoding="utf-8") as f:
         json.dump(out_doc, f, indent=2, default=float)
     print("JSON:", path, f"({out_doc['elapsed_min']} min)")

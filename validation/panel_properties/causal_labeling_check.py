@@ -55,7 +55,7 @@ from validation.h1_direction.h1_dml import START, END  # noqa: E402
 from validation.markets_n27 import MARKETS_N27  # noqa: E402
 
 R = os.path.join(_VALIDATION, "results_v2")
-OUT = os.path.join(R, "causal_labeling_check.json")
+OUT = os.path.join(R, "panel_properties/causal_labeling_check.json")
 TRAIN_FRAC = 0.60
 MIN_PER_GROUP = 5
 SEED = 42

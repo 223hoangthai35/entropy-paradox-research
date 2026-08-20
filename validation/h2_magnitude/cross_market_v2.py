@@ -699,7 +699,7 @@ def build_summary_csv(results: list[dict[str, Any]]) -> pd.DataFrame:
             "direction_verdict_formal_filtered": r["direction_verdict_formal_filtered"],
         })
     df = pd.DataFrame(rows)
-    path = os.path.join(OUTPUT_DIR, "cross_market_summary_v2.csv")
+    path = os.path.join(OUTPUT_DIR, "h2_magnitude/cross_market_summary_v2.csv")
     df.to_csv(path, index=False)
     print(f"\nSummary CSV: {path}")
     return df
@@ -741,7 +741,7 @@ def build_horizons_csv(results: list[dict[str, Any]]) -> pd.DataFrame:
                 "direction_verdict_formal": hrow["direction_verdict_formal"],
             })
     df = pd.DataFrame(rows)
-    path = os.path.join(OUTPUT_DIR, "cross_market_h1_horizons.csv")
+    path = os.path.join(OUTPUT_DIR, "h2_magnitude/cross_market_h1_horizons.csv")
     df.to_csv(path, index=False)
     print(f"Horizons CSV: {path}")
     return df
@@ -774,7 +774,7 @@ def plot_horizon_heatmap(horizons_df: pd.DataFrame, market_order: list[str]) -> 
                     fontsize=8, color="black" if abs(val) < 0.6 * vmax else "white")
     fig.colorbar(im, ax=ax, label="Cliff's δ")
     plt.tight_layout()
-    out = os.path.join(OUTPUT_DIR, "cross_market_h1_horizons.png")
+    out = os.path.join(OUTPUT_DIR, "h2_magnitude/cross_market_h1_horizons.png")
     plt.savefig(out, dpi=140, bbox_inches="tight")
     plt.close()
     print(f"Horizon heatmap: {out}")
@@ -804,7 +804,7 @@ def plot_boxplots(results_with_dfs: list[tuple[dict, pd.DataFrame]]) -> None:
     fig.suptitle("Cross-Market Entropy Paradox — V2 Combined (rolling SPE_Z) + Formal Verdict",
                  fontsize=13, y=1.00)
     plt.tight_layout()
-    out = os.path.join(OUTPUT_DIR, "cross_market_validation_v2.png")
+    out = os.path.join(OUTPUT_DIR, "h2_magnitude/cross_market_validation_v2.png")
     plt.savefig(out, dpi=140, bbox_inches="tight")
     plt.close()
     print(f"Figure: {out}")
@@ -830,7 +830,7 @@ def plot_h_vs_rps(results: list[dict]) -> None:
     ax.set_ylabel("Kruskal–Wallis H (log scale)")
     ax.set_yscale("symlog", linthresh=1.0); ax.grid(alpha=0.3)
     ax.set_title(f"H vs RPS (H2 primary): Spearman ρ = {rho:.2f}  p = {p_spear:.3f}")
-    out = os.path.join(OUTPUT_DIR, "h_vs_rps_v2.png")
+    out = os.path.join(OUTPUT_DIR, "h2_magnitude/h_vs_rps_v2.png")
     plt.tight_layout()
     plt.savefig(out, dpi=140, bbox_inches="tight")
     plt.close()
@@ -843,7 +843,7 @@ def plot_h_vs_rps(results: list[dict]) -> None:
 def assert_legacy_unchanged(new_summary: pd.DataFrame) -> None:
     """Guard the pre-registered legacy columns (see validation/_regression_guard)."""
     _reg_guard(
-        new_summary, "cross_market_summary_v2.csv",
+        new_summary, "h2_magnitude/cross_market_summary_v2.csv",
         num_cols=["H_stat", "p_value", "det_mean_vol", "sto_mean_vol",
                   "trans_mean_vol"],
         str_cols=["paradox_direction"],

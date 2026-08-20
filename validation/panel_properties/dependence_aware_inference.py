@@ -62,7 +62,7 @@ from validation.h1_direction.h1_dml import START, END  # noqa: E402
 from validation.markets_n27 import MARKETS_N27  # noqa: E402
 
 R = os.path.join(_VALIDATION, "results_v2")
-OUT = os.path.join(R, "dependence_aware_inference.json")
+OUT = os.path.join(R, "panel_properties/dependence_aware_inference.json")
 SEED, N_PERM, N_BOOT = 42, 20000, 20000
 
 eta = json.load(io.open(os.path.join(R, "n27_experiment",

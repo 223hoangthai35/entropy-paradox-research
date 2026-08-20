@@ -334,12 +334,12 @@ def stability_diagnostics(markets: list[dict]) -> dict[str, Any]:
 # ------------------------------------------------------------------
 def load_frozen() -> dict[str, Any]:
     frozen: dict[str, Any] = {}
-    p = os.path.join(RESULTS_V2, "cross_market_summary_v2.csv")
+    p = os.path.join(RESULTS_V2, "h2_magnitude/cross_market_summary_v2.csv")
     if os.path.exists(p):
         frozen["summary"] = pd.read_csv(p).set_index("market").to_dict("index")
-    for key, fname in [("h1_dml_cpcv", "h1_dml_cpcv.json"),
-                       ("h2_eta_squared", "h2_eta_squared.json"),
-                       ("link_b_tests", "link_b_tests.json")]:
+    for key, fname in [("h1_dml_cpcv", "h1_direction/h1_dml_cpcv.json"),
+                       ("h2_eta_squared", "h2_magnitude/h2_eta_squared.json"),
+                       ("link_b_tests", "mechanism_battery/link_b_tests.json")]:
         fp = os.path.join(RESULTS_V2, fname)
         if os.path.exists(fp):
             with open(fp, encoding="utf-8") as f:
@@ -535,7 +535,7 @@ def main() -> int:
     comp_df.to_csv(comp_path, index=False)
 
     # stray file written by canonical build_summary_csv inside OOS_DIR
-    stray = os.path.join(OOS_DIR, "cross_market_summary_v2.csv")
+    stray = os.path.join(OOS_DIR, "h2_magnitude/cross_market_summary_v2.csv")
     if os.path.exists(stray):
         os.remove(stray)
 

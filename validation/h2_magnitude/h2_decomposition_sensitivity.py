@@ -98,7 +98,7 @@ def main() -> int:
         "elapsed_seconds": float(time.time() - t_start),
         "results": results,
     }
-    out_path = os.path.join(OUTPUT_DIR, "h2_decomposition_sensitivity.json")
+    out_path = os.path.join(OUTPUT_DIR, "h2_magnitude/h2_decomposition_sensitivity.json")
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, default=float)
     print(f"\nJSON: {out_path}")

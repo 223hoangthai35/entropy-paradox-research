@@ -226,7 +226,7 @@ def main() -> int:
         "total_elapsed_seconds": float(total_elapsed),
         "results": results,
     }
-    out_path = os.path.join(OUTPUT_DIR, "h1_dml_tsaware.json")
+    out_path = os.path.join(OUTPUT_DIR, "h1_direction/h1_dml_tsaware.json")
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, default=float)
 

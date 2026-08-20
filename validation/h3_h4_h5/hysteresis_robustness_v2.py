@@ -273,7 +273,7 @@ def build_h5_refined_csv(market_results: list[dict[str, Any]]) -> pd.DataFrame:
             row[f"p_tra_{cfg_name}_ci_hi"] = round(ci["ci_hi"], 4)
         rows.append(row)
     df = pd.DataFrame(rows)
-    path = os.path.join(OUTPUT_DIR, "h5_refined.csv")
+    path = os.path.join(OUTPUT_DIR, "h3_h4_h5/h5_refined.csv")
     df.to_csv(path, index=False)
     print(f"\nH5 refined CSV: {path}")
     return df
@@ -286,7 +286,7 @@ def regression_check_legacy(df_new: pd.DataFrame) -> None:
     configuration rather than one row per market.
     """
     _reg_guard(
-        df_new, "hysteresis_robustness_v2.csv", key=["market", "config"],
+        df_new, "h3_h4_h5/hysteresis_robustness_v2.csv", key=["market", "config"],
         num_cols=["delta_hard", "delta_soft", "t_persist", "n_bars",
                   "flips_per_year", "p_det", "p_tra", "p_sto", "T_det_days",
                   "T_tra_days", "T_sto_days", "overall_d", "p_tra_spread"],
@@ -313,10 +313,10 @@ def main() -> int:
         return 1
 
     df = pd.DataFrame(all_rows)
-    csv_path = os.path.join(OUTPUT_DIR, "hysteresis_robustness_v2.csv")
+    csv_path = os.path.join(OUTPUT_DIR, "h3_h4_h5/hysteresis_robustness_v2.csv")
     df.to_csv(csv_path, index=False)
 
-    json_path = os.path.join(OUTPUT_DIR, "hysteresis_robustness_v2.json")
+    json_path = os.path.join(OUTPUT_DIR, "h3_h4_h5/hysteresis_robustness_v2.json")
     payload = {
         "pre_registration_commit": "b130b0f1f2769566eaf548181d6816eb31b1963e",
         "refactor_date": "2026-04-19",

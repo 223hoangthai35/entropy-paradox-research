@@ -43,7 +43,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 
 _VALIDATION = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 R = os.path.join(_VALIDATION, "results_v2")
-OUT_JSON = os.path.join(R, "h1_h5_as_registered.json")
+OUT_JSON = os.path.join(R, "scoring/h1_h5_as_registered.json")
 
 GREEN, RED, GREY = "PASS", "REJECT", "UNTESTABLE"
 
@@ -69,7 +69,7 @@ report: dict = {"registered_commit_date": "2026-04-18", "hypotheses": {}}
 def score_h1():
     ls = load("n27_experiment", "h1_location_vs_scale.json")
     cm = load("cross_market_v2.json")
-    hy = load("hysteresis_robustness_v2.json")
+    hy = load("h3_h4_h5/hysteresis_robustness_v2.json")
     if ls is None:
         return {"verdict": GREY, "reason": "h1_location_vs_scale.json missing"}
     cat = {}
@@ -113,7 +113,7 @@ def score_h1():
 
 # ---------------------------------------------------------------- H2
 def score_h2():
-    rc = load("h2_registered_composite.json")
+    rc = load("h2_magnitude/h2_registered_composite.json")
     if rc is None:
         return {"verdict": GREY, "reason": "h2_registered_composite.json missing"}
     t = rc["tests"]
@@ -139,7 +139,7 @@ def score_h2():
 # ---------------------------------------------------------------- H3
 def score_h3():
     import pandas as pd
-    f = os.path.join(R, "hysteresis_summary_v2.csv")
+    f = os.path.join(R, "h3_h4_h5/hysteresis_summary_v2.csv")
     if not os.path.exists(f):
         return {"verdict": GREY, "reason": "hysteresis_summary_v2.csv missing"}
     rows, breaches = [], []
@@ -173,7 +173,7 @@ def score_h3():
 # ---------------------------------------------------------------- H4
 def score_h4():
     import pandas as pd
-    f = os.path.join(R, "h4_block_permutation.csv")
+    f = os.path.join(R, "h3_h4_h5/h4_block_permutation.csv")
     if not os.path.exists(f):
         return {"verdict": GREY, "reason": "h4_block_permutation.csv missing"}
     rows, breaches = [], []
@@ -196,7 +196,7 @@ def score_h4():
 # ---------------------------------------------------------------- H5
 def score_h5():
     import pandas as pd
-    f = os.path.join(R, "h5_refined.csv")
+    f = os.path.join(R, "h3_h4_h5/h5_refined.csv")
     if not os.path.exists(f):
         return {"verdict": GREY, "reason": "h5_refined.csv missing"}
     rows, breaches, soft = [], [], []

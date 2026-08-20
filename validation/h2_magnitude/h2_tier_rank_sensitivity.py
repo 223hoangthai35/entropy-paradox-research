@@ -28,7 +28,7 @@ except Exception:
 
 _VALIDATION = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUTPUT_DIR = os.path.join(_VALIDATION, "results_v2")
-SUMMARY_CSV = os.path.join(OUTPUT_DIR, "cross_market_summary_v2.csv")
+SUMMARY_CSV = os.path.join(OUTPUT_DIR, "h2_magnitude/cross_market_summary_v2.csv")
 
 # Fixed tier ranks per Hybrid C (matches h2_tier_based.py)
 FIXED_RANKS = {
@@ -110,7 +110,7 @@ def main() -> int:
         "crypto_ranks_tested": CRYPTO_RANKS_TO_TEST,
         "results": results,
     }
-    out_path = os.path.join(OUTPUT_DIR, "h2_tier_rank_sensitivity.json")
+    out_path = os.path.join(OUTPUT_DIR, "h2_magnitude/h2_tier_rank_sensitivity.json")
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, default=float)
     print(f"\nJSON: {out_path}")

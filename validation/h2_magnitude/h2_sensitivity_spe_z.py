@@ -206,7 +206,7 @@ def main() -> int:
         "per_market_per_variant": results,
         "cross_market_per_variant": cross_market,
     }
-    out_path = os.path.join(OUTPUT_DIR, "h2_sensitivity_spe_z.json")
+    out_path = os.path.join(OUTPUT_DIR, "h2_magnitude/h2_sensitivity_spe_z.json")
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, default=float)
     print(f"\nJSON: {out_path}")

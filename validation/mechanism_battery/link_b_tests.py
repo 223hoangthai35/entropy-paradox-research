@@ -236,7 +236,7 @@ def main() -> int:
         **results,
     }
 
-    out_path = os.path.join(OUTPUT_DIR, "link_b_tests.json")
+    out_path = os.path.join(OUTPUT_DIR, "mechanism_battery/link_b_tests.json")
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, default=float)
     print(f"\nJSON: {out_path}")

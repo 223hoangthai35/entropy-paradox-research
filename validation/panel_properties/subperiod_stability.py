@@ -71,7 +71,7 @@ with contextlib.redirect_stdout(io.StringIO()):
     from validation.markets_n27 import MARKETS_N27
 
 R = os.path.join(_VALIDATION, "results_v2")
-OUT = os.path.join(R, "subperiod_stability.json")
+OUT = os.path.join(R, "panel_properties/subperiod_stability.json")
 SEED = 42
 MIN_PER_GROUP = 5
 FRACS = (0.30, 0.40, 0.50, 0.60)

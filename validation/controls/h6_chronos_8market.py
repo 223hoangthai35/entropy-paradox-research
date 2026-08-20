@@ -358,7 +358,7 @@ def main():
         "total_elapsed_seconds": float(time.time() - t_start),
     }
 
-    out_path = RESULTS_DIR / "h6_chronos_8market.json"
+    out_path = RESULTS_DIR / "controls/h6_chronos_8market.json"
     out_path.write_text(json.dumps(out, indent=2), encoding="utf-8")
     print()
     print("=" * 78)

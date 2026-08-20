@@ -58,7 +58,7 @@ from validation.h1_direction.h1_dml import START, END  # noqa: E402
 from validation.markets_n27 import MARKETS_N27  # noqa: E402
 
 R = os.path.join(_VALIDATION, "results_v2")
-OUT = os.path.join(R, "h_comovement_check.json")
+OUT = os.path.join(R, "panel_properties/h_comovement_check.json")
 BLOCK = 126           # ~6 months of trading days
 MIN_PER_GROUP = 5
 MIN_SHARED = 6        # sub-periods two markets must share to be correlated

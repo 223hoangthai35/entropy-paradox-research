@@ -74,7 +74,7 @@ except Exception:
     pass
 
 OUTPUT_DIR = os.path.join(_VALIDATION, "results_v2")
-PRIMARY_CSV = os.path.join(OUTPUT_DIR, "cross_market_summary_v2.csv")
+PRIMARY_CSV = os.path.join(OUTPUT_DIR, "h2_magnitude/cross_market_summary_v2.csv")
 
 # -----------------------------------------------------------------------------
 # RPS inputs (single variable, ex-ante, publicly sourced)
@@ -330,7 +330,7 @@ def main() -> int:
         print(f"  {s['subpanel']:<22} {s['n']:>3}  {rho_s}  {p_s}   {s['note']}")
 
     # ---- Outputs
-    cmp_csv = os.path.join(OUTPUT_DIR, "h2_rps_panel.csv")
+    cmp_csv = os.path.join(OUTPUT_DIR, "h2_magnitude/h2_rps_panel.csv")
     cmp = df[[
         "market", "classification", "has_CB",
         "H_stat", "RPS", "rank_H_stat", "rank_RPS",
@@ -360,7 +360,7 @@ def main() -> int:
             "microstructure facts; none derived from the return series."
         ),
     }
-    json_path = os.path.join(OUTPUT_DIR, "h2_rps_validation.json")
+    json_path = os.path.join(OUTPUT_DIR, "h2_magnitude/h2_rps_validation.json")
     with open(json_path, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, default=float)
     print(f"JSON: {json_path}")

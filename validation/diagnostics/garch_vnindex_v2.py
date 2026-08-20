@@ -192,13 +192,13 @@ def main() -> None:
     }
     print(json.dumps(out, indent=2))
 
-    json_path = os.path.join(OUTPUT_DIR, "garch_vnindex_v2.json")
+    json_path = os.path.join(OUTPUT_DIR, "diagnostics/garch_vnindex_v2.json")
     with open(json_path, "w", encoding="utf-8") as fh:
         json.dump(out, fh, indent=2)
     print(f"      JSON saved: {json_path}")
 
     print("[4/4] Plotting")
-    png_path = os.path.join(OUTPUT_DIR, "garch_vnindex_v2.png")
+    png_path = os.path.join(OUTPUT_DIR, "diagnostics/garch_vnindex_v2.png")
     plot_results(res_df, metrics, png_path)
     print(f"      PNG saved: {png_path}")
 

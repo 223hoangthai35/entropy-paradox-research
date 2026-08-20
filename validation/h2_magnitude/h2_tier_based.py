@@ -31,7 +31,7 @@ from scipy.stats import kruskal, spearmanr
 
 _VALIDATION = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUTPUT_DIR = os.path.join(_VALIDATION, "results_v2")
-PRIMARY_CSV = os.path.join(OUTPUT_DIR, "cross_market_summary_v2.csv")
+PRIMARY_CSV = os.path.join(OUTPUT_DIR, "h2_magnitude/cross_market_summary_v2.csv")
 
 # Tier classification per FTSE Russell + MSCI conventions
 # Note: VNINDEX is FTSE Frontier through Sept 2026; KOSPI is MSCI Emerging
@@ -209,7 +209,7 @@ def main() -> int:
         "raw_results": raw_results,
         "filtered_results": filt_results,
     }
-    out_path = os.path.join(OUTPUT_DIR, "h2_tier_based.json")
+    out_path = os.path.join(OUTPUT_DIR, "h2_magnitude/h2_tier_based.json")
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, default=float)
     print(f"\nJSON: {out_path}")

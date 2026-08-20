@@ -48,7 +48,7 @@ RPS = {"VNINDEX": 0.90, "BVB": 0.225, "KOSPI": 0.45, "NIFTY": 0.40,
 
 
 def main() -> int:
-    h2 = json.load(open(os.path.join(RES, "h2_eta_squared.json"), encoding="utf-8"))["per_market"]
+    h2 = json.load(open(os.path.join(RES, "h2_magnitude/h2_eta_squared.json"), encoding="utf-8"))["per_market"]
     ms = list(PANEL)
     logcap = np.log10([PANEL[m][1] * 1e12 for m in ms])
     size_norm = (logcap - logcap.min()) / (logcap.max() - logcap.min())
@@ -72,7 +72,7 @@ def main() -> int:
     for m in ms:
         print(f"  {m:<8} MS={ms_index[m]:.3f}  (CB={PANEL[m][0]}, RPS={RPS[m]:.3f}, "
               f"size_norm={size_norm[list(PANEL).index(m)]:.3f})")
-    path = os.path.join(RES, "h2_registered_composite.json")
+    path = os.path.join(RES, "h2_magnitude/h2_registered_composite.json")
     with open(path, "w", encoding="utf-8") as f:
         json.dump(out, f, indent=2, default=float)
     print("JSON:", path)

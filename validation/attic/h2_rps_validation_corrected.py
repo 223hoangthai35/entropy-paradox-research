@@ -34,7 +34,7 @@ from scipy.stats import spearmanr
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "results_v2")
-PRIMARY_CSV = os.path.join(OUTPUT_DIR, "cross_market_summary_v2.csv")
+PRIMARY_CSV = os.path.join(OUTPUT_DIR, "h2_magnitude/cross_market_summary_v2.csv")
 
 # CORRECTED RPS (Scenario C — KOSPI only correction)
 RPS_VALUE: dict[str, float] = {
@@ -241,7 +241,7 @@ def main() -> int:
     print(f"\n  delta_rho = {new_results['primary']['rho'] - old_results['primary']['rho']:+.4f}")
     print(f"  delta_p   = {new_results['primary']['p_value'] - old_results['primary']['p_value']:+.4f}")
 
-    out_path = os.path.join(OUTPUT_DIR, "h2_rps_validation_corrected_KOSPI.json")
+    out_path = os.path.join(OUTPUT_DIR, "h2_magnitude/h2_rps_validation_corrected_KOSPI.json")
     payload = {
         "spec": "H2 re-test with KOSPI RPS corrected to 0.45 (Scenario C)",
         "correction_basis": "KRX Data Marketplace, March 2026 reading; supersedes ASIFMA 2022 (2021 reporting period)",

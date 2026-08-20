@@ -171,7 +171,7 @@ def main() -> int:
         "per_market": results,
         "cross_market": cross,
     }
-    out_path = os.path.join(OUTPUT_DIR, "gmm_k_sensitivity.json")
+    out_path = os.path.join(OUTPUT_DIR, "diagnostics/gmm_k_sensitivity.json")
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, default=float)
     print(f"\nJSON: {out_path}")

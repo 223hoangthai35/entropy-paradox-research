@@ -172,17 +172,17 @@ def _read_csv_idx(path: str, idx: str = "market") -> dict[str, dict]:
 
 def build_comparison(win_names: list[str],
                      cascade: dict[str, dict | None]) -> pd.DataFrame:
-    frozen_sum = _read_csv_idx(os.path.join(RESULTS_V2, "hysteresis_summary_v2.csv"))
-    frozen_h3 = _read_csv_idx(os.path.join(RESULTS_V2, "h3_refined.csv"))
-    frozen_h4 = _read_csv_idx(os.path.join(RESULTS_V2, "h4_block_permutation.csv"))
-    frozen_h5 = _read_csv_idx(os.path.join(RESULTS_V2, "h5_refined.csv"))
+    frozen_sum = _read_csv_idx(os.path.join(RESULTS_V2, "h3_h4_h5/hysteresis_summary_v2.csv"))
+    frozen_h3 = _read_csv_idx(os.path.join(RESULTS_V2, "h3_h4_h5/h3_refined.csv"))
+    frozen_h4 = _read_csv_idx(os.path.join(RESULTS_V2, "h3_h4_h5/h4_block_permutation.csv"))
+    frozen_h5 = _read_csv_idx(os.path.join(RESULTS_V2, "h3_h4_h5/h5_refined.csv"))
     frozen_h3c: dict[str, Any] = {}
-    p = os.path.join(RESULTS_V2, "h3_continuous.json")
+    p = os.path.join(RESULTS_V2, "h3_h4_h5/h3_continuous.json")
     if os.path.exists(p):
         with open(p, encoding="utf-8") as f:
             frozen_h3c = json.load(f)
     frozen_casc: dict[str, Any] = {}
-    p = os.path.join(RESULTS_V2, "h2_cascade.json")
+    p = os.path.join(RESULTS_V2, "h2_magnitude/h2_cascade.json")
     if os.path.exists(p):
         with open(p, encoding="utf-8") as f:
             frozen_casc = json.load(f)
@@ -190,11 +190,11 @@ def build_comparison(win_names: list[str],
     win_sum, win_h3, win_h4, win_h5, win_h3c = {}, {}, {}, {}, {}
     for w in win_names:
         d = os.path.join(OOS_DIR, f"phase2_{w}")
-        win_sum[w] = _read_csv_idx(os.path.join(d, "hysteresis_summary_v2.csv"))
-        win_h3[w] = _read_csv_idx(os.path.join(d, "h3_refined.csv"))
-        win_h4[w] = _read_csv_idx(os.path.join(d, "h4_block_permutation.csv"))
-        win_h5[w] = _read_csv_idx(os.path.join(d, "h5_refined.csv"))
-        p = os.path.join(d, "h3_continuous.json")
+        win_sum[w] = _read_csv_idx(os.path.join(d, "h3_h4_h5/hysteresis_summary_v2.csv"))
+        win_h3[w] = _read_csv_idx(os.path.join(d, "h3_h4_h5/h3_refined.csv"))
+        win_h4[w] = _read_csv_idx(os.path.join(d, "h3_h4_h5/h4_block_permutation.csv"))
+        win_h5[w] = _read_csv_idx(os.path.join(d, "h3_h4_h5/h5_refined.csv"))
+        p = os.path.join(d, "h3_h4_h5/h3_continuous.json")
         win_h3c[w] = {}
         if os.path.exists(p):
             with open(p, encoding="utf-8") as f:

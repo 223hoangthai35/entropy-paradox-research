@@ -256,11 +256,11 @@ def main() -> None:
               f"(common-aligned bars={blk['n_common']})")
 
     df = pd.DataFrame(all_rows)
-    csv_path = os.path.join(OUTPUT_DIR, "entropy_vs_simple_8market.csv")
+    csv_path = os.path.join(OUTPUT_DIR, "controls/entropy_vs_simple_8market.csv")
     df.to_csv(csv_path, index=False)
     print(f"[2/3] CSV saved: {csv_path}  ({len(df)} rows)")
 
-    json_path = os.path.join(OUTPUT_DIR, "entropy_vs_simple_8market.json")
+    json_path = os.path.join(OUTPUT_DIR, "controls/entropy_vs_simple_8market.json")
     with open(json_path, "w", encoding="utf-8") as fh:
         json.dump({
             "window":          f"{START} -> {END}",
@@ -271,7 +271,7 @@ def main() -> None:
         }, fh, indent=2)
     print(f"      JSON saved: {json_path}")
 
-    png_path = os.path.join(OUTPUT_DIR, "entropy_vs_simple_8market.png")
+    png_path = os.path.join(OUTPUT_DIR, "controls/entropy_vs_simple_8market.png")
     plot_heatmaps(df, png_path)
     print(f"[3/3] PNG saved: {png_path}")
 

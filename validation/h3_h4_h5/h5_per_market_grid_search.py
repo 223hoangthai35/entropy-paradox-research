@@ -184,8 +184,8 @@ def main() -> int:
         })
 
     df = pd.DataFrame(rows)
-    csv_path = os.path.join(OUTPUT_DIR, "h5_per_market_grid_search.csv")
-    json_path = os.path.join(OUTPUT_DIR, "h5_per_market_grid_search.json")
+    csv_path = os.path.join(OUTPUT_DIR, "h3_h4_h5/h5_per_market_grid_search.csv")
+    json_path = os.path.join(OUTPUT_DIR, "h3_h4_h5/h5_per_market_grid_search.json")
     df.to_csv(csv_path, index=False)
     with open(json_path, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, default=float)

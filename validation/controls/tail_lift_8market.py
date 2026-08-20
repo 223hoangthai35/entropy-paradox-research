@@ -265,11 +265,11 @@ def main() -> None:
         print(f"  [{spec['name']}] {len(rows)} rows")
 
     df = pd.DataFrame(all_rows)
-    csv_path = os.path.join(OUTPUT_DIR, "tail_lift_8market.csv")
+    csv_path = os.path.join(OUTPUT_DIR, "controls/tail_lift_8market.csv")
     df.to_csv(csv_path, index=False)
     print(f"[2/3] CSV saved: {csv_path}  ({len(df)} rows)")
 
-    json_path = os.path.join(OUTPUT_DIR, "tail_lift_8market.json")
+    json_path = os.path.join(OUTPUT_DIR, "controls/tail_lift_8market.json")
     with open(json_path, "w", encoding="utf-8") as fh:
         json.dump(
             {
@@ -284,7 +284,7 @@ def main() -> None:
         )
     print(f"      JSON saved: {json_path}")
 
-    png_path = os.path.join(OUTPUT_DIR, "tail_lift_8market.png")
+    png_path = os.path.join(OUTPUT_DIR, "controls/tail_lift_8market.png")
     plot_grid(df, png_path)
     print(f"[3/3] PNG saved: {png_path}")
 

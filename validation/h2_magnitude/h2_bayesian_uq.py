@@ -30,7 +30,7 @@ from scipy import stats
 
 _VALIDATION = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUTPUT_DIR = os.path.join(_VALIDATION, "results_v2")
-PRIMARY_CSV = os.path.join(OUTPUT_DIR, "cross_market_summary_v2.csv")
+PRIMARY_CSV = os.path.join(OUTPUT_DIR, "h2_magnitude/cross_market_summary_v2.csv")
 
 # Per-market RPS posterior specifications.
 # Beta(α, β) parameterized by mean and concentration κ = α + β.
@@ -250,7 +250,7 @@ def main() -> int:
         "h_noise_sd_frac": H_NOISE_SD_FRAC,
         "seed": SEED,
     }
-    out_path = os.path.join(OUTPUT_DIR, "h2_bayesian_uq.json")
+    out_path = os.path.join(OUTPUT_DIR, "h2_magnitude/h2_bayesian_uq.json")
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, default=float)
     print(f"\nJSON: {out_path}")

@@ -26,7 +26,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 
 R = os.path.join(_VALIDATION, "results_v2")
 N27 = os.path.join(R, "n27_experiment")
-OUT_JSON = os.path.join(R, "h1_h5_n8_vs_n27.json")
+OUT_JSON = os.path.join(R, "scoring/h1_h5_n8_vs_n27.json")
 
 
 def jload(*p):
@@ -54,7 +54,7 @@ def emit(key, title, n8, n27, comparison):
 
 # ---------------------------------------------------------------- H1
 ls = jload(N27, "h1_location_vs_scale.json")
-cm8 = cload(R, "cross_market_summary_v2.csv")
+cm8 = cload(R, "h2_magnitude/cross_market_summary_v2.csv")
 if ls and cm8 is not None:
     per = ls["per_market"]
     cat27 = {}
@@ -110,7 +110,7 @@ if ls and cm8 is not None:
           "the panels disagree -- the registered claim is panel-size dependent"))
 
 # ---------------------------------------------------------------- H2
-rc = jload(R, "h2_registered_composite.json")
+rc = jload(R, "h2_magnitude/h2_registered_composite.json")
 eta = jload(N27, "h2_eta_squared_n27.json")
 if rc and eta:
     t = rc["tests"]
@@ -134,7 +134,7 @@ if rc and eta:
          "sizes; n = 8 carries the registered composite, n = 27 carries its RPS core")
 
 # ---------------------------------------------------------------- H3
-hs = cload(R, "hysteresis_summary_v2.csv")
+hs = cload(R, "h3_h4_h5/hysteresis_summary_v2.csv")
 if hs is not None and ls:
     def h3_block(items):
         front = [v for c, v in items if c == "Frontier"]
@@ -163,7 +163,7 @@ if hs is not None and ls:
          "both -- the registered levels are simply not where the data sit")
 
 # ---------------------------------------------------------------- H4
-h4_8 = cload(R, "h4_block_permutation.csv")
+h4_8 = cload(R, "h3_h4_h5/h4_block_permutation.csv")
 ph = jload(R, "oos_n27", "phase345_results.json")
 if h4_8 is not None and ph:
     br8 = [r["market"] for _, r in h4_8.iterrows() if float(r["shuffle_p_block20"]) >= 0.01]
@@ -180,7 +180,7 @@ if h4_8 is not None and ph:
          "structure; this is a prerequisite check, not a finding")
 
 # ---------------------------------------------------------------- H5
-h5_8 = cload(R, "h5_refined.csv")
+h5_8 = cload(R, "h3_h4_h5/h5_refined.csv")
 h5_27 = jload(N27, "h5_n27.json")
 if h5_8 is not None:
     br8 = [(r["market"], round(float(r["spread"]) * 100, 1))

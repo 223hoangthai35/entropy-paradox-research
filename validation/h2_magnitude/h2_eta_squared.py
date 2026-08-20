@@ -180,7 +180,7 @@ def main() -> int:
             "rho_eta_N": float(rho_eta_n), "p_eta_N": float(p_eta_n),
         },
     }
-    out_path = os.path.join(OUTPUT_DIR, "h2_eta_squared.json")
+    out_path = os.path.join(OUTPUT_DIR, "h2_magnitude/h2_eta_squared.json")
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, default=float)
     print(f"\nJSON: {out_path}")

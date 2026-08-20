@@ -39,7 +39,7 @@ RPS = {
     "NIKKEI":  0.18,
 }
 
-JSON_PATH = os.path.join(os.path.dirname(__file__), "results_v2", "gmm_k_sensitivity.json")
+JSON_PATH = os.path.join(os.path.dirname(__file__), "results_v2", "diagnostics/gmm_k_sensitivity.json")
 
 
 def main() -> int:

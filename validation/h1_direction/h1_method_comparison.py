@@ -37,7 +37,7 @@ except Exception:
 
 _VALIDATION = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUTPUT_DIR = os.path.join(_VALIDATION, "results_v2")
-DML_PATH = os.path.join(OUTPUT_DIR, "h1_dml.json")
+DML_PATH = os.path.join(OUTPUT_DIR, "h1_direction/h1_dml.json")
 
 MARKETS = ["VNINDEX", "BVB", "KOSPI", "NIFTY", "SPX", "FTSE", "NIKKEI", "BTC"]
 
@@ -200,7 +200,7 @@ def main() -> int:
         },
         "provisional_outcome_class": outcome,
     }
-    out_path = os.path.join(OUTPUT_DIR, "h1_method_comparison.json")
+    out_path = os.path.join(OUTPUT_DIR, "h1_direction/h1_method_comparison.json")
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, default=float)
     print(f"\n  JSON: {out_path}")

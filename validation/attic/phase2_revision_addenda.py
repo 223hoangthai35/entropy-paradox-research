@@ -76,7 +76,7 @@ N_MC = 10_000
 
 def load_main_h_values() -> tuple[dict[str, float], dict[str, float]]:
     """Load primary H values from cross_market_summary_v2.csv (raw + filtered)."""
-    df = pd.read_csv(RESULTS_DIR / "cross_market_summary_v2.csv")
+    df = pd.read_csv(RESULTS_DIR / "h2_magnitude/cross_market_summary_v2.csv")
     df = df.set_index("market")
     h_raw = {m: float(df.loc[m, "H_stat"]) for m in MARKETS}
     h_filt = {m: float(df.loc[m, "H_stat_filtered"]) for m in MARKETS}
@@ -88,7 +88,7 @@ def load_feature_comparison_h() -> dict[str, dict[str, dict[str, float]]]:
 
     Returns nested dict: model -> source -> market -> H.
     """
-    with open(RESULTS_DIR / "entropy_vs_simple_8market.json", encoding="utf-8") as fh:
+    with open(RESULTS_DIR / "controls/entropy_vs_simple_8market.json", encoding="utf-8") as fh:
         data = json.load(fh)
     out = {m: {"raw": {}, "filtered": {}} for m in ["Entropy", "SimpleVol", "Combined"]}
     for market_block in data["markets"]:
@@ -348,7 +348,7 @@ def main():
             "mc_15": SEED_MC_15,
         },
     }
-    out_path = RESULTS_DIR / "phase2_revision_addenda.json"
+    out_path = RESULTS_DIR / "misc/phase2_revision_addenda.json"
     with open(out_path, "w", encoding="utf-8") as fh:
         json.dump(output, fh, indent=2)
     print(f"\n==> Wrote {out_path}")

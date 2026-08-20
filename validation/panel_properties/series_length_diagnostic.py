@@ -48,7 +48,7 @@ except Exception:
     pass
 
 R = os.path.join(_VALIDATION, "results_v2")
-OUT = os.path.join(R, "series_length_diagnostic.json")
+OUT = os.path.join(R, "panel_properties/series_length_diagnostic.json")
 CRYPTO = {"BTC", "ETH", "BNB"}
 
 
@@ -65,7 +65,7 @@ def partial(a, b, ctl):
 
 
 def main() -> int:
-    cal = json.load(io.open(os.path.join(R, "h2_calibrated_kwh.json"),
+    cal = json.load(io.open(os.path.join(R, "h2_magnitude/h2_calibrated_kwh.json"),
                             encoding="utf-8"))["per_market"]
     eta = json.load(io.open(os.path.join(R, "n27_experiment",
                                          "h2_eta_squared_n27.json"), encoding="utf-8"))

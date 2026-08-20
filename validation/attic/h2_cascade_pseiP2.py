@@ -76,7 +76,7 @@ def main() -> int:
         print(f"    P(rho > 0.5) = {filt_cascade['P_rho_gt_0p5']*100:.1f}%   P(rho > 0.7) = {filt_cascade['P_rho_gt_0p7']*100:.1f}%")
 
     # Compare to baseline cascade (PSEI=P1) — reload baseline JSON
-    baseline_path = os.path.join(OUTPUT_DIR, "h2_cascade.json")
+    baseline_path = os.path.join(OUTPUT_DIR, "h2_magnitude/h2_cascade.json")
     print("\n  COMPARISON TO BASELINE (PSEI=P1):")
     if os.path.exists(baseline_path):
         with open(baseline_path, "r", encoding="utf-8") as f:
@@ -98,7 +98,7 @@ def main() -> int:
         "raw_cascade": raw_cascade,
         "filtered_cascade": filt_cascade,
     }
-    out_path = os.path.join(OUTPUT_DIR, "h2_cascade_pseiP2.json")
+    out_path = os.path.join(OUTPUT_DIR, "h2_magnitude/h2_cascade_pseiP2.json")
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, default=float)
     print(f"\nJSON: {out_path}")

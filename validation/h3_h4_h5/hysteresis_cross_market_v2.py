@@ -472,7 +472,7 @@ def build_summary_csv(results: list[dict[str, Any]]) -> pd.DataFrame:
             "rps":                      round(r["rps"], 3),
         })
     df = pd.DataFrame(rows)
-    path = os.path.join(OUTPUT_DIR, "hysteresis_summary_v2.csv")
+    path = os.path.join(OUTPUT_DIR, "h3_h4_h5/hysteresis_summary_v2.csv")
     df.to_csv(path, index=False)
     print(f"\nSummary CSV: {path}")
     return df
@@ -503,7 +503,7 @@ def build_h3_refined_csv(results: list[dict[str, Any]]) -> pd.DataFrame:
             "delta_p_tra_filt_minus_raw": round(r["p_tra"] - r["p_tra_raw"], 3),
         })
     df = pd.DataFrame(rows)
-    path = os.path.join(OUTPUT_DIR, "h3_refined.csv")
+    path = os.path.join(OUTPUT_DIR, "h3_h4_h5/h3_refined.csv")
     df.to_csv(path, index=False)
     print(f"H3 refined CSV: {path}")
     return df
@@ -534,7 +534,7 @@ def build_h4_block_permutation_csv(results: list[dict[str, Any]]) -> pd.DataFram
                 if not np.isnan(per_block_q[b][i]) else None
         rows.append(row)
     df = pd.DataFrame(rows)
-    path = os.path.join(OUTPUT_DIR, "h4_block_permutation.csv")
+    path = os.path.join(OUTPUT_DIR, "h3_h4_h5/h4_block_permutation.csv")
     df.to_csv(path, index=False)
     print(f"H4 block-permutation CSV: {path}")
     return df
@@ -593,7 +593,7 @@ def build_h3_continuous_json(results: list[dict[str, Any]]) -> dict[str, Any]:
             "pre-reg rule; it tests whether p_tra tracks RPS monotonically."
         ),
     }
-    path = os.path.join(OUTPUT_DIR, "h3_continuous.json")
+    path = os.path.join(OUTPUT_DIR, "h3_h4_h5/h3_continuous.json")
     with open(path, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, default=float)
     print(f"H3 continuous JSON: {path}  [rho={rho:.3f}, p={p:.4g}]")
@@ -636,7 +636,7 @@ def plot_p_tra_vs_rps(results: list[dict]) -> None:
     ax.set_ylabel("p(Transitional) with 95% block-bootstrap CI")
     ax.set_title("Transitional Dominance vs RPS (H3 — pre-reg + bootstrap CI)")
     ax.grid(alpha=0.3)
-    out = os.path.join(OUTPUT_DIR, "p_transitional_vs_rps.png")
+    out = os.path.join(OUTPUT_DIR, "h3_h4_h5/p_transitional_vs_rps.png")
     plt.tight_layout()
     plt.savefig(out, dpi=140, bbox_inches="tight")
     plt.close()
@@ -649,7 +649,7 @@ def plot_p_tra_vs_rps(results: list[dict]) -> None:
 def regression_check_legacy(df_new: pd.DataFrame) -> None:
     """Guard the pre-registered legacy columns (see validation/_regression_guard)."""
     _reg_guard(
-        df_new, "hysteresis_summary_v2.csv",
+        df_new, "h3_h4_h5/hysteresis_summary_v2.csv",
         num_cols=["raw_flips_per_year", "filtered_flips_per_year", "reduction_pct",
                   "p_det", "p_tra", "p_sto", "T_det_days", "T_tra_days",
                   "T_sto_days", "overall_mean_days", "shuffle_observed",

@@ -140,7 +140,7 @@ def main() -> int:
            "per_market": per_market,
            "cross_market": {"rho_qlikegain_rps": float(rho), "p": float(p), "n": len(ms)},
            "elapsed_min": round((time.time() - t0) / 60, 1)}
-    path = os.path.join(RES, "harv_economic_value.json")
+    path = os.path.join(RES, "controls/harv_economic_value.json")
     with open(path, "w", encoding="utf-8") as f:
         json.dump(doc, f, indent=2, default=float)
     print("JSON:", path, f"({doc['elapsed_min']} min)")

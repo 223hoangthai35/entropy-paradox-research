@@ -67,7 +67,7 @@ N_SEEDS = int(os.environ.get("MC_SEEDS", "6"))
 
 OUT_DIR = os.path.join(_VALIDATION, "results_v2")
 os.makedirs(OUT_DIR, exist_ok=True)
-OUT_JSON = os.path.join(OUT_DIR, "dml_monte_carlo_stability.json")
+OUT_JSON = os.path.join(OUT_DIR, "h1_direction/dml_monte_carlo_stability.json")
 
 
 def fit_once(df, n_trees: int, seed: int) -> dict:

@@ -180,7 +180,7 @@ outputs that back every reported number.
 
 ## Plane-1 phase space — raw GMM vs hysteresis-filtered
 
-![VNINDEX Plane-1 phase space, raw GMM vs hysteresis-filtered](validation/results_v2/regime_phase_space_vnindex_raw_vs_filtered.png)
+![VNINDEX Plane-1 phase space, raw GMM vs hysteresis-filtered](validation/results_v2/diagnostics/regime_phase_space_vnindex_raw_vs_filtered.png)
 
 Both panels show the **same** GMM (k = 3, full covariance, random_state = 42) fit
 on `[WPE, SPE_Z]` for VNINDEX. The dashed ellipses are the 2-σ confidence regions

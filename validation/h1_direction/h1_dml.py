@@ -337,7 +337,7 @@ def main() -> int:
         "results": results,
     }
 
-    out_path = os.path.join(OUTPUT_DIR, "h1_dml.json")
+    out_path = os.path.join(OUTPUT_DIR, "h1_direction/h1_dml.json")
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, default=float)
 
