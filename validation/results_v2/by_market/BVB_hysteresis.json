@@ -1,0 +1,51 @@
+{
+  "market": "BVB",
+  "ticker": "BVB:BET",
+  "category": "Frontier",
+  "common_window": [
+    "2020-01-01",
+    "2026-06-29"
+  ],
+  "n_bars": 1551,
+  "bars_per_year": 252,
+  "raw_flips_per_year": 14.460348162475823,
+  "filtered_flips_per_year": 7.636363636363637,
+  "reduction_pct": 47.19101123595506,
+  "p_det": 0.3655705996131528,
+  "p_tra": 0.5145067698259188,
+  "p_sto": 0.11992263056092843,
+  "p_tra_ci_lo": 0.423581560283688,
+  "p_tra_ci_hi": 0.6054319793681494,
+  "distance_to_threshold": 0.0645067698259188,
+  "distance_spec": "frontier_lower_fail",
+  "threshold_wrong_side_p": 0.086,
+  "h3_verdict_categorical": "PASS",
+  "h3_verdict_refined": "PASS_BORDERLINE",
+  "T_det_days": 58.660714285714285,
+  "T_tra_days": 48.15972222222222,
+  "T_sto_days": 26.940476190476193,
+  "overall_mean_days": 46.801835317460316,
+  "n_segments": 48,
+  "shuffle_observed": 7.636363636363637,
+  "shuffle_null_mean": 147.9650251450677,
+  "shuffle_null_p05": 143.14119922630562,
+  "shuffle_null_p95": 152.72727272727272,
+  "shuffle_p_value": 0.0,
+  "shuffle_verdict": "STRUCTURED",
+  "shuffle_block_p": {
+    "5": 0.0,
+    "10": 0.0,
+    "20": 0.0
+  },
+  "shuffle_block_null_mean": {
+    "5": 35.89009671179883,
+    "10": 21.791663442940038,
+    "20": 14.495280464216634
+  },
+  "rps": 0.225,
+  "p_det_raw": 0.3726627981947131,
+  "p_tra_raw": 0.5067698259187621,
+  "p_sto_raw": 0.12056737588652482,
+  "p_tra_raw_ci_lo": 0.4158446163765313,
+  "p_tra_raw_ci_hi": 0.5977111540941327
+}

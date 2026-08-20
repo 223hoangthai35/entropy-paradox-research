@@ -1,0 +1,178 @@
+{
+  "market": "KOSPI",
+  "ticker": "^KS11",
+  "category": "Emerging",
+  "n_bars": 1517,
+  "start": "2020-04-17",
+  "end": "2026-06-29",
+  "H_stat": 5.675228056084961,
+  "p_value": 0.058565234402068615,
+  "direction": "Paradox",
+  "regime_mean_vol": {
+    "Deterministic": 21.671230683887796,
+    "Transitional": 19.355667965079913,
+    "Stochastic": 20.456904131728397
+  },
+  "regime_median_vol": {
+    "Deterministic": 17.210987434732058,
+    "Transitional": 17.042170411348714,
+    "Stochastic": 17.02162771214454
+  },
+  "regime_share": {
+    "Deterministic": 0.26565589980224125,
+    "Transitional": 0.5227422544495716,
+    "Stochastic": 0.21160184574818722
+  },
+  "base_drawdown_rates": {
+    "3.0": 0.34615384615384615,
+    "5.0": 0.17108753315649866,
+    "7.0": 0.09748010610079576
+  },
+  "lift_by_regime": {
+    "Deterministic": {
+      "lift_3.0pct": 1.271111111111111,
+      "lift_5.0pct": 1.4027906976744187,
+      "lift_7.0pct": 1.3592517006802722
+    },
+    "Transitional": {
+      "lift_3.0pct": 0.9103487222928137,
+      "lift_5.0pct": 0.8763728416220956,
+      "lift_7.0pct": 0.9124462999939493
+    },
+    "Stochastic": {
+      "lift_3.0pct": 0.8819660782277604,
+      "lift_5.0pct": 0.8011784877683595,
+      "lift_7.0pct": 0.7669909085129378
+    }
+  },
+  "rps": 0.45,
+  "kw_epsilon_sq": 0.0024599920054116206,
+  "dunn_det_sto_z": 1.735495670803064,
+  "dunn_det_sto_raw": 0.08265304763860248,
+  "dunn_det_sto_holm": 0.16530609527720497,
+  "dunn_det_tra_holm": 0.06223297783484005,
+  "dunn_tra_sto_holm": 0.8528089089105586,
+  "primary_horizon": 20,
+  "primary_U_det_sto": 68829.0,
+  "primary_p_mw_1sided": 0.04214222740145858,
+  "primary_cliffs_delta": 0.07478977818377719,
+  "primary_delta_ci_lo": -0.15440311537271,
+  "primary_delta_ci_hi": 0.3050683153380743,
+  "primary_p_blockperm_1s": 0.22488755622188905,
+  "primary_nw_beta": 1.2143265521593751,
+  "primary_nw_tstat": 0.5531074149467121,
+  "primary_nw_p_two": 0.5801898595546922,
+  "direction_verdict_formal": "n.s.",
+  "direction_across_horizons": "consistent:n.s.",
+  "horizons": [
+    {
+      "horizon_days": 5,
+      "n_det": 402,
+      "n_sto": 321,
+      "mean_det": 20.649977679448547,
+      "mean_sto": 18.641931302585906,
+      "cliffs_delta": 0.14065188078300084,
+      "delta_ci_lo": -0.05106076967862784,
+      "delta_ci_hi": 0.3179369323716084,
+      "U_det_sto": 73596.0,
+      "p_mw_1sided": 0.0005725581025105467,
+      "p_blockperm_1sided": 0.1794102948525737,
+      "nw_beta": 2.008046376862647,
+      "nw_se": 2.472809936385613,
+      "nw_tstat": 0.8120504319057015,
+      "nw_p_two": 0.41676269393931653,
+      "direction_verdict_formal": "n.s."
+    },
+    {
+      "horizon_days": 10,
+      "n_det": 400,
+      "n_sto": 321,
+      "mean_det": 21.27732430664907,
+      "mean_sto": 19.512789777252713,
+      "cliffs_delta": 0.095233644859813,
+      "delta_ci_lo": -0.11251017115600453,
+      "delta_ci_hi": 0.29582007870960014,
+      "U_det_sto": 70314.0,
+      "p_mw_1sided": 0.013920212088019588,
+      "p_blockperm_1sided": 0.19290354822588707,
+      "nw_beta": 1.764534529396359,
+      "nw_se": 2.2557523667860564,
+      "nw_tstat": 0.7822376938965276,
+      "nw_p_two": 0.434074895922433,
+      "direction_verdict_formal": "n.s."
+    },
+    {
+      "horizon_days": 20,
+      "n_det": 399,
+      "n_sto": 321,
+      "mean_det": 21.671230683887796,
+      "mean_sto": 20.456904131728397,
+      "cliffs_delta": 0.07478977818377719,
+      "delta_ci_lo": -0.15440311537271,
+      "delta_ci_hi": 0.3050683153380743,
+      "U_det_sto": 68829.0,
+      "p_mw_1sided": 0.04214222740145858,
+      "p_blockperm_1sided": 0.22488755622188905,
+      "nw_beta": 1.2143265521593751,
+      "nw_se": 2.195462435224027,
+      "nw_tstat": 0.5531074149467121,
+      "nw_p_two": 0.5801898595546922,
+      "direction_verdict_formal": "n.s."
+    },
+    {
+      "horizon_days": 40,
+      "n_det": 396,
+      "n_sto": 318,
+      "mean_det": 21.71903553791256,
+      "mean_sto": 20.62673632322226,
+      "cliffs_delta": 0.06427482370878601,
+      "delta_ci_lo": -0.20666903499739192,
+      "delta_ci_hi": 0.2969758775354221,
+      "U_det_sto": 67011.0,
+      "p_mw_1sided": 0.0698034084186996,
+      "p_blockperm_1sided": 0.24537731134432783,
+      "nw_beta": 1.092299214690308,
+      "nw_se": 2.3448375387300526,
+      "nw_tstat": 0.46583151141545165,
+      "nw_p_two": 0.641336107623399,
+      "direction_verdict_formal": "n.s."
+    },
+    {
+      "horizon_days": 60,
+      "n_det": 392,
+      "n_sto": 304,
+      "mean_det": 21.506695957410134,
+      "mean_sto": 19.22116965291708,
+      "cliffs_delta": 0.004078276047261076,
+      "delta_ci_lo": -0.28165648913526536,
+      "delta_ci_hi": 0.26638282147933534,
+      "U_det_sto": 59827.0,
+      "p_mw_1sided": 0.46328009002665393,
+      "p_blockperm_1sided": 0.3213393303348326,
+      "nw_beta": 2.2855263044930516,
+      "nw_se": 1.9078504074383007,
+      "nw_tstat": 1.197958862803013,
+      "nw_p_two": 0.23093303227610873,
+      "direction_verdict_formal": "n.s."
+    }
+  ],
+  "H_stat_filtered": 29.519350729668076,
+  "p_value_filtered": 3.8900432900822515e-07,
+  "direction_filtered": "Paradox",
+  "regime_mean_vol_filtered": {
+    "Deterministic": 23.121777975442164,
+    "Transitional": 19.230818885513774,
+    "Stochastic": 18.829620953816004
+  },
+  "regime_share_filtered": {
+    "Deterministic": 0.26697429136453527,
+    "Transitional": 0.5497692814765985,
+    "Stochastic": 0.18325642715886617
+  },
+  "primary_U_det_sto_filtered": 69565.0,
+  "primary_p_mw_1sided_filtered": 8.115387245574773e-08,
+  "primary_cliffs_delta_filtered": 0.2357225330846433,
+  "primary_delta_ci_lo_filtered": -0.04290672481362214,
+  "primary_delta_ci_hi_filtered": 0.4988199659529267,
+  "direction_verdict_formal_filtered": "n.s."
+}

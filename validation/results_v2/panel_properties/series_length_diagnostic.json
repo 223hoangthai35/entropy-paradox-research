@@ -1,0 +1,94 @@
+{
+  "spec": "Series-length diagnostic: is the inverse relation between usable observation count and regime informativeness a sample-size artifact, a rotation-null artifact, or a property of full-sample fitting -- and does the cross-market ordering survive it?",
+  "n_markets": 27,
+  "tracks": {
+    "raw": {
+      "H_vs_n_obs": {
+        "rho": -0.4752597099339074,
+        "p": 0.012235182837253087
+      },
+      "H_vs_n_obs_ex_crypto": {
+        "rho": -0.5652173913043478,
+        "p": 0.0040009095002293575
+      },
+      "epsilon_sq_vs_n_obs": {
+        "rho": -0.5742212433648752,
+        "p": 0.0017351652887931791
+      },
+      "epsilon_sq_vs_RPS": {
+        "rho": 0.5826869808796393,
+        "p": 0.0014261038057684972
+      },
+      "rotation_null_sd_vs_n_obs": {
+        "rho": -0.06108736631541226,
+        "p": 0.7621321139054231
+      },
+      "z_H_vs_n_obs": {
+        "rho": -0.4758705835970615,
+        "p": 0.012108710669169253
+      },
+      "H_vs_RPS": {
+        "rho": 0.5833000129478978,
+        "p": 0.0014057002284725542
+      },
+      "H_vs_RPS_given_n_obs": {
+        "rho": 0.5528926945808437,
+        "p": 0.0027809266725942047
+      },
+      "H_vs_n_obs_given_RPS": {
+        "rho": -0.3736834114671191,
+        "p": 0.05485148638625956
+      },
+      "RPS_vs_n_obs": {
+        "rho": -0.257630800469761,
+        "p": 0.1945023404993105
+      },
+      "n_obs_min": 966,
+      "n_obs_max": 2352
+    },
+    "filtered": {
+      "H_vs_n_obs": {
+        "rho": -0.4825901938917569,
+        "p": 0.010787787974355763
+      },
+      "H_vs_n_obs_ex_crypto": {
+        "rho": -0.5060869565217391,
+        "p": 0.011627528283361442
+      },
+      "epsilon_sq_vs_n_obs": {
+        "rho": -0.557727654459714,
+        "p": 0.002505736987110649
+      },
+      "epsilon_sq_vs_RPS": {
+        "rho": 0.5247554504292176,
+        "p": 0.004951133564034136
+      },
+      "rotation_null_sd_vs_n_obs": {
+        "rho": 0.02565669385247315,
+        "p": 0.89891796410518
+      },
+      "z_H_vs_n_obs": {
+        "rho": -0.44471602677620126,
+        "p": 0.020113308432036
+      },
+      "H_vs_RPS": {
+        "rho": 0.5489702171254257,
+        "p": 0.003022814454636295
+      },
+      "H_vs_RPS_given_n_obs": {
+        "rho": 0.5348801771980332,
+        "p": 0.004045826605704043
+      },
+      "H_vs_n_obs_given_RPS": {
+        "rho": -0.3764310836102597,
+        "p": 0.052953059933611234
+      },
+      "RPS_vs_n_obs": {
+        "rho": -0.257630800469761,
+        "p": 0.1945023404993105
+      },
+      "n_obs_min": 966,
+      "n_obs_max": 2352
+    }
+  }
+}

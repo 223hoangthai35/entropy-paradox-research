@@ -1,0 +1,9 @@
+market,category,raw_flips_per_year,filtered_flips_per_year,reduction_pct,p_det,p_tra,p_sto,p_tra_ci_lo,p_tra_ci_hi,h3_verdict_categorical,h3_verdict_refined,T_det_days,T_tra_days,T_sto_days,overall_mean_days,shuffle_observed,shuffle_null_mean,shuffle_p_value,shuffle_verdict,rps
+VNINDEX,Frontier,17.18,6.97,59.4,0.41,0.52,0.07,0.424,0.61,PASS,PASS_BORDERLINE,61.5,53.3,22.6,51.2,6.97,140.25,0.0,STRUCTURED,0.9
+BVB,Frontier,29.59,11.66,60.6,0.438,0.373,0.189,0.288,0.46,REJECT,REJECT_BORDERLINE,39.9,25.2,28.3,30.8,11.66,159.63,0.0,STRUCTURED,0.225
+KOSPI,Emerging,35.22,14.12,59.9,0.267,0.55,0.183,0.471,0.628,PASS,n/a,19.6,32.6,21.2,25.5,14.12,149.41,0.0,STRUCTURED,0.45
+NIFTY,Emerging,19.8,8.91,55.0,0.393,0.53,0.077,0.436,0.625,PASS,n/a,41.4,43.5,24.2,40.2,8.91,140.72,0.0,STRUCTURED,0.4
+SPX,Developed,32.42,13.96,56.9,0.383,0.444,0.173,0.366,0.519,PASS,PASS,27.2,24.6,26.2,25.8,13.96,157.73,0.0,STRUCTURED,0.275
+FTSE,Developed,34.13,14.67,57.0,0.353,0.525,0.122,0.446,0.601,PASS,PASS_BORDERLINE,26.9,27.3,14.7,24.6,14.67,147.41,0.0,STRUCTURED,0.2
+NIKKEI,Developed,19.73,8.86,55.1,0.441,0.37,0.19,0.283,0.462,PASS,PASS,53.4,31.0,41.4,40.4,8.86,159.55,0.0,STRUCTURED,0.18
+BTC,Crypto,25.71,9.67,62.4,0.4,0.476,0.125,0.403,0.547,PASS,n/a,26.3,25.6,24.7,25.8,9.67,150.84,0.0,STRUCTURED,0.55

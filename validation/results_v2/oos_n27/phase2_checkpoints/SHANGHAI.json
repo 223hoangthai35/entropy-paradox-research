@@ -1,0 +1,85 @@
+{
+  "tier_rank": 3,
+  "category": "Emerging",
+  "frozen_cf": {
+    "spec": "CausalForestDML+PurgedKFold",
+    "ate": 6.418476318555061,
+    "se": 2.750911529733893,
+    "ci_lo": 1.026788795620643,
+    "ci_hi": 11.810163841489477,
+    "direction_verdict": "Paradox",
+    "n_obs": 1290,
+    "fit_status": "ok"
+  },
+  "windows": {
+    "repro": {
+      "status": "ok",
+      "n_obs": 1290,
+      "n_det": 148,
+      "n_sto": 1142,
+      "cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": 6.038921100692392,
+        "se": 2.586801301244397,
+        "ci_lo": 0.9688837150920264,
+        "ci_hi": 11.108958486292757,
+        "direction_verdict": "Paradox",
+        "n_obs": 1290,
+        "fit_status": "ok"
+      },
+      "overlap": {
+        "min": 0.005669504643710748,
+        "p05": 0.009570813124844736,
+        "p95": 0.3314929606553123,
+        "max": 0.92213621073776,
+        "frac_outside_05_95": 0.3015503875968992
+      },
+      "placebo": {
+        "n_ok": 100,
+        "fp_rate": 0.15,
+        "ate_sd": 1.9917365141722332,
+        "p_cal_1sided": 0.019801980198019802,
+        "p_cal_2sided": 0.019801980198019802
+      },
+      "verdict": "DECISIVE_calibrated",
+      "flags": [
+        "ovl"
+      ]
+    },
+    "extended": {
+      "status": "ok",
+      "n_obs": 1319,
+      "n_det": 115,
+      "n_sto": 1204,
+      "cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": 8.172108105696536,
+        "se": 2.627150512793201,
+        "ci_lo": 3.0229877186559264,
+        "ci_hi": 13.321228492737143,
+        "direction_verdict": "Paradox",
+        "n_obs": 1319,
+        "fit_status": "ok"
+      },
+      "overlap": {
+        "min": 0.0029832270655896337,
+        "p05": 0.004654029987632295,
+        "p95": 0.2782579083353906,
+        "max": 0.8918871594644674,
+        "frac_outside_05_95": 0.6360879454131918
+      },
+      "placebo": {
+        "n_ok": 50,
+        "fp_rate": 0.18,
+        "ate_sd": 2.662212810752341,
+        "p_cal_1sided": 0.0196078431372549,
+        "p_cal_2sided": 0.0196078431372549
+      },
+      "verdict": "DECISIVE_calibrated",
+      "flags": [
+        "ovl",
+        "CI"
+      ]
+    }
+  }
+}

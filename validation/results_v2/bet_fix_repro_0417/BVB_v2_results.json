@@ -1,0 +1,178 @@
+{
+  "market": "BVB",
+  "ticker": "BVB:BET",
+  "category": "Frontier",
+  "n_bars": 1501,
+  "start": "2020-04-06",
+  "end": "2026-04-16",
+  "H_stat": 3.560597446465181,
+  "p_value": 0.16858777865961677,
+  "direction": "Paradox",
+  "regime_mean_vol": {
+    "Deterministic": 12.733274521447076,
+    "Transitional": 13.610535539878123,
+    "Stochastic": 12.690352655920497
+  },
+  "regime_median_vol": {
+    "Deterministic": 11.724235716827984,
+    "Transitional": 11.98230209365684,
+    "Stochastic": 11.527697021307407
+  },
+  "regime_share": {
+    "Deterministic": 0.3704197201865423,
+    "Transitional": 0.5123251165889408,
+    "Stochastic": 0.11725516322451698
+  },
+  "base_drawdown_rates": {
+    "3.0": 0.2660857908847185,
+    "5.0": 0.07975871313672922,
+    "7.0": 0.022117962466487937
+  },
+  "lift_by_regime": {
+    "Deterministic": {
+      "lift_3.0pct": 1.223438377761267,
+      "lift_5.0pct": 1.443201741128106,
+      "lift_7.0pct": 1.463701765860039
+    },
+    "Transitional": {
+      "lift_3.0pct": 0.9148216889831632,
+      "lift_5.0pct": 0.8083591331269351,
+      "lift_7.0pct": 0.8923444976076554
+    },
+    "Stochastic": {
+      "lift_3.0pct": 0.6619532860087016,
+      "lift_5.0pct": 0.4274255156608098,
+      "lift_7.0pct": 0.0
+    }
+  },
+  "rps": 0.225,
+  "kw_epsilon_sq": 0.0010558846051861846,
+  "dunn_det_sto_z": 0.8962267240136993,
+  "dunn_det_sto_raw": 0.370131685523438,
+  "dunn_det_sto_holm": 0.4534973164722942,
+  "dunn_det_tra_holm": 0.4534973164722942,
+  "dunn_tra_sto_holm": 0.24921139536894432,
+  "primary_horizon": 20,
+  "primary_U_det_sto": 51378.0,
+  "primary_p_mw_1sided": 0.15819707556042678,
+  "primary_cliffs_delta": 0.05007357750163499,
+  "primary_delta_ci_lo": -0.30554891617088115,
+  "primary_delta_ci_hi": 0.3811411488564231,
+  "primary_p_blockperm_1s": 0.4592703648175912,
+  "primary_nw_beta": 0.04292186552657163,
+  "primary_nw_tstat": 0.030179405785457407,
+  "primary_nw_p_two": 0.9759239728520555,
+  "direction_verdict_formal": "n.s.",
+  "direction_across_horizons": "consistent:n.s.",
+  "horizons": [
+    {
+      "horizon_days": 5,
+      "n_det": 556,
+      "n_sto": 176,
+      "mean_det": 11.892186901543788,
+      "mean_sto": 11.148604293269502,
+      "cliffs_delta": 0.060721877043819594,
+      "delta_ci_lo": -0.2091049310778117,
+      "delta_ci_hi": 0.31622107588438064,
+      "U_det_sto": 51899.0,
+      "p_mw_1sided": 0.1121840141309024,
+      "p_blockperm_1sided": 0.4017991004497751,
+      "nw_beta": 0.7435826082743017,
+      "nw_se": 1.295089061559532,
+      "nw_tstat": 0.5741555776703786,
+      "nw_p_two": 0.5658625267882309,
+      "direction_verdict_formal": "n.s."
+    },
+    {
+      "horizon_days": 10,
+      "n_det": 556,
+      "n_sto": 176,
+      "mean_det": 12.530805557233787,
+      "mean_sto": 12.278532434280676,
+      "cliffs_delta": 0.041612164813603636,
+      "delta_ci_lo": -0.26568099287423536,
+      "delta_ci_hi": 0.34570700953135786,
+      "U_det_sto": 50964.0,
+      "p_mw_1sided": 0.2025462082557109,
+      "p_blockperm_1sided": 0.4992503748125937,
+      "nw_beta": 0.25227312295311904,
+      "nw_se": 1.4272356844953562,
+      "nw_tstat": 0.17675645704046286,
+      "nw_p_two": 0.859699692670929,
+      "direction_verdict_formal": "n.s."
+    },
+    {
+      "horizon_days": 20,
+      "n_det": 556,
+      "n_sto": 176,
+      "mean_det": 12.733274521447076,
+      "mean_sto": 12.690352655920497,
+      "cliffs_delta": 0.05007357750163499,
+      "delta_ci_lo": -0.30554891617088115,
+      "delta_ci_hi": 0.3811411488564231,
+      "U_det_sto": 51378.0,
+      "p_mw_1sided": 0.15819707556042678,
+      "p_blockperm_1sided": 0.4592703648175912,
+      "nw_beta": 0.04292186552657163,
+      "nw_se": 1.4222236790114156,
+      "nw_tstat": 0.030179405785457407,
+      "nw_p_two": 0.9759239728520555,
+      "direction_verdict_formal": "n.s."
+    },
+    {
+      "horizon_days": 40,
+      "n_det": 536,
+      "n_sto": 176,
+      "mean_det": 12.80384853000057,
+      "mean_sto": 12.735347499472152,
+      "cliffs_delta": -0.0036677408412483237,
+      "delta_ci_lo": -0.37798669808542584,
+      "delta_ci_hi": 0.37098947780089764,
+      "U_det_sto": 46995.0,
+      "p_mw_1sided": 0.5292097664838162,
+      "p_blockperm_1sided": 0.5032483758120939,
+      "nw_beta": 0.06850103052841684,
+      "nw_se": 1.233759131088261,
+      "nw_tstat": 0.055522207538187936,
+      "nw_p_two": 0.9557224381793736,
+      "direction_verdict_formal": "n.s."
+    },
+    {
+      "horizon_days": 60,
+      "n_det": 516,
+      "n_sto": 176,
+      "mean_det": 12.335362616517731,
+      "mean_sto": 13.311360622404948,
+      "cliffs_delta": -0.21038143058491898,
+      "delta_ci_lo": -0.5807610567537312,
+      "delta_ci_hi": 0.14549873241888941,
+      "U_det_sto": 35855.0,
+      "p_mw_1sided": 0.9999848782894059,
+      "p_blockperm_1sided": 0.7226386806596702,
+      "nw_beta": -0.9759980058872202,
+      "nw_se": 1.016503399366329,
+      "nw_tstat": -0.9601522301800867,
+      "nw_p_two": 0.33697860480532094,
+      "direction_verdict_formal": "n.s."
+    }
+  ],
+  "H_stat_filtered": 3.5448393229153226,
+  "p_value_filtered": 0.1699213388849705,
+  "direction_filtered": "Paradox",
+  "regime_mean_vol_filtered": {
+    "Deterministic": 12.79129174376168,
+    "Transitional": 13.556496612102489,
+    "Stochastic": 12.711859567508514
+  },
+  "regime_share_filtered": {
+    "Deterministic": 0.36508994003997336,
+    "Transitional": 0.5163224516988674,
+    "Stochastic": 0.11858760826115923
+  },
+  "primary_U_det_sto_filtered": 51395.0,
+  "primary_p_mw_1sided_filtered": 0.14033972322008526,
+  "primary_cliffs_delta_filtered": 0.05378085786926934,
+  "primary_delta_ci_lo_filtered": -0.29309160621447694,
+  "primary_delta_ci_hi_filtered": 0.39603587152528885,
+  "direction_verdict_formal_filtered": "n.s."
+}

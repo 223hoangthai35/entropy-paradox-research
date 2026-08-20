@@ -1,0 +1,785 @@
+{
+  "pre_registration_commit": "b130b0f1f2769566eaf548181d6816eb31b1963e",
+  "refactor_date": "2026-04-19",
+  "configs": {
+    "A_current": {
+      "delta_hard": 0.6,
+      "delta_soft": 0.35,
+      "t_persist": 8
+    },
+    "B_looser": {
+      "delta_hard": 0.5,
+      "delta_soft": 0.3,
+      "t_persist": 6
+    },
+    "C_tighter": {
+      "delta_hard": 0.7,
+      "delta_soft": 0.4,
+      "t_persist": 10
+    }
+  },
+  "h5_spread_threshold": 0.05,
+  "common_window_start": "2020-01-01",
+  "markets": [
+    {
+      "market": "VNINDEX",
+      "category": "Frontier",
+      "rows": [
+        {
+          "market": "VNINDEX",
+          "category": "Frontier",
+          "config": "A_current",
+          "delta_hard": 0.6,
+          "delta_soft": 0.35,
+          "t_persist": 8,
+          "n_bars": 1555,
+          "flips_per_year": 6.97,
+          "p_det": 0.41,
+          "p_tra": 0.52,
+          "p_sto": 0.07,
+          "T_det_days": 61.5,
+          "T_tra_days": 53.3,
+          "T_sto_days": 22.6,
+          "overall_d": 51.2,
+          "p_tra_spread": 0.02,
+          "H5_verdict": "PASS"
+        },
+        {
+          "market": "VNINDEX",
+          "category": "Frontier",
+          "config": "B_looser",
+          "delta_hard": 0.5,
+          "delta_soft": 0.3,
+          "t_persist": 6,
+          "n_bars": 1555,
+          "flips_per_year": 7.45,
+          "p_det": 0.428,
+          "p_tra": 0.503,
+          "p_sto": 0.069,
+          "T_det_days": 56.7,
+          "T_tra_days": 49.2,
+          "T_sto_days": 22.3,
+          "overall_d": 47.9,
+          "p_tra_spread": 0.02,
+          "H5_verdict": "PASS"
+        },
+        {
+          "market": "VNINDEX",
+          "category": "Frontier",
+          "config": "C_tighter",
+          "delta_hard": 0.7,
+          "delta_soft": 0.4,
+          "t_persist": 10,
+          "n_bars": 1555,
+          "flips_per_year": 6.32,
+          "p_det": 0.419,
+          "p_tra": 0.523,
+          "p_sto": 0.058,
+          "T_det_days": 67.5,
+          "T_tra_days": 58.9,
+          "T_sto_days": 21.7,
+          "overall_d": 56.3,
+          "p_tra_spread": 0.02,
+          "H5_verdict": "PASS"
+        }
+      ],
+      "p_tra_spread": 0.020000000000000018,
+      "H5_verdict": "PASS",
+      "H5_verdict_refined": "PASS_BORDERLINE",
+      "bootstrap": {
+        "per_config_ci": {
+          "A_current": {
+            "ci_lo": 0.4237781350482315,
+            "ci_hi": 0.6096623794212218,
+            "mean": 0.520304501607717,
+            "std": 0.04737003464072301
+          },
+          "B_looser": {
+            "ci_lo": 0.41091639871382635,
+            "ci_hi": 0.5916398713826366,
+            "mean": 0.5028926045016077,
+            "std": 0.046542836891237595
+          },
+          "C_tighter": {
+            "ci_lo": 0.4282797427652733,
+            "ci_hi": 0.6128778135048231,
+            "mean": 0.5225729903536979,
+            "std": 0.047828847783821356
+          }
+        },
+        "spread_ci": {
+          "ci_lo": 0.005787781350482302,
+          "ci_hi": 0.058520900321543334,
+          "mean": 0.02676430868167203,
+          "std": 0.013717464756361687,
+          "frac_gt_threshold": 0.0665
+        }
+      }
+    },
+    {
+      "market": "BVB",
+      "category": "Frontier",
+      "rows": [
+        {
+          "market": "BVB",
+          "category": "Frontier",
+          "config": "A_current",
+          "delta_hard": 0.6,
+          "delta_soft": 0.35,
+          "t_persist": 8,
+          "n_bars": 1551,
+          "flips_per_year": 7.64,
+          "p_det": 0.366,
+          "p_tra": 0.515,
+          "p_sto": 0.12,
+          "T_det_days": 58.7,
+          "T_tra_days": 48.2,
+          "T_sto_days": 26.9,
+          "overall_d": 46.8,
+          "p_tra_spread": 0.023,
+          "H5_verdict": "PASS"
+        },
+        {
+          "market": "BVB",
+          "category": "Frontier",
+          "config": "B_looser",
+          "delta_hard": 0.5,
+          "delta_soft": 0.3,
+          "t_persist": 6,
+          "n_bars": 1551,
+          "flips_per_year": 8.29,
+          "p_det": 0.367,
+          "p_tra": 0.518,
+          "p_sto": 0.115,
+          "T_det_days": 54.9,
+          "T_tra_days": 44.8,
+          "T_sto_days": 23.4,
+          "overall_d": 43.2,
+          "p_tra_spread": 0.023,
+          "H5_verdict": "PASS"
+        },
+        {
+          "market": "BVB",
+          "category": "Frontier",
+          "config": "C_tighter",
+          "delta_hard": 0.7,
+          "delta_soft": 0.4,
+          "t_persist": 10,
+          "n_bars": 1551,
+          "flips_per_year": 6.01,
+          "p_det": 0.349,
+          "p_tra": 0.538,
+          "p_sto": 0.113,
+          "T_det_days": 71.2,
+          "T_tra_days": 63.6,
+          "T_sto_days": 31.9,
+          "overall_d": 59.1,
+          "p_tra_spread": 0.023,
+          "H5_verdict": "PASS"
+        }
+      ],
+      "p_tra_spread": 0.02300000000000002,
+      "H5_verdict": "PASS",
+      "H5_verdict_refined": "PASS_BORDERLINE",
+      "bootstrap": {
+        "per_config_ci": {
+          "A_current": {
+            "ci_lo": 0.423581560283688,
+            "ci_hi": 0.6054319793681494,
+            "mean": 0.5145918762088975,
+            "std": 0.04643023049395752
+          },
+          "B_looser": {
+            "ci_lo": 0.4268214055448098,
+            "ci_hi": 0.6105738233397808,
+            "mean": 0.5182882011605415,
+            "std": 0.046264328686735974
+          },
+          "C_tighter": {
+            "ci_lo": 0.4442295293359123,
+            "ci_hi": 0.63571889103804,
+            "mean": 0.5381744036105738,
+            "std": 0.048222530576952014
+          }
+        },
+        "spread_ci": {
+          "ci_lo": 0.005157962604771136,
+          "ci_hi": 0.052885235332043805,
+          "mean": 0.024415538362346872,
+          "std": 0.01242553565767446,
+          "frac_gt_threshold": 0.0335
+        }
+      }
+    },
+    {
+      "market": "KOSPI",
+      "category": "Emerging",
+      "rows": [
+        {
+          "market": "KOSPI",
+          "category": "Emerging",
+          "config": "A_current",
+          "delta_hard": 0.6,
+          "delta_soft": 0.35,
+          "t_persist": 8,
+          "n_bars": 1517,
+          "flips_per_year": 14.12,
+          "p_det": 0.267,
+          "p_tra": 0.55,
+          "p_sto": 0.183,
+          "T_det_days": 19.6,
+          "T_tra_days": 32.6,
+          "T_sto_days": 21.2,
+          "overall_d": 25.5,
+          "p_tra_spread": 0.053,
+          "H5_verdict": "REJECT"
+        },
+        {
+          "market": "KOSPI",
+          "category": "Emerging",
+          "config": "B_looser",
+          "delta_hard": 0.5,
+          "delta_soft": 0.3,
+          "t_persist": 6,
+          "n_bars": 1517,
+          "flips_per_year": 15.45,
+          "p_det": 0.274,
+          "p_tra": 0.552,
+          "p_sto": 0.173,
+          "T_det_days": 18.3,
+          "T_tra_days": 30.3,
+          "T_sto_days": 18.1,
+          "overall_d": 23.4,
+          "p_tra_spread": 0.053,
+          "H5_verdict": "REJECT"
+        },
+        {
+          "market": "KOSPI",
+          "category": "Emerging",
+          "config": "C_tighter",
+          "delta_hard": 0.7,
+          "delta_soft": 0.4,
+          "t_persist": 10,
+          "n_bars": 1517,
+          "flips_per_year": 12.13,
+          "p_det": 0.294,
+          "p_tra": 0.499,
+          "p_sto": 0.207,
+          "T_det_days": 26.9,
+          "T_tra_days": 35.4,
+          "T_sto_days": 23.9,
+          "overall_d": 29.7,
+          "p_tra_spread": 0.053,
+          "H5_verdict": "REJECT"
+        }
+      ],
+      "p_tra_spread": 0.05300000000000005,
+      "H5_verdict": "REJECT",
+      "H5_verdict_refined": "REJECT_BORDERLINE",
+      "bootstrap": {
+        "per_config_ci": {
+          "A_current": {
+            "ci_lo": 0.4713085036255768,
+            "ci_hi": 0.6282135794330916,
+            "mean": 0.5491667765326301,
+            "std": 0.0408955128027249
+          },
+          "B_looser": {
+            "ci_lo": 0.4759393539881345,
+            "ci_hi": 0.6288727752142387,
+            "mean": 0.5519452867501647,
+            "std": 0.039808130790078264
+          },
+          "C_tighter": {
+            "ci_lo": 0.41529334212261043,
+            "ci_hi": 0.5840804218852997,
+            "mean": 0.49865952537903757,
+            "std": 0.043238815942903505
+          }
+        },
+        "spread_ci": {
+          "ci_lo": 0.015820698747528006,
+          "ci_hi": 0.10085695451549115,
+          "mean": 0.0544215557020435,
+          "std": 0.021878018717036065,
+          "frac_gt_threshold": 0.5595
+        }
+      }
+    },
+    {
+      "market": "NIFTY",
+      "category": "Emerging",
+      "rows": [
+        {
+          "market": "NIFTY",
+          "category": "Emerging",
+          "config": "A_current",
+          "delta_hard": 0.6,
+          "delta_soft": 0.35,
+          "t_persist": 8,
+          "n_bars": 1527,
+          "flips_per_year": 8.91,
+          "p_det": 0.393,
+          "p_tra": 0.53,
+          "p_sto": 0.077,
+          "T_det_days": 41.4,
+          "T_tra_days": 43.5,
+          "T_sto_days": 24.2,
+          "overall_d": 40.2,
+          "p_tra_spread": 0.088,
+          "H5_verdict": "REJECT"
+        },
+        {
+          "market": "NIFTY",
+          "category": "Emerging",
+          "config": "B_looser",
+          "delta_hard": 0.5,
+          "delta_soft": 0.3,
+          "t_persist": 6,
+          "n_bars": 1527,
+          "flips_per_year": 9.24,
+          "p_det": 0.392,
+          "p_tra": 0.533,
+          "p_sto": 0.075,
+          "T_det_days": 39.4,
+          "T_tra_days": 42.1,
+          "T_sto_days": 23.6,
+          "overall_d": 38.8,
+          "p_tra_spread": 0.088,
+          "H5_verdict": "REJECT"
+        },
+        {
+          "market": "NIFTY",
+          "category": "Emerging",
+          "config": "C_tighter",
+          "delta_hard": 0.7,
+          "delta_soft": 0.4,
+          "t_persist": 10,
+          "n_bars": 1527,
+          "flips_per_year": 6.6,
+          "p_det": 0.48,
+          "p_tra": 0.445,
+          "p_sto": 0.075,
+          "T_det_days": 70.8,
+          "T_tra_days": 49.2,
+          "T_sto_days": 27.8,
+          "overall_d": 53.9,
+          "p_tra_spread": 0.088,
+          "H5_verdict": "REJECT"
+        }
+      ],
+      "p_tra_spread": 0.08800000000000002,
+      "H5_verdict": "REJECT",
+      "H5_verdict_refined": "REJECT_BORDERLINE",
+      "bootstrap": {
+        "per_config_ci": {
+          "A_current": {
+            "ci_lo": 0.43611656843483954,
+            "ci_hi": 0.6254092992796333,
+            "mean": 0.5303683693516699,
+            "std": 0.047625535674007256
+          },
+          "B_looser": {
+            "ci_lo": 0.4387360838244925,
+            "ci_hi": 0.6247544204322201,
+            "mean": 0.5328490504256713,
+            "std": 0.047336658240045064
+          },
+          "C_tighter": {
+            "ci_lo": 0.343811394891945,
+            "ci_hi": 0.5402914210870987,
+            "mean": 0.4438464309102816,
+            "std": 0.050905278098485676
+          }
+        },
+        "spread_ci": {
+          "ci_lo": 0.041912246234446615,
+          "ci_hi": 0.1526031434184675,
+          "mean": 0.09245448592010479,
+          "std": 0.027882802734104328,
+          "frac_gt_threshold": 0.944
+        }
+      }
+    },
+    {
+      "market": "SPX",
+      "category": "Developed",
+      "rows": [
+        {
+          "market": "SPX",
+          "category": "Developed",
+          "config": "A_current",
+          "delta_hard": 0.6,
+          "delta_soft": 0.35,
+          "t_persist": 8,
+          "n_bars": 1570,
+          "flips_per_year": 13.96,
+          "p_det": 0.383,
+          "p_tra": 0.444,
+          "p_sto": 0.173,
+          "T_det_days": 27.2,
+          "T_tra_days": 24.6,
+          "T_sto_days": 26.2,
+          "overall_d": 25.8,
+          "p_tra_spread": 0.117,
+          "H5_verdict": "REJECT"
+        },
+        {
+          "market": "SPX",
+          "category": "Developed",
+          "config": "B_looser",
+          "delta_hard": 0.5,
+          "delta_soft": 0.3,
+          "t_persist": 6,
+          "n_bars": 1570,
+          "flips_per_year": 15.57,
+          "p_det": 0.403,
+          "p_tra": 0.428,
+          "p_sto": 0.169,
+          "T_det_days": 25.4,
+          "T_tra_days": 21.6,
+          "T_sto_days": 22.7,
+          "overall_d": 23.2,
+          "p_tra_spread": 0.117,
+          "H5_verdict": "REJECT"
+        },
+        {
+          "market": "SPX",
+          "category": "Developed",
+          "config": "C_tighter",
+          "delta_hard": 0.7,
+          "delta_soft": 0.4,
+          "t_persist": 10,
+          "n_bars": 1570,
+          "flips_per_year": 10.43,
+          "p_det": 0.298,
+          "p_tra": 0.545,
+          "p_sto": 0.157,
+          "T_det_days": 29.5,
+          "T_tra_days": 38.7,
+          "T_sto_days": 32.5,
+          "overall_d": 34.5,
+          "p_tra_spread": 0.117,
+          "H5_verdict": "REJECT"
+        }
+      ],
+      "p_tra_spread": 0.11700000000000005,
+      "H5_verdict": "REJECT",
+      "H5_verdict_refined": "REJECT_DECISIVE",
+      "bootstrap": {
+        "per_config_ci": {
+          "A_current": {
+            "ci_lo": 0.3662420382165605,
+            "ci_hi": 0.5191082802547771,
+            "mean": 0.4434108280254777,
+            "std": 0.03972093704674903
+          },
+          "B_looser": {
+            "ci_lo": 0.35159235668789807,
+            "ci_hi": 0.5031847133757962,
+            "mean": 0.4274933121019108,
+            "std": 0.03846030781984809
+          },
+          "C_tighter": {
+            "ci_lo": 0.45858280254777073,
+            "ci_hi": 0.6280414012738852,
+            "mean": 0.5439942675159236,
+            "std": 0.04343143900111594
+          }
+        },
+        "spread_ci": {
+          "ci_lo": 0.07133757961783438,
+          "ci_hi": 0.16753184713375785,
+          "mean": 0.11692738853503182,
+          "std": 0.024968512151321134,
+          "frac_gt_threshold": 0.9985
+        }
+      }
+    },
+    {
+      "market": "FTSE",
+      "category": "Developed",
+      "rows": [
+        {
+          "market": "FTSE",
+          "category": "Developed",
+          "config": "A_current",
+          "delta_hard": 0.6,
+          "delta_soft": 0.35,
+          "t_persist": 8,
+          "n_bars": 1580,
+          "flips_per_year": 14.67,
+          "p_det": 0.353,
+          "p_tra": 0.525,
+          "p_sto": 0.122,
+          "T_det_days": 26.9,
+          "T_tra_days": 27.3,
+          "T_sto_days": 14.7,
+          "overall_d": 24.6,
+          "p_tra_spread": 0.062,
+          "H5_verdict": "REJECT"
+        },
+        {
+          "market": "FTSE",
+          "category": "Developed",
+          "config": "B_looser",
+          "delta_hard": 0.5,
+          "delta_soft": 0.3,
+          "t_persist": 6,
+          "n_bars": 1580,
+          "flips_per_year": 17.86,
+          "p_det": 0.332,
+          "p_tra": 0.548,
+          "p_sto": 0.12,
+          "T_det_days": 20.6,
+          "T_tra_days": 23.7,
+          "T_sto_days": 11.9,
+          "overall_d": 20.3,
+          "p_tra_spread": 0.062,
+          "H5_verdict": "REJECT"
+        },
+        {
+          "market": "FTSE",
+          "category": "Developed",
+          "config": "C_tighter",
+          "delta_hard": 0.7,
+          "delta_soft": 0.4,
+          "t_persist": 10,
+          "n_bars": 1580,
+          "flips_per_year": 11.96,
+          "p_det": 0.392,
+          "p_tra": 0.486,
+          "p_sto": 0.122,
+          "T_det_days": 37.4,
+          "T_tra_days": 31.8,
+          "T_sto_days": 16.4,
+          "overall_d": 30.1,
+          "p_tra_spread": 0.062,
+          "H5_verdict": "REJECT"
+        }
+      ],
+      "p_tra_spread": 0.062000000000000055,
+      "H5_verdict": "REJECT",
+      "H5_verdict_refined": "REJECT_BORDERLINE",
+      "bootstrap": {
+        "per_config_ci": {
+          "A_current": {
+            "ci_lo": 0.44555379746835444,
+            "ci_hi": 0.600632911392405,
+            "mean": 0.5241784810126583,
+            "std": 0.040527586372375114
+          },
+          "B_looser": {
+            "ci_lo": 0.47341772151898737,
+            "ci_hi": 0.6215189873417721,
+            "mean": 0.5475335443037975,
+            "std": 0.03855262423445287
+          },
+          "C_tighter": {
+            "ci_lo": 0.4012658227848101,
+            "ci_hi": 0.5683702531645569,
+            "mean": 0.485845253164557,
+            "std": 0.04256738552491819
+          }
+        },
+        "spread_ci": {
+          "ci_lo": 0.02278481012658229,
+          "ci_hi": 0.10571202531645567,
+          "mean": 0.0617629746835443,
+          "std": 0.021439014553772125,
+          "frac_gt_threshold": 0.6975
+        }
+      }
+    },
+    {
+      "market": "NIKKEI",
+      "category": "Developed",
+      "rows": [
+        {
+          "market": "NIKKEI",
+          "category": "Developed",
+          "config": "A_current",
+          "delta_hard": 0.6,
+          "delta_soft": 0.35,
+          "t_persist": 8,
+          "n_bars": 1507,
+          "flips_per_year": 8.86,
+          "p_det": 0.441,
+          "p_tra": 0.37,
+          "p_sto": 0.19,
+          "T_det_days": 53.4,
+          "T_tra_days": 31.0,
+          "T_sto_days": 41.4,
+          "overall_d": 40.4,
+          "p_tra_spread": 0.018,
+          "H5_verdict": "PASS"
+        },
+        {
+          "market": "NIKKEI",
+          "category": "Developed",
+          "config": "B_looser",
+          "delta_hard": 0.5,
+          "delta_soft": 0.3,
+          "t_persist": 6,
+          "n_bars": 1507,
+          "flips_per_year": 10.53,
+          "p_det": 0.43,
+          "p_tra": 0.379,
+          "p_sto": 0.191,
+          "T_det_days": 46.9,
+          "T_tra_days": 26.7,
+          "T_sto_days": 32.1,
+          "overall_d": 34.1,
+          "p_tra_spread": 0.018,
+          "H5_verdict": "PASS"
+        },
+        {
+          "market": "NIKKEI",
+          "category": "Developed",
+          "config": "C_tighter",
+          "delta_hard": 0.7,
+          "delta_soft": 0.4,
+          "t_persist": 10,
+          "n_bars": 1507,
+          "flips_per_year": 7.52,
+          "p_det": 0.445,
+          "p_tra": 0.361,
+          "p_sto": 0.194,
+          "T_det_days": 64.8,
+          "T_tra_days": 35.8,
+          "T_sto_days": 47.0,
+          "overall_d": 47.5,
+          "p_tra_spread": 0.018,
+          "H5_verdict": "PASS"
+        }
+      ],
+      "p_tra_spread": 0.018000000000000016,
+      "H5_verdict": "PASS",
+      "H5_verdict_refined": "PASS_DECISIVE",
+      "bootstrap": {
+        "per_config_ci": {
+          "A_current": {
+            "ci_lo": 0.28266423357664233,
+            "ci_hi": 0.46187790311877885,
+            "mean": 0.3705972130059721,
+            "std": 0.045469727047824836
+          },
+          "B_looser": {
+            "ci_lo": 0.29263437292634376,
+            "ci_hi": 0.47247843397478423,
+            "mean": 0.37969807564698077,
+            "std": 0.045154186015208736
+          },
+          "C_tighter": {
+            "ci_lo": 0.27602853351028533,
+            "ci_hi": 0.4558891838088917,
+            "mean": 0.3620421366954214,
+            "std": 0.046086370105265825
+          }
+        },
+        "spread_ci": {
+          "ci_lo": 0.0033178500331785266,
+          "ci_hi": 0.039814200398141986,
+          "mean": 0.01865461181154612,
+          "std": 0.00944301955951868,
+          "frac_gt_threshold": 0.002
+        }
+      }
+    },
+    {
+      "market": "BTC",
+      "category": "Crypto",
+      "rows": [
+        {
+          "market": "BTC",
+          "category": "Crypto",
+          "config": "A_current",
+          "delta_hard": 0.6,
+          "delta_soft": 0.35,
+          "t_persist": 8,
+          "n_bars": 2372,
+          "flips_per_year": 9.67,
+          "p_det": 0.4,
+          "p_tra": 0.476,
+          "p_sto": 0.125,
+          "T_det_days": 26.3,
+          "T_tra_days": 25.6,
+          "T_sto_days": 24.7,
+          "overall_d": 25.8,
+          "p_tra_spread": 0.024,
+          "H5_verdict": "PASS"
+        },
+        {
+          "market": "BTC",
+          "category": "Crypto",
+          "config": "B_looser",
+          "delta_hard": 0.5,
+          "delta_soft": 0.3,
+          "t_persist": 6,
+          "n_bars": 2372,
+          "flips_per_year": 10.94,
+          "p_det": 0.406,
+          "p_tra": 0.473,
+          "p_sto": 0.12,
+          "T_det_days": 25.4,
+          "T_tra_days": 22.5,
+          "T_sto_days": 17.8,
+          "overall_d": 22.8,
+          "p_tra_spread": 0.024,
+          "H5_verdict": "PASS"
+        },
+        {
+          "market": "BTC",
+          "category": "Crypto",
+          "config": "C_tighter",
+          "delta_hard": 0.7,
+          "delta_soft": 0.4,
+          "t_persist": 10,
+          "n_bars": 2372,
+          "flips_per_year": 7.65,
+          "p_det": 0.414,
+          "p_tra": 0.452,
+          "p_sto": 0.134,
+          "T_det_days": 36.3,
+          "T_tra_days": 30.7,
+          "T_sto_days": 28.9,
+          "overall_d": 32.5,
+          "p_tra_spread": 0.024,
+          "H5_verdict": "PASS"
+        }
+      ],
+      "p_tra_spread": 0.023999999999999966,
+      "H5_verdict": "PASS",
+      "H5_verdict_refined": "PASS_BORDERLINE",
+      "bootstrap": {
+        "per_config_ci": {
+          "A_current": {
+            "ci_lo": 0.4026138279932546,
+            "ci_hi": 0.5468064924114671,
+            "mean": 0.47592769814502534,
+            "std": 0.03691792771346341
+          },
+          "B_looser": {
+            "ci_lo": 0.4021817032040472,
+            "ci_hi": 0.5451201517706576,
+            "mean": 0.4741245784148398,
+            "std": 0.03613658152154701
+          },
+          "C_tighter": {
+            "ci_lo": 0.3811129848229342,
+            "ci_hi": 0.5261488195615514,
+            "mean": 0.45265704047217536,
+            "std": 0.0376546450633035
+          }
+        },
+        "spread_ci": {
+          "ci_lo": 0.005059021922428297,
+          "ci_hi": 0.061561973018549716,
+          "mean": 0.028902824620573354,
+          "std": 0.015028347233209305,
+          "frac_gt_threshold": 0.0955
+        }
+      }
+    }
+  ]
+}

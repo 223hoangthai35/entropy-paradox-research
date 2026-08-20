@@ -1,0 +1,51 @@
+{
+  "market": "BTC",
+  "ticker": "BTC-USD",
+  "category": "Crypto",
+  "common_window": [
+    "2020-01-01",
+    "2026-06-29"
+  ],
+  "n_bars": 2372,
+  "bars_per_year": 365,
+  "raw_flips_per_year": 25.709949409780776,
+  "filtered_flips_per_year": 9.66779089376054,
+  "reduction_pct": 62.396694214876035,
+  "p_det": 0.3996627318718381,
+  "p_tra": 0.47554806070826305,
+  "p_sto": 0.12478920741989882,
+  "p_tra_ci_lo": 0.4026138279932546,
+  "p_tra_ci_hi": 0.5468064924114671,
+  "distance_to_threshold": NaN,
+  "distance_spec": "n/a",
+  "threshold_wrong_side_p": NaN,
+  "h3_verdict_categorical": "PASS",
+  "h3_verdict_refined": "n/a",
+  "T_det_days": 26.333333333333332,
+  "T_tra_days": 25.636363636363637,
+  "T_sto_days": 24.666666666666668,
+  "overall_mean_days": 25.782608695652176,
+  "n_segments": 92,
+  "shuffle_observed": 9.66779089376054,
+  "shuffle_null_mean": 150.8403900505902,
+  "shuffle_null_p05": 146.929173693086,
+  "shuffle_null_p95": 154.79089376053963,
+  "shuffle_p_value": 0.0,
+  "shuffle_verdict": "STRUCTURED",
+  "shuffle_block_p": {
+    "5": 0.0,
+    "10": 0.0,
+    "20": 0.0
+  },
+  "shuffle_block_null_mean": {
+    "5": 38.28647048903878,
+    "10": 24.230777403035415,
+    "20": 16.905672849915682
+  },
+  "rps": 0.55,
+  "p_det_raw": 0.38406408094435074,
+  "p_tra_raw": 0.48524451939291735,
+  "p_sto_raw": 0.13069139966273188,
+  "p_tra_raw_ci_lo": 0.422849915682968,
+  "p_tra_raw_ci_hi": 0.5531197301854974
+}

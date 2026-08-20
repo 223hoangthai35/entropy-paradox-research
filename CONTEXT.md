@@ -39,7 +39,9 @@ This repo is research-only.
 |-----------------------------|----------|------------------------------------------------|
 | `master`                    | tracking | Receives `--no-ff` merges from working branch  |
 | `v7.2-case-a-validation`    | **active** | Default working branch                       |
-| `v3.4.1-jfds-submission`    | tag      | Journal-submission manuscript v3.4 archive (2026-07-04, reviewer-visible docs anonymized) — canonical tag cited on the title page |
+| `v3.4.2-rigor-oos`          | tag      | Rigor + OOS evidence freeze (2026-07-10): rotation-placebo calibration (ms §4.1.2/App F.6), out-of-sample window extension + stability diagnostics (App J), n=27 campaign with checksummed input snapshots — canonical tag cited on the title page |
+| `forward-prereg-2026H2`     | tag      | Forward pre-registration (2026-07-10, commit `a5113f9`): direction predictions on 2026-07-13 → 2027-06-30 data + frozen evaluation script (ms App J.5). NEVER edit the registered file |
+| `v3.4.1-jfds-submission`    | tag      | Manuscript v3.4 archive (2026-07-04, reviewer-visible docs anonymized) — superseded as canonical by `v3.4.2-rigor-oos` |
 | `v3.4-jfds-submission`      | tag      | Superseded by v3.4.1 (pre-anonymization README) — safe to delete |
 | `v2.1.3-prereg-audit`       | tag      | Prior canonical HEAD (paper + audit)           |
 | `v2.1-paper-combined`       | tag      | Canonical v2.1 paper (April 2026)              |
@@ -170,6 +172,27 @@ at [skills/ds_skill.py:35](skills/ds_skill.py#L35).
     python validation/entropy_vs_simple_8market.py
     ```
 
+  - Rigor + OOS campaigns (2026-07, ms §4.1.2 / §4.2.3 / App F.6 / App J):
+    ```
+    python validation/rigor_h1_placebo.py            # rotation-placebo battery (n=8; env PLACEBO_ROT_* to scale)
+    python validation/rigor_composition_clr_eiv.py   # clr+EIV composition + ARI stability
+    python validation/oos_2026q2_extension.py        # n=8 window extension, 3-column design
+    python validation/oos_2026q2_extension_p2.py     # H3/H4/H5 + cascade on both windows
+    python validation/oos_2026q2_h2_alt_estimators.py# JT tier test + EIV meta-regression
+    python validation/oos_n27_phase0_data.py         # n=27: snapshot + SHA256 data gate
+    python validation/oos_n27_phase1_repro.py        # n=27: replication check vs frozen
+    python validation/oos_n27_phase2_h1.py           # n=27: CF-DML + placebo (checkpointed)
+    python validation/oos_n27_phase345_h2mech.py     # n=27: H2/mechanism/H3/H4/ARI
+    python validation/forward_test_2026H2_eval.py    # forward-test evaluation (registered run >= 2027-07-01)
+    ```
+    Outputs: `validation/results_v2/oos_2026q2/` and `validation/results_v2/oos_n27/`
+    (incl. `oos_n27/data_snapshot/` — checksummed inputs; the BVB.RO series was
+    revised at the vendor between the frozen archive and 2026-07 re-pulls, see
+    ms App J.3, so snapshots are the reproduction basis for these campaigns).
+    Run with `PYTHONHASHSEED=0`; new scripts derive seeds via `zlib.crc32`
+    (hash-seed-independent). yfinance treats `end` as EXCLUSIVE — canonical
+    yfinance runs end the bar before nominal END (`oos_n27_common.py`).
+
 All validation scripts memoise the GMM pipeline per
 `(market, start, end)` via
 [scripts/extract_flip_dates.py](scripts/extract_flip_dates.py), so
@@ -218,6 +241,6 @@ an `if __name__ == "__main__":` block for standalone smoke testing.
 
 ---
 
-*Last updated: 2026-04-29 (research-only repo, v2.1-only HEAD).
+*Last updated: 2026-07-10 (rigor + OOS freeze; canonical tag v3.4.2-rigor-oos).
 If you change something here that future sessions need to know,
 update both this file and the relevant section in CLAUDE.md.*

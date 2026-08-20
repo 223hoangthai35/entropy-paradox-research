@@ -1,0 +1,223 @@
+{
+  "model": "amazon/chronos-t5-small",
+  "window": 22,
+  "pca_dims": 2,
+  "forward_vol_horizon": 20,
+  "random_state": 42,
+  "batch_size": 64,
+  "n_markets": 8,
+  "n_markets_ok": 8,
+  "per_market": [
+    {
+      "name": "VNINDEX",
+      "ticker": "VNINDEX",
+      "category": "Frontier",
+      "tier": 4,
+      "rps": 0.9,
+      "n_bars_aligned": 1535,
+      "pca_explained_variance_ratio": [
+        0.11731141060590744,
+        0.07867804914712906
+      ],
+      "pca_explained_variance_total": 0.1959894597530365,
+      "H_raw_chronos": 5.494046688875642,
+      "eta_sq_raw_chronos": 0.002280709326942325,
+      "H_filt_chronos": 5.69705155689735,
+      "eta_sq_filt_chronos": 0.00241321903191733,
+      "raw_flips_per_year": 37.92312703583062,
+      "filt_flips_per_year": 14.775244299674267,
+      "regime_composition_filtered": {
+        "0": 0.4241042345276873,
+        "1": 0.4026058631921824,
+        "2": 0.1732899022801303
+      },
+      "elapsed_seconds": 9.128839015960693
+    },
+    {
+      "name": "BVB",
+      "ticker": "BVB:BET",
+      "category": "Frontier",
+      "tier": 4,
+      "rps": 0.225,
+      "n_bars_aligned": 1531,
+      "pca_explained_variance_ratio": [
+        0.10365429520606995,
+        0.08176638931035995
+      ],
+      "pca_explained_variance_total": 0.1854206919670105,
+      "H_raw_chronos": 4.142770728992218,
+      "eta_sq_raw_chronos": 0.001402336864523703,
+      "H_filt_chronos": 9.782464021837768,
+      "eta_sq_filt_chronos": 0.005093235616385974,
+      "raw_flips_per_year": 52.83605486610059,
+      "filt_flips_per_year": 13.826257348138471,
+      "regime_composition_filtered": {
+        "0": 0.3527106466361855,
+        "1": 0.3246244284781189,
+        "2": 0.32266492488569565
+      },
+      "elapsed_seconds": 4.544548988342285
+    },
+    {
+      "name": "KOSPI",
+      "ticker": "^KS11",
+      "category": "Emerging",
+      "tier": 3,
+      "rps": 0.45,
+      "n_bars_aligned": 1497,
+      "pca_explained_variance_ratio": [
+        0.11743398010730743,
+        0.09666787087917328
+      ],
+      "pca_explained_variance_total": 0.2141018509864807,
+      "H_raw_chronos": 46.921351509491615,
+      "eta_sq_raw_chronos": 0.03006783902911085,
+      "H_filt_chronos": 94.25244953208585,
+      "eta_sq_filt_chronos": 0.06174862753151663,
+      "raw_flips_per_year": 42.42084168336673,
+      "filt_flips_per_year": 14.645290581162325,
+      "regime_composition_filtered": {
+        "0": 0.38410153640614564,
+        "1": 0.2685370741482966,
+        "2": 0.3473613894455578
+      },
+      "elapsed_seconds": 4.83414363861084
+    },
+    {
+      "name": "NIFTY",
+      "ticker": "^NSEI",
+      "category": "Emerging",
+      "tier": 3,
+      "rps": 0.4,
+      "n_bars_aligned": 1507,
+      "pca_explained_variance_ratio": [
+        0.10870122164487839,
+        0.09517446160316467
+      ],
+      "pca_explained_variance_total": 0.20387569069862366,
+      "H_raw_chronos": 33.390318682862926,
+      "eta_sq_raw_chronos": 0.020871222528499284,
+      "H_filt_chronos": 28.461697793491112,
+      "eta_sq_filt_chronos": 0.01759421395843824,
+      "raw_flips_per_year": 44.647644326476446,
+      "filt_flips_per_year": 12.374253483742535,
+      "regime_composition_filtered": {
+        "0": 0.1838088918380889,
+        "1": 0.42866622428666223,
+        "2": 0.38752488387524886
+      },
+      "elapsed_seconds": 3.985363006591797
+    },
+    {
+      "name": "SPX",
+      "ticker": "^GSPC",
+      "category": "Developed",
+      "tier": 1,
+      "rps": 0.275,
+      "n_bars_aligned": 1550,
+      "pca_explained_variance_ratio": [
+        0.12062543630599976,
+        0.07497859001159668
+      ],
+      "pca_explained_variance_total": 0.19560402631759644,
+      "H_raw_chronos": 8.460610842460483,
+      "eta_sq_raw_chronos": 0.00417621903197187,
+      "H_filt_chronos": 7.26918605474566,
+      "eta_sq_filt_chronos": 0.00340606726227903,
+      "raw_flips_per_year": 53.651612903225804,
+      "filt_flips_per_year": 16.745806451612903,
+      "regime_composition_filtered": {
+        "0": 0.3412903225806452,
+        "1": 0.2767741935483871,
+        "2": 0.38193548387096776
+      },
+      "elapsed_seconds": 4.087718963623047
+    },
+    {
+      "name": "FTSE",
+      "ticker": "^FTSE",
+      "category": "Developed",
+      "tier": 1,
+      "rps": 0.2,
+      "n_bars_aligned": 1560,
+      "pca_explained_variance_ratio": [
+        0.10685458779335022,
+        0.08123064041137695
+      ],
+      "pca_explained_variance_total": 0.18808522820472717,
+      "H_raw_chronos": 22.794616225164646,
+      "eta_sq_raw_chronos": 0.013355565976342097,
+      "H_filt_chronos": 33.94688759647943,
+      "eta_sq_filt_chronos": 0.02051823223922892,
+      "raw_flips_per_year": 50.56153846153846,
+      "filt_flips_per_year": 12.276923076923078,
+      "regime_composition_filtered": {
+        "0": 0.46474358974358976,
+        "1": 0.48525641025641025,
+        "2": 0.05
+      },
+      "elapsed_seconds": 4.166951656341553
+    },
+    {
+      "name": "NIKKEI",
+      "ticker": "^N225",
+      "category": "Developed",
+      "tier": 1,
+      "rps": 0.18,
+      "n_bars_aligned": 1487,
+      "pca_explained_variance_ratio": [
+        0.11061668395996094,
+        0.06835085153579712
+      ],
+      "pca_explained_variance_total": 0.17896753549575806,
+      "H_raw_chronos": 0.21836252727553074,
+      "eta_sq_raw_chronos": 0.0,
+      "H_filt_chronos": 5.3593067570009225,
+      "eta_sq_filt_chronos": 0.0022636837985181416,
+      "raw_flips_per_year": 52.53530598520511,
+      "filt_flips_per_year": 20.67518493611298,
+      "regime_composition_filtered": {
+        "0": 0.18695359784801613,
+        "1": 0.29388029589778075,
+        "2": 0.5191661062542031
+      },
+      "elapsed_seconds": 4.077893972396851
+    },
+    {
+      "name": "BTC",
+      "ticker": "BTC-USD",
+      "category": "Crypto",
+      "tier": 2,
+      "rps": 0.55,
+      "n_bars_aligned": 2519,
+      "pca_explained_variance_ratio": [
+        0.13669878244400024,
+        0.08326493203639984
+      ],
+      "pca_explained_variance_total": 0.21996371448040009,
+      "H_raw_chronos": 14.093443676527386,
+      "eta_sq_raw_chronos": 0.004806615133754923,
+      "H_filt_chronos": 27.442386129609986,
+      "eta_sq_filt_chronos": 0.01011223614054451,
+      "raw_flips_per_year": 50.0198491464867,
+      "filt_flips_per_year": 15.906312028582771,
+      "regime_composition_filtered": {
+        "0": 0.4168320762207225,
+        "1": 0.3001190948789202,
+        "2": 0.28304882890035726
+      },
+      "elapsed_seconds": 5.88386607170105
+    }
+  ],
+  "cross_market_correlations": {
+    "rho_H_raw_chronos_tier": 0.0,
+    "p_H_raw_chronos_tier": 1.0,
+    "rho_H_filt_chronos_tier": 0.049416621110740085,
+    "p_H_filt_chronos_tier": 0.907494569295439,
+    "rho_H_raw_chronos_rps": 0.3571428571428572,
+    "p_H_raw_chronos_rps": 0.38512064355625614,
+    "rho_H_filt_chronos_rps": 0.14285714285714288,
+    "p_H_filt_chronos_rps": 0.735764859879812
+  },
+  "total_elapsed_seconds": 40.71032500267029
+}

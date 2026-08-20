@@ -1,0 +1,13 @@
+{
+  "market": "VNINDEX",
+  "window": "2020-01-01 \u2192 2026-06-30",
+  "train_window": 504,
+  "n_forecast": 1112,
+  "qlike_garch": 1.782873485121139,
+  "qlike_roll22": 1.5516474074060185,
+  "qlike_advantage_pp": -14.901973000533344,
+  "mse_garch": 0.8610698188753535,
+  "mse_roll22": 0.8487577234477276,
+  "pearson_garch": 0.3128728015525988,
+  "pearson_roll22": 0.35533073574888346
+}

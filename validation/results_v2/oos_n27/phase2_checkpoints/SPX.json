@@ -1,0 +1,83 @@
+{
+  "tier_rank": 1,
+  "category": "Developed",
+  "frozen_cf": {
+    "spec": "CausalForestDML+PurgedKFold",
+    "ate": 3.725097712968935,
+    "se": 1.2074229235817895,
+    "ci_lo": 1.3585922686405691,
+    "ci_hi": 6.0916031572973,
+    "direction_verdict": "Paradox",
+    "n_obs": 842,
+    "fit_status": "ok"
+  },
+  "windows": {
+    "repro": {
+      "status": "ok",
+      "n_obs": 842,
+      "n_det": 606,
+      "n_sto": 236,
+      "cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": 3.7211572661761365,
+        "se": 1.2398082831262824,
+        "ci_lo": 1.2911776835141846,
+        "ci_hi": 6.151136848838088,
+        "direction_verdict": "Paradox",
+        "n_obs": 842,
+        "fit_status": "ok"
+      },
+      "overlap": {
+        "min": 0.16430115346219284,
+        "p05": 0.28186278173303525,
+        "p95": 0.9715445720777655,
+        "max": 0.9896633774618437,
+        "frac_outside_05_95": 0.14133016627078385
+      },
+      "placebo": {
+        "n_ok": 100,
+        "fp_rate": 0.18,
+        "ate_sd": 2.244751748337774,
+        "p_cal_1sided": 0.06930693069306931,
+        "p_cal_2sided": 0.12871287128712872
+      },
+      "verdict": "LEANING_model_based",
+      "flags": [
+        "ovl",
+        "CI"
+      ]
+    },
+    "extended": {
+      "status": "ok",
+      "n_obs": 865,
+      "n_det": 594,
+      "n_sto": 271,
+      "cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": 3.204312476104592,
+        "se": 1.2197789019603842,
+        "ci_lo": 0.8135897591604255,
+        "ci_hi": 5.5950351930487585,
+        "direction_verdict": "Paradox",
+        "n_obs": 865,
+        "fit_status": "ok"
+      },
+      "overlap": {
+        "min": 0.16230355926816561,
+        "p05": 0.26662092248273567,
+        "p95": 0.9651095143201721,
+        "max": 0.982550018197764,
+        "frac_outside_05_95": 0.09710982658959537
+      },
+      "placebo": {
+        "n_ok": 50,
+        "fp_rate": 0.14,
+        "ate_sd": 1.9718590095300261,
+        "p_cal_1sided": 0.058823529411764705,
+        "p_cal_2sided": 0.1568627450980392
+      },
+      "verdict": "LEANING_model_based",
+      "flags": []
+    }
+  }
+}

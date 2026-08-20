@@ -1,0 +1,9 @@
+market,category,shuffle_observed,shuffle_p_label,shuffle_p_block5,shuffle_null_mean_block5,bh_fdr_q_block5,shuffle_p_block10,shuffle_null_mean_block10,bh_fdr_q_block10,shuffle_p_block20,shuffle_null_mean_block20,bh_fdr_q_block20
+VNINDEX,Frontier,6.97,0.0,0.0,34.07,0.0,0.0,20.49,0.0,0.0,13.59,0.0
+BVB,Frontier,7.64,0.0,0.0,35.89,0.0,0.0,21.79,0.0,0.0,14.5,0.0
+KOSPI,Emerging,14.12,0.0,0.0,41.21,0.0,0.0,27.3,0.0,0.0,20.16,0.0
+NIFTY,Emerging,8.91,0.0,0.0,35.72,0.0,0.0,22.47,0.0,0.0,15.45,0.0
+SPX,Developed,13.96,0.0,0.0,42.34,0.0,0.0,27.89,0.0,0.0,20.7,0.0
+FTSE,Developed,14.67,0.0,0.0,41.92,0.0,0.0,28.45,0.0,0.0,21.58,0.0
+NIKKEI,Developed,8.86,0.0,0.0,39.71,0.0,0.0,24.36,0.0,0.0,16.4,0.0
+BTC,Crypto,9.67,0.0,0.0,38.29,0.0,0.0,24.23,0.0,0.0,16.91,0.0

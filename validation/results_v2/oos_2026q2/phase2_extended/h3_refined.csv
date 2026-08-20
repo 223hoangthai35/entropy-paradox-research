@@ -1,0 +1,9 @@
+market,category,p_tra,p_tra_ci_lo,p_tra_ci_hi,distance_to_threshold,distance_spec,threshold_wrong_side_p,bh_fdr_q,h3_verdict_categorical,h3_verdict_refined,rps,p_tra_raw,p_tra_raw_ci_lo,p_tra_raw_ci_hi,delta_p_tra_filt_minus_raw
+VNINDEX,Frontier,0.52,0.424,0.61,0.0703,frontier_lower_fail,0.07,0.0875,PASS,PASS_BORDERLINE,0.9,0.505,0.418,0.59,0.015
+BVB,Frontier,0.373,0.288,0.46,-0.0771,frontier_lower_fail,0.959,0.959,REJECT,REJECT_BORDERLINE,0.225,0.465,0.39,0.538,-0.092
+KOSPI,Emerging,0.55,0.471,0.628,,n/a,,,PASS,n/a,0.45,0.523,0.45,0.594,0.027
+NIFTY,Emerging,0.53,0.436,0.625,,n/a,,,PASS,n/a,0.4,0.546,0.456,0.629,-0.015
+SPX,Developed,0.444,0.366,0.519,0.1561,developed_upper_fail,0.0,0.0,PASS,PASS,0.275,0.392,0.325,0.46,0.052
+FTSE,Developed,0.525,0.446,0.601,0.0753,developed_upper_fail,0.026,0.0433,PASS,PASS_BORDERLINE,0.2,0.587,0.522,0.65,-0.063
+NIKKEI,Developed,0.37,0.283,0.462,0.2304,developed_upper_fail,0.0,0.0,PASS,PASS,0.18,0.402,0.319,0.49,-0.033
+BTC,Crypto,0.476,0.403,0.547,,n/a,,,PASS,n/a,0.55,0.485,0.423,0.553,-0.01

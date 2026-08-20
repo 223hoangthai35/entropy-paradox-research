@@ -1,0 +1,9 @@
+market,classification,has_CB,H_stat,RPS,rank_H_stat,rank_RPS
+VNINDEX,Frontier,True,81.73,0.9,1,1
+NIFTY,Emerging,True,16.7,0.4,2,4
+NIKKEI,Developed,True,6.57,0.18,3,7
+KOSPI,Emerging,True,5.68,0.7,4,2
+BVB,Frontier,True,5.24,0.225,5,5
+BTC,Crypto,False,3.47,0.55,6,3
+SPX,Developed,True,2.2,0.22,7,6
+FTSE,Developed,False,0.7,0.18,8,7

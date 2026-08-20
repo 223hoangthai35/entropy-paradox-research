@@ -67,7 +67,7 @@ MARKETS_N27: list[dict[str, Any]] = [
     {"name": "VNINDEX",  "ticker": "VNINDEX",       "source": "vnstock",     "tier_rank": 4, "category": "Frontier"},
     {"name": "KSE100",   "ticker": "PSX:KSE100",    "source": "tvdatafeed",  "tier_rank": 4, "category": "Frontier"},
     {"name": "DSEX",     "ticker": "DSEBD:DSEX",    "source": "tvdatafeed",  "tier_rank": 4, "category": "Frontier"},
-    {"name": "BVB",      "ticker": "BVB.RO",        "source": "yfinance",    "tier_rank": 4, "category": "Frontier"},
+    {"name": "BVB",      "ticker": "BVB:BET",        "source": "tvdatafeed",    "tier_rank": 4, "category": "Frontier"},
     {"name": "SBITOP",   "ticker": "LJSE:SBITOP",   "source": "tvdatafeed",  "tier_rank": 4, "category": "Frontier"},
     {"name": "OMXVGI",   "ticker": "^OMXVGI",       "source": "yfinance",    "tier_rank": 4, "category": "Frontier"},
     {"name": "OMXRGI",   "ticker": "^OMXRGI",       "source": "yfinance",    "tier_rank": 4, "category": "Frontier"},

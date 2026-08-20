@@ -1,0 +1,178 @@
+{
+  "market": "VNINDEX",
+  "ticker": "VNINDEX",
+  "category": "Frontier",
+  "n_bars": 1555,
+  "start": "2020-04-08",
+  "end": "2026-06-30",
+  "H_stat": 81.72777317651799,
+  "p_value": 1.7907689088464913e-18,
+  "direction": "Paradox",
+  "regime_mean_vol": {
+    "Deterministic": 20.091817160965917,
+    "Transitional": 16.363905902441974,
+    "Stochastic": 16.91997578715523
+  },
+  "regime_median_vol": {
+    "Deterministic": 19.00243410523075,
+    "Transitional": 13.622754136281952,
+    "Stochastic": 14.503560958754338
+  },
+  "regime_share": {
+    "Deterministic": 0.4237942122186495,
+    "Transitional": 0.5054662379421222,
+    "Stochastic": 0.0707395498392283
+  },
+  "base_drawdown_rates": {
+    "3.0": 0.32729624838292365,
+    "5.0": 0.11190168175937905,
+    "7.0": 0.03622250970245795
+  },
+  "lift_by_regime": {
+    "Deterministic": {
+      "lift_3.0pct": 1.2781100081465169,
+      "lift_5.0pct": 1.4189118828045713,
+      "lift_7.0pct": 1.7280806979280265
+    },
+    "Transitional": {
+      "lift_3.0pct": 0.7511197259012212,
+      "lift_5.0pct": 0.6407673576931902,
+      "lift_7.0pct": 0.3888329979879276
+    },
+    "Stochastic": {
+      "lift_3.0pct": 1.1110312612288897,
+      "lift_5.0pct": 1.0561219127693116,
+      "lift_7.0pct": 1.0038961038961038
+    }
+  },
+  "rps": 0.9,
+  "kw_epsilon_sq": 0.052041627399815917,
+  "dunn_det_sto_z": 4.801016705428993,
+  "dunn_det_sto_raw": 1.5786209797141737e-06,
+  "dunn_det_sto_holm": 3.1572419594283474e-06,
+  "dunn_det_tra_holm": 0.0,
+  "dunn_tra_sto_holm": 0.7524730550631726,
+  "primary_horizon": 20,
+  "primary_U_det_sto": 45114.0,
+  "primary_p_mw_1sided": 3.495050044577312e-06,
+  "primary_cliffs_delta": 0.2677813685541661,
+  "primary_delta_ci_lo": -0.18127674091957718,
+  "primary_delta_ci_hi": 0.7108258820031055,
+  "primary_p_blockperm_1s": 0.13693153423288357,
+  "primary_nw_beta": 3.1718413738106737,
+  "primary_nw_tstat": 0.9426799285305456,
+  "primary_nw_p_two": 0.3458446428505013,
+  "direction_verdict_formal": "n.s.",
+  "direction_across_horizons": "consistent:n.s.",
+  "horizons": [
+    {
+      "horizon_days": 5,
+      "n_det": 658,
+      "n_sto": 110,
+      "mean_det": 17.533178112487207,
+      "mean_sto": 13.789479552782751,
+      "cliffs_delta": 0.19463940315004136,
+      "delta_ci_lo": -0.09266633593611381,
+      "delta_ci_hi": 0.4666469853275982,
+      "U_det_sto": 43234.0,
+      "p_mw_1sided": 0.0005368944933533385,
+      "p_blockperm_1sided": 0.13043478260869565,
+      "nw_beta": 3.743698559704441,
+      "nw_se": 2.29439189929012,
+      "nw_tstat": 1.6316735431565694,
+      "nw_p_two": 0.1027482763551466,
+      "direction_verdict_formal": "n.s."
+    },
+    {
+      "horizon_days": 10,
+      "n_det": 654,
+      "n_sto": 110,
+      "mean_det": 19.083187293768557,
+      "mean_sto": 14.398023177419471,
+      "cliffs_delta": 0.2932443703085905,
+      "delta_ci_lo": -0.06424791611556813,
+      "delta_ci_hi": 0.6316315897837635,
+      "U_det_sto": 46518.0,
+      "p_mw_1sided": 4.213619644478573e-07,
+      "p_blockperm_1sided": 0.07646176911544228,
+      "nw_beta": 4.68516411634907,
+      "nw_se": 2.659516201777024,
+      "nw_tstat": 1.7616603024334117,
+      "nw_p_two": 0.07812670880870431,
+      "direction_verdict_formal": "n.s."
+    },
+    {
+      "horizon_days": 20,
+      "n_det": 647,
+      "n_sto": 110,
+      "mean_det": 20.091817160965917,
+      "mean_sto": 16.91997578715523,
+      "cliffs_delta": 0.2677813685541661,
+      "delta_ci_lo": -0.18127674091957718,
+      "delta_ci_hi": 0.7108258820031055,
+      "U_det_sto": 45114.0,
+      "p_mw_1sided": 3.495050044577312e-06,
+      "p_blockperm_1sided": 0.13693153423288357,
+      "nw_beta": 3.1718413738106737,
+      "nw_se": 3.3647065963894622,
+      "nw_tstat": 0.9426799285305456,
+      "nw_p_two": 0.3458446428505013,
+      "direction_verdict_formal": "n.s."
+    },
+    {
+      "horizon_days": 40,
+      "n_det": 646,
+      "n_sto": 110,
+      "mean_det": 20.270919032871646,
+      "mean_sto": 18.143877431466223,
+      "cliffs_delta": 0.23276104700253297,
+      "delta_ci_lo": -0.25885912959967056,
+      "delta_ci_hi": 0.7341410027946211,
+      "U_det_sto": 43800.0,
+      "p_mw_1sided": 4.6958248816691595e-05,
+      "p_blockperm_1sided": 0.19090454772613694,
+      "nw_beta": 2.127041601405395,
+      "nw_se": 3.5684311988951456,
+      "nw_tstat": 0.5960719102736148,
+      "nw_p_two": 0.551127188430599,
+      "direction_verdict_formal": "n.s."
+    },
+    {
+      "horizon_days": 60,
+      "n_det": 646,
+      "n_sto": 105,
+      "mean_det": 19.892869844579273,
+      "mean_sto": 18.831018750300164,
+      "cliffs_delta": 0.09980834439038766,
+      "delta_ci_lo": -0.47160938194918894,
+      "delta_ci_hi": 0.6570641384036855,
+      "U_det_sto": 37300.0,
+      "p_mw_1sided": 0.050337259782121155,
+      "p_blockperm_1sided": 0.3713143428285857,
+      "nw_beta": 1.0618510942791053,
+      "nw_se": 3.181467575179429,
+      "nw_tstat": 0.333761407019595,
+      "nw_p_two": 0.7385596077649321,
+      "direction_verdict_formal": "n.s."
+    }
+  ],
+  "H_stat_filtered": 130.9804614185523,
+  "p_value_filtered": 3.6137173795586963e-29,
+  "direction_filtered": "Paradox",
+  "regime_mean_vol_filtered": {
+    "Deterministic": 20.44395505387978,
+    "Transitional": 16.04584709580178,
+    "Stochastic": 17.51145966901703
+  },
+  "regime_share_filtered": {
+    "Deterministic": 0.40964630225080384,
+    "Transitional": 0.5202572347266881,
+    "Stochastic": 0.07009646302250803
+  },
+  "primary_U_det_sto_filtered": 43586.0,
+  "primary_p_mw_1sided_filtered": 9.949930710287733e-06,
+  "primary_cliffs_delta_filtered": 0.25548370371437223,
+  "primary_delta_ci_lo_filtered": -0.19467374074549534,
+  "primary_delta_ci_hi_filtered": 0.7051240876763935,
+  "direction_verdict_formal_filtered": "n.s."
+}

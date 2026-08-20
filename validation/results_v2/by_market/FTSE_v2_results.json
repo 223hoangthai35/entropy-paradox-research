@@ -1,0 +1,178 @@
+{
+  "market": "FTSE",
+  "ticker": "^FTSE",
+  "category": "Developed",
+  "n_bars": 1580,
+  "start": "2020-03-23",
+  "end": "2026-06-29",
+  "H_stat": 0.7045202939189039,
+  "p_value": 0.70309718958665,
+  "direction": "Paradox",
+  "regime_mean_vol": {
+    "Deterministic": 13.273092742328767,
+    "Transitional": 13.072645529459459,
+    "Stochastic": 12.809893145267237
+  },
+  "regime_median_vol": {
+    "Deterministic": 11.303034716273622,
+    "Transitional": 11.084682698469042,
+    "Stochastic": 9.797787693292056
+  },
+  "regime_share": {
+    "Deterministic": 0.2810126582278481,
+    "Transitional": 0.5873417721518988,
+    "Stochastic": 0.13164556962025317
+  },
+  "base_drawdown_rates": {
+    "3.0": 0.14513049013367282,
+    "5.0": 0.036919159770846595,
+    "7.0": 0.0120942075111394
+  },
+  "lift_by_regime": {
+    "Deterministic": {
+      "lift_3.0pct": 1.1173541963015647,
+      "lift_5.0pct": 1.220099409754582,
+      "lift_7.0pct": 0.9311284969179706
+    },
+    "Transitional": {
+      "lift_3.0pct": 1.0121842964320484,
+      "lift_5.0pct": 0.9136805373156729,
+      "lift_7.0pct": 1.2596071244487717
+    },
+    "Stochastic": {
+      "lift_3.0pct": 0.6956604251012146,
+      "lift_5.0pct": 0.9115550397877984,
+      "lift_7.0pct": 0.0
+    }
+  },
+  "rps": 0.2,
+  "kw_epsilon_sq": 0.0,
+  "dunn_det_sto_z": 0.3882135394942203,
+  "dunn_det_sto_raw": 0.6978580143290394,
+  "dunn_det_sto_holm": 1.0,
+  "dunn_det_tra_holm": 1.0,
+  "dunn_tra_sto_holm": 1.0,
+  "primary_horizon": 20,
+  "primary_U_det_sto": 46253.0,
+  "primary_p_mw_1sided": 0.3171837022567957,
+  "primary_cliffs_delta": 0.023239865051711828,
+  "primary_delta_ci_lo": -0.2582544277534196,
+  "primary_delta_ci_hi": 0.29689279498498217,
+  "primary_p_blockperm_1s": 0.5187406296851574,
+  "primary_nw_beta": 0.4631995970615288,
+  "primary_nw_tstat": 0.2975619785897725,
+  "primary_nw_p_two": 0.7660374973488651,
+  "direction_verdict_formal": "n.s.",
+  "direction_across_horizons": "consistent:n.s.",
+  "horizons": [
+    {
+      "horizon_days": 5,
+      "n_det": 444,
+      "n_sto": 208,
+      "mean_det": 12.816468821730183,
+      "mean_sto": 12.73334874388481,
+      "cliffs_delta": -0.10193607068607069,
+      "delta_ci_lo": -0.31906917256256817,
+      "delta_ci_hi": 0.10755217312171433,
+      "U_det_sto": 41469.0,
+      "p_mw_1sided": 0.9821317325998249,
+      "p_blockperm_1sided": 0.7871064467766117,
+      "nw_beta": 0.08312007784537195,
+      "nw_se": 1.6847394635262858,
+      "nw_tstat": 0.04933705160048629,
+      "nw_p_two": 0.9606506925507599,
+      "direction_verdict_formal": "n.s."
+    },
+    {
+      "horizon_days": 10,
+      "n_det": 444,
+      "n_sto": 208,
+      "mean_det": 13.001866358623749,
+      "mean_sto": 12.89137582269094,
+      "cliffs_delta": -0.07267844767844767,
+      "delta_ci_lo": -0.3187020312871105,
+      "delta_ci_hi": 0.1730420430716339,
+      "U_det_sto": 42820.0,
+      "p_mw_1sided": 0.9328373292355812,
+      "p_blockperm_1sided": 0.6876561719140429,
+      "nw_beta": 0.11049053593282324,
+      "nw_se": 1.6136139011816857,
+      "nw_tstat": 0.06847396136827312,
+      "nw_p_two": 0.9454083472327282,
+      "direction_verdict_formal": "n.s."
+    },
+    {
+      "horizon_days": 20,
+      "n_det": 441,
+      "n_sto": 205,
+      "mean_det": 13.273092742328767,
+      "mean_sto": 12.809893145267237,
+      "cliffs_delta": 0.023239865051711828,
+      "delta_ci_lo": -0.2582544277534196,
+      "delta_ci_hi": 0.29689279498498217,
+      "U_det_sto": 46253.0,
+      "p_mw_1sided": 0.3171837022567957,
+      "p_blockperm_1sided": 0.5187406296851574,
+      "nw_beta": 0.4631995970615288,
+      "nw_se": 1.5566491366160362,
+      "nw_tstat": 0.2975619785897725,
+      "nw_p_two": 0.7660374973488651,
+      "direction_verdict_formal": "n.s."
+    },
+    {
+      "horizon_days": 40,
+      "n_det": 441,
+      "n_sto": 204,
+      "mean_det": 13.641911252087636,
+      "mean_sto": 12.687634646987679,
+      "cliffs_delta": 0.11386776932995413,
+      "delta_ci_lo": -0.19386933246466265,
+      "delta_ci_hi": 0.4047819593416867,
+      "U_det_sto": 50104.0,
+      "p_mw_1sided": 0.009976819153996189,
+      "p_blockperm_1sided": 0.303848075962019,
+      "nw_beta": 0.9542766050999594,
+      "nw_se": 1.4038271111255975,
+      "nw_tstat": 0.6797678984378741,
+      "nw_p_two": 0.49665143592085603,
+      "direction_verdict_formal": "n.s."
+    },
+    {
+      "horizon_days": 60,
+      "n_det": 441,
+      "n_sto": 202,
+      "mean_det": 13.616385297325236,
+      "mean_sto": 13.211239310625325,
+      "cliffs_delta": 0.10814754944882243,
+      "delta_ci_lo": -0.25781707280250055,
+      "delta_ci_hi": 0.4127336231320696,
+      "U_det_sto": 49358.0,
+      "p_mw_1sided": 0.013802777756242165,
+      "p_blockperm_1sided": 0.2463768115942029,
+      "nw_beta": 0.4051459866999101,
+      "nw_se": 1.3276986321332276,
+      "nw_tstat": 0.30514905784677787,
+      "nw_p_two": 0.7602526290453,
+      "direction_verdict_formal": "n.s."
+    }
+  ],
+  "H_stat_filtered": 0.334205855624532,
+  "p_value_filtered": 0.8461125183446755,
+  "direction_filtered": "Paradox",
+  "regime_mean_vol_filtered": {
+    "Deterministic": 13.4048018583779,
+    "Transitional": 12.877928485899893,
+    "Stochastic": 13.118362277174848
+  },
+  "regime_share_filtered": {
+    "Deterministic": 0.3531645569620253,
+    "Transitional": 0.5246835443037975,
+    "Stochastic": 0.12215189873417721
+  },
+  "primary_U_det_sto_filtered": 52579.0,
+  "primary_p_mw_1sided_filtered": 0.6337637909474183,
+  "primary_cliffs_delta_filtered": -0.01649800789360467,
+  "primary_delta_ci_lo_filtered": -0.3139498597928368,
+  "primary_delta_ci_hi_filtered": 0.2866059918534036,
+  "direction_verdict_formal_filtered": "n.s."
+}

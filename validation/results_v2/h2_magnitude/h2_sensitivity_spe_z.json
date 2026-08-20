@@ -1,0 +1,399 @@
+{
+  "spec": "H2 sensitivity to SPE_Z standardization (4 variants: rolling_z baseline, wpe_only, raw_sampen, global_z)",
+  "n_markets": 8,
+  "horizon": 20,
+  "seed": 42,
+  "elapsed_seconds": 13.727515935897827,
+  "per_market_per_variant": {
+    "rolling_z": {
+      "VNINDEX": {
+        "H_stat": 81.72777317651799,
+        "p_value": 1.7907689088464913e-18,
+        "n_obs": 1535,
+        "n_per_regime": {
+          "Deterministic": 647,
+          "Transitional": 778,
+          "Stochastic": 110
+        },
+        "fit_status": "ok"
+      },
+      "BVB": {
+        "H_stat": 5.239906378942578,
+        "p_value": 0.07280627084770122,
+        "n_obs": 1531,
+        "n_per_regime": {
+          "Deterministic": 571,
+          "Transitional": 773,
+          "Stochastic": 187
+        },
+        "fit_status": "ok"
+      },
+      "KOSPI": {
+        "H_stat": 5.675228056084961,
+        "p_value": 0.058565234402068615,
+        "n_obs": 1497,
+        "n_per_regime": {
+          "Deterministic": 399,
+          "Transitional": 777,
+          "Stochastic": 321
+        },
+        "fit_status": "ok"
+      },
+      "NIFTY": {
+        "H_stat": 16.699125114152594,
+        "p_value": 0.00023649995103409665,
+        "n_obs": 1507,
+        "n_per_regime": {
+          "Deterministic": 558,
+          "Transitional": 830,
+          "Stochastic": 119
+        },
+        "fit_status": "ok"
+      },
+      "SPX": {
+        "H_stat": 2.2015044586087242,
+        "p_value": 0.3326207824681097,
+        "n_obs": 1550,
+        "n_per_regime": {
+          "Deterministic": 670,
+          "Transitional": 608,
+          "Stochastic": 272
+        },
+        "fit_status": "ok"
+      },
+      "FTSE": {
+        "H_stat": 0.7045202939189039,
+        "p_value": 0.70309718958665,
+        "n_obs": 1560,
+        "n_per_regime": {
+          "Deterministic": 441,
+          "Transitional": 914,
+          "Stochastic": 205
+        },
+        "fit_status": "ok"
+      },
+      "NIKKEI": {
+        "H_stat": 6.572630111839317,
+        "p_value": 0.037391380990509177,
+        "n_obs": 1487,
+        "n_per_regime": {
+          "Deterministic": 613,
+          "Transitional": 601,
+          "Stochastic": 273
+        },
+        "fit_status": "ok"
+      },
+      "BTC": {
+        "H_stat": 3.465039525103748,
+        "p_value": 0.1768382576875706,
+        "n_obs": 2519,
+        "n_per_regime": {
+          "Deterministic": 956,
+          "Transitional": 1211,
+          "Stochastic": 352
+        },
+        "fit_status": "ok"
+      }
+    },
+    "wpe_only": {
+      "VNINDEX": {
+        "H_stat": 3.935237512099775,
+        "p_value": 0.13978933270692806,
+        "n_obs": 2076,
+        "n_per_regime": {
+          "Deterministic": 235,
+          "Transitional": 983,
+          "Stochastic": 858
+        },
+        "fit_status": "ok"
+      },
+      "BVB": {
+        "H_stat": 2.5507243976799145,
+        "p_value": 0.2793297769756516,
+        "n_obs": 2072,
+        "n_per_regime": {
+          "Deterministic": 256,
+          "Transitional": 919,
+          "Stochastic": 897
+        },
+        "fit_status": "ok"
+      },
+      "KOSPI": {
+        "H_stat": 31.743863467375377,
+        "p_value": 1.2791092244514778e-07,
+        "n_obs": 2038,
+        "n_per_regime": {
+          "Deterministic": 365,
+          "Transitional": 754,
+          "Stochastic": 919
+        },
+        "fit_status": "ok"
+      },
+      "NIFTY": {
+        "H_stat": 2.16864775441627,
+        "p_value": 0.33813032624553196,
+        "n_obs": 2048,
+        "n_per_regime": {
+          "Deterministic": 203,
+          "Transitional": 924,
+          "Stochastic": 921
+        },
+        "fit_status": "ok"
+      },
+      "SPX": {
+        "H_stat": 1.9020637291350795,
+        "p_value": 0.38634216491497186,
+        "n_obs": 2091,
+        "n_per_regime": {
+          "Deterministic": 306,
+          "Transitional": 848,
+          "Stochastic": 937
+        },
+        "fit_status": "ok"
+      },
+      "FTSE": {
+        "H_stat": 24.904230388448923,
+        "p_value": 3.909444779317771e-06,
+        "n_obs": 2101,
+        "n_per_regime": {
+          "Deterministic": 212,
+          "Transitional": 792,
+          "Stochastic": 1097
+        },
+        "fit_status": "ok"
+      },
+      "NIKKEI": {
+        "H_stat": 7.722903724252319,
+        "p_value": 0.021037433886374222,
+        "n_obs": 2028,
+        "n_per_regime": {
+          "Deterministic": 264,
+          "Transitional": 775,
+          "Stochastic": 989
+        },
+        "fit_status": "ok"
+      },
+      "BTC": {
+        "H_stat": 9.10052525388528,
+        "p_value": 0.010564429515666595,
+        "n_obs": 3060,
+        "n_per_regime": {
+          "Deterministic": 395,
+          "Transitional": 1306,
+          "Stochastic": 1359
+        },
+        "fit_status": "ok"
+      }
+    },
+    "raw_sampen": {
+      "VNINDEX": {
+        "H_stat": 207.61326550013473,
+        "p_value": 8.267081359156628e-46,
+        "n_obs": 2038,
+        "n_per_regime": {
+          "Deterministic": 487,
+          "Transitional": 1051,
+          "Stochastic": 500
+        },
+        "fit_status": "ok"
+      },
+      "BVB": {
+        "H_stat": 0.1906859994323895,
+        "p_value": 0.9090610732969977,
+        "n_obs": 2034,
+        "n_per_regime": {
+          "Deterministic": 648,
+          "Transitional": 1085,
+          "Stochastic": 301
+        },
+        "fit_status": "ok"
+      },
+      "KOSPI": {
+        "H_stat": 67.04286364407926,
+        "p_value": 2.7658405160103954e-15,
+        "n_obs": 2000,
+        "n_per_regime": {
+          "Deterministic": 170,
+          "Transitional": 796,
+          "Stochastic": 1034
+        },
+        "fit_status": "ok"
+      },
+      "NIFTY": {
+        "H_stat": 25.192734541117716,
+        "p_value": 3.384287129899003e-06,
+        "n_obs": 2010,
+        "n_per_regime": {
+          "Deterministic": 517,
+          "Transitional": 1090,
+          "Stochastic": 403
+        },
+        "fit_status": "ok"
+      },
+      "SPX": {
+        "H_stat": 27.175861386150245,
+        "p_value": 1.2555577107274003e-06,
+        "n_obs": 2053,
+        "n_per_regime": {
+          "Deterministic": 957,
+          "Transitional": 652,
+          "Stochastic": 444
+        },
+        "fit_status": "ok"
+      },
+      "FTSE": {
+        "H_stat": 12.22197585072081,
+        "p_value": 0.0022183581576044353,
+        "n_obs": 2063,
+        "n_per_regime": {
+          "Deterministic": 935,
+          "Transitional": 981,
+          "Stochastic": 147
+        },
+        "fit_status": "ok"
+      },
+      "NIKKEI": {
+        "H_stat": 5.718984400992667,
+        "p_value": 0.05729784869842658,
+        "n_obs": 1990,
+        "n_per_regime": {
+          "Deterministic": 706,
+          "Transitional": 1139,
+          "Stochastic": 145
+        },
+        "fit_status": "ok"
+      },
+      "BTC": {
+        "H_stat": 30.54532823343834,
+        "p_value": 2.3289826334964962e-07,
+        "n_obs": 3022,
+        "n_per_regime": {
+          "Deterministic": 705,
+          "Transitional": 1576,
+          "Stochastic": 741
+        },
+        "fit_status": "ok"
+      }
+    },
+    "global_z": {
+      "VNINDEX": {
+        "H_stat": 203.10300741609444,
+        "p_value": 7.88392184940445e-45,
+        "n_obs": 2038,
+        "n_per_regime": {
+          "Deterministic": 473,
+          "Transitional": 1055,
+          "Stochastic": 510
+        },
+        "fit_status": "ok"
+      },
+      "BVB": {
+        "H_stat": 0.17462917953525903,
+        "p_value": 0.9163887637541531,
+        "n_obs": 2034,
+        "n_per_regime": {
+          "Deterministic": 648,
+          "Transitional": 1084,
+          "Stochastic": 302
+        },
+        "fit_status": "ok"
+      },
+      "KOSPI": {
+        "H_stat": 67.61704565237324,
+        "p_value": 2.07560684993262e-15,
+        "n_obs": 2000,
+        "n_per_regime": {
+          "Deterministic": 162,
+          "Transitional": 773,
+          "Stochastic": 1065
+        },
+        "fit_status": "ok"
+      },
+      "NIFTY": {
+        "H_stat": 25.156943371955094,
+        "p_value": 3.4453960858782793e-06,
+        "n_obs": 2010,
+        "n_per_regime": {
+          "Deterministic": 517,
+          "Transitional": 1092,
+          "Stochastic": 401
+        },
+        "fit_status": "ok"
+      },
+      "SPX": {
+        "H_stat": 27.175861386150245,
+        "p_value": 1.2555577107274003e-06,
+        "n_obs": 2053,
+        "n_per_regime": {
+          "Deterministic": 957,
+          "Transitional": 652,
+          "Stochastic": 444
+        },
+        "fit_status": "ok"
+      },
+      "FTSE": {
+        "H_stat": 13.060166177717292,
+        "p_value": 0.001458884627692215,
+        "n_obs": 2063,
+        "n_per_regime": {
+          "Deterministic": 955,
+          "Transitional": 958,
+          "Stochastic": 150
+        },
+        "fit_status": "ok"
+      },
+      "NIKKEI": {
+        "H_stat": 7.519241889823206,
+        "p_value": 0.02329256786811043,
+        "n_obs": 1990,
+        "n_per_regime": {
+          "Deterministic": 701,
+          "Transitional": 1131,
+          "Stochastic": 158
+        },
+        "fit_status": "ok"
+      },
+      "BTC": {
+        "H_stat": 31.87113923245488,
+        "p_value": 1.2002453986127571e-07,
+        "n_obs": 3022,
+        "n_per_regime": {
+          "Deterministic": 704,
+          "Transitional": 1567,
+          "Stochastic": 751
+        },
+        "fit_status": "ok"
+      }
+    }
+  },
+  "cross_market_per_variant": {
+    "rolling_z": {
+      "n_markets": 8,
+      "rho_H_tier": 0.592999453328881,
+      "p_H_tier": 0.12128702247711226,
+      "rho_H_rps": 0.38095238095238104,
+      "p_H_rps": 0.35181255311756476
+    },
+    "wpe_only": {
+      "n_markets": 8,
+      "rho_H_tier": -0.11118739749916519,
+      "p_H_tier": 0.7932354690433083,
+      "rho_H_rps": 0.04761904761904763,
+      "p_H_rps": 0.9108491685195836
+    },
+    "raw_sampen": {
+      "n_markets": 8,
+      "rho_H_tier": 0.2470831055537004,
+      "p_H_tier": 0.5552293857215913,
+      "rho_H_rps": 0.880952380952381,
+      "p_H_rps": 0.0038503204637324005
+    },
+    "global_z": {
+      "n_markets": 8,
+      "rho_H_tier": 0.2470831055537004,
+      "p_H_tier": 0.5552293857215913,
+      "rho_H_rps": 0.880952380952381,
+      "p_H_rps": 0.0038503204637324005
+    }
+  }
+}

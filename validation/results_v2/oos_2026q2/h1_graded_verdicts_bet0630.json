@@ -1,0 +1,102 @@
+{
+  "spec": "Two-gate graded H1 verdicts \u2014 BET panel, END=2026-06-30. Gate 1: CF-DML asymptotic CI excludes 0. Gate 2: rotation-placebo calibrated p_cal < 0.05 (n=100 rotations/market, add-one estimator). Real ATEs from fresh h1_dml_cpcv.json.",
+  "panel_placebo_fp_rate": 0.20625,
+  "per_market": {
+    "VNINDEX": {
+      "ate": 1.5012859642830219,
+      "ci": [
+        -3.891211226089438,
+        6.8937831546554795
+      ],
+      "n_placebo_ok": 100,
+      "p_cal": 0.7921,
+      "ci_gate": false,
+      "cal_gate": false,
+      "verdict": "n.s."
+    },
+    "BVB": {
+      "ate": -0.6628281179426618,
+      "ci": [
+        -3.2739272974053537,
+        1.9482710615200287
+      ],
+      "n_placebo_ok": 100,
+      "p_cal": 0.7525,
+      "ci_gate": false,
+      "cal_gate": false,
+      "verdict": "n.s."
+    },
+    "KOSPI": {
+      "ate": -9.156083619713762,
+      "ci": [
+        -20.562843877142022,
+        2.250676637714495
+      ],
+      "n_placebo_ok": 100,
+      "p_cal": 0.0396,
+      "ci_gate": false,
+      "cal_gate": true,
+      "verdict": "leaning Inverted"
+    },
+    "NIFTY": {
+      "ate": -1.6904769751849829,
+      "ci": [
+        -5.575989648165886,
+        2.1950356977959204
+      ],
+      "n_placebo_ok": 100,
+      "p_cal": 0.4257,
+      "ci_gate": false,
+      "cal_gate": false,
+      "verdict": "n.s."
+    },
+    "SPX": {
+      "ate": 3.2574430071248126,
+      "ci": [
+        0.8921893033531676,
+        5.622696710896458
+      ],
+      "n_placebo_ok": 100,
+      "p_cal": 0.1188,
+      "ci_gate": true,
+      "cal_gate": false,
+      "verdict": "leaning Paradox"
+    },
+    "FTSE": {
+      "ate": -0.028324102302460144,
+      "ci": [
+        -5.362858628457952,
+        5.306210423853029
+      ],
+      "n_placebo_ok": 100,
+      "p_cal": 0.9901,
+      "ci_gate": false,
+      "cal_gate": false,
+      "verdict": "n.s."
+    },
+    "NIKKEI": {
+      "ate": 0.029036854343759966,
+      "ci": [
+        -2.024006783116698,
+        2.0820804918042173
+      ],
+      "n_placebo_ok": 100,
+      "p_cal": 0.9901,
+      "ci_gate": false,
+      "cal_gate": false,
+      "verdict": "n.s."
+    },
+    "BTC": {
+      "ate": -9.153537437453746,
+      "ci": [
+        -17.95228928266727,
+        -0.35478559224022455
+      ],
+      "n_placebo_ok": 100,
+      "p_cal": 0.0891,
+      "ci_gate": true,
+      "cal_gate": false,
+      "verdict": "leaning Inverted"
+    }
+  }
+}

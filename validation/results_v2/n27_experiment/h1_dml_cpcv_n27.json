@@ -11,7 +11,7 @@
   },
   "n_bootstrap": 100,
   "seed": 42,
-  "total_elapsed_seconds": 5070.708642721176,
+  "total_elapsed_seconds": 3366.6270174980164,
   "skipped_markets": [],
   "results": {
     "VNINDEX": {
@@ -19,9 +19,9 @@
       "category": "Frontier",
       "tier_rank": 4,
       "label_source": "filtered_schmitt_trigger",
-      "n_dml_obs": 827,
-      "n_det": 740,
-      "n_sto": 87,
+      "n_dml_obs": 746,
+      "n_det": 637,
+      "n_sto": 109,
       "horizon": 20,
       "purged_kfold_config": {
         "n_splits": 5,
@@ -35,28 +35,28 @@
         "ci_lo": NaN,
         "ci_hi": NaN,
         "direction_verdict": "SKIP",
-        "n_obs": 827
+        "n_obs": 746
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": 1.223139433055184,
-        "se": 2.4441284903677998,
-        "ci_lo": -3.567264381653956,
-        "ci_hi": 6.013543247764323,
+        "ate": 1.8935870422273517,
+        "se": 2.6864559293138504,
+        "ci_lo": -3.371769825281877,
+        "ci_hi": 7.158943909736578,
         "direction_verdict": "n.s.",
-        "n_obs": 827,
+        "n_obs": 746,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 22.72863531112671
+      "elapsed_seconds": 17.59930968284607
     },
     "KSE100": {
       "market": "KSE100",
       "category": "Frontier",
       "tier_rank": 4,
       "label_source": "filtered_schmitt_trigger",
-      "n_dml_obs": 503,
-      "n_det": 448,
-      "n_sto": 55,
+      "n_dml_obs": 509,
+      "n_det": 455,
+      "n_sto": 54,
       "horizon": 20,
       "purged_kfold_config": {
         "n_splits": 5,
@@ -70,27 +70,27 @@
         "ci_lo": NaN,
         "ci_hi": NaN,
         "direction_verdict": "SKIP",
-        "n_obs": 503
+        "n_obs": 509
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": 3.9418308189206432,
-        "se": 12.889187780722809,
-        "ci_lo": -21.32051302126981,
-        "ci_hi": 29.204174659111093,
+        "ate": 8.257123959558166,
+        "se": 21.98005968780104,
+        "ci_lo": -34.82300140657259,
+        "ci_hi": 51.3372493256889,
         "direction_verdict": "n.s.",
-        "n_obs": 503,
+        "n_obs": 509,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 15.943079948425293
+      "elapsed_seconds": 12.920918464660645
     },
     "DSEX": {
       "market": "DSEX",
       "category": "Frontier",
       "tier_rank": 4,
       "label_source": "filtered_schmitt_trigger",
-      "n_dml_obs": 789,
-      "n_det": 700,
+      "n_dml_obs": 816,
+      "n_det": 727,
       "n_sto": 89,
       "horizon": 20,
       "purged_kfold_config": {
@@ -105,28 +105,28 @@
         "ci_lo": NaN,
         "ci_hi": NaN,
         "direction_verdict": "SKIP",
-        "n_obs": 789
+        "n_obs": 816
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": -0.2948926956117897,
-        "se": 1.1276816718127805,
-        "ci_lo": -2.505108158390757,
-        "ci_hi": 1.9153227671671762,
+        "ate": 0.146369972059912,
+        "se": 1.1153681289672093,
+        "ci_lo": -2.039711390219644,
+        "ci_hi": 2.332451334339468,
         "direction_verdict": "n.s.",
-        "n_obs": 789,
+        "n_obs": 816,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 18.792205095291138
+      "elapsed_seconds": 12.000818490982056
     },
     "BVB": {
       "market": "BVB",
       "category": "Frontier",
       "tier_rank": 4,
       "label_source": "filtered_schmitt_trigger",
-      "n_dml_obs": 873,
-      "n_det": 526,
-      "n_sto": 347,
+      "n_dml_obs": 741,
+      "n_det": 555,
+      "n_sto": 186,
       "horizon": 20,
       "purged_kfold_config": {
         "n_splits": 5,
@@ -134,36 +134,36 @@
       },
       "linear_dml": {
         "spec": "LinearDML+PurgedKFold+Bootstrap",
-        "ate": 3.951398552052845,
-        "se": 1.9513177487942717,
-        "ci_lo": 0.12688604202229614,
-        "ci_hi": 7.775911062083393,
-        "direction_verdict": "Paradox",
-        "n_obs": 873,
-        "n_det": 526,
-        "n_sto": 347,
+        "ate": 0.9566554958217997,
+        "se": 2.6395173402277354,
+        "ci_lo": -4.216703427593519,
+        "ci_hi": 6.130014419237117,
+        "direction_verdict": "n.s.",
+        "n_obs": 741,
+        "n_det": 555,
+        "n_sto": 186,
         "fit_status": "ok"
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": 4.168609345421392,
-        "se": 1.8921715067351832,
-        "ci_lo": 0.4600213396475441,
-        "ci_hi": 7.877197351195239,
-        "direction_verdict": "Paradox",
-        "n_obs": 873,
+        "ate": -0.5041027812856675,
+        "se": 1.3171134462984058,
+        "ci_lo": -3.0855976995839742,
+        "ci_hi": 2.0773921370126383,
+        "direction_verdict": "n.s.",
+        "n_obs": 741,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 302.3804416656494
+      "elapsed_seconds": 214.99750399589539
     },
     "SBITOP": {
       "market": "SBITOP",
       "category": "Frontier",
       "tier_rank": 4,
       "label_source": "filtered_schmitt_trigger",
-      "n_dml_obs": 1143,
-      "n_det": 722,
-      "n_sto": 421,
+      "n_dml_obs": 1162,
+      "n_det": 733,
+      "n_sto": 429,
       "horizon": 20,
       "purged_kfold_config": {
         "n_splits": 5,
@@ -171,36 +171,36 @@
       },
       "linear_dml": {
         "spec": "LinearDML+PurgedKFold+Bootstrap",
-        "ate": 1.471024571356604,
-        "se": 1.4804645260428768,
-        "ci_lo": -1.4306325800765956,
-        "ci_hi": 4.372681722789803,
+        "ate": 1.6608725461336018,
+        "se": 1.5080463757909008,
+        "ci_lo": -1.2948440374327204,
+        "ci_hi": 4.616589129699923,
         "direction_verdict": "n.s.",
-        "n_obs": 1143,
-        "n_det": 722,
-        "n_sto": 421,
+        "n_obs": 1162,
+        "n_det": 733,
+        "n_sto": 429,
         "fit_status": "ok"
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": 1.9440430397832502,
-        "se": 1.4868286984465409,
-        "ci_lo": -0.9700876603525348,
-        "ci_hi": 4.858173739919034,
+        "ate": 1.5533410231130351,
+        "se": 1.170159186740076,
+        "ci_lo": -0.7401288390761938,
+        "ci_hi": 3.8468108853022636,
         "direction_verdict": "n.s.",
-        "n_obs": 1143,
+        "n_obs": 1162,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 308.2789740562439
+      "elapsed_seconds": 215.41329503059387
     },
     "OMXVGI": {
       "market": "OMXVGI",
       "category": "Frontier",
       "tier_rank": 4,
       "label_source": "filtered_schmitt_trigger",
-      "n_dml_obs": 1035,
-      "n_det": 936,
-      "n_sto": 99,
+      "n_dml_obs": 1050,
+      "n_det": 956,
+      "n_sto": 94,
       "horizon": 20,
       "purged_kfold_config": {
         "n_splits": 5,
@@ -214,28 +214,28 @@
         "ci_lo": NaN,
         "ci_hi": NaN,
         "direction_verdict": "SKIP",
-        "n_obs": 1035
+        "n_obs": 1050
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": -0.36484205843525647,
-        "se": 1.1988392610901082,
-        "ci_lo": -2.7145238334244794,
-        "ci_hi": 1.9848397165539655,
+        "ate": -0.5433525313700011,
+        "se": 1.337669253484197,
+        "ci_lo": -3.1651360914256075,
+        "ci_hi": 2.0784310286856047,
         "direction_verdict": "n.s.",
-        "n_obs": 1035,
+        "n_obs": 1050,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 17.214735746383667
+      "elapsed_seconds": 10.330007314682007
     },
     "OMXRGI": {
       "market": "OMXRGI",
       "category": "Frontier",
       "tier_rank": 4,
       "label_source": "filtered_schmitt_trigger",
-      "n_dml_obs": 736,
-      "n_det": 641,
-      "n_sto": 95,
+      "n_dml_obs": 741,
+      "n_det": 664,
+      "n_sto": 77,
       "horizon": 20,
       "purged_kfold_config": {
         "n_splits": 5,
@@ -249,28 +249,28 @@
         "ci_lo": NaN,
         "ci_hi": NaN,
         "direction_verdict": "SKIP",
-        "n_obs": 736
+        "n_obs": 741
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": 0.2878778475974415,
-        "se": 2.992371723818893,
-        "ci_lo": -5.5770629594436265,
-        "ci_hi": 6.152818654638509,
+        "ate": 1.1680975034460503,
+        "se": 4.663446875933311,
+        "ci_lo": -7.9720904171990705,
+        "ci_hi": 10.308285424091169,
         "direction_verdict": "n.s.",
-        "n_obs": 736,
+        "n_obs": 741,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 16.376784324645996
+      "elapsed_seconds": 9.181782245635986
     },
     "MERV": {
       "market": "MERV",
       "category": "Frontier",
       "tier_rank": 4,
       "label_source": "filtered_schmitt_trigger",
-      "n_dml_obs": 1148,
-      "n_det": 513,
-      "n_sto": 635,
+      "n_dml_obs": 1193,
+      "n_det": 544,
+      "n_sto": 649,
       "horizon": 20,
       "purged_kfold_config": {
         "n_splits": 5,
@@ -278,36 +278,36 @@
       },
       "linear_dml": {
         "spec": "LinearDML+PurgedKFold+Bootstrap",
-        "ate": 3.308463012062227,
-        "se": 3.589019683719336,
-        "ci_lo": -3.7258863078330084,
-        "ci_hi": 10.342812331957461,
+        "ate": 3.473167666320584,
+        "se": 3.326163155813962,
+        "ci_lo": -3.04599232577887,
+        "ci_hi": 9.992327658420036,
         "direction_verdict": "n.s.",
-        "n_obs": 1148,
-        "n_det": 513,
-        "n_sto": 635,
+        "n_obs": 1193,
+        "n_det": 544,
+        "n_sto": 649,
         "fit_status": "ok"
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": 3.595683234274983,
-        "se": 3.408808122697549,
-        "ci_lo": -3.085457916419807,
-        "ci_hi": 10.276824384969771,
+        "ate": 3.921568292900267,
+        "se": 3.449308210585425,
+        "ci_lo": -2.838951571425467,
+        "ci_hi": 10.682088157226,
         "direction_verdict": "n.s.",
-        "n_obs": 1148,
+        "n_obs": 1193,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 325.98939538002014
+      "elapsed_seconds": 187.7024302482605
     },
     "KOSPI": {
       "market": "KOSPI",
       "category": "Emerging",
       "tier_rank": 3,
       "label_source": "filtered_schmitt_trigger",
-      "n_dml_obs": 663,
-      "n_det": 422,
-      "n_sto": 241,
+      "n_dml_obs": 683,
+      "n_det": 405,
+      "n_sto": 278,
       "horizon": 20,
       "purged_kfold_config": {
         "n_splits": 5,
@@ -315,35 +315,35 @@
       },
       "linear_dml": {
         "spec": "LinearDML+PurgedKFold+Bootstrap",
-        "ate": -6.570568448925998,
-        "se": 8.221987191092547,
-        "ci_lo": -22.685367224817035,
-        "ci_hi": 9.544230326965037,
+        "ate": -8.26370774064893,
+        "se": 4.72419179881123,
+        "ci_lo": -17.522953522378437,
+        "ci_hi": 0.9955380410805734,
         "direction_verdict": "n.s.",
-        "n_obs": 663,
-        "n_det": 422,
-        "n_sto": 241,
+        "n_obs": 683,
+        "n_det": 405,
+        "n_sto": 278,
         "fit_status": "ok"
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": -16.671833261166597,
-        "se": 32.39986898706759,
-        "ci_lo": -80.17440957963532,
-        "ci_hi": 46.83074305730213,
+        "ate": -9.60093902308789,
+        "se": 6.5018832545644845,
+        "ci_lo": -22.344396033718354,
+        "ci_hi": 3.14251798754257,
         "direction_verdict": "n.s.",
-        "n_obs": 663,
+        "n_obs": 683,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 316.6549735069275
+      "elapsed_seconds": 212.33299946784973
     },
     "NIFTY": {
       "market": "NIFTY",
       "category": "Emerging",
       "tier_rank": 3,
       "label_source": "filtered_schmitt_trigger",
-      "n_dml_obs": 641,
-      "n_det": 524,
+      "n_dml_obs": 702,
+      "n_det": 585,
       "n_sto": 117,
       "horizon": 20,
       "purged_kfold_config": {
@@ -358,28 +358,28 @@
         "ci_lo": NaN,
         "ci_hi": NaN,
         "direction_verdict": "SKIP",
-        "n_obs": 641
+        "n_obs": 702
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": -1.128721741126067,
-        "se": 1.6371810088524092,
-        "ci_lo": -4.337537554649741,
-        "ci_hi": 2.080094072397607,
+        "ate": -2.087859946312773,
+        "se": 2.0188757924918193,
+        "ci_lo": -6.044783788856499,
+        "ci_hi": 1.8690638962309514,
         "direction_verdict": "n.s.",
-        "n_obs": 641,
+        "n_obs": 702,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 19.68371558189392
+      "elapsed_seconds": 13.094675540924072
     },
     "PSEI": {
       "market": "PSEI",
       "category": "Emerging",
       "tier_rank": 3,
       "label_source": "filtered_schmitt_trigger",
-      "n_dml_obs": 871,
-      "n_det": 693,
-      "n_sto": 178,
+      "n_dml_obs": 870,
+      "n_det": 704,
+      "n_sto": 166,
       "horizon": 20,
       "purged_kfold_config": {
         "n_splits": 5,
@@ -393,28 +393,28 @@
         "ci_lo": NaN,
         "ci_hi": NaN,
         "direction_verdict": "SKIP",
-        "n_obs": 871
+        "n_obs": 870
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": -0.22300782727769178,
-        "se": 1.0227995723876782,
-        "ci_lo": -2.227658152560509,
-        "ci_hi": 1.781642498005125,
+        "ate": 0.12934832048505826,
+        "se": 1.1931599437302822,
+        "ci_lo": -2.2092021970221323,
+        "ci_hi": 2.4678988379922484,
         "direction_verdict": "n.s.",
-        "n_obs": 871,
+        "n_obs": 870,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 19.393853187561035
+      "elapsed_seconds": 12.543877840042114
     },
     "JKSE": {
       "market": "JKSE",
       "category": "Emerging",
       "tier_rank": 3,
       "label_source": "filtered_schmitt_trigger",
-      "n_dml_obs": 801,
-      "n_det": 490,
-      "n_sto": 311,
+      "n_dml_obs": 886,
+      "n_det": 551,
+      "n_sto": 335,
       "horizon": 20,
       "purged_kfold_config": {
         "n_splits": 5,
@@ -422,36 +422,36 @@
       },
       "linear_dml": {
         "spec": "LinearDML+PurgedKFold+Bootstrap",
-        "ate": 0.17185363198496972,
-        "se": 2.5177423064045974,
-        "ci_lo": -4.762830610920852,
-        "ci_hi": 5.10653787489079,
+        "ate": 1.4447460311919047,
+        "se": 2.397486355784466,
+        "ci_lo": -3.2542408795718325,
+        "ci_hi": 6.143732941955641,
         "direction_verdict": "n.s.",
-        "n_obs": 801,
-        "n_det": 490,
-        "n_sto": 311,
+        "n_obs": 886,
+        "n_det": 551,
+        "n_sto": 335,
         "fit_status": "ok"
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": -0.06977335494689228,
-        "se": 1.3034194684366907,
-        "ci_lo": -2.624428569831148,
-        "ci_hi": 2.4848818599373628,
+        "ate": 2.046768955719342,
+        "se": 2.4304383419674584,
+        "ci_lo": -2.716802661182121,
+        "ci_hi": 6.810340572620804,
         "direction_verdict": "n.s.",
-        "n_obs": 801,
+        "n_obs": 886,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 326.2033545970917
+      "elapsed_seconds": 207.8344373703003
     },
     "SET": {
       "market": "SET",
       "category": "Emerging",
       "tier_rank": 3,
       "label_source": "filtered_schmitt_trigger",
-      "n_dml_obs": 946,
-      "n_det": 522,
-      "n_sto": 424,
+      "n_dml_obs": 976,
+      "n_det": 550,
+      "n_sto": 426,
       "horizon": 20,
       "purged_kfold_config": {
         "n_splits": 5,
@@ -459,36 +459,36 @@
       },
       "linear_dml": {
         "spec": "LinearDML+PurgedKFold+Bootstrap",
-        "ate": 0.6357911576550259,
-        "se": 1.1262739142626583,
-        "ci_lo": -1.5716651510267374,
-        "ci_hi": 2.8432474663367886,
+        "ate": 0.8218960282232415,
+        "se": 1.1633538791962839,
+        "ci_lo": -1.4582356762764357,
+        "ci_hi": 3.1020277327229184,
         "direction_verdict": "n.s.",
-        "n_obs": 946,
-        "n_det": 522,
-        "n_sto": 424,
+        "n_obs": 976,
+        "n_det": 550,
+        "n_sto": 426,
         "fit_status": "ok"
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": 0.6036042738761671,
-        "se": 1.048447153437858,
-        "ci_lo": -1.4513143865555749,
-        "ci_hi": 2.658522934307909,
+        "ate": 0.5748781622172908,
+        "se": 1.0017802305567882,
+        "ci_lo": -1.3885750100982464,
+        "ci_hi": 2.5383313345328276,
         "direction_verdict": "n.s.",
-        "n_obs": 946,
+        "n_obs": 976,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 337.15145468711853
+      "elapsed_seconds": 199.43404912948608
     },
     "SHANGHAI": {
       "market": "SHANGHAI",
       "category": "Emerging",
       "tier_rank": 3,
       "label_source": "filtered_schmitt_trigger",
-      "n_dml_obs": 1290,
-      "n_det": 148,
-      "n_sto": 1142,
+      "n_dml_obs": 1319,
+      "n_det": 115,
+      "n_sto": 1204,
       "horizon": 20,
       "purged_kfold_config": {
         "n_splits": 5,
@@ -502,28 +502,28 @@
         "ci_lo": NaN,
         "ci_hi": NaN,
         "direction_verdict": "SKIP",
-        "n_obs": 1290
+        "n_obs": 1319
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": 6.418476318555061,
-        "se": 2.750911529733893,
-        "ci_lo": 1.026788795620643,
-        "ci_hi": 11.810163841489477,
+        "ate": 8.301956786427477,
+        "se": 2.4736742641519434,
+        "ci_lo": 3.453644319206046,
+        "ci_hi": 13.150269253648906,
         "direction_verdict": "Paradox",
-        "n_obs": 1290,
+        "n_obs": 1319,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 53.29970574378967
+      "elapsed_seconds": 32.84081029891968
     },
     "TWII": {
       "market": "TWII",
       "category": "Emerging",
       "tier_rank": 3,
       "label_source": "filtered_schmitt_trigger",
-      "n_dml_obs": 658,
-      "n_det": 388,
-      "n_sto": 270,
+      "n_dml_obs": 703,
+      "n_det": 395,
+      "n_sto": 308,
       "horizon": 20,
       "purged_kfold_config": {
         "n_splits": 5,
@@ -531,36 +531,36 @@
       },
       "linear_dml": {
         "spec": "LinearDML+PurgedKFold+Bootstrap",
-        "ate": -0.7771341777317653,
-        "se": 1.5484829718583202,
-        "ci_lo": -3.812105033247623,
-        "ci_hi": 2.257836677784092,
-        "direction_verdict": "n.s.",
-        "n_obs": 658,
-        "n_det": 388,
-        "n_sto": 270,
+        "ate": -2.7218948698095575,
+        "se": 1.3882513310454767,
+        "ci_lo": -5.442817480148484,
+        "ci_hi": -0.0009722594706316201,
+        "direction_verdict": "Inverted",
+        "n_obs": 703,
+        "n_det": 395,
+        "n_sto": 308,
         "fit_status": "ok"
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": -0.776866902331879,
-        "se": 1.1763171386005558,
-        "ci_lo": -3.0824061283861797,
-        "ci_hi": 1.5286723237224211,
+        "ate": -2.594656020790347,
+        "se": 1.3801214017641152,
+        "ci_lo": -5.299644262540947,
+        "ci_hi": 0.11033222096025286,
         "direction_verdict": "n.s.",
-        "n_obs": 658,
+        "n_obs": 703,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 319.6329679489136
+      "elapsed_seconds": 172.4475884437561
     },
     "SPX": {
       "market": "SPX",
       "category": "Developed",
       "tier_rank": 1,
       "label_source": "filtered_schmitt_trigger",
-      "n_dml_obs": 842,
-      "n_det": 606,
-      "n_sto": 236,
+      "n_dml_obs": 865,
+      "n_det": 594,
+      "n_sto": 271,
       "horizon": 20,
       "purged_kfold_config": {
         "n_splits": 5,
@@ -568,35 +568,401 @@
       },
       "linear_dml": {
         "spec": "LinearDML+PurgedKFold+Bootstrap",
-        "ate": 4.090751512195486,
-        "se": 2.1596931204598233,
-        "ci_lo": -0.14216922156469192,
-        "ci_hi": 8.323672245955663,
+        "ate": 3.446674629296856,
+        "se": 2.0212957452134086,
+        "ci_lo": -0.5149922334254748,
+        "ci_hi": 7.408341492019186,
         "direction_verdict": "n.s.",
-        "n_obs": 842,
-        "n_det": 606,
-        "n_sto": 236,
+        "n_obs": 865,
+        "n_det": 594,
+        "n_sto": 271,
         "fit_status": "ok"
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": 3.725097712968935,
-        "se": 1.2074229235817895,
-        "ci_lo": 1.3585922686405691,
-        "ci_hi": 6.0916031572973,
+        "ate": 3.2186520540814656,
+        "se": 1.1173641916989483,
+        "ci_lo": 1.028658480736818,
+        "ci_hi": 5.408645627426113,
         "direction_verdict": "Paradox",
-        "n_obs": 842,
+        "n_obs": 865,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 314.46086168289185
+      "elapsed_seconds": 188.77445602416992
     },
     "FTSE": {
       "market": "FTSE",
       "category": "Developed",
       "tier_rank": 1,
       "label_source": "filtered_schmitt_trigger",
-      "n_dml_obs": 980,
-      "n_det": 690,
+      "n_dml_obs": 747,
+      "n_det": 554,
+      "n_sto": 193,
+      "horizon": 20,
+      "purged_kfold_config": {
+        "n_splits": 5,
+        "embargo": 20
+      },
+      "linear_dml": {
+        "spec": "LinearDML+PurgedKFold+Bootstrap",
+        "ate": 0.9887256142217532,
+        "se": 1.7104313024573155,
+        "ci_lo": -2.3636581366245215,
+        "ci_hi": 4.341109365068027,
+        "direction_verdict": "n.s.",
+        "n_obs": 747,
+        "n_det": 554,
+        "n_sto": 193,
+        "fit_status": "ok"
+      },
+      "causal_forest_dml": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": 0.10867329011557574,
+        "se": 2.5738549066095153,
+        "ci_lo": -4.935989628270779,
+        "ci_hi": 5.153336208501929,
+        "direction_verdict": "n.s.",
+        "n_obs": 747,
+        "fit_status": "ok"
+      },
+      "elapsed_seconds": 186.13989162445068
+    },
+    "DAX": {
+      "market": "DAX",
+      "category": "Developed",
+      "tier_rank": 1,
+      "label_source": "filtered_schmitt_trigger",
+      "n_dml_obs": 701,
+      "n_det": 384,
+      "n_sto": 317,
+      "horizon": 20,
+      "purged_kfold_config": {
+        "n_splits": 5,
+        "embargo": 20
+      },
+      "linear_dml": {
+        "spec": "LinearDML+PurgedKFold+Bootstrap",
+        "ate": -0.15739372655152506,
+        "se": 1.6524506557636935,
+        "ci_lo": -3.3961374980779593,
+        "ci_hi": 3.0813500449749087,
+        "direction_verdict": "n.s.",
+        "n_obs": 701,
+        "n_det": 384,
+        "n_sto": 317,
+        "fit_status": "ok"
+      },
+      "causal_forest_dml": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": -0.007896466251100576,
+        "se": 1.5303128721789563,
+        "ci_lo": -3.0072545807999025,
+        "ci_hi": 2.9914616482977006,
+        "direction_verdict": "n.s.",
+        "n_obs": 701,
+        "fit_status": "ok"
+      },
+      "elapsed_seconds": 184.12324142456055
+    },
+    "CAC": {
+      "market": "CAC",
+      "category": "Developed",
+      "tier_rank": 1,
+      "label_source": "filtered_schmitt_trigger",
+      "n_dml_obs": 856,
+      "n_det": 722,
+      "n_sto": 134,
+      "horizon": 20,
+      "purged_kfold_config": {
+        "n_splits": 5,
+        "embargo": 20
+      },
+      "linear_dml": {
+        "spec": "LinearDML+PurgedKFold+Bootstrap",
+        "fit_status": "error: AttributeError: Provided crossfit folds contain training splits that don't contain all treatments",
+        "ate": NaN,
+        "se": NaN,
+        "ci_lo": NaN,
+        "ci_hi": NaN,
+        "direction_verdict": "SKIP",
+        "n_obs": 856
+      },
+      "causal_forest_dml": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": -3.319741403677993,
+        "se": 8.671658031698591,
+        "ci_lo": -20.31587883205473,
+        "ci_hi": 13.676396024698741,
+        "direction_verdict": "n.s.",
+        "n_obs": 856,
+        "fit_status": "ok"
+      },
+      "elapsed_seconds": 8.988388061523438
+    },
+    "SSMI": {
+      "market": "SSMI",
+      "category": "Developed",
+      "tier_rank": 1,
+      "label_source": "filtered_schmitt_trigger",
+      "n_dml_obs": 855,
+      "n_det": 153,
+      "n_sto": 702,
+      "horizon": 20,
+      "purged_kfold_config": {
+        "n_splits": 5,
+        "embargo": 20
+      },
+      "linear_dml": {
+        "spec": "LinearDML+PurgedKFold+Bootstrap",
+        "fit_status": "error: AttributeError: Provided crossfit folds contain training splits that don't contain all treatments",
+        "ate": NaN,
+        "se": NaN,
+        "ci_lo": NaN,
+        "ci_hi": NaN,
+        "direction_verdict": "SKIP",
+        "n_obs": 855
+      },
+      "causal_forest_dml": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": 0.8100652914223698,
+        "se": 1.208566551994314,
+        "ci_lo": -1.5586816234062406,
+        "ci_hi": 3.1788122062509796,
+        "direction_verdict": "n.s.",
+        "n_obs": 855,
+        "fit_status": "ok"
+      },
+      "elapsed_seconds": 29.842432022094727
+    },
+    "NIKKEI": {
+      "market": "NIKKEI",
+      "category": "Developed",
+      "tier_rank": 1,
+      "label_source": "filtered_schmitt_trigger",
+      "n_dml_obs": 936,
+      "n_det": 650,
+      "n_sto": 286,
+      "horizon": 20,
+      "purged_kfold_config": {
+        "n_splits": 5,
+        "embargo": 20
+      },
+      "linear_dml": {
+        "spec": "LinearDML+PurgedKFold+Bootstrap",
+        "ate": -0.12401463452351362,
+        "se": 1.7933449352328272,
+        "ci_lo": -3.6389061194371712,
+        "ci_hi": 3.390876850390143,
+        "direction_verdict": "n.s.",
+        "n_obs": 936,
+        "n_det": 650,
+        "n_sto": 286,
+        "fit_status": "ok"
+      },
+      "causal_forest_dml": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": -0.12521822897979795,
+        "se": 1.0735324816817604,
+        "ci_lo": -2.229303229309954,
+        "ci_hi": 1.9788667713503574,
+        "direction_verdict": "n.s.",
+        "n_obs": 936,
+        "fit_status": "ok"
+      },
+      "elapsed_seconds": 180.3193609714508
+    },
+    "ASX": {
+      "market": "ASX",
+      "category": "Developed",
+      "tier_rank": 1,
+      "label_source": "filtered_schmitt_trigger",
+      "n_dml_obs": 1315,
+      "n_det": 629,
+      "n_sto": 686,
+      "horizon": 20,
+      "purged_kfold_config": {
+        "n_splits": 5,
+        "embargo": 20
+      },
+      "linear_dml": {
+        "spec": "LinearDML+PurgedKFold+Bootstrap",
+        "ate": -2.0137148077110796,
+        "se": 0.9709881290879965,
+        "ci_lo": -3.9168165701394817,
+        "ci_hi": -0.1106130452826779,
+        "direction_verdict": "Inverted",
+        "n_obs": 1315,
+        "n_det": 629,
+        "n_sto": 686,
+        "fit_status": "ok"
+      },
+      "causal_forest_dml": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": -1.6913858933555157,
+        "se": 1.2757851215418021,
+        "ci_lo": -4.1918787835895035,
+        "ci_hi": 0.8091069968784721,
+        "direction_verdict": "n.s.",
+        "n_obs": 1315,
+        "fit_status": "ok"
+      },
+      "elapsed_seconds": 199.65760135650635
+    },
+    "HSI": {
+      "market": "HSI",
+      "category": "Developed",
+      "tier_rank": 1,
+      "label_source": "filtered_schmitt_trigger",
+      "n_dml_obs": 999,
+      "n_det": 484,
+      "n_sto": 515,
+      "horizon": 20,
+      "purged_kfold_config": {
+        "n_splits": 5,
+        "embargo": 20
+      },
+      "linear_dml": {
+        "spec": "LinearDML+PurgedKFold+Bootstrap",
+        "ate": 2.6453137450926625,
+        "se": 2.9702615772223915,
+        "ci_lo": -3.176291970926362,
+        "ci_hi": 8.466919461111685,
+        "direction_verdict": "n.s.",
+        "n_obs": 999,
+        "n_det": 484,
+        "n_sto": 515,
+        "fit_status": "ok"
+      },
+      "causal_forest_dml": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": 2.136608169042813,
+        "se": 2.019965359244038,
+        "ci_lo": -1.8224511850940135,
+        "ci_hi": 6.095667523179639,
+        "direction_verdict": "n.s.",
+        "n_obs": 999,
+        "fit_status": "ok"
+      },
+      "elapsed_seconds": 178.18457126617432
+    },
+    "STI": {
+      "market": "STI",
+      "category": "Developed",
+      "tier_rank": 1,
+      "label_source": "filtered_schmitt_trigger",
+      "n_dml_obs": 938,
+      "n_det": 611,
+      "n_sto": 327,
+      "horizon": 20,
+      "purged_kfold_config": {
+        "n_splits": 5,
+        "embargo": 20
+      },
+      "linear_dml": {
+        "spec": "LinearDML+PurgedKFold+Bootstrap",
+        "ate": -2.279986233297978,
+        "se": 1.7863991304371518,
+        "ci_lo": -5.781264190968466,
+        "ci_hi": 1.2212917243725094,
+        "direction_verdict": "n.s.",
+        "n_obs": 938,
+        "n_det": 611,
+        "n_sto": 327,
+        "fit_status": "ok"
+      },
+      "causal_forest_dml": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": -3.6920462863530825,
+        "se": 2.4778427137828936,
+        "ci_lo": -8.548528764722544,
+        "ci_hi": 1.1644361920163777,
+        "direction_verdict": "n.s.",
+        "n_obs": 938,
+        "fit_status": "ok"
+      },
+      "elapsed_seconds": 162.0130331516266
+    },
+    "BTC": {
+      "market": "BTC",
+      "category": "Crypto",
+      "tier_rank": 2,
+      "label_source": "filtered_schmitt_trigger",
+      "n_dml_obs": 1336,
+      "n_det": 996,
+      "n_sto": 340,
+      "horizon": 20,
+      "purged_kfold_config": {
+        "n_splits": 5,
+        "embargo": 20
+      },
+      "linear_dml": {
+        "spec": "LinearDML+PurgedKFold+Bootstrap",
+        "ate": -8.826855129806809,
+        "se": 6.506342246977004,
+        "ci_lo": -21.57905160497315,
+        "ci_hi": 3.925341345359527,
+        "direction_verdict": "n.s.",
+        "n_obs": 1336,
+        "n_det": 996,
+        "n_sto": 340,
+        "fit_status": "ok"
+      },
+      "causal_forest_dml": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": -8.949915908808224,
+        "se": 4.848752499587493,
+        "ci_lo": -18.453296177948275,
+        "ci_hi": 0.5534643603318266,
+        "direction_verdict": "n.s.",
+        "n_obs": 1336,
+        "fit_status": "ok"
+      },
+      "elapsed_seconds": 170.23832154273987
+    },
+    "ETH": {
+      "market": "ETH",
+      "category": "Crypto",
+      "tier_rank": 2,
+      "label_source": "filtered_schmitt_trigger",
+      "n_dml_obs": 1607,
+      "n_det": 909,
+      "n_sto": 698,
+      "horizon": 20,
+      "purged_kfold_config": {
+        "n_splits": 5,
+        "embargo": 20
+      },
+      "linear_dml": {
+        "spec": "LinearDML+PurgedKFold+Bootstrap",
+        "ate": 4.273707084905709,
+        "se": 5.95430647562527,
+        "ci_lo": -7.396519160233442,
+        "ci_hi": 15.943933330044857,
+        "direction_verdict": "n.s.",
+        "n_obs": 1607,
+        "n_det": 909,
+        "n_sto": 698,
+        "fit_status": "ok"
+      },
+      "causal_forest_dml": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": 3.095905191522497,
+        "se": 3.5815975541512417,
+        "ci_lo": -3.9238970217306846,
+        "ci_hi": 10.115707404775675,
+        "direction_verdict": "n.s.",
+        "n_obs": 1607,
+        "fit_status": "ok"
+      },
+      "elapsed_seconds": 182.35052490234375
+    },
+    "BNB": {
+      "market": "BNB",
+      "category": "Crypto",
+      "tier_rank": 2,
+      "label_source": "filtered_schmitt_trigger",
+      "n_dml_obs": 1239,
+      "n_det": 949,
       "n_sto": 290,
       "horizon": 20,
       "purged_kfold_config": {
@@ -605,391 +971,27 @@
       },
       "linear_dml": {
         "spec": "LinearDML+PurgedKFold+Bootstrap",
-        "ate": 1.04639641684882,
-        "se": 1.1406211087818974,
-        "ci_lo": -1.1891798763698418,
-        "ci_hi": 3.2819727100674814,
+        "ate": 8.168815130854147,
+        "se": 13.955677761024523,
+        "ci_lo": -19.1838106606005,
+        "ci_hi": 35.52144092230879,
         "direction_verdict": "n.s.",
-        "n_obs": 980,
-        "n_det": 690,
+        "n_obs": 1239,
+        "n_det": 949,
         "n_sto": 290,
         "fit_status": "ok"
       },
       "causal_forest_dml": {
         "spec": "CausalForestDML+PurgedKFold",
-        "ate": 2.671093514467152,
-        "se": 1.3986101469630825,
-        "ci_lo": -0.07013200199276248,
-        "ci_hi": 5.4123190309270655,
+        "ate": 1.6105201540988294,
+        "se": 9.066317126338935,
+        "ci_lo": -16.159134885944162,
+        "ci_hi": 19.38017519414182,
         "direction_verdict": "n.s.",
-        "n_obs": 980,
+        "n_obs": 1239,
         "fit_status": "ok"
       },
-      "elapsed_seconds": 277.63859939575195
-    },
-    "DAX": {
-      "market": "DAX",
-      "category": "Developed",
-      "tier_rank": 1,
-      "label_source": "filtered_schmitt_trigger",
-      "n_dml_obs": 699,
-      "n_det": 385,
-      "n_sto": 314,
-      "horizon": 20,
-      "purged_kfold_config": {
-        "n_splits": 5,
-        "embargo": 20
-      },
-      "linear_dml": {
-        "spec": "LinearDML+PurgedKFold+Bootstrap",
-        "ate": 0.2916366847043896,
-        "se": 1.7208417353118266,
-        "ci_lo": -3.0811511396001996,
-        "ci_hi": 3.664424509008978,
-        "direction_verdict": "n.s.",
-        "n_obs": 699,
-        "n_det": 385,
-        "n_sto": 314,
-        "fit_status": "ok"
-      },
-      "causal_forest_dml": {
-        "spec": "CausalForestDML+PurgedKFold",
-        "ate": 0.9242998020426173,
-        "se": 1.599273853537942,
-        "ci_lo": -2.2102193523083344,
-        "ci_hi": 4.058818956393568,
-        "direction_verdict": "n.s.",
-        "n_obs": 699,
-        "fit_status": "ok"
-      },
-      "elapsed_seconds": 273.55418729782104
-    },
-    "CAC": {
-      "market": "CAC",
-      "category": "Developed",
-      "tier_rank": 1,
-      "label_source": "filtered_schmitt_trigger",
-      "n_dml_obs": 877,
-      "n_det": 732,
-      "n_sto": 145,
-      "horizon": 20,
-      "purged_kfold_config": {
-        "n_splits": 5,
-        "embargo": 20
-      },
-      "linear_dml": {
-        "spec": "LinearDML+PurgedKFold+Bootstrap",
-        "fit_status": "error: AttributeError: Provided crossfit folds contain training splits that don't contain all treatments",
-        "ate": NaN,
-        "se": NaN,
-        "ci_lo": NaN,
-        "ci_hi": NaN,
-        "direction_verdict": "SKIP",
-        "n_obs": 877
-      },
-      "causal_forest_dml": {
-        "spec": "CausalForestDML+PurgedKFold",
-        "ate": -0.504773384944342,
-        "se": 2.8763719490976425,
-        "ci_lo": -6.142358811317,
-        "ci_hi": 5.132812041428314,
-        "direction_verdict": "n.s.",
-        "n_obs": 877,
-        "fit_status": "ok"
-      },
-      "elapsed_seconds": 16.03148603439331
-    },
-    "SSMI": {
-      "market": "SSMI",
-      "category": "Developed",
-      "tier_rank": 1,
-      "label_source": "filtered_schmitt_trigger",
-      "n_dml_obs": 808,
-      "n_det": 165,
-      "n_sto": 643,
-      "horizon": 20,
-      "purged_kfold_config": {
-        "n_splits": 5,
-        "embargo": 20
-      },
-      "linear_dml": {
-        "spec": "LinearDML+PurgedKFold+Bootstrap",
-        "fit_status": "error: AttributeError: Provided crossfit folds contain training splits that don't contain all treatments",
-        "ate": NaN,
-        "se": NaN,
-        "ci_lo": NaN,
-        "ci_hi": NaN,
-        "direction_verdict": "SKIP",
-        "n_obs": 808
-      },
-      "causal_forest_dml": {
-        "spec": "CausalForestDML+PurgedKFold",
-        "ate": -0.236430172280526,
-        "se": 1.777713489930145,
-        "ci_lo": -3.720684587374618,
-        "ci_hi": 3.247824242813566,
-        "direction_verdict": "n.s.",
-        "n_obs": 808,
-        "fit_status": "ok"
-      },
-      "elapsed_seconds": 41.83156228065491
-    },
-    "NIKKEI": {
-      "market": "NIKKEI",
-      "category": "Developed",
-      "tier_rank": 1,
-      "label_source": "filtered_schmitt_trigger",
-      "n_dml_obs": 905,
-      "n_det": 629,
-      "n_sto": 276,
-      "horizon": 20,
-      "purged_kfold_config": {
-        "n_splits": 5,
-        "embargo": 20
-      },
-      "linear_dml": {
-        "spec": "LinearDML+PurgedKFold+Bootstrap",
-        "ate": 1.0630176972137373,
-        "se": 2.385561434144267,
-        "ci_lo": -3.6125967966167454,
-        "ci_hi": 5.7386321910442195,
-        "direction_verdict": "n.s.",
-        "n_obs": 905,
-        "n_det": 629,
-        "n_sto": 276,
-        "fit_status": "ok"
-      },
-      "causal_forest_dml": {
-        "spec": "CausalForestDML+PurgedKFold",
-        "ate": 1.361274896608438,
-        "se": 1.2870973327286743,
-        "ci_lo": -1.1613895201373303,
-        "ci_hi": 3.883939313354206,
-        "direction_verdict": "n.s.",
-        "n_obs": 905,
-        "fit_status": "ok"
-      },
-      "elapsed_seconds": 277.4026162624359
-    },
-    "ASX": {
-      "market": "ASX",
-      "category": "Developed",
-      "tier_rank": 1,
-      "label_source": "filtered_schmitt_trigger",
-      "n_dml_obs": 1057,
-      "n_det": 905,
-      "n_sto": 152,
-      "horizon": 20,
-      "purged_kfold_config": {
-        "n_splits": 5,
-        "embargo": 20
-      },
-      "linear_dml": {
-        "spec": "LinearDML+PurgedKFold+Bootstrap",
-        "fit_status": "error: AttributeError: Provided crossfit folds contain training splits that don't contain all treatments",
-        "ate": NaN,
-        "se": NaN,
-        "ci_lo": NaN,
-        "ci_hi": NaN,
-        "direction_verdict": "SKIP",
-        "n_obs": 1057
-      },
-      "causal_forest_dml": {
-        "spec": "CausalForestDML+PurgedKFold",
-        "ate": -0.9076274620463403,
-        "se": 1.8862364784186492,
-        "ci_lo": -4.6045830260725555,
-        "ci_hi": 2.7893281019798755,
-        "direction_verdict": "n.s.",
-        "n_obs": 1057,
-        "fit_status": "ok"
-      },
-      "elapsed_seconds": 15.955979347229004
-    },
-    "HSI": {
-      "market": "HSI",
-      "category": "Developed",
-      "tier_rank": 1,
-      "label_source": "filtered_schmitt_trigger",
-      "n_dml_obs": 1065,
-      "n_det": 480,
-      "n_sto": 585,
-      "horizon": 20,
-      "purged_kfold_config": {
-        "n_splits": 5,
-        "embargo": 20
-      },
-      "linear_dml": {
-        "spec": "LinearDML+PurgedKFold+Bootstrap",
-        "ate": 2.6690383043878363,
-        "se": 2.828910760604114,
-        "ci_lo": -2.875524901874039,
-        "ci_hi": 8.21360151064971,
-        "direction_verdict": "n.s.",
-        "n_obs": 1065,
-        "n_det": 480,
-        "n_sto": 585,
-        "fit_status": "ok"
-      },
-      "causal_forest_dml": {
-        "spec": "CausalForestDML+PurgedKFold",
-        "ate": 1.939647983901359,
-        "se": 2.065296356493046,
-        "ci_lo": -2.1082584922268075,
-        "ci_hi": 5.987554460029525,
-        "direction_verdict": "n.s.",
-        "n_obs": 1065,
-        "fit_status": "ok"
-      },
-      "elapsed_seconds": 277.0096971988678
-    },
-    "STI": {
-      "market": "STI",
-      "category": "Developed",
-      "tier_rank": 1,
-      "label_source": "filtered_schmitt_trigger",
-      "n_dml_obs": 790,
-      "n_det": 534,
-      "n_sto": 256,
-      "horizon": 20,
-      "purged_kfold_config": {
-        "n_splits": 5,
-        "embargo": 20
-      },
-      "linear_dml": {
-        "spec": "LinearDML+PurgedKFold+Bootstrap",
-        "ate": -3.6563288927734394,
-        "se": 2.186196036500897,
-        "ci_lo": -7.941194387459412,
-        "ci_hi": 0.6285366019125327,
-        "direction_verdict": "n.s.",
-        "n_obs": 790,
-        "n_det": 534,
-        "n_sto": 256,
-        "fit_status": "ok"
-      },
-      "causal_forest_dml": {
-        "spec": "CausalForestDML+PurgedKFold",
-        "ate": -5.358600797480989,
-        "se": 3.0854570649867155,
-        "ci_lo": -11.405985520699613,
-        "ci_hi": 0.6887839257376358,
-        "direction_verdict": "n.s.",
-        "n_obs": 790,
-        "fit_status": "ok"
-      },
-      "elapsed_seconds": 274.29591393470764
-    },
-    "BTC": {
-      "market": "BTC",
-      "category": "Crypto",
-      "tier_rank": 2,
-      "label_source": "filtered_schmitt_trigger",
-      "n_dml_obs": 1370,
-      "n_det": 1017,
-      "n_sto": 353,
-      "horizon": 20,
-      "purged_kfold_config": {
-        "n_splits": 5,
-        "embargo": 20
-      },
-      "linear_dml": {
-        "spec": "LinearDML+PurgedKFold+Bootstrap",
-        "ate": -9.760887053006314,
-        "se": 5.0945929122472835,
-        "ci_lo": -19.74610567690402,
-        "ci_hi": 0.2243315708913869,
-        "direction_verdict": "n.s.",
-        "n_obs": 1370,
-        "n_det": 1017,
-        "n_sto": 353,
-        "fit_status": "ok"
-      },
-      "causal_forest_dml": {
-        "spec": "CausalForestDML+PurgedKFold",
-        "ate": -9.592804327499742,
-        "se": 4.2267708672282485,
-        "ci_lo": -17.87712299817024,
-        "ci_hi": -1.3084856568292462,
-        "direction_verdict": "Inverted",
-        "n_obs": 1370,
-        "fit_status": "ok"
-      },
-      "elapsed_seconds": 288.26288890838623
-    },
-    "ETH": {
-      "market": "ETH",
-      "category": "Crypto",
-      "tier_rank": 2,
-      "label_source": "filtered_schmitt_trigger",
-      "n_dml_obs": 1610,
-      "n_det": 916,
-      "n_sto": 694,
-      "horizon": 20,
-      "purged_kfold_config": {
-        "n_splits": 5,
-        "embargo": 20
-      },
-      "linear_dml": {
-        "spec": "LinearDML+PurgedKFold+Bootstrap",
-        "ate": 4.801982955984672,
-        "se": 5.543842947404186,
-        "ci_lo": -6.0637495568739155,
-        "ci_hi": 15.667715468843255,
-        "direction_verdict": "n.s.",
-        "n_obs": 1610,
-        "n_det": 916,
-        "n_sto": 694,
-        "fit_status": "ok"
-      },
-      "causal_forest_dml": {
-        "spec": "CausalForestDML+PurgedKFold",
-        "ate": 3.9256512094138207,
-        "se": 3.5284510977952337,
-        "ci_lo": -2.9899858634756544,
-        "ci_hi": 10.841288282303294,
-        "direction_verdict": "n.s.",
-        "n_obs": 1610,
-        "fit_status": "ok"
-      },
-      "elapsed_seconds": 290.40770983695984
-    },
-    "BNB": {
-      "market": "BNB",
-      "category": "Crypto",
-      "tier_rank": 2,
-      "label_source": "filtered_schmitt_trigger",
-      "n_dml_obs": 1170,
-      "n_det": 915,
-      "n_sto": 255,
-      "horizon": 20,
-      "purged_kfold_config": {
-        "n_splits": 5,
-        "embargo": 20
-      },
-      "linear_dml": {
-        "spec": "LinearDML+PurgedKFold+Bootstrap",
-        "ate": 8.182653410788783,
-        "se": 14.783868582335286,
-        "ci_lo": -20.793196562761608,
-        "ci_hi": 37.15850338433916,
-        "direction_verdict": "n.s.",
-        "n_obs": 1170,
-        "n_det": 915,
-        "n_sto": 255,
-        "fit_status": "ok"
-      },
-      "causal_forest_dml": {
-        "spec": "CausalForestDML+PurgedKFold",
-        "ate": -2.2104415929073604,
-        "se": 8.437429792843373,
-        "ci_lo": -18.74750010896562,
-        "ci_hi": 14.326616923150894,
-        "direction_verdict": "n.s.",
-        "n_obs": 1170,
-        "fit_status": "ok"
-      },
-      "elapsed_seconds": 304.1287667751312
+      "elapsed_seconds": 165.3131766319275
     }
   }
 }

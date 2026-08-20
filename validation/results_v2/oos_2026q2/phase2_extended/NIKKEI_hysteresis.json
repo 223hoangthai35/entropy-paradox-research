@@ -1,0 +1,51 @@
+{
+  "market": "NIKKEI",
+  "ticker": "^N225",
+  "category": "Developed",
+  "common_window": [
+    "2020-01-01",
+    "2026-06-29"
+  ],
+  "n_bars": 1507,
+  "bars_per_year": 252,
+  "raw_flips_per_year": 19.731917717319178,
+  "filtered_flips_per_year": 8.86264100862641,
+  "reduction_pct": 55.084745762711876,
+  "p_det": 0.44061048440610484,
+  "p_tra": 0.36960849369608495,
+  "p_sto": 0.1897810218978102,
+  "p_tra_ci_lo": 0.28266423357664233,
+  "p_tra_ci_hi": 0.46187790311877885,
+  "distance_to_threshold": 0.23039150630391503,
+  "distance_spec": "developed_upper_fail",
+  "threshold_wrong_side_p": 0.0,
+  "h3_verdict_categorical": "PASS",
+  "h3_verdict_refined": "PASS",
+  "T_det_days": 53.43033509700176,
+  "T_tra_days": 31.029456654456656,
+  "T_sto_days": 41.42460317460318,
+  "overall_mean_days": 40.42144326866549,
+  "n_segments": 54,
+  "shuffle_observed": 8.86264100862641,
+  "shuffle_null_mean": 159.5480225613802,
+  "shuffle_null_p05": 154.5109489051095,
+  "shuffle_null_p95": 164.5441274054413,
+  "shuffle_p_value": 0.0,
+  "shuffle_verdict": "STRUCTURED",
+  "shuffle_block_p": {
+    "5": 0.0,
+    "10": 0.0,
+    "20": 0.0
+  },
+  "shuffle_block_null_mean": {
+    "5": 39.71474850696749,
+    "10": 24.362982083609822,
+    "20": 16.395467816854676
+  },
+  "rps": 0.18,
+  "p_det_raw": 0.4167219641672196,
+  "p_tra_raw": 0.40212342402123424,
+  "p_sto_raw": 0.18115461181154613,
+  "p_tra_raw_ci_lo": 0.31916058394160585,
+  "p_tra_raw_ci_hi": 0.49039482415394814
+}

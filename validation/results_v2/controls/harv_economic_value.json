@@ -1,0 +1,96 @@
+{
+  "spec": "HAR-RV economic value: expanding-window OOS (start 60%), OLS refit per bar; Model A = HAR(d,w,m), Model B = A + filtered regime dummies (Det, Sto; Trans base); QLIKE + MSE on fwd 20d realized variance; DM with NW lag 20. In-sample labels \u2014 disclosed.",
+  "window": [
+    "2020-01-01",
+    "2026-06-30"
+  ],
+  "oos_frac": 0.6,
+  "per_market": {
+    "VNINDEX": {
+      "n_oos": 614,
+      "qlike_A": -7.890311496065693,
+      "qlike_B": -7.884735150586873,
+      "qlike_diff_A_minus_B": -0.005576345478821065,
+      "qlike_gain_frac": 0.0007067332489472111,
+      "mse_ratio_B_over_A": 1.0092606999312472,
+      "dm_stat_qlike": -0.15862837492212095,
+      "dm_p_qlike": 0.8739616718921952
+    },
+    "BVB": {
+      "n_oos": 613,
+      "qlike_A": -8.458172208214068,
+      "qlike_B": -8.461248729137163,
+      "qlike_diff_A_minus_B": 0.003076520923094748,
+      "qlike_gain_frac": -0.00036373354045782236,
+      "mse_ratio_B_over_A": 1.009891876748578,
+      "dm_stat_qlike": 0.2539069492822435,
+      "dm_p_qlike": 0.7995674459418896
+    },
+    "KOSPI": {
+      "n_oos": 599,
+      "qlike_A": -7.083686157992884,
+      "qlike_B": -7.081400035918931,
+      "qlike_diff_A_minus_B": -0.0022861220739524464,
+      "qlike_gain_frac": 0.00032273057035048236,
+      "mse_ratio_B_over_A": 0.9995556614068171,
+      "dm_stat_qlike": -0.6110054826124344,
+      "dm_p_qlike": 0.5411959506950581
+    },
+    "NIFTY": {
+      "n_oos": 603,
+      "qlike_A": -8.488639965092442,
+      "qlike_B": -8.499853438512046,
+      "qlike_diff_A_minus_B": 0.011213473419603074,
+      "qlike_gain_frac": -0.0013209976469394924,
+      "mse_ratio_B_over_A": 0.960535938698917,
+      "dm_stat_qlike": 1.0015613849609841,
+      "dm_p_qlike": 0.31655547886814306
+    },
+    "SPX": {
+      "n_oos": 620,
+      "qlike_A": -8.30344296427821,
+      "qlike_B": -8.304409693865521,
+      "qlike_diff_A_minus_B": 0.0009667295873092964,
+      "qlike_gain_frac": -0.00011642514935927828,
+      "mse_ratio_B_over_A": 1.0008319542639517,
+      "dm_stat_qlike": 0.09634854428832451,
+      "dm_p_qlike": 0.9232437576221368
+    },
+    "FTSE": {
+      "n_oos": 624,
+      "qlike_A": -8.82829158486602,
+      "qlike_B": -8.819402162257303,
+      "qlike_diff_A_minus_B": -0.008889422608717721,
+      "qlike_gain_frac": 0.0010069244454903314,
+      "mse_ratio_B_over_A": 1.0240860562420142,
+      "dm_stat_qlike": -1.6054075221017714,
+      "dm_p_qlike": 0.10840415009330928
+    },
+    "NIKKEI": {
+      "n_oos": 595,
+      "qlike_A": -7.069237466517214,
+      "qlike_B": -7.121309861475396,
+      "qlike_diff_A_minus_B": 0.05207239495818251,
+      "qlike_gain_frac": -0.007366055420378492,
+      "mse_ratio_B_over_A": 0.9657341645799604,
+      "dm_stat_qlike": 1.1531689448734623,
+      "dm_p_qlike": 0.24884104746434543
+    },
+    "BTC": {
+      "n_oos": 941,
+      "qlike_A": -6.2566317525579285,
+      "qlike_B": -6.244845142103562,
+      "qlike_diff_A_minus_B": -0.011786610454367382,
+      "qlike_gain_frac": 0.0018838587470882961,
+      "mse_ratio_B_over_A": 1.143149185509538,
+      "dm_stat_qlike": -0.8934343719477728,
+      "dm_p_qlike": 0.371624602640825
+    }
+  },
+  "cross_market": {
+    "rho_qlikegain_rps": -0.523809523809524,
+    "p": 0.1827207505397148,
+    "n": 8
+  },
+  "elapsed_min": 0.2
+}

@@ -1,0 +1,710 @@
+{
+  "spec": "H1 rotation-placebo battery + PurgedKFold OOF overlap diagnostics on the canonical window. Rotation preserves label marginals + run structure; only alignment is destroyed.",
+  "window": [
+    "2018-01-01",
+    "2026-04-17"
+  ],
+  "n_rot": {
+    "focus": 8,
+    "other": 3,
+    "focus_markets": [
+      "BTC",
+      "BVB",
+      "SPX"
+    ]
+  },
+  "per_market": {
+    "VNINDEX": {
+      "real_reference": {
+        "ate": 1.2957360193951535,
+        "ci_lo": -3.5503956662674496,
+        "ci_hi": 6.141867705057756,
+        "verdict": "n.s."
+      },
+      "overlap": {
+        "n": 827,
+        "min": 0.2940576158908518,
+        "p05": 0.6964163936971387,
+        "median": 0.9248576762343022,
+        "p95": 0.9828667968201193,
+        "max": 0.9966114675019843,
+        "frac_outside_05_95": 0.30350665054413545
+      },
+      "placebos": [
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": -0.8231143224107371,
+          "se": 1.9668175546222144,
+          "ci_lo": -4.678005893631418,
+          "ci_hi": 3.0317772488099433,
+          "direction_verdict": "n.s.",
+          "n_obs": 819,
+          "fit_status": "ok",
+          "offset": 531,
+          "elapsed": 2.6
+        },
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": -3.9798377418765827,
+          "se": 3.006933776485251,
+          "ci_lo": -9.873319647684689,
+          "ci_hi": 1.9136441639315205,
+          "direction_verdict": "n.s.",
+          "n_obs": 816,
+          "fit_status": "ok",
+          "offset": 778,
+          "elapsed": 2.6
+        },
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": -0.6673245138094389,
+          "se": 2.212231529441165,
+          "ci_lo": -5.003218636978083,
+          "ci_hi": 3.668569609359205,
+          "direction_verdict": "n.s.",
+          "n_obs": 827,
+          "fit_status": "ok",
+          "offset": 1124,
+          "elapsed": 2.7
+        }
+      ],
+      "summary": {
+        "n_ok": 3,
+        "placebo_ate_mean": -1.823425526032253,
+        "placebo_abs_ate_max": 3.9798377418765827,
+        "n_ci_excludes_0": 0,
+        "false_positive_rate": 0.0,
+        "real_ate": 1.2957360193951535,
+        "real_abs_gt_all_placebos": false
+      }
+    },
+    "BVB": {
+      "real_reference": {
+        "ate": 3.129637980840728,
+        "ci_lo": -1.232526291147631,
+        "ci_hi": 7.491802252829087,
+        "verdict": "n.s."
+      },
+      "overlap": {
+        "n": 851,
+        "min": 0.22599610447186816,
+        "p05": 0.35549764024205366,
+        "median": 0.7420262621679519,
+        "p95": 0.9259728353549337,
+        "max": 0.9694920789927706,
+        "frac_outside_05_95": 0.012925969447708578
+      },
+      "placebos": [
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": -3.1882174453390504,
+          "se": 1.8093327418100384,
+          "ci_lo": -6.734444455335835,
+          "ci_hi": 0.35800956465773304,
+          "direction_verdict": "n.s.",
+          "n_obs": 840,
+          "fit_status": "ok",
+          "offset": 771,
+          "elapsed": 2.7
+        },
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": 5.059470255400061,
+          "se": 1.205357654001484,
+          "ci_lo": 2.6970126650674597,
+          "ci_hi": 7.421927845732661,
+          "direction_verdict": "Paradox",
+          "n_obs": 840,
+          "fit_status": "ok",
+          "offset": 677,
+          "elapsed": 2.7
+        },
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": 5.834654715529027,
+          "se": 1.402243991222419,
+          "ci_lo": 3.0863069951953865,
+          "ci_hi": 8.583002435862667,
+          "direction_verdict": "Paradox",
+          "n_obs": 840,
+          "fit_status": "ok",
+          "offset": 702,
+          "elapsed": 2.7
+        },
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": 1.7876056475216915,
+          "se": 1.9499985931344113,
+          "ci_lo": -2.034321364925529,
+          "ci_hi": 5.609532659968911,
+          "direction_verdict": "n.s.",
+          "n_obs": 842,
+          "fit_status": "ok",
+          "offset": 331,
+          "elapsed": 2.7
+        },
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": -3.766831277546584,
+          "se": 1.8479833653992175,
+          "ci_lo": -7.388812117758174,
+          "ci_hi": -0.1448504373349957,
+          "direction_verdict": "Inverted",
+          "n_obs": 840,
+          "fit_status": "ok",
+          "offset": 852,
+          "elapsed": 2.7
+        },
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": -2.671565324489703,
+          "se": 2.860779352709767,
+          "ci_lo": -8.278589823516656,
+          "ci_hi": 2.9354591745372494,
+          "direction_verdict": "n.s.",
+          "n_obs": 860,
+          "fit_status": "ok",
+          "offset": 541,
+          "elapsed": 2.7
+        },
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": 3.925591120102358,
+          "se": 1.6658212865435227,
+          "ci_lo": 0.660641393796876,
+          "ci_hi": 7.190540846407839,
+          "direction_verdict": "Paradox",
+          "n_obs": 840,
+          "fit_status": "ok",
+          "offset": 738,
+          "elapsed": 2.7
+        },
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": -4.163665620230897,
+          "se": 1.6817084061133452,
+          "ci_lo": -7.459753528711312,
+          "ci_hi": -0.8675777117504819,
+          "direction_verdict": "Inverted",
+          "n_obs": 840,
+          "fit_status": "ok",
+          "offset": 843,
+          "elapsed": 2.7
+        }
+      ],
+      "summary": {
+        "n_ok": 8,
+        "placebo_ate_mean": 0.352130258868363,
+        "placebo_abs_ate_max": 5.834654715529027,
+        "n_ci_excludes_0": 5,
+        "false_positive_rate": 0.625,
+        "real_ate": 3.129637980840728,
+        "real_abs_gt_all_placebos": false
+      }
+    },
+    "KOSPI": {
+      "real_reference": {
+        "ate": -28.10971335184597,
+        "ci_lo": -98.34099993630039,
+        "ci_hi": 42.12157323260844,
+        "verdict": "n.s."
+      },
+      "overlap": {
+        "n": 663,
+        "min": 0.12078389026420988,
+        "p05": 0.28840000742685457,
+        "median": 0.665399701366129,
+        "p95": 0.9455449926694793,
+        "max": 0.9816250178073972,
+        "frac_outside_05_95": 0.04072398190045249
+      },
+      "placebos": [
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": -1.0465648707491033,
+          "se": 2.08237869461573,
+          "ci_lo": -5.1279521143694655,
+          "ci_hi": 3.0348223728712584,
+          "direction_verdict": "n.s.",
+          "n_obs": 672,
+          "fit_status": "ok",
+          "offset": 534,
+          "elapsed": 2.6
+        },
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": -5.5532911991335325,
+          "se": 2.644980540395931,
+          "ci_lo": -10.737357798118847,
+          "ci_hi": -0.3692246001482191,
+          "direction_verdict": "Inverted",
+          "n_obs": 683,
+          "fit_status": "ok",
+          "offset": 1020,
+          "elapsed": 2.8
+        },
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": -9.240643095497214,
+          "se": 3.6463634844197137,
+          "ci_lo": -16.38738419950183,
+          "ci_hi": -2.093901991492597,
+          "direction_verdict": "Inverted",
+          "n_obs": 683,
+          "fit_status": "ok",
+          "offset": 909,
+          "elapsed": 2.7
+        }
+      ],
+      "summary": {
+        "n_ok": 3,
+        "placebo_ate_mean": -5.28016638845995,
+        "placebo_abs_ate_max": 9.240643095497214,
+        "n_ci_excludes_0": 2,
+        "false_positive_rate": 0.6666666666666666,
+        "real_ate": -28.10971335184597,
+        "real_abs_gt_all_placebos": true
+      }
+    },
+    "NIFTY": {
+      "real_reference": {
+        "ate": -1.3435896874930717,
+        "ci_lo": -4.634506504364162,
+        "ci_hi": 1.9473271293780179,
+        "verdict": "n.s."
+      },
+      "overlap": {
+        "n": 641,
+        "min": 0.2978499335591556,
+        "p05": 0.5041251430762878,
+        "median": 0.826486339445077,
+        "p95": 0.993025665002963,
+        "max": 0.9989958074526952,
+        "frac_outside_05_95": 0.1794071762870515
+      },
+      "placebos": [
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": 2.1605224471913558,
+          "se": 1.4382005110114322,
+          "ci_lo": -0.6582987569381529,
+          "ci_hi": 4.979343651320864,
+          "direction_verdict": "n.s.",
+          "n_obs": 654,
+          "fit_status": "ok",
+          "offset": 776,
+          "elapsed": 2.6
+        },
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": 1.7372054101113101,
+          "se": 0.9701912762433353,
+          "ci_lo": -0.1643345494405779,
+          "ci_hi": 3.638745369663198,
+          "direction_verdict": "n.s.",
+          "n_obs": 634,
+          "fit_status": "ok",
+          "offset": 1118,
+          "elapsed": 2.5
+        },
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": -0.5743761517568268,
+          "se": 1.0324379121907632,
+          "ci_lo": -2.5979172759244493,
+          "ci_hi": 1.4491649724107956,
+          "direction_verdict": "n.s.",
+          "n_obs": 639,
+          "fit_status": "ok",
+          "offset": 514,
+          "elapsed": 2.4
+        }
+      ],
+      "summary": {
+        "n_ok": 3,
+        "placebo_ate_mean": 1.107783901848613,
+        "placebo_abs_ate_max": 2.1605224471913558,
+        "n_ci_excludes_0": 0,
+        "false_positive_rate": 0.0,
+        "real_ate": -1.3435896874930717,
+        "real_abs_gt_all_placebos": false
+      }
+    },
+    "SPX": {
+      "real_reference": {
+        "ate": 3.617797437542082,
+        "ci_lo": 1.1795232837524345,
+        "ci_hi": 6.05607159133173,
+        "verdict": "Paradox"
+      },
+      "overlap": {
+        "n": 842,
+        "min": 0.16430115346219287,
+        "p05": 0.2818627817330352,
+        "median": 0.7663369711055396,
+        "p95": 0.9715445720777655,
+        "max": 0.9896633774618436,
+        "frac_outside_05_95": 0.14133016627078385
+      },
+      "placebos": [
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": -3.820038578035094,
+          "se": 1.5473279501290205,
+          "ci_lo": -6.852745632560163,
+          "ci_hi": -0.7873315235100251,
+          "direction_verdict": "Inverted",
+          "n_obs": 862,
+          "fit_status": "ok",
+          "offset": 376,
+          "elapsed": 2.7
+        },
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": -1.112406989565698,
+          "se": 1.4314826695895677,
+          "ci_lo": -3.9180614664545015,
+          "ci_hi": 1.6932474873231043,
+          "direction_verdict": "n.s.",
+          "n_obs": 842,
+          "fit_status": "ok",
+          "offset": 685,
+          "elapsed": 2.7
+        },
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": -0.7774807007181024,
+          "se": 1.5279633347994215,
+          "ci_lo": -3.772233806622685,
+          "ci_hi": 2.2172724051864803,
+          "direction_verdict": "n.s.",
+          "n_obs": 851,
+          "fit_status": "ok",
+          "offset": 457,
+          "elapsed": 2.7
+        },
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": -0.6510325871576641,
+          "se": 1.31082051275441,
+          "ci_lo": -3.220193582352634,
+          "ci_hi": 1.9181284080373056,
+          "direction_verdict": "n.s.",
+          "n_obs": 862,
+          "fit_status": "ok",
+          "offset": 274,
+          "elapsed": 2.7
+        },
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": 0.049833993637940444,
+          "se": 1.1611819253916837,
+          "ci_lo": -2.226040759628636,
+          "ci_hi": 2.325708746904516,
+          "direction_verdict": "n.s.",
+          "n_obs": 853,
+          "fit_status": "ok",
+          "offset": 904,
+          "elapsed": 2.8
+        },
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": -4.000866992850926,
+          "se": 1.795896270990016,
+          "ci_lo": -7.5207590039611425,
+          "ci_hi": -0.4809749817407103,
+          "direction_verdict": "Inverted",
+          "n_obs": 862,
+          "fit_status": "ok",
+          "offset": 377,
+          "elapsed": 2.7
+        },
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": -2.0834608493752707,
+          "se": 1.911861833649291,
+          "ci_lo": -5.8306411867445895,
+          "ci_hi": 1.6637194879940478,
+          "direction_verdict": "n.s.",
+          "n_obs": 850,
+          "fit_status": "ok",
+          "offset": 669,
+          "elapsed": 2.7
+        },
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": 1.3074629431810851,
+          "se": 1.4842897433715667,
+          "ci_lo": -1.6016914964493851,
+          "ci_hi": 4.216617382811555,
+          "direction_verdict": "n.s.",
+          "n_obs": 842,
+          "fit_status": "ok",
+          "offset": 1222,
+          "elapsed": 2.7
+        }
+      ],
+      "summary": {
+        "n_ok": 8,
+        "placebo_ate_mean": -1.3859987201104662,
+        "placebo_abs_ate_max": 4.000866992850926,
+        "n_ci_excludes_0": 2,
+        "false_positive_rate": 0.25,
+        "real_ate": 3.617797437542082,
+        "real_abs_gt_all_placebos": false
+      }
+    },
+    "FTSE": {
+      "real_reference": {
+        "ate": 2.469905682852667,
+        "ci_lo": -0.5335667444332772,
+        "ci_hi": 5.4733781101386105,
+        "verdict": "n.s."
+      },
+      "overlap": {
+        "n": 980,
+        "min": 0.29606431995271293,
+        "p05": 0.4629654188246607,
+        "median": 0.8290313046537294,
+        "p95": 0.9679323335352332,
+        "max": 0.9970928541697421,
+        "frac_outside_05_95": 0.10612244897959183
+      },
+      "placebos": [
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": 2.4118097332904433,
+          "se": 1.9829715181231449,
+          "ci_lo": -1.4747430245996362,
+          "ci_hi": 6.298362491180522,
+          "direction_verdict": "n.s.",
+          "n_obs": 978,
+          "fit_status": "ok",
+          "offset": 275,
+          "elapsed": 2.7
+        },
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": -0.13130831394866618,
+          "se": 1.1576094336330187,
+          "ci_lo": -2.4001811120331933,
+          "ci_hi": 2.13756448413586,
+          "direction_verdict": "n.s.",
+          "n_obs": 979,
+          "fit_status": "ok",
+          "offset": 894,
+          "elapsed": 2.7
+        },
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": 1.766284424682349,
+          "se": 2.4338915415833684,
+          "ci_lo": -3.004055339097725,
+          "ci_hi": 6.536624188462423,
+          "direction_verdict": "n.s.",
+          "n_obs": 988,
+          "fit_status": "ok",
+          "offset": 298,
+          "elapsed": 2.7
+        }
+      ],
+      "summary": {
+        "n_ok": 3,
+        "placebo_ate_mean": 1.3489286146747086,
+        "placebo_abs_ate_max": 2.4118097332904433,
+        "n_ci_excludes_0": 0,
+        "false_positive_rate": 0.0,
+        "real_ate": 2.469905682852667,
+        "real_abs_gt_all_placebos": true
+      }
+    },
+    "NIKKEI": {
+      "real_reference": {
+        "ate": 1.2731578953108094,
+        "ci_lo": -1.2678391590114555,
+        "ci_hi": 3.8141549496330738,
+        "verdict": "n.s."
+      },
+      "overlap": {
+        "n": 905,
+        "min": 0.24296195234142182,
+        "p05": 0.37845537657640094,
+        "median": 0.7266093479706659,
+        "p95": 0.9462520885498321,
+        "max": 0.9915236326529819,
+        "frac_outside_05_95": 0.0430939226519337
+      },
+      "placebos": [
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": -1.3731090912171684,
+          "se": 1.2838147040420524,
+          "ci_lo": -3.88933967396254,
+          "ci_hi": 1.1431214915282029,
+          "direction_verdict": "n.s.",
+          "n_obs": 895,
+          "fit_status": "ok",
+          "offset": 864,
+          "elapsed": 2.6
+        },
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": -3.3212252833107585,
+          "se": 2.1371375837202904,
+          "ci_lo": -7.509937977409484,
+          "ci_hi": 0.8674874107879651,
+          "direction_verdict": "n.s.",
+          "n_obs": 910,
+          "fit_status": "ok",
+          "offset": 1097,
+          "elapsed": 2.7
+        },
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": 2.1742388065023746,
+          "se": 2.0313866925317163,
+          "ci_lo": -1.8072059495337296,
+          "ci_hi": 6.155683562538479,
+          "direction_verdict": "n.s.",
+          "n_obs": 895,
+          "fit_status": "ok",
+          "offset": 268,
+          "elapsed": 2.8
+        }
+      ],
+      "summary": {
+        "n_ok": 3,
+        "placebo_ate_mean": -0.8400318560085173,
+        "placebo_abs_ate_max": 3.3212252833107585,
+        "n_ci_excludes_0": 0,
+        "false_positive_rate": 0.0,
+        "real_ate": 1.2731578953108094,
+        "real_abs_gt_all_placebos": false
+      }
+    },
+    "BTC": {
+      "real_reference": {
+        "ate": -9.542070545054376,
+        "ci_lo": -18.17813441402826,
+        "ci_hi": -0.9060066760804926,
+        "verdict": "Inverted"
+      },
+      "overlap": {
+        "n": 1370,
+        "min": 0.369519610445591,
+        "p05": 0.5341409221357927,
+        "median": 0.7301033701958037,
+        "p95": 0.9285507242268259,
+        "max": 0.9710658423467003,
+        "frac_outside_05_95": 0.008759124087591242
+      },
+      "placebos": [
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": -4.776234770539047,
+          "se": 5.8153355139579705,
+          "ci_lo": -16.174082935913397,
+          "ci_hi": 6.621613394835298,
+          "direction_verdict": "n.s.",
+          "n_obs": 1369,
+          "fit_status": "ok",
+          "offset": 1022,
+          "elapsed": 2.8
+        },
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": -2.4619727737458104,
+          "se": 5.31818821515248,
+          "ci_lo": -12.885430138450024,
+          "ci_hi": 7.961484590958401,
+          "direction_verdict": "n.s.",
+          "n_obs": 1350,
+          "fit_status": "ok",
+          "offset": 1957,
+          "elapsed": 2.9
+        },
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": -3.61718935510448,
+          "se": 6.682044328697221,
+          "ci_lo": -16.713755582451157,
+          "ci_hi": 9.479376872242195,
+          "direction_verdict": "n.s.",
+          "n_obs": 1362,
+          "fit_status": "ok",
+          "offset": 692,
+          "elapsed": 2.7
+        },
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": -0.8259227767388548,
+          "se": 4.271539629798948,
+          "ci_lo": -9.197986609680349,
+          "ci_hi": 7.546141056202636,
+          "direction_verdict": "n.s.",
+          "n_obs": 1359,
+          "fit_status": "ok",
+          "offset": 609,
+          "elapsed": 2.7
+        },
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": -3.2616989663724394,
+          "se": 4.007153751424599,
+          "ci_lo": -11.115575999679221,
+          "ci_hi": 4.592178066934341,
+          "direction_verdict": "n.s.",
+          "n_obs": 1364,
+          "fit_status": "ok",
+          "offset": 1472,
+          "elapsed": 2.7
+        },
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": -6.055451573836232,
+          "se": 3.847077693666074,
+          "ci_lo": -13.595585299149153,
+          "ci_hi": 1.4846821514766875,
+          "direction_verdict": "n.s.",
+          "n_obs": 1350,
+          "fit_status": "ok",
+          "offset": 949,
+          "elapsed": 2.7
+        },
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": 5.685918967151007,
+          "se": 3.800852005935103,
+          "ci_lo": -1.763614075048615,
+          "ci_hi": 13.135452009350628,
+          "direction_verdict": "n.s.",
+          "n_obs": 1350,
+          "fit_status": "ok",
+          "offset": 855,
+          "elapsed": 2.7
+        },
+        {
+          "spec": "CausalForestDML+PurgedKFold",
+          "ate": -0.4964566834625205,
+          "se": 5.609454996652251,
+          "ci_lo": -11.490786449799183,
+          "ci_hi": 10.497873082874138,
+          "direction_verdict": "n.s.",
+          "n_obs": 1350,
+          "fit_status": "ok",
+          "offset": 1964,
+          "elapsed": 2.8
+        }
+      ],
+      "summary": {
+        "n_ok": 8,
+        "placebo_ate_mean": -1.9761259915810472,
+        "placebo_abs_ate_max": 6.055451573836232,
+        "n_ci_excludes_0": 0,
+        "false_positive_rate": 0.0,
+        "real_ate": -9.542070545054376,
+        "real_abs_gt_all_placebos": true
+      }
+    }
+  }
+}

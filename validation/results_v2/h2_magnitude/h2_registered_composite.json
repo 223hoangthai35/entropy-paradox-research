@@ -1,0 +1,71 @@
+{
+  "spec": "Registered MS_index (b130b0f) scored on the registered-scale n=8 panel. Size term resolved as 1 - minmax(log10 cap). Author-assembled CB/cap table embedded; RPS = cascade point set.",
+  "classification": {
+    "VNINDEX": {
+      "circuit_breaker": 1,
+      "cap_usd_tn": 0.25,
+      "note": "HOSE +/-7% daily limit; ~USD 250bn",
+      "MS_index": 0.9092
+    },
+    "BVB": {
+      "circuit_breaker": 1,
+      "cap_usd_tn": 0.065,
+      "note": "BVB +/-15% static limit; ~USD 65bn",
+      "MS_index": 0.7675
+    },
+    "KOSPI": {
+      "circuit_breaker": 1,
+      "cap_usd_tn": 2.0,
+      "note": "KRX +/-30% daily limit; ~USD 2.0tn",
+      "MS_index": 0.6803
+    },
+    "NIFTY": {
+      "circuit_breaker": 1,
+      "cap_usd_tn": 5.0,
+      "note": "NSE 10-20% stock bands + index circuit breakers; ~USD 5tn",
+      "MS_index": 0.6239
+    },
+    "SPX": {
+      "circuit_breaker": 0,
+      "cap_usd_tn": 50.0,
+      "note": "no per-stock daily hard limit (LULD pauses only); ~USD 50tn",
+      "MS_index": 0.0825
+    },
+    "FTSE": {
+      "circuit_breaker": 0,
+      "cap_usd_tn": 2.4,
+      "note": "no daily price limits; ~USD 2.4tn",
+      "MS_index": 0.1971
+    },
+    "NIKKEI": {
+      "circuit_breaker": 1,
+      "cap_usd_tn": 6.5,
+      "note": "TSE daily price limits by price band; ~USD 6.5tn",
+      "MS_index": 0.5461
+    },
+    "BTC": {
+      "circuit_breaker": 0,
+      "cap_usd_tn": 1.5,
+      "note": "no limits, 24/7; ~USD 1.5tn network value",
+      "MS_index": 0.3233
+    }
+  },
+  "tests": {
+    "raw": {
+      "rho_H_MSindex": 0.7619047619047621,
+      "p": 0.028004939153071805,
+      "registered_gates": {
+        "rho_gt_0.5": true,
+        "reject_if_p_gt_0.10": false
+      }
+    },
+    "filtered": {
+      "rho_H_MSindex": 0.8333333333333335,
+      "p": 0.010175540123456752,
+      "registered_gates": {
+        "rho_gt_0.5": true,
+        "reject_if_p_gt_0.10": false
+      }
+    }
+  }
+}

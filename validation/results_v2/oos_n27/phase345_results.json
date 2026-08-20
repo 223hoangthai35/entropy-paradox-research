@@ -1,0 +1,3155 @@
+{
+  "spec": "phases 3-5: H2 JT+EIV, mechanism clr+EIV+SampEn, ARI, H3 tier-mean, H4 shuffle",
+  "rps_spec_source": "markets_n27.CASCADE_N27 (code source of truth)",
+  "windows": {
+    "repro": {
+      "per_market": {
+        "VNINDEX": {
+          "tier_rank": 4,
+          "rps_point": 0.9,
+          "kw_raw": {
+            "H_stat": 83.90018149376192,
+            "p_value": 6.043758097339736e-19,
+            "eta_sq": 0.055226015842051196,
+            "N_obs": 1486,
+            "n_per_regime": {
+              "Deterministic": 725,
+              "Transitional": 667,
+              "Stochastic": 94
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 96.331276255999,
+            "p_value": 1.2076167930324498e-21,
+            "eta_sq": 0.06360841284962845,
+            "N_obs": 1486,
+            "n_per_regime": {
+              "Deterministic": 740,
+              "Transitional": 659,
+              "Stochastic": 87
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.4913678618857902,
+            0.45086321381142097,
+            0.05776892430278884
+          ],
+          "sampen": {
+            "mean": 0.8529720135121627,
+            "std": 0.3485699119362843,
+            "median": 0.8250747236024933,
+            "iqr": 0.4865305608293852,
+            "p95": 1.5023606480379954,
+            "p05": 0.35587679230572083
+          },
+          "flip_rate_filtered": 6.52589641434263
+        },
+        "KSE100": {
+          "tier_rank": 4,
+          "rps_point": 0.6,
+          "kw_raw": {
+            "H_stat": 55.517786181877,
+            "p_value": 8.799660295756328e-13,
+            "eta_sq": 0.05627527463919769,
+            "N_obs": 954,
+            "n_per_regime": {
+              "Deterministic": 461,
+              "Transitional": 434,
+              "Stochastic": 59
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 100.31514998670127,
+            "p_value": 1.6475627134851234e-22,
+            "eta_sq": 0.1033808096600434,
+            "N_obs": 954,
+            "n_per_regime": {
+              "Deterministic": 448,
+              "Transitional": 451,
+              "Stochastic": 55
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.4702258726899384,
+            0.473305954825462,
+            0.05646817248459959
+          ],
+          "sampen": {
+            "mean": 0.9056267020109907,
+            "std": 0.47888859410217216,
+            "median": 0.8828751003764683,
+            "iqr": 0.6754825735601285,
+            "p95": 1.7227665977411035,
+            "p05": 0.26360762334995813
+          },
+          "flip_rate_filtered": 8.796714579055442
+        },
+        "DSEX": {
+          "tier_rank": 4,
+          "rps_point": 0.55,
+          "kw_raw": {
+            "H_stat": 118.23568235992298,
+            "p_value": 2.115669345583629e-26,
+            "eta_sq": 0.08989611938122427,
+            "N_obs": 1296,
+            "n_per_regime": {
+              "Deterministic": 721,
+              "Transitional": 486,
+              "Stochastic": 89
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 155.05729180165463,
+            "p_value": 2.136667262168083e-34,
+            "eta_sq": 0.1183737755619912,
+            "N_obs": 1296,
+            "n_per_regime": {
+              "Deterministic": 701,
+              "Transitional": 506,
+              "Stochastic": 89
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.5440729483282675,
+            0.3882978723404255,
+            0.067629179331307
+          ],
+          "sampen": {
+            "mean": 0.8791297732175763,
+            "std": 0.4120403161953555,
+            "median": 0.8250747236024933,
+            "iqr": 0.506189220558991,
+            "p95": 1.717651497074333,
+            "p05": 0.2742145411343445
+          },
+          "flip_rate_filtered": 5.9361702127659575
+        },
+        "BVB": {
+          "tier_rank": 4,
+          "rps_point": 0.225,
+          "kw_raw": {
+            "H_stat": 57.54374186490859,
+            "p_value": 3.1954734977835954e-13,
+            "eta_sq": 0.04039544862902443,
+            "N_obs": 1378,
+            "n_per_regime": {
+              "Deterministic": 517,
+              "Transitional": 593,
+              "Stochastic": 268
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 63.285321325339204,
+            "p_value": 1.810368904673435e-14,
+            "eta_sq": 0.04457114278206488,
+            "N_obs": 1378,
+            "n_per_regime": {
+              "Deterministic": 586,
+              "Transitional": 527,
+              "Stochastic": 265
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.41917024320457796,
+            0.38483547925608014,
+            0.19599427753934193
+          ],
+          "sampen": {
+            "mean": 0.8771987649233832,
+            "std": 0.6025091433371235,
+            "median": 0.7375989431307791,
+            "iqr": 0.5851585424958496,
+            "p95": 2.1972245773362196,
+            "p05": 0.21837490839010582
+          },
+          "flip_rate_filtered": 11.17596566523605
+        },
+        "SBITOP": {
+          "tier_rank": 4,
+          "rps_point": 0.3,
+          "kw_raw": {
+            "H_stat": 25.947273180326192,
+            "p_value": 2.3207118437101435e-06,
+            "eta_sq": 0.016246453989366482,
+            "N_obs": 1477,
+            "n_per_regime": {
+              "Deterministic": 655,
+              "Transitional": 293,
+              "Stochastic": 529
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 3.2092692055693988,
+            "p_value": 0.20096297280670986,
+            "eta_sq": 0.0008203997324080046,
+            "N_obs": 1477,
+            "n_per_regime": {
+              "Deterministic": 722,
+              "Transitional": 334,
+              "Stochastic": 421
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.48229792919171677,
+            0.23246492985971945,
+            0.2852371409485638
+          ],
+          "sampen": {
+            "mean": 0.7853144587997417,
+            "std": 0.5020335593391415,
+            "median": 0.6459123056836605,
+            "iqr": 0.636021663621156,
+            "p95": 1.7155116953375282,
+            "p05": 0.24868199420597287
+          },
+          "flip_rate_filtered": 7.575150300601202
+        },
+        "OMXVGI": {
+          "tier_rank": 4,
+          "rps_point": 0.3,
+          "kw_raw": {
+            "H_stat": 14.436069129224961,
+            "p_value": 0.0007332421436307347,
+            "eta_sq": 0.008482993948993834,
+            "N_obs": 1469,
+            "n_per_regime": {
+              "Deterministic": 947,
+              "Transitional": 415,
+              "Stochastic": 107
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 9.300777731961716,
+            "p_value": 0.009557884471673703,
+            "eta_sq": 0.0049800666657310476,
+            "N_obs": 1469,
+            "n_per_regime": {
+              "Deterministic": 936,
+              "Transitional": 434,
+              "Stochastic": 99
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.6312961719274681,
+            0.3022162525184688,
+            0.06648757555406314
+          ],
+          "sampen": {
+            "mean": 0.6642977143817537,
+            "std": 0.4067589353105462,
+            "median": 0.5389965007326869,
+            "iqr": 0.435894108379058,
+            "p95": 1.455287232606842,
+            "p05": 0.218571411901332
+          },
+          "flip_rate_filtered": 8.12357286769644
+        },
+        "OMXRGI": {
+          "tier_rank": 4,
+          "rps_point": 0.35,
+          "kw_raw": {
+            "H_stat": 19.768615631648572,
+            "p_value": 5.096824247195817e-05,
+            "eta_sq": 0.015464417433984832,
+            "N_obs": 1152,
+            "n_per_regime": {
+              "Deterministic": 629,
+              "Transitional": 350,
+              "Stochastic": 173
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 30.598679153195008,
+            "p_value": 2.2676772604726846e-07,
+            "eta_sq": 0.024890060185548308,
+            "N_obs": 1152,
+            "n_per_regime": {
+              "Deterministic": 641,
+              "Transitional": 416,
+              "Stochastic": 95
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.5639931740614335,
+            0.35494880546075086,
+            0.0810580204778157
+          ],
+          "sampen": {
+            "mean": 0.934935126868723,
+            "std": 0.54809736546905,
+            "median": 0.7761441001309132,
+            "iqr": 0.7253842929569556,
+            "p95": 1.909466291181067,
+            "p05": 0.2436852760888273
+          },
+          "flip_rate_filtered": 6.665529010238908
+        },
+        "MERV": {
+          "tier_rank": 4,
+          "rps_point": 0.55,
+          "kw_raw": {
+            "H_stat": 16.83437920916731,
+            "p_value": 0.00022103497642916314,
+            "eta_sq": 0.010373691754662455,
+            "N_obs": 1433,
+            "n_per_regime": {
+              "Deterministic": 526,
+              "Transitional": 246,
+              "Stochastic": 661
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 35.17859366302309,
+            "p_value": 2.296494689710688e-08,
+            "eta_sq": 0.0232018137503658,
+            "N_obs": 1433,
+            "n_per_regime": {
+              "Deterministic": 513,
+              "Transitional": 285,
+              "Stochastic": 635
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.35306262904335856,
+            0.2099105299380592,
+            0.43702684101858225
+          ],
+          "sampen": {
+            "mean": 1.0174144071965363,
+            "std": 0.49836883917813996,
+            "median": 0.9609365586709586,
+            "iqr": 0.663999477392935,
+            "p95": 2.001480000210124,
+            "p05": 0.34495252418546046
+          },
+          "flip_rate_filtered": 5.549896765313145
+        },
+        "KOSPI": {
+          "tier_rank": 3,
+          "rps_point": 0.45,
+          "kw_raw": {
+            "H_stat": 5.884346463426482,
+            "p_value": 0.05275096401045457,
+            "eta_sq": 0.0026862700300321453,
+            "N_obs": 1449,
+            "n_per_regime": {
+              "Deterministic": 391,
+              "Transitional": 767,
+              "Stochastic": 291
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 21.838040689084664,
+            "p_value": 1.8110469807140813e-05,
+            "eta_sq": 0.013719253588578607,
+            "N_obs": 1449,
+            "n_per_regime": {
+              "Deterministic": 422,
+              "Transitional": 786,
+              "Stochastic": 241
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.2995234853641933,
+            0.5350578624914908,
+            0.16541865214431586
+          ],
+          "sampen": {
+            "mean": 1.1462114252087099,
+            "std": 0.49650260226575216,
+            "median": 1.13225028811519,
+            "iqr": 0.5978370007556204,
+            "p95": 2.0518729220799434,
+            "p05": 0.3542982364281729
+          },
+          "flip_rate_filtered": 14.752893124574541
+        },
+        "NIFTY": {
+          "tier_rank": 3,
+          "rps_point": 0.4,
+          "kw_raw": {
+            "H_stat": 13.984688517320137,
+            "p_value": 0.0009188898892127256,
+            "eta_sq": 0.00823689932461865,
+            "N_obs": 1458,
+            "n_per_regime": {
+              "Deterministic": 499,
+              "Transitional": 840,
+              "Stochastic": 119
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 21.986229876346442,
+            "p_value": 1.681708980723144e-05,
+            "eta_sq": 0.013736240464842916,
+            "N_obs": 1458,
+            "n_per_regime": {
+              "Deterministic": 524,
+              "Transitional": 817,
+              "Stochastic": 117
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.36332882273342354,
+            0.557510148849797,
+            0.07916102841677942
+          ],
+          "sampen": {
+            "mean": 1.0568166836401767,
+            "std": 0.4427340087023792,
+            "median": 0.9858167945227653,
+            "iqr": 0.5619148156933981,
+            "p95": 1.8718021769015913,
+            "p05": 0.4461237706471083
+          },
+          "flip_rate_filtered": 8.866035182679296
+        },
+        "PSEI": {
+          "tier_rank": 3,
+          "rps_point": 0.68,
+          "kw_raw": {
+            "H_stat": 48.10061221438809,
+            "p_value": 3.589919991424138e-11,
+            "eta_sq": 0.032081149766449615,
+            "N_obs": 1440,
+            "n_per_regime": {
+              "Deterministic": 736,
+              "Transitional": 537,
+              "Stochastic": 167
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 41.08874397318141,
+            "p_value": 1.1958937937293163e-09,
+            "eta_sq": 0.027201631157398334,
+            "N_obs": 1440,
+            "n_per_regime": {
+              "Deterministic": 693,
+              "Transitional": 569,
+              "Stochastic": 178
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.47465753424657536,
+            0.40342465753424656,
+            0.12191780821917808
+          ],
+          "sampen": {
+            "mean": 1.1221036441766619,
+            "std": 0.3894709376256715,
+            "median": 1.1124056108004456,
+            "iqr": 0.500331063256005,
+            "p95": 1.8084707548509642,
+            "p05": 0.5537770557793825
+          },
+          "flip_rate_filtered": 8.802739726027397
+        },
+        "JKSE": {
+          "tier_rank": 3,
+          "rps_point": 0.4,
+          "kw_raw": {
+            "H_stat": 10.554241025308329,
+            "p_value": 0.005107115514815602,
+            "eta_sq": 0.006058244352201366,
+            "N_obs": 1415,
+            "n_per_regime": {
+              "Deterministic": 267,
+              "Transitional": 737,
+              "Stochastic": 411
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 14.138163392667593,
+            "p_value": 0.0008510142399507335,
+            "eta_sq": 0.008596432997639939,
+            "N_obs": 1415,
+            "n_per_regime": {
+              "Deterministic": 490,
+              "Transitional": 614,
+              "Stochastic": 311
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.3554006968641115,
+            0.42787456445993033,
+            0.21672473867595818
+          ],
+          "sampen": {
+            "mean": 1.1134153003862135,
+            "std": 0.40837648613916633,
+            "median": 1.1147511181277845,
+            "iqr": 0.5864468493782096,
+            "p95": 1.791759469228055,
+            "p05": 0.46241770012506894
+          },
+          "flip_rate_filtered": 14.4
+        },
+        "SET": {
+          "tier_rank": 3,
+          "rps_point": 0.35,
+          "kw_raw": {
+            "H_stat": 36.7648503859391,
+            "p_value": 1.0389967155866806e-08,
+            "eta_sq": 0.02449954220291691,
+            "N_obs": 1422,
+            "n_per_regime": {
+              "Deterministic": 550,
+              "Transitional": 475,
+              "Stochastic": 397
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 43.06048192918661,
+            "p_value": 4.4620574233503476e-10,
+            "eta_sq": 0.028936209957143487,
+            "N_obs": 1422,
+            "n_per_regime": {
+              "Deterministic": 522,
+              "Transitional": 476,
+              "Stochastic": 424
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.36893203883495146,
+            0.33703190013869627,
+            0.29403606102635227
+          ],
+          "sampen": {
+            "mean": 1.0990882692654973,
+            "std": 0.4125110314408421,
+            "median": 1.0809127115687087,
+            "iqr": 0.5182606022535089,
+            "p95": 1.8827312474337816,
+            "p05": 0.5108256237659907
+          },
+          "flip_rate_filtered": 12.932038834951456
+        },
+        "SHANGHAI": {
+          "tier_rank": 3,
+          "rps_point": 0.65,
+          "kw_raw": {
+            "H_stat": 58.748885978844555,
+            "p_value": 1.749208184427449e-13,
+            "eta_sq": 0.039935880351051764,
+            "N_obs": 1424,
+            "n_per_regime": {
+              "Deterministic": 139,
+              "Transitional": 158,
+              "Stochastic": 1127
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 86.18328969412232,
+            "p_value": 1.9299072018652292e-19,
+            "eta_sq": 0.05924228690649002,
+            "N_obs": 1424,
+            "n_per_regime": {
+              "Deterministic": 148,
+              "Transitional": 134,
+              "Stochastic": 1142
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.10249307479224377,
+            0.09626038781163435,
+            0.8012465373961218
+          ],
+          "sampen": {
+            "mean": 1.0532600320356238,
+            "std": 0.34593142841902186,
+            "median": 1.0826119473216687,
+            "iqr": 0.4399512841793337,
+            "p95": 1.6079990386888883,
+            "p05": 0.39773915691296624
+          },
+          "flip_rate_filtered": 10.121883656509695
+        },
+        "TWII": {
+          "tier_rank": 3,
+          "rps_point": 0.4,
+          "kw_raw": {
+            "H_stat": 20.418974280540624,
+            "p_value": 3.681934615215964e-05,
+            "eta_sq": 0.020174122979781627,
+            "N_obs": 916,
+            "n_per_regime": {
+              "Deterministic": 386,
+              "Transitional": 221,
+              "Stochastic": 309
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 27.540554643686846,
+            "p_value": 1.0462718598427577e-06,
+            "eta_sq": 0.027974320529777486,
+            "N_obs": 916,
+            "n_per_regime": {
+              "Deterministic": 388,
+              "Transitional": 258,
+              "Stochastic": 270
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.42628205128205127,
+            0.27564102564102566,
+            0.2980769230769231
+          ],
+          "sampen": {
+            "mean": 1.0328890195784444,
+            "std": 0.45312619189661685,
+            "median": 0.9455288451051678,
+            "iqr": 0.5630735831115667,
+            "p95": 1.8562979903656263,
+            "p05": 0.460622772119396
+          },
+          "flip_rate_filtered": 8.615384615384615
+        },
+        "SPX": {
+          "tier_rank": 1,
+          "rps_point": 0.275,
+          "kw_raw": {
+            "H_stat": 2.1225545802572015,
+            "p_value": 0.3460135682393804,
+            "eta_sq": 8.186678707895888e-05,
+            "N_obs": 1500,
+            "n_per_regime": {
+              "Deterministic": 651,
+              "Transitional": 597,
+              "Stochastic": 252
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 1.5070791083808217,
+            "p_value": 0.4706975412506671,
+            "eta_sq": 0.0,
+            "N_obs": 1500,
+            "n_per_regime": {
+              "Deterministic": 606,
+              "Transitional": 658,
+              "Stochastic": 236
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.3986842105263158,
+            0.4328947368421053,
+            0.16842105263157894
+          ],
+          "sampen": {
+            "mean": 1.076206036736241,
+            "std": 0.4139302734766429,
+            "median": 1.0169342576538425,
+            "iqr": 0.5443130348903884,
+            "p95": 1.791759469228055,
+            "p05": 0.5128683965080544
+          },
+          "flip_rate_filtered": 14.092105263157896
+        },
+        "FTSE": {
+          "tier_rank": 1,
+          "rps_point": 0.2,
+          "kw_raw": {
+            "H_stat": 4.148309092210184,
+            "p_value": 0.12566262454988397,
+            "eta_sq": 0.0014255534785734465,
+            "N_obs": 1510,
+            "n_per_regime": {
+              "Deterministic": 749,
+              "Transitional": 361,
+              "Stochastic": 400
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 1.3407657643201674,
+            "p_value": 0.5115126912040784,
+            "eta_sq": 0.0,
+            "N_obs": 1510,
+            "n_per_regime": {
+              "Deterministic": 690,
+              "Transitional": 530,
+              "Stochastic": 290
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.4588235294117647,
+            0.3516339869281046,
+            0.1895424836601307
+          ],
+          "sampen": {
+            "mean": 1.1318698090137658,
+            "std": 0.4932168486633938,
+            "median": 1.072636802264849,
+            "iqr": 0.692172996362102,
+            "p95": 2.0693144184861176,
+            "p05": 0.48887109038647036
+          },
+          "flip_rate_filtered": 10.376470588235295
+        },
+        "DAX": {
+          "tier_rank": 1,
+          "rps_point": 0.2,
+          "kw_raw": {
+            "H_stat": 1.3347008424416344,
+            "p_value": 0.5130661877283857,
+            "eta_sq": 0.0,
+            "N_obs": 1520,
+            "n_per_regime": {
+              "Deterministic": 418,
+              "Transitional": 845,
+              "Stochastic": 257
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 6.488339817754422,
+            "p_value": 0.03900092524601112,
+            "eta_sq": 0.002958694672217813,
+            "N_obs": 1520,
+            "n_per_regime": {
+              "Deterministic": 385,
+              "Transitional": 821,
+              "Stochastic": 314
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.25,
+            0.5461038961038961,
+            0.2038961038961039
+          ],
+          "sampen": {
+            "mean": 1.1089955686079083,
+            "std": 0.46223964379992627,
+            "median": 1.0663514264498883,
+            "iqr": 0.5697681593994407,
+            "p95": 2.001480000210124,
+            "p05": 0.4430681677098143
+          },
+          "flip_rate_filtered": 17.181818181818183
+        },
+        "CAC": {
+          "tier_rank": 1,
+          "rps_point": 0.2,
+          "kw_raw": {
+            "H_stat": 3.4239655652554575,
+            "p_value": 0.18050753036103276,
+            "eta_sq": 0.0009276648633586043,
+            "N_obs": 1538,
+            "n_per_regime": {
+              "Deterministic": 628,
+              "Transitional": 766,
+              "Stochastic": 144
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 6.311304220414968,
+            "p_value": 0.042610605120106025,
+            "eta_sq": 0.0028086672445700117,
+            "N_obs": 1538,
+            "n_per_regime": {
+              "Deterministic": 732,
+              "Transitional": 661,
+              "Stochastic": 145
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.48267008985879334,
+            0.42426187419768935,
+            0.09306803594351733
+          ],
+          "sampen": {
+            "mean": 1.1009579742527882,
+            "std": 0.46970938103587273,
+            "median": 1.034896474282002,
+            "iqr": 0.6296337748376196,
+            "p95": 1.916922612182061,
+            "p05": 0.39568322220185254
+          },
+          "flip_rate_filtered": 11.160462130937098
+        },
+        "SSMI": {
+          "tier_rank": 1,
+          "rps_point": 0.15,
+          "kw_raw": {
+            "H_stat": 9.604018968029777,
+            "p_value": 0.008213226108720498,
+            "eta_sq": 0.005130916982476233,
+            "N_obs": 1485,
+            "n_per_regime": {
+              "Deterministic": 129,
+              "Transitional": 634,
+              "Stochastic": 722
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 3.931918894647424,
+            "p_value": 0.14002147891436467,
+            "eta_sq": 0.001303588997737803,
+            "N_obs": 1485,
+            "n_per_regime": {
+              "Deterministic": 165,
+              "Transitional": 677,
+              "Stochastic": 643
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.10963455149501661,
+            0.45182724252491696,
+            0.43853820598006643
+          ],
+          "sampen": {
+            "mean": 1.0723221824003317,
+            "std": 0.41626526105411715,
+            "median": 1.0518185254216705,
+            "iqr": 0.5537847822813786,
+            "p95": 1.8092858633503786,
+            "p05": 0.47388539621206277
+          },
+          "flip_rate_filtered": 15.069767441860465
+        },
+        "NIKKEI": {
+          "tier_rank": 1,
+          "rps_point": 0.18,
+          "kw_raw": {
+            "H_stat": 4.052646560651738,
+            "p_value": 0.13181929384632937,
+            "eta_sq": 0.0014294196104817115,
+            "N_obs": 1439,
+            "n_per_regime": {
+              "Deterministic": 609,
+              "Transitional": 566,
+              "Stochastic": 264
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 2.217065991565505,
+            "p_value": 0.3300427802565387,
+            "eta_sq": 0.00015116016125731553,
+            "N_obs": 1439,
+            "n_per_regime": {
+              "Deterministic": 629,
+              "Transitional": 534,
+              "Stochastic": 276
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.43385880740233035,
+            0.3762851267991775,
+            0.18985606579849212
+          ],
+          "sampen": {
+            "mean": 1.11711563108743,
+            "std": 0.5143805585673001,
+            "median": 1.0528355480295977,
+            "iqr": 0.6910224646152419,
+            "p95": 2.0794415416798357,
+            "p05": 0.4344669008207791
+          },
+          "flip_rate_filtered": 8.808773132282385
+        },
+        "ASX": {
+          "tier_rank": 1,
+          "rps_point": 0.3,
+          "kw_raw": {
+            "H_stat": 4.955890991751403,
+            "p_value": 0.08391545325519831,
+            "eta_sq": 0.0019575437031466246,
+            "N_obs": 1513,
+            "n_per_regime": {
+              "Deterministic": 585,
+              "Transitional": 771,
+              "Stochastic": 157
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 22.760888368374253,
+            "p_value": 1.1416576449520818e-05,
+            "eta_sq": 0.013748932694287584,
+            "N_obs": 1513,
+            "n_per_regime": {
+              "Deterministic": 905,
+              "Transitional": 456,
+              "Stochastic": 152
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.6001304631441617,
+            0.30071754729288974,
+            0.09915198956294846
+          ],
+          "sampen": {
+            "mean": 1.1649351836587993,
+            "std": 0.4524836704764774,
+            "median": 1.0775588794702773,
+            "iqr": 0.5521589904852281,
+            "p95": 2.0525057234677924,
+            "p05": 0.5697155434210126
+          },
+          "flip_rate_filtered": 12.32876712328767
+        },
+        "HSI": {
+          "tier_rank": 1,
+          "rps_point": 0.35,
+          "kw_raw": {
+            "H_stat": 56.22471530376697,
+            "p_value": 6.17956917983693e-13,
+            "eta_sq": 0.03737058256634526,
+            "N_obs": 1454,
+            "n_per_regime": {
+              "Deterministic": 367,
+              "Transitional": 364,
+              "Stochastic": 723
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 71.20630241424169,
+            "p_value": 3.44943441797006e-16,
+            "eta_sq": 0.04769559091264072,
+            "N_obs": 1454,
+            "n_per_regime": {
+              "Deterministic": 480,
+              "Transitional": 389,
+              "Stochastic": 585
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.3256445047489824,
+            0.2734056987788331,
+            0.40094979647218454
+          ],
+          "sampen": {
+            "mean": 1.2826667919328727,
+            "std": 0.5092272652637011,
+            "median": 1.2636920390275583,
+            "iqr": 0.6880320798931749,
+            "p95": 2.1972245773362196,
+            "p05": 0.5371810917086862
+          },
+          "flip_rate_filtered": 15.386702849389417
+        },
+        "STI": {
+          "tier_rank": 1,
+          "rps_point": 0.25,
+          "kw_raw": {
+            "H_stat": 62.225899553873205,
+            "p_value": 3.074805124119099e-14,
+            "eta_sq": 0.04028488264473124,
+            "N_obs": 1498,
+            "n_per_regime": {
+              "Deterministic": 485,
+              "Transitional": 761,
+              "Stochastic": 252
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 56.77330687511676,
+            "p_value": 4.69713510795116e-13,
+            "eta_sq": 0.03663766346161656,
+            "N_obs": 1498,
+            "n_per_regime": {
+              "Deterministic": 534,
+              "Transitional": 708,
+              "Stochastic": 256
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.35177865612648224,
+            0.4683794466403162,
+            0.17984189723320157
+          ],
+          "sampen": {
+            "mean": 0.9687577600067289,
+            "std": 0.4492035700718229,
+            "median": 0.9223330463301177,
+            "iqr": 0.5730679326432118,
+            "p95": 1.824549292051046,
+            "p05": 0.3748473929487934
+          },
+          "flip_rate_filtered": 5.478260869565218
+        },
+        "BTC": {
+          "tier_rank": 2,
+          "rps_point": 0.55,
+          "kw_raw": {
+            "H_stat": 7.130210989101215,
+            "p_value": 0.028294000463874102,
+            "eta_sq": 0.0021008235008604485,
+            "N_obs": 2445,
+            "n_per_regime": {
+              "Deterministic": 888,
+              "Transitional": 1191,
+              "Stochastic": 366
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 32.24249483715812,
+            "p_value": 9.968531939848485e-08,
+            "eta_sq": 0.01238431402013027,
+            "N_obs": 2445,
+            "n_per_regime": {
+              "Deterministic": 1017,
+              "Transitional": 1075,
+              "Stochastic": 353
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.4125760649087221,
+            0.44421906693711966,
+            0.14320486815415823
+          ],
+          "sampen": {
+            "mean": 0.954940756207029,
+            "std": 0.4712220362055619,
+            "median": 0.8627064857400486,
+            "iqr": 0.6406298683981427,
+            "p95": 1.8123787564307907,
+            "p05": 0.31516461210166674
+          },
+          "flip_rate_filtered": 9.916430020283975
+        },
+        "ETH": {
+          "tier_rank": 2,
+          "rps_point": 0.55,
+          "kw_raw": {
+            "H_stat": 61.61298889699901,
+            "p_value": 4.1774326255297186e-14,
+            "eta_sq": 0.024411543364864462,
+            "N_obs": 2445,
+            "n_per_regime": {
+              "Deterministic": 860,
+              "Transitional": 999,
+              "Stochastic": 586
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 58.10333426233046,
+            "p_value": 2.415579163862844e-13,
+            "eta_sq": 0.022974338354762678,
+            "N_obs": 2445,
+            "n_per_regime": {
+              "Deterministic": 916,
+              "Transitional": 835,
+              "Stochastic": 694
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.3716024340770791,
+            0.34198782961460444,
+            0.28640973630831645
+          ],
+          "sampen": {
+            "mean": 0.8916855759972164,
+            "std": 0.37793613397967746,
+            "median": 0.8310408229597612,
+            "iqr": 0.5671810691791944,
+            "p95": 1.5686159179138452,
+            "p05": 0.36114645999605627
+          },
+          "flip_rate_filtered": 11.75659229208925
+        },
+        "BNB": {
+          "tier_rank": 2,
+          "rps_point": 0.6,
+          "kw_raw": {
+            "H_stat": 3.646648146557709,
+            "p_value": 0.16148805962247534,
+            "eta_sq": 0.0006743030903184721,
+            "N_obs": 2445,
+            "n_per_regime": {
+              "Deterministic": 897,
+              "Transitional": 1272,
+              "Stochastic": 276
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 7.156165692043942,
+            "p_value": 0.027929191522077602,
+            "eta_sq": 0.0021114519623439566,
+            "N_obs": 2445,
+            "n_per_regime": {
+              "Deterministic": 915,
+              "Transitional": 1275,
+              "Stochastic": 255
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.3720081135902637,
+            0.5192697768762677,
+            0.10872210953346856
+          ],
+          "sampen": {
+            "mean": 0.9272719527989655,
+            "std": 0.4283728008479598,
+            "median": 0.8924800831804366,
+            "iqr": 0.5520227906837782,
+            "p95": 1.7032252365188216,
+            "p05": 0.3364722366212129
+          },
+          "flip_rate_filtered": 9.4052738336714
+        }
+      },
+      "h2_raw": {
+        "rho_H_tier": 0.5386428860219497,
+        "p_H_tier": 0.003747385540942222,
+        "rho_H_rps": 0.480004109446352,
+        "p_H_rps_perm": 0.0115,
+        "jt_tier_eta": {
+          "JT_obs": 205.0,
+          "null_mean": 131.40185,
+          "null_p95": 169.0,
+          "p_one_sided": 0.0008999550022498875
+        },
+        "eiv": {
+          "beta": {
+            "mean": 0.6820154222317669,
+            "p025": -0.3201427996246083,
+            "p975": 1.639073615812839,
+            "P_gt_0": 0.9213,
+            "P_lt_0": 0.0787
+          },
+          "tau_w": {
+            "mean": 0.18204161640017305,
+            "p025": -0.13552300310727647,
+            "p975": 0.4703261811878238,
+            "P_gt_0": 0.8731,
+            "P_lt_0": 0.1269
+          }
+        },
+        "eiv_eps_sensitivity": {
+          "1e-05": 0.8946,
+          "0.0001": 0.9213,
+          "0.001": 0.9414
+        }
+      },
+      "h2_filt": {
+        "rho_H_tier": 0.4701983112614774,
+        "p_H_tier": 0.013325895446833234,
+        "rho_H_rps": 0.6378598670228982,
+        "p_H_rps_perm": 0.0003,
+        "jt_tier_eta": {
+          "JT_obs": 192.0,
+          "null_mean": 131.534675,
+          "null_p95": 169.0,
+          "p_one_sided": 0.0038998050097495125
+        },
+        "eiv": {
+          "beta": {
+            "mean": 0.8275109610730363,
+            "p025": -0.19255124683503258,
+            "p975": 1.7705137091428227,
+            "P_gt_0": 0.9494,
+            "P_lt_0": 0.0506
+          },
+          "tau_w": {
+            "mean": 0.2245040696287894,
+            "p025": -0.0930266185186918,
+            "p975": 0.506801922060239,
+            "P_gt_0": 0.9231,
+            "P_lt_0": 0.0769
+          }
+        },
+        "eiv_eps_sensitivity": {
+          "1e-05": 0.9301,
+          "0.0001": 0.9494,
+          "0.001": 0.9663
+        }
+      },
+      "mech_clr_sto": {
+        "eiv_beta": {
+          "mean": 0.08235492543666464,
+          "p025": -0.8355422029490793,
+          "p975": 0.888472612676388,
+          "P_gt_0": 0.6011,
+          "P_lt_0": 0.3989
+        },
+        "P_correct_sign": 0.3989,
+        "legacy_spearman": {
+          "rho": -0.21793290026587248,
+          "p_perm": 0.2722
+        }
+      },
+      "mech_clr_tra": {
+        "eiv_beta": {
+          "mean": 0.04259405548051679,
+          "p025": -0.36751018094786936,
+          "p975": 0.47781916637118615,
+          "P_gt_0": 0.5715,
+          "P_lt_0": 0.4285
+        },
+        "P_correct_sign": 0.5715,
+        "legacy_spearman": {
+          "rho": 0.09287435834115242,
+          "p_perm": 0.649
+        }
+      },
+      "mech_p_sto_legacy": {
+        "rho": -0.20935045131025445,
+        "p_perm": 0.2934
+      },
+      "sampen_mean": {
+        "rho": -0.2813817193306202,
+        "p_perm": 0.1558
+      },
+      "sampen_std": {
+        "rho": -0.4303485119174191,
+        "p_perm": 0.0285
+      },
+      "sampen_median": {
+        "rho": -0.06759710333114347,
+        "p_perm": 0.7357
+      },
+      "sampen_iqr": {
+        "rho": -0.3187766754943845,
+        "p_perm": 0.1088
+      },
+      "sampen_p95": {
+        "rho": -0.5288290941793573,
+        "p_perm": 0.0055
+      },
+      "sampen_p05": {
+        "rho": -0.1854422006481756,
+        "p_perm": 0.346
+      },
+      "h3_tier_mean_p_tra": {
+        "by_tier_rank": {
+          "1": 0.4028343951231032,
+          "2": 0.435158891142664,
+          "3": 0.37611436384668867,
+          "4": 0.34960537975129835
+        },
+        "msci_monotone_frontier_lt_emerging_lt_developed": true
+      }
+    },
+    "extended": {
+      "per_market": {
+        "VNINDEX": {
+          "tier_rank": 4,
+          "rps_point": 0.9,
+          "kw_raw": {
+            "H_stat": 81.72777317651799,
+            "p_value": 1.7907689088464913e-18,
+            "eta_sq": 0.052041627399815917,
+            "N_obs": 1535,
+            "n_per_regime": {
+              "Deterministic": 647,
+              "Transitional": 778,
+              "Stochastic": 110
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 130.9804614185523,
+            "p_value": 3.6137173795586963e-29,
+            "eta_sq": 0.08419090170923779,
+            "N_obs": 1535,
+            "n_per_regime": {
+              "Deterministic": 637,
+              "Transitional": 789,
+              "Stochastic": 109
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.40964630225080384,
+            0.5202572347266881,
+            0.07009646302250803
+          ],
+          "sampen": {
+            "mean": 0.8565455318247489,
+            "std": 0.34816140391935285,
+            "median": 0.8223306425773806,
+            "iqr": 0.4763024855042103,
+            "p95": 1.5040773967762742,
+            "p05": 0.35667494393873245
+          },
+          "flip_rate_filtered": 6.968488745980707
+        },
+        "KSE100": {
+          "tier_rank": 4,
+          "rps_point": 0.6,
+          "kw_raw": {
+            "H_stat": 44.86994492507938,
+            "p_value": 1.8055738566894337e-10,
+            "eta_sq": 0.04299894175033037,
+            "N_obs": 1000,
+            "n_per_regime": {
+              "Deterministic": 470,
+              "Transitional": 473,
+              "Stochastic": 57
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 84.30954224451989,
+            "p_value": 4.925105248388712e-19,
+            "eta_sq": 0.08255721388617843,
+            "N_obs": 1000,
+            "n_per_regime": {
+              "Deterministic": 455,
+              "Transitional": 491,
+              "Stochastic": 54
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.44607843137254904,
+            0.5009803921568627,
+            0.052941176470588235
+          ],
+          "sampen": {
+            "mean": 0.9113730669919653,
+            "std": 0.4743641274497841,
+            "median": 0.8906440846803798,
+            "iqr": 0.6706090737720095,
+            "p95": 1.7147984280919266,
+            "p05": 0.2720085321966887
+          },
+          "flip_rate_filtered": 8.4
+        },
+        "DSEX": {
+          "tier_rank": 4,
+          "rps_point": 0.55,
+          "kw_raw": {
+            "H_stat": 133.34750943227573,
+            "p_value": 1.1065122824178853e-29,
+            "eta_sq": 0.09794743432682754,
+            "N_obs": 1344,
+            "n_per_regime": {
+              "Deterministic": 743,
+              "Transitional": 512,
+              "Stochastic": 89
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 170.62371330357655,
+            "p_value": 8.902898358536308e-38,
+            "eta_sq": 0.12574475264994522,
+            "N_obs": 1344,
+            "n_per_regime": {
+              "Deterministic": 727,
+              "Transitional": 528,
+              "Stochastic": 89
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.5476539589442815,
+            0.3870967741935484,
+            0.06524926686217009
+          ],
+          "sampen": {
+            "mean": 0.8787874224627723,
+            "std": 0.4055744719266731,
+            "median": 0.8297227155656961,
+            "iqr": 0.48591346241726896,
+            "p95": 1.7047480922384253,
+            "p05": 0.2751563346139893
+          },
+          "flip_rate_filtered": 5.912023460410557
+        },
+        "BVB": {
+          "tier_rank": 4,
+          "rps_point": 0.225,
+          "kw_raw": {
+            "H_stat": 46.47170308229927,
+            "p_value": 8.105837505338081e-11,
+            "eta_sq": 0.031208212689332823,
+            "N_obs": 1428,
+            "n_per_regime": {
+              "Deterministic": 499,
+              "Transitional": 658,
+              "Stochastic": 271
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 50.76983779836661,
+            "p_value": 9.450826677170495e-12,
+            "eta_sq": 0.03422444757780113,
+            "N_obs": 1428,
+            "n_per_regime": {
+              "Deterministic": 618,
+              "Transitional": 536,
+              "Stochastic": 274
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.43784530386740333,
+            0.3729281767955801,
+            0.18922651933701656
+          ],
+          "sampen": {
+            "mean": 0.8666775624236818,
+            "std": 0.5965026714473257,
+            "median": 0.7339691750802004,
+            "iqr": 0.5656493318959251,
+            "p95": 2.1241856075154155,
+            "p05": 0.22595623077340596
+          },
+          "flip_rate_filtered": 11.660220994475138
+        },
+        "SBITOP": {
+          "tier_rank": 4,
+          "rps_point": 0.3,
+          "kw_raw": {
+            "H_stat": 29.02938152490151,
+            "p_value": 4.969925691098692e-07,
+            "eta_sq": 0.017794194552272224,
+            "N_obs": 1522,
+            "n_per_regime": {
+              "Deterministic": 672,
+              "Transitional": 295,
+              "Stochastic": 555
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 0.9229255887739782,
+            "p_value": 0.6303608824045654,
+            "eta_sq": 0.0,
+            "N_obs": 1522,
+            "n_per_regime": {
+              "Deterministic": 733,
+              "Transitional": 360,
+              "Stochastic": 429
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.47535667963683526,
+            0.24643320363164722,
+            0.2782101167315175
+          ],
+          "sampen": {
+            "mean": 0.7854634508363665,
+            "std": 0.4964679874950789,
+            "median": 0.649850374806621,
+            "iqr": 0.6291695119328693,
+            "p95": 1.7047480922384253,
+            "p05": 0.24999863861738614
+          },
+          "flip_rate_filtered": 7.844357976653696
+        },
+        "OMXVGI": {
+          "tier_rank": 4,
+          "rps_point": 0.3,
+          "kw_raw": {
+            "H_stat": 15.491277664489644,
+            "p_value": 0.00043262518333091513,
+            "eta_sq": 0.0089169052640381,
+            "N_obs": 1516,
+            "n_per_regime": {
+              "Deterministic": 970,
+              "Transitional": 447,
+              "Stochastic": 99
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 9.175673145901783,
+            "p_value": 0.010174847118747369,
+            "eta_sq": 0.00474267888030521,
+            "N_obs": 1516,
+            "n_per_regime": {
+              "Deterministic": 956,
+              "Transitional": 466,
+              "Stochastic": 94
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.6354166666666666,
+            0.3033854166666667,
+            0.061197916666666664
+          ],
+          "sampen": {
+            "mean": 0.6659370828198775,
+            "std": 0.404952462177684,
+            "median": 0.5398733092062216,
+            "iqr": 0.43834330268288285,
+            "p95": 1.455287232606842,
+            "p05": 0.22363205250082155
+          },
+          "flip_rate_filtered": 8.0390625
+        },
+        "OMXRGI": {
+          "tier_rank": 4,
+          "rps_point": 0.35,
+          "kw_raw": {
+            "H_stat": 17.80427736795491,
+            "p_value": 0.00013609754536736678,
+            "eta_sq": 0.013236413205992387,
+            "N_obs": 1197,
+            "n_per_regime": {
+              "Deterministic": 652,
+              "Transitional": 359,
+              "Stochastic": 186
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 24.62230611993982,
+            "p_value": 4.5012606320254406e-06,
+            "eta_sq": 0.018946655041825647,
+            "N_obs": 1197,
+            "n_per_regime": {
+              "Deterministic": 664,
+              "Transitional": 456,
+              "Stochastic": 77
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.5456039441248973,
+            0.39112571898110104,
+            0.06327033689400165
+          ],
+          "sampen": {
+            "mean": 0.9413456328153829,
+            "std": 0.5398605482272768,
+            "median": 0.7972255850628884,
+            "iqr": 0.7001674480358738,
+            "p95": 1.878131628897664,
+            "p05": 0.24432670707408174
+          },
+          "flip_rate_filtered": 6.833196384552178
+        },
+        "MERV": {
+          "tier_rank": 4,
+          "rps_point": 0.55,
+          "kw_raw": {
+            "H_stat": 16.41341726999144,
+            "p_value": 0.0002728171861227257,
+            "eta_sq": 0.009745380169027344,
+            "N_obs": 1482,
+            "n_per_regime": {
+              "Deterministic": 549,
+              "Transitional": 252,
+              "Stochastic": 681
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 31.334642194364278,
+            "p_value": 1.5695273981787047e-07,
+            "eta_sq": 0.019834105608089438,
+            "N_obs": 1482,
+            "n_per_regime": {
+              "Deterministic": 544,
+              "Transitional": 289,
+              "Stochastic": 649
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.3621837549933422,
+            0.19241011984021306,
+            0.44540612516644473
+          ],
+          "sampen": {
+            "mean": 1.0195569184971534,
+            "std": 0.49171498360490096,
+            "median": 0.963437510299857,
+            "iqr": 0.6506923275471431,
+            "p95": 1.9810014688665833,
+            "p05": 0.34609283460819534
+          },
+          "flip_rate_filtered": 5.536617842876165
+        },
+        "KOSPI": {
+          "tier_rank": 3,
+          "rps_point": 0.45,
+          "kw_raw": {
+            "H_stat": 5.675228056084961,
+            "p_value": 0.058565234402068615,
+            "eta_sq": 0.0024599920054116206,
+            "N_obs": 1497,
+            "n_per_regime": {
+              "Deterministic": 399,
+              "Transitional": 777,
+              "Stochastic": 321
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 29.519350729668076,
+            "p_value": 3.8900432900822515e-07,
+            "eta_sq": 0.018419913473673413,
+            "N_obs": 1497,
+            "n_per_regime": {
+              "Deterministic": 405,
+              "Transitional": 814,
+              "Stochastic": 278
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.26697429136453527,
+            0.5497692814765985,
+            0.18325642715886617
+          ],
+          "sampen": {
+            "mean": 1.1400298833513678,
+            "std": 0.49583932066284686,
+            "median": 1.1249295969854831,
+            "iqr": 0.6077208918158407,
+            "p95": 2.0476928433652555,
+            "p05": 0.3559984562349239
+          },
+          "flip_rate_filtered": 14.119973632168755
+        },
+        "NIFTY": {
+          "tier_rank": 3,
+          "rps_point": 0.4,
+          "kw_raw": {
+            "H_stat": 16.699125114152594,
+            "p_value": 0.00023649995103409665,
+            "eta_sq": 0.009773354464197203,
+            "N_obs": 1507,
+            "n_per_regime": {
+              "Deterministic": 558,
+              "Transitional": 830,
+              "Stochastic": 119
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 23.116867260944673,
+            "p_value": 9.555118003064808e-06,
+            "eta_sq": 0.014040470253287682,
+            "N_obs": 1507,
+            "n_per_regime": {
+              "Deterministic": 585,
+              "Transitional": 805,
+              "Stochastic": 117
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.3929273084479371,
+            0.5304518664047151,
+            0.07662082514734773
+          ],
+          "sampen": {
+            "mean": 1.050240093438101,
+            "std": 0.43743056580594214,
+            "median": 0.9760099665757773,
+            "iqr": 0.5461631246968998,
+            "p95": 1.8718021769015913,
+            "p05": 0.44733689996194176
+          },
+          "flip_rate_filtered": 8.911591355599214
+        },
+        "PSEI": {
+          "tier_rank": 3,
+          "rps_point": 0.68,
+          "kw_raw": {
+            "H_stat": 56.88051144417386,
+            "p_value": 4.4519868818556916e-13,
+            "eta_sq": 0.03693170352905374,
+            "N_obs": 1489,
+            "n_per_regime": {
+              "Deterministic": 761,
+              "Transitional": 575,
+              "Stochastic": 153
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 39.951598203325375,
+            "p_value": 2.111643882283671e-09,
+            "eta_sq": 0.025539433515023805,
+            "N_obs": 1489,
+            "n_per_regime": {
+              "Deterministic": 704,
+              "Transitional": 619,
+              "Stochastic": 166
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.4685222001325381,
+            0.41020543406229293,
+            0.12127236580516898
+          ],
+          "sampen": {
+            "mean": 1.1292538446475122,
+            "std": 0.39697094195957294,
+            "median": 1.1124056108004456,
+            "iqr": 0.49643688631389105,
+            "p95": 1.8479972060495624,
+            "p05": 0.5581401913879723
+          },
+          "flip_rate_filtered": 9.351888667992048
+        },
+        "JKSE": {
+          "tier_rank": 3,
+          "rps_point": 0.4,
+          "kw_raw": {
+            "H_stat": 17.35385842809228,
+            "p_value": 0.00017047375306711909,
+            "eta_sq": 0.01053799480308324,
+            "N_obs": 1460,
+            "n_per_regime": {
+              "Deterministic": 299,
+              "Transitional": 747,
+              "Stochastic": 414
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 26.35616922056124,
+            "p_value": 1.891605515717048e-06,
+            "eta_sq": 0.01671665698048129,
+            "N_obs": 1460,
+            "n_per_regime": {
+              "Deterministic": 551,
+              "Transitional": 574,
+              "Stochastic": 335
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.3810810810810811,
+            0.39256756756756755,
+            0.22635135135135134
+          ],
+          "sampen": {
+            "mean": 1.0991479923994043,
+            "std": 0.41024046370627065,
+            "median": 1.0986122886681098,
+            "iqr": 0.6109090823229731,
+            "p95": 1.791759469228055,
+            "p05": 0.4646918920343638
+          },
+          "flip_rate_filtered": 14.132432432432433
+        },
+        "SET": {
+          "tier_rank": 3,
+          "rps_point": 0.35,
+          "kw_raw": {
+            "H_stat": 37.444217059850416,
+            "p_value": 7.397612455644845e-09,
+            "eta_sq": 0.02416102049069558,
+            "N_obs": 1470,
+            "n_per_regime": {
+              "Deterministic": 572,
+              "Transitional": 500,
+              "Stochastic": 398
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 50.93645219101836,
+            "p_value": 8.69540756692288e-12,
+            "eta_sq": 0.03335818145263692,
+            "N_obs": 1470,
+            "n_per_regime": {
+              "Deterministic": 550,
+              "Transitional": 494,
+              "Stochastic": 426
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.3691275167785235,
+            0.34429530201342284,
+            0.2865771812080537
+          ],
+          "sampen": {
+            "mean": 1.105854725397561,
+            "std": 0.40832670842652413,
+            "median": 1.0986122886681098,
+            "iqr": 0.5075036015009502,
+            "p95": 1.8718021769015913,
+            "p05": 0.5140989491109599
+          },
+          "flip_rate_filtered": 13.699328859060403
+        },
+        "SHANGHAI": {
+          "tier_rank": 3,
+          "rps_point": 0.65,
+          "kw_raw": {
+            "H_stat": 61.18051938244207,
+            "p_value": 5.1858388401855186e-14,
+            "eta_sq": 0.04028626234339147,
+            "N_obs": 1472,
+            "n_per_regime": {
+              "Deterministic": 117,
+              "Transitional": 182,
+              "Stochastic": 1173
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 95.06265969753622,
+            "p_value": 2.2772238788718596e-21,
+            "eta_sq": 0.06335102770424521,
+            "N_obs": 1472,
+            "n_per_regime": {
+              "Deterministic": 115,
+              "Transitional": 153,
+              "Stochastic": 1204
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.07707774798927614,
+            0.10254691689008043,
+            0.8203753351206434
+          ],
+          "sampen": {
+            "mean": 1.0578878413886807,
+            "std": 0.34278885070928183,
+            "median": 1.0881409888008142,
+            "iqr": 0.44404789138542977,
+            "p95": 1.5897979253498804,
+            "p05": 0.40085129355714544
+          },
+          "flip_rate_filtered": 10.471849865951743
+        },
+        "TWII": {
+          "tier_rank": 3,
+          "rps_point": 0.4,
+          "kw_raw": {
+            "H_stat": 27.422514060323465,
+            "p_value": 1.1098818051441615e-06,
+            "eta_sq": 0.02639928770542416,
+            "N_obs": 966,
+            "n_per_regime": {
+              "Deterministic": 399,
+              "Transitional": 222,
+              "Stochastic": 345
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 49.621879648999766,
+            "p_value": 1.677821454173419e-11,
+            "eta_sq": 0.04945158842056051,
+            "N_obs": 966,
+            "n_per_regime": {
+              "Deterministic": 395,
+              "Transitional": 263,
+              "Stochastic": 308
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.4208924949290061,
+            0.2667342799188641,
+            0.31237322515212984
+          ],
+          "sampen": {
+            "mean": 1.02616133553574,
+            "std": 0.4497069398750744,
+            "median": 0.9427835095739224,
+            "iqr": 0.5589298347775888,
+            "p95": 1.845826690498331,
+            "p05": 0.4655694626458871
+          },
+          "flip_rate_filtered": 8.434077079107505
+        },
+        "SPX": {
+          "tier_rank": 1,
+          "rps_point": 0.275,
+          "kw_raw": {
+            "H_stat": 2.2015044586087242,
+            "p_value": 0.3326207824681097,
+            "eta_sq": 0.0001302549829403518,
+            "N_obs": 1550,
+            "n_per_regime": {
+              "Deterministic": 670,
+              "Transitional": 608,
+              "Stochastic": 272
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 4.957391752696822,
+            "p_value": 0.08385250835698178,
+            "eta_sq": 0.0019116947334821084,
+            "N_obs": 1550,
+            "n_per_regime": {
+              "Deterministic": 594,
+              "Transitional": 685,
+              "Stochastic": 271
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.3834394904458599,
+            0.4439490445859873,
+            0.17261146496815286
+          ],
+          "sampen": {
+            "mean": 1.0688051321158627,
+            "std": 0.41146316233701163,
+            "median": 1.0086640520051702,
+            "iqr": 0.5376935689522709,
+            "p95": 1.791759469228055,
+            "p05": 0.5067030216065288
+          },
+          "flip_rate_filtered": 13.964331210191082
+        },
+        "FTSE": {
+          "tier_rank": 1,
+          "rps_point": 0.2,
+          "kw_raw": {
+            "H_stat": 0.7045202939189039,
+            "p_value": 0.70309718958665,
+            "eta_sq": 0.0,
+            "N_obs": 1560,
+            "n_per_regime": {
+              "Deterministic": 441,
+              "Transitional": 914,
+              "Stochastic": 205
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 0.334205855624532,
+            "p_value": 0.8461125183446755,
+            "eta_sq": 0.0,
+            "N_obs": 1560,
+            "n_per_regime": {
+              "Deterministic": 554,
+              "Transitional": 813,
+              "Stochastic": 193
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.3531645569620253,
+            0.5246835443037975,
+            0.12215189873417721
+          ],
+          "sampen": {
+            "mean": 1.135693524130017,
+            "std": 0.48624859719840435,
+            "median": 1.085189268335969,
+            "iqr": 0.6749101996940339,
+            "p95": 2.0541237336955462,
+            "p05": 0.49562829413299
+          },
+          "flip_rate_filtered": 14.673417721518987
+        },
+        "DAX": {
+          "tier_rank": 1,
+          "rps_point": 0.2,
+          "kw_raw": {
+            "H_stat": 0.02401324781749281,
+            "p_value": 0.988065167986746,
+            "eta_sq": 0.0,
+            "N_obs": 1571,
+            "n_per_regime": {
+              "Deterministic": 416,
+              "Transitional": 873,
+              "Stochastic": 282
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 4.561354840948297,
+            "p_value": 0.10221494076346217,
+            "eta_sq": 0.0016335171179517204,
+            "N_obs": 1571,
+            "n_per_regime": {
+              "Deterministic": 384,
+              "Transitional": 870,
+              "Stochastic": 317
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.2470144563167819,
+            0.5537397862979259,
+            0.19924575738529227
+          ],
+          "sampen": {
+            "mean": 1.1066459380559437,
+            "std": 0.45535312691731666,
+            "median": 1.0618830833756467,
+            "iqr": 0.5494489087348321,
+            "p95": 1.9974075742261606,
+            "p05": 0.44667537675482727
+          },
+          "flip_rate_filtered": 19.00691389063482
+        },
+        "CAC": {
+          "tier_rank": 1,
+          "rps_point": 0.2,
+          "kw_raw": {
+            "H_stat": 0.8168510858922673,
+            "p_value": 0.6646959619520998,
+            "eta_sq": 0.0,
+            "N_obs": 1589,
+            "n_per_regime": {
+              "Deterministic": 617,
+              "Transitional": 830,
+              "Stochastic": 142
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 14.711098055539878,
+            "p_value": 0.0006390364724877739,
+            "eta_sq": 0.008014563717238259,
+            "N_obs": 1589,
+            "n_per_regime": {
+              "Deterministic": 722,
+              "Transitional": 733,
+              "Stochastic": 134
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.4599129894344313,
+            0.45680546923555004,
+            0.08328154133001865
+          ],
+          "sampen": {
+            "mean": 1.107283299635861,
+            "std": 0.46499143101199625,
+            "median": 1.051544777810124,
+            "iqr": 0.622052254332931,
+            "p95": 1.8971199848858813,
+            "p05": 0.40491506928942234
+          },
+          "flip_rate_filtered": 10.180236171535116
+        },
+        "SSMI": {
+          "tier_rank": 1,
+          "rps_point": 0.15,
+          "kw_raw": {
+            "H_stat": 11.662963683678754,
+            "p_value": 0.002933726439030025,
+            "eta_sq": 0.0063115373505413155,
+            "N_obs": 1534,
+            "n_per_regime": {
+              "Deterministic": 112,
+              "Transitional": 638,
+              "Stochastic": 784
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 17.087077952089203,
+            "p_value": 0.00019479964755086788,
+            "eta_sq": 0.009854394482096148,
+            "N_obs": 1534,
+            "n_per_regime": {
+              "Deterministic": 153,
+              "Transitional": 679,
+              "Stochastic": 702
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.09845559845559845,
+            0.4491634491634492,
+            0.4523809523809524
+          ],
+          "sampen": {
+            "mean": 1.0759699860299725,
+            "std": 0.4109034464659108,
+            "median": 1.0647107369924282,
+            "iqr": 0.5430864859842122,
+            "p95": 1.791759469228055,
+            "p05": 0.47582702857983666
+          },
+          "flip_rate_filtered": 15.08108108108108
+        },
+        "NIKKEI": {
+          "tier_rank": 1,
+          "rps_point": 0.18,
+          "kw_raw": {
+            "H_stat": 6.572630111839317,
+            "p_value": 0.037391380990509177,
+            "eta_sq": 0.00308128713735803,
+            "N_obs": 1487,
+            "n_per_regime": {
+              "Deterministic": 613,
+              "Transitional": 601,
+              "Stochastic": 273
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 6.90016626738452,
+            "p_value": 0.03174299735580004,
+            "eta_sq": 0.0033019988324693534,
+            "N_obs": 1487,
+            "n_per_regime": {
+              "Deterministic": 650,
+              "Transitional": 551,
+              "Stochastic": 286
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.44061048440610484,
+            0.36960849369608495,
+            0.1897810218978102
+          ],
+          "sampen": {
+            "mean": 1.1188569465652207,
+            "std": 0.5123905151980798,
+            "median": 1.0560526742493137,
+            "iqr": 0.6853134556541814,
+            "p95": 2.0794415416798357,
+            "p05": 0.4366924445388274
+          },
+          "flip_rate_filtered": 8.86264100862641
+        },
+        "ASX": {
+          "tier_rank": 1,
+          "rps_point": 0.3,
+          "kw_raw": {
+            "H_stat": 4.180127260936388,
+            "p_value": 0.12367926579748238,
+            "eta_sq": 0.001396622204315431,
+            "N_obs": 1564,
+            "n_per_regime": {
+              "Deterministic": 471,
+              "Transitional": 224,
+              "Stochastic": 869
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 40.21298925143401,
+            "p_value": 1.8529356351731174e-09,
+            "eta_sq": 0.024479813742110192,
+            "N_obs": 1564,
+            "n_per_regime": {
+              "Deterministic": 629,
+              "Transitional": 249,
+              "Stochastic": 686
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.4097222222222222,
+            0.1571969696969697,
+            0.43308080808080807
+          ],
+          "sampen": {
+            "mean": 1.1562938592228589,
+            "std": 0.44833258706870904,
+            "median": 1.0628942060660305,
+            "iqr": 0.5231948450962742,
+            "p95": 2.0457383837579557,
+            "p05": 0.5743115237301046
+          },
+          "flip_rate_filtered": 13.522727272727273
+        },
+        "HSI": {
+          "tier_rank": 1,
+          "rps_point": 0.35,
+          "kw_raw": {
+            "H_stat": 81.14426755581917,
+            "p_value": 2.3974313562608503e-18,
+            "eta_sq": 0.05276284503721278,
+            "N_obs": 1503,
+            "n_per_regime": {
+              "Deterministic": 418,
+              "Transitional": 375,
+              "Stochastic": 710
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 87.89202927416682,
+            "p_value": 8.212745056334995e-20,
+            "eta_sq": 0.057261352849444544,
+            "N_obs": 1503,
+            "n_per_regime": {
+              "Deterministic": 484,
+              "Transitional": 504,
+              "Stochastic": 515
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.31779382797110967,
+            0.3309258043335522,
+            0.35128036769533816
+          ],
+          "sampen": {
+            "mean": 1.2892667449227293,
+            "std": 0.5025473480645684,
+            "median": 1.2809338454620642,
+            "iqr": 0.6804081547825156,
+            "p95": 2.1744668204284294,
+            "p05": 0.5390324073769589
+          },
+          "flip_rate_filtered": 13.733420879842416
+        },
+        "STI": {
+          "tier_rank": 1,
+          "rps_point": 0.25,
+          "kw_raw": {
+            "H_stat": 57.28924631761856,
+            "p_value": 3.629094071730408e-13,
+            "eta_sq": 0.03580909735597057,
+            "N_obs": 1547,
+            "n_per_regime": {
+              "Deterministic": 527,
+              "Transitional": 723,
+              "Stochastic": 297
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 44.679697857734936,
+            "p_value": 1.9857605732371917e-10,
+            "eta_sq": 0.027642291358636616,
+            "N_obs": 1547,
+            "n_per_regime": {
+              "Deterministic": 611,
+              "Transitional": 609,
+              "Stochastic": 327
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.3899170389278877,
+            0.3899170389278877,
+            0.22016592214422465
+          ],
+          "sampen": {
+            "mean": 0.9873965439362489,
+            "std": 0.45854424647394953,
+            "median": 0.9382696385929302,
+            "iqr": 0.5981514158481133,
+            "p95": 1.8832527809996826,
+            "p05": 0.37578909815987793
+          },
+          "flip_rate_filtered": 5.146139119336311
+        },
+        "BTC": {
+          "tier_rank": 2,
+          "rps_point": 0.55,
+          "kw_raw": {
+            "H_stat": 3.465039525103748,
+            "p_value": 0.1768382576875706,
+            "eta_sq": 0.0005822891594212035,
+            "N_obs": 2519,
+            "n_per_regime": {
+              "Deterministic": 956,
+              "Transitional": 1211,
+              "Stochastic": 352
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 5.623827582924605,
+            "p_value": 0.06008988277497989,
+            "eta_sq": 0.0014403130297792547,
+            "N_obs": 2519,
+            "n_per_regime": {
+              "Deterministic": 996,
+              "Transitional": 1183,
+              "Stochastic": 340
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.39936983064198506,
+            0.4667191807798346,
+            0.13391098857818037
+          ],
+          "sampen": {
+            "mean": 0.9591216541261778,
+            "std": 0.46820597613533327,
+            "median": 0.8702157627030764,
+            "iqr": 0.6442674503649675,
+            "p95": 1.791759469228055,
+            "p05": 0.31809126618179034
+          },
+          "flip_rate_filtered": 9.528160693186294
+        },
+        "ETH": {
+          "tier_rank": 2,
+          "rps_point": 0.55,
+          "kw_raw": {
+            "H_stat": 74.05498790685488,
+            "p_value": 8.301636196403133e-17,
+            "eta_sq": 0.028638707435156945,
+            "N_obs": 2519,
+            "n_per_regime": {
+              "Deterministic": 889,
+              "Transitional": 1047,
+              "Stochastic": 583
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 52.84933156401439,
+            "p_value": 3.341284566914819e-12,
+            "eta_sq": 0.020210386154218756,
+            "N_obs": 2519,
+            "n_per_regime": {
+              "Deterministic": 909,
+              "Transitional": 912,
+              "Stochastic": 698
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.36589208349743996,
+            0.3591965340685309,
+            0.27491138243402913
+          ],
+          "sampen": {
+            "mean": 0.8920322096478603,
+            "std": 0.3754970064367591,
+            "median": 0.8397506547518206,
+            "iqr": 0.5655554533947019,
+            "p95": 1.563975538357343,
+            "p05": 0.36452316156232467
+          },
+          "flip_rate_filtered": 11.711697518708153
+        },
+        "BNB": {
+          "tier_rank": 2,
+          "rps_point": 0.6,
+          "kw_raw": {
+            "H_stat": 7.069918036596391,
+            "p_value": 0.029159951989367515,
+            "eta_sq": 0.0020150707617632717,
+            "N_obs": 2519,
+            "n_per_regime": {
+              "Deterministic": 880,
+              "Transitional": 1353,
+              "Stochastic": 286
+            },
+            "fit_status": "ok"
+          },
+          "kw_filt": {
+            "H_stat": 3.380556619521485,
+            "p_value": 0.18446817755385347,
+            "eta_sq": 0.0005487108980610036,
+            "N_obs": 2519,
+            "n_per_regime": {
+              "Deterministic": 949,
+              "Transitional": 1280,
+              "Stochastic": 290
+            },
+            "fit_status": "ok"
+          },
+          "shares_filtered": [
+            0.3749507680189051,
+            0.50610476565577,
+            0.11894446632532493
+          ],
+          "sampen": {
+            "mean": 0.9418558225852075,
+            "std": 0.4323430696231171,
+            "median": 0.9025533449802594,
+            "iqr": 0.5655283382571725,
+            "p95": 1.7147984280919266,
+            "p05": 0.34053308499385343
+          },
+          "flip_rate_filtered": 9.825915714848366
+        }
+      },
+      "h2_raw": {
+        "rho_H_tier": 0.49502936629085803,
+        "p_H_tier": 0.00865875258843314,
+        "rho_H_rps": 0.5192381618148917,
+        "p_H_rps_perm": 0.0064,
+        "jt_tier_eta": {
+          "JT_obs": 195.0,
+          "null_mean": 131.369425,
+          "null_p95": 169.0,
+          "p_one_sided": 0.0026998650067496625
+        },
+        "eiv": {
+          "beta": {
+            "mean": 0.7588682388338691,
+            "p025": -0.184763328259826,
+            "p975": 1.6913356207729546,
+            "P_gt_0": 0.9473,
+            "P_lt_0": 0.0527
+          },
+          "tau_w": {
+            "mean": 0.2010287990118378,
+            "p025": -0.10875866641660227,
+            "p975": 0.49769039735210346,
+            "P_gt_0": 0.8989,
+            "P_lt_0": 0.1011
+          }
+        },
+        "eiv_eps_sensitivity": {
+          "1e-05": 0.9223,
+          "0.0001": 0.9473,
+          "0.001": 0.9669
+        }
+      },
+      "h2_filt": {
+        "rho_H_tier": 0.35240997330159474,
+        "p_H_tier": 0.07140884275196552,
+        "rho_H_rps": 0.49900810356236347,
+        "p_H_rps_perm": 0.0091,
+        "jt_tier_eta": {
+          "JT_obs": 177.5,
+          "null_mean": 131.52455,
+          "null_p95": 169.5,
+          "p_one_sided": 0.021548922553872307
+        },
+        "eiv": {
+          "beta": {
+            "mean": 0.8850429063791511,
+            "p025": -0.02429640372623101,
+            "p975": 1.7363920036448617,
+            "P_gt_0": 0.9718,
+            "P_lt_0": 0.0282
+          },
+          "tau_w": {
+            "mean": 0.2692554519767396,
+            "p025": -0.05065231765558157,
+            "p975": 0.549659923065897,
+            "P_gt_0": 0.9511,
+            "P_lt_0": 0.0489
+          }
+        },
+        "eiv_eps_sensitivity": {
+          "1e-05": 0.9625,
+          "0.0001": 0.9718,
+          "0.001": 0.9794
+        }
+      },
+      "mech_clr_sto": {
+        "eiv_beta": {
+          "mean": -0.07988125222705215,
+          "p025": -0.9692926717715601,
+          "p975": 0.7273346361082919,
+          "P_gt_0": 0.4336,
+          "P_lt_0": 0.5664
+        },
+        "P_correct_sign": 0.5664,
+        "legacy_spearman": {
+          "rho": -0.17624671962429914,
+          "p_perm": 0.3773
+        }
+      },
+      "mech_clr_tra": {
+        "eiv_beta": {
+          "mean": 0.07001112532913076,
+          "p025": -0.3460499146116357,
+          "p975": 0.5141769864219167,
+          "P_gt_0": 0.6214,
+          "P_lt_0": 0.3786
+        },
+        "P_correct_sign": 0.6214,
+        "legacy_spearman": {
+          "rho": 0.053946822006741994,
+          "p_perm": 0.7905
+        }
+      },
+      "mech_p_sto_legacy": {
+        "rho": -0.18329658840927107,
+        "p_perm": 0.3607
+      },
+      "sampen_mean": {
+        "rho": -0.29027068432036746,
+        "p_perm": 0.1444
+      },
+      "sampen_std": {
+        "rho": -0.43402670432696966,
+        "p_perm": 0.0282
+      },
+      "sampen_median": {
+        "rho": -0.08338508891642187,
+        "p_perm": 0.682
+      },
+      "sampen_iqr": {
+        "rho": -0.2522626960883447,
+        "p_perm": 0.2049
+      },
+      "sampen_p95": {
+        "rho": -0.5178144644765663,
+        "p_perm": 0.007
+      },
+      "sampen_p05": {
+        "rho": -0.19770284201334426,
+        "p_perm": 0.3146
+      },
+      "h3_tier_mean_p_tra": {
+        "by_tier_rank": {
+          "1": 0.4084432889156894,
+          "2": 0.4440068268347119,
+          "3": 0.3709386640476488,
+          "4": 0.36432712962403846
+        },
+        "msci_monotone_frontier_lt_emerging_lt_developed": true
+      }
+    }
+  },
+  "label_stability": {
+    "VNINDEX": {
+      "agree_raw": 0.9389110225763613,
+      "ari_raw": 0.7935440764951022,
+      "agree_filt": 0.9130146082337317,
+      "ari_filt": 0.7197382320578153
+    },
+    "KSE100": {
+      "agree_raw": 0.9856262833675564,
+      "ari_raw": 0.9494271594317606,
+      "agree_filt": 0.9958932238193019,
+      "ari_filt": 0.986065553710314
+    },
+    "DSEX": {
+      "agree_raw": 0.993161094224924,
+      "ari_raw": 0.9744547491497767,
+      "agree_filt": 0.9984802431610942,
+      "ari_filt": 0.9942814617839076
+    },
+    "BVB": {
+      "agree_raw": 0.9699570815450643,
+      "ari_raw": 0.9036358406638754,
+      "agree_filt": 0.9778254649499285,
+      "ari_filt": 0.925602334067968
+    },
+    "SBITOP": {
+      "agree_raw": 0.9706078824315297,
+      "ari_raw": 0.9203294227263558,
+      "agree_filt": 0.9505678022712091,
+      "ari_filt": 0.8856519962618745
+    },
+    "OMXVGI": {
+      "agree_raw": 0.9912693082605776,
+      "ari_raw": 0.9799734573348388,
+      "agree_filt": 0.9932840832773674,
+      "ari_filt": 0.9817105794579414
+    },
+    "OMXRGI": {
+      "agree_raw": 0.9897610921501706,
+      "ari_raw": 0.9781862225836705,
+      "agree_filt": 0.976962457337884,
+      "ari_filt": 0.9560189509948261
+    },
+    "MERV": {
+      "agree_raw": 0.9848589125946318,
+      "ari_raw": 0.9554439343479912,
+      "agree_filt": 0.9587061252580867,
+      "ari_filt": 0.8880547699298783
+    },
+    "KOSPI": {
+      "agree_raw": 0.9877467665078284,
+      "ari_raw": 0.9659666217505699,
+      "agree_filt": 0.9720898570456092,
+      "ari_filt": 0.9301917438990778
+    },
+    "NIFTY": {
+      "agree_raw": 0.9851150202976996,
+      "ari_raw": 0.9455604854506545,
+      "agree_filt": 0.983085250338295,
+      "ari_filt": 0.9380723382962552
+    },
+    "PSEI": {
+      "agree_raw": 0.9863013698630136,
+      "ari_raw": 0.9657365395082756,
+      "agree_filt": 0.9773972602739726,
+      "ari_filt": 0.9343783129411183
+    },
+    "JKSE": {
+      "agree_raw": 0.9777003484320558,
+      "ari_raw": 0.9320279332815803,
+      "agree_filt": 0.9651567944250871,
+      "ari_filt": 0.8972784328661116
+    },
+    "SET": {
+      "agree_raw": 0.9875173370319001,
+      "ari_raw": 0.9613033339946596,
+      "agree_filt": 0.9889042995839112,
+      "ari_filt": 0.9658208010914882
+    },
+    "SHANGHAI": {
+      "agree_raw": 0.9736842105263158,
+      "ari_raw": 0.9461472069740393,
+      "agree_filt": 0.9667590027700831,
+      "ari_filt": 0.9129785271356693
+    },
+    "TWII": {
+      "agree_raw": 0.9957264957264957,
+      "ari_raw": 0.9891069423790786,
+      "agree_filt": 0.9946581196581197,
+      "ari_filt": 0.9835173177577567
+    },
+    "SPX": {
+      "agree_raw": 0.9855263157894737,
+      "ari_raw": 0.957280340266489,
+      "agree_filt": 0.9782894736842105,
+      "ari_filt": 0.9297687116648073
+    },
+    "FTSE": {
+      "agree_raw": 0.22156862745098038,
+      "ari_raw": 0.24013341748735903,
+      "agree_filt": 0.39019607843137255,
+      "ari_filt": 0.09498018306877368
+    },
+    "DAX": {
+      "agree_raw": 0.9668831168831169,
+      "ari_raw": 0.8988895448814536,
+      "agree_filt": 0.9357142857142857,
+      "ari_filt": 0.8229730087852614
+    },
+    "CAC": {
+      "agree_raw": 0.9736842105263158,
+      "ari_raw": 0.912191153036893,
+      "agree_filt": 0.9653401797175867,
+      "ari_filt": 0.8848239238143973
+    },
+    "SSMI": {
+      "agree_raw": 0.9681063122923588,
+      "ari_raw": 0.9029692965267532,
+      "agree_filt": 0.958139534883721,
+      "ari_filt": 0.8669183482212259
+    },
+    "NIKKEI": {
+      "agree_raw": 0.9945167923235092,
+      "ari_raw": 0.9821873090577629,
+      "agree_filt": 0.9869773817683345,
+      "ari_filt": 0.9580275250832335
+    },
+    "ASX": {
+      "agree_raw": 0.3268101761252446,
+      "ari_raw": 0.7223228239353893,
+      "agree_filt": 0.44227005870841485,
+      "ari_filt": 0.3806811212500008
+    },
+    "HSI": {
+      "agree_raw": 0.9572591587516961,
+      "ari_raw": 0.8766841754655618,
+      "agree_filt": 0.9294436906377205,
+      "ari_filt": 0.8072786060189803
+    },
+    "STI": {
+      "agree_raw": 0.9683794466403162,
+      "ari_raw": 0.895967522995571,
+      "agree_filt": 0.9262187088274044,
+      "ari_filt": 0.7751558083947978
+    },
+    "BTC": {
+      "agree_raw": 0.9578093306288032,
+      "ari_raw": 0.8662964796663586,
+      "agree_filt": 0.9647058823529412,
+      "ari_filt": 0.8866851315070455
+    },
+    "ETH": {
+      "agree_raw": 0.9817444219066938,
+      "ari_raw": 0.9439365687275093,
+      "agree_filt": 0.9858012170385395,
+      "ari_filt": 0.9578419881467055
+    },
+    "BNB": {
+      "agree_raw": 0.929817444219067,
+      "ari_raw": 0.7796886718320897,
+      "agree_filt": 0.939553752535497,
+      "ari_filt": 0.8107229554984017
+    }
+  },
+  "h4": {
+    "repro": {
+      "per_market": {
+        "VNINDEX": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "KSE100": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "DSEX": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "BVB": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "SBITOP": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "OMXVGI": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "OMXRGI": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "MERV": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "KOSPI": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "NIFTY": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "PSEI": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "JKSE": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "SET": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "SHANGHAI": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "TWII": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "SPX": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "FTSE": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "DAX": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "CAC": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "SSMI": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "NIKKEI": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "ASX": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "HSI": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "STI": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "BTC": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "ETH": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "BNB": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        }
+      },
+      "worst_p_label": 0.0,
+      "worst_p_block": 0.0
+    },
+    "extended": {
+      "per_market": {
+        "VNINDEX": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "KSE100": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "DSEX": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "BVB": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "SBITOP": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "OMXVGI": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "OMXRGI": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "MERV": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "KOSPI": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "NIFTY": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "PSEI": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "JKSE": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "SET": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "SHANGHAI": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "TWII": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "SPX": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "FTSE": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "DAX": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "CAC": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "SSMI": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "NIKKEI": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "ASX": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "HSI": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "STI": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "BTC": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "ETH": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        },
+        "BNB": {
+          "p_label": 0.0,
+          "p_block": {
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          }
+        }
+      },
+      "worst_p_label": 0.0,
+      "worst_p_block": 0.0
+    }
+  },
+  "elapsed_seconds": 274.43276381492615
+}

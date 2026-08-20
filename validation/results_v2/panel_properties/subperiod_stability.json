@@ -1,0 +1,360 @@
+{
+  "spec": "Sub-period stability of the cross-market ordering. Labels are the full-sample mixture, held fixed; only the segment on which H is evaluated moves. Two split designs, with power and partition-degeneracy controls.",
+  "window": [
+    "2018-01-01",
+    "2026-06-30"
+  ],
+  "seed": 42,
+  "n_markets": 27,
+  "by_bar_fraction": {
+    "early_30pct": {
+      "rho": 0.44659386172626747,
+      "p": 0.01953194344425768,
+      "n_markets": 27,
+      "median_H": 22.457673094016627,
+      "median_bars": 460.0,
+      "markets_with_3_groups": 26
+    },
+    "late_30pct": {
+      "rho": -0.26850804589719307,
+      "p": 0.175668643570033,
+      "n_markets": 27,
+      "median_H": 15.32751678492059,
+      "median_bars": 441.0,
+      "markets_with_3_groups": 27
+    },
+    "early_40pct": {
+      "rho": 0.5756371120946674,
+      "p": 0.0016797780556609932,
+      "n_markets": 27,
+      "median_H": 16.30775528787808,
+      "median_bars": 614.0,
+      "markets_with_3_groups": 27
+    },
+    "late_40pct": {
+      "rho": -0.06988565578146122,
+      "p": 0.7290591822465783,
+      "n_markets": 27,
+      "median_H": 14.048264392952433,
+      "median_bars": 595.0,
+      "markets_with_3_groups": 27
+    },
+    "early_50pct": {
+      "rho": 0.5474376369547795,
+      "p": 0.003122095143020912,
+      "n_markets": 27,
+      "median_H": 22.63604497891356,
+      "median_bars": 768.0,
+      "markets_with_3_groups": 27
+    },
+    "late_50pct": {
+      "rho": 0.14130389173356853,
+      "p": 0.48203499288723384,
+      "n_markets": 27,
+      "median_H": 10.599243167466284,
+      "median_bars": 748.0,
+      "markets_with_3_groups": 27
+    },
+    "early_60pct": {
+      "rho": 0.6179363248044992,
+      "p": 0.0005932747929598601,
+      "n_markets": 27,
+      "median_H": 16.121042942406802,
+      "median_bars": 921.0,
+      "markets_with_3_groups": 27
+    },
+    "late_60pct": {
+      "rho": 0.3233744160063228,
+      "p": 0.09989909600361416,
+      "n_markets": 27,
+      "median_H": 16.569063248247858,
+      "median_bars": 902.0,
+      "markets_with_3_groups": 27
+    }
+  },
+  "by_calendar": {
+    "before_2023-01-01": {
+      "rho": 0.5005406837330095,
+      "p": 0.007834949746824069,
+      "n_markets": 27,
+      "median_H": 19.286169391825297,
+      "median_bars": 681.0,
+      "markets_with_3_groups": 27
+    },
+    "after_2023-01-01": {
+      "rho": 0.2449063112692435,
+      "p": 0.2182444567202728,
+      "n_markets": 27,
+      "median_H": 10.572808376945432,
+      "median_bars": 838.0,
+      "markets_with_3_groups": 27
+    },
+    "before_2024-01-01": {
+      "rho": 0.6231470973846959,
+      "p": 0.0005165081399254784,
+      "n_markets": 27,
+      "median_H": 18.31422383162362,
+      "median_bars": 930.0,
+      "markets_with_3_groups": 27
+    },
+    "after_2024-01-01": {
+      "rho": -0.13364099088033812,
+      "p": 0.5063377798781498,
+      "n_markets": 27,
+      "median_H": 13.905048903108082,
+      "median_bars": 593.0,
+      "markets_with_3_groups": 27
+    },
+    "before_2025-01-01": {
+      "rho": 0.4723412085931217,
+      "p": 0.012854661911188461,
+      "n_markets": 27,
+      "median_H": 19.426625226487886,
+      "median_bars": 1177.0,
+      "markets_with_3_groups": 27
+    },
+    "after_2025-01-01": {
+      "rho": -0.25164966402008626,
+      "p": 0.20543028683594985,
+      "n_markets": 27,
+      "median_H": 12.8736119693815,
+      "median_bars": 346.0,
+      "markets_with_3_groups": 27
+    }
+  },
+  "full_window": {
+    "rho": 0.5833000129478978,
+    "p": 0.0014057002284725542,
+    "n_markets": 27,
+    "median_H": 16.699125114152594
+  },
+  "calendar_anomaly_control": {
+    "all markets": {
+      "n_markets": 27,
+      "late": {
+        "rho": -0.13364099088033812,
+        "p": 0.5063377798781498
+      },
+      "early": {
+        "rho": 0.6231470973846959,
+        "p": 0.0005165081399254784
+      }
+    },
+    "drop gapped (TWII)": {
+      "n_markets": 26,
+      "late": {
+        "rho": -0.1434958965920125,
+        "p": 0.4843423820414613
+      },
+      "early": {
+        "rho": 0.6206712465032503,
+        "p": 0.0007166998886853251
+      }
+    },
+    "drop crypto (365-day calendar)": {
+      "n_markets": 24,
+      "late": {
+        "rho": 0.01440114642449389,
+        "p": 0.9467505862335882
+      },
+      "early": {
+        "rho": 0.6257952719007346,
+        "p": 0.0010727072207769057
+      }
+    },
+    "drop both": {
+      "n_markets": 23,
+      "late": {
+        "rho": -0.001983155225071109,
+        "p": 0.9928347262899956
+      },
+      "early": {
+        "rho": 0.6202317966409894,
+        "p": 0.0015927984909237265
+      }
+    }
+  },
+  "cut_date_scan": {
+    "subset": [
+      "VNINDEX",
+      "KSE100",
+      "DSEX",
+      "BVB",
+      "SBITOP",
+      "OMXVGI",
+      "OMXRGI",
+      "MERV",
+      "KOSPI",
+      "NIFTY",
+      "PSEI",
+      "JKSE",
+      "SET",
+      "SHANGHAI",
+      "SPX",
+      "FTSE",
+      "DAX",
+      "CAC",
+      "SSMI",
+      "NIKKEI",
+      "ASX",
+      "HSI",
+      "STI"
+    ],
+    "n_markets": 23,
+    "cuts": {
+      "2022-07-01": {
+        "median_bars_before": 544.0,
+        "median_bars_after": 962.0,
+        "balance": 0.5654885654885655,
+        "before": {
+          "rho": 0.6261812623162026,
+          "p": 0.0013913856132618436
+        },
+        "after": {
+          "rho": 0.4164625972649328,
+          "p": 0.04806839967869512
+        }
+      },
+      "2022-10-01": {
+        "median_bars_before": 608.0,
+        "median_bars_after": 898.0,
+        "balance": 0.6770601336302895,
+        "before": {
+          "rho": 0.6241981070911314,
+          "p": 0.0014559597057225843
+        },
+        "after": {
+          "rho": 0.43331941667803725,
+          "p": 0.0388737253932171
+        }
+      },
+      "2023-01-01": {
+        "median_bars_before": 670.0,
+        "median_bars_after": 835.0,
+        "balance": 0.8023952095808383,
+        "before": {
+          "rho": 0.5176035137435594,
+          "p": 0.011418480665682663
+        },
+        "after": {
+          "rho": 0.378286859182314,
+          "p": 0.07510109772592259
+        }
+      },
+      "2023-04-01": {
+        "median_bars_before": 731.0,
+        "median_bars_after": 773.0,
+        "balance": 0.9456662354463131,
+        "before": {
+          "rho": 0.6435338705355748,
+          "p": 0.0009230994601079493
+        },
+        "after": {
+          "rho": 0.30342274943587966,
+          "p": 0.15929293760837915
+        }
+      },
+      "2023-07-01": {
+        "median_bars_before": 791.0,
+        "median_bars_after": 713.0,
+        "balance": 1.1093969144460027,
+        "before": {
+          "rho": 0.6311391503788805,
+          "p": 0.0012405380748269316
+        },
+        "after": {
+          "rho": 0.12345141276067652,
+          "p": 0.5746683479532496
+        }
+      },
+      "2023-10-01": {
+        "median_bars_before": 854.0,
+        "median_bars_after": 653.0,
+        "balance": 1.3078101071975499,
+        "before": {
+          "rho": 0.623206529478596,
+          "p": 0.0014891930610684608
+        },
+        "after": {
+          "rho": 0.09717460602848434,
+          "p": 0.6591474830420605
+        }
+      },
+      "2024-01-01": {
+        "median_bars_before": 914.0,
+        "median_bars_after": 592.0,
+        "balance": 1.5439189189189189,
+        "before": {
+          "rho": 0.6202317966409894,
+          "p": 0.0015927984909237265
+        },
+        "after": {
+          "rho": -0.001983155225071109,
+          "p": 0.9928347262899956
+        }
+      },
+      "2024-04-01": {
+        "median_bars_before": 974.0,
+        "median_bars_after": 531.0,
+        "balance": 1.8342749529190208,
+        "before": {
+          "rho": 0.5389224324130738,
+          "p": 0.00796794923799762
+        },
+        "after": {
+          "rho": -0.17550923741879312,
+          "p": 0.4231200517323241
+        }
+      },
+      "2024-07-01": {
+        "median_bars_before": 1034.0,
+        "median_bars_after": 470.0,
+        "balance": 2.2,
+        "before": {
+          "rho": 0.5433845316694839,
+          "p": 0.007368357232645108
+        },
+        "after": {
+          "rho": -0.16261872845583092,
+          "p": 0.45847725224594654
+        }
+      },
+      "2024-10-01": {
+        "median_bars_before": 1098.0,
+        "median_bars_after": 406.0,
+        "balance": 2.7044334975369457,
+        "before": {
+          "rho": 0.5597455622763204,
+          "p": 0.005480357277326927
+        },
+        "after": {
+          "rho": -0.0827967306467188,
+          "p": 0.7072281163112235
+        }
+      },
+      "2025-01-01": {
+        "median_bars_before": 1160.0,
+        "median_bars_after": 345.0,
+        "balance": 3.36231884057971,
+        "before": {
+          "rho": 0.5557792518261783,
+          "p": 0.005896086866520072
+        },
+        "after": {
+          "rho": -0.25533123522790524,
+          "p": 0.23965302138529193
+        }
+      }
+    },
+    "most_balanced_cut": "2023-04-01",
+    "before_rho_range": [
+      0.5176035137435594,
+      0.6435338705355748
+    ],
+    "after_rho_range": [
+      -0.25533123522790524,
+      0.43331941667803725
+    ]
+  },
+  "elapsed_min": 0.4
+}

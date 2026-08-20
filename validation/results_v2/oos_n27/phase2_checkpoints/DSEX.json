@@ -1,0 +1,84 @@
+{
+  "tier_rank": 4,
+  "category": "Frontier",
+  "frozen_cf": {
+    "spec": "CausalForestDML+PurgedKFold",
+    "ate": -0.2948926956117897,
+    "se": 1.1276816718127805,
+    "ci_lo": -2.505108158390757,
+    "ci_hi": 1.9153227671671762,
+    "direction_verdict": "n.s.",
+    "n_obs": 789,
+    "fit_status": "ok"
+  },
+  "windows": {
+    "repro": {
+      "status": "ok",
+      "n_obs": 790,
+      "n_det": 701,
+      "n_sto": 89,
+      "cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": -0.461006745828321,
+        "se": 1.0880542586674997,
+        "ci_lo": -2.5935539060420485,
+        "ci_hi": 1.6715404143854065,
+        "direction_verdict": "n.s.",
+        "n_obs": 790,
+        "fit_status": "ok"
+      },
+      "overlap": {
+        "min": 0.05254406192394657,
+        "p05": 0.14311025084019915,
+        "p95": 0.9965018119685071,
+        "max": 0.9998637541320469,
+        "frac_outside_05_95": 0.5253164556962026
+      },
+      "placebo": {
+        "n_ok": 100,
+        "fp_rate": 0.15,
+        "ate_sd": 3.4818124112776405,
+        "p_cal_1sided": 0.594059405940594,
+        "p_cal_2sided": 0.8613861386138614
+      },
+      "verdict": "indeterminate",
+      "flags": [
+        "ovl"
+      ]
+    },
+    "extended": {
+      "status": "ok",
+      "n_obs": 816,
+      "n_det": 727,
+      "n_sto": 89,
+      "cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": 0.11072780709154213,
+        "se": 1.0627455522493154,
+        "ci_lo": -1.9722152000472468,
+        "ci_hi": 2.1936708142303303,
+        "direction_verdict": "n.s.",
+        "n_obs": 816,
+        "fit_status": "ok"
+      },
+      "overlap": {
+        "min": 0.09675960460132024,
+        "p05": 0.26577003914120895,
+        "p95": 0.9966118799819028,
+        "max": 0.9998507416806603,
+        "frac_outside_05_95": 0.5661764705882353
+      },
+      "placebo": {
+        "n_ok": 50,
+        "fp_rate": 0.1,
+        "ate_sd": 3.441447767142518,
+        "p_cal_1sided": 0.2549019607843137,
+        "p_cal_2sided": 0.9215686274509803
+      },
+      "verdict": "indeterminate",
+      "flags": [
+        "ovl"
+      ]
+    }
+  }
+}

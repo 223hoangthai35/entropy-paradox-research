@@ -1,0 +1,80 @@
+{
+  "tier_rank": 4,
+  "category": "Frontier",
+  "frozen_cf": {
+    "spec": "CausalForestDML+PurgedKFold",
+    "ate": 3.595683234274983,
+    "se": 3.408808122697549,
+    "ci_lo": -3.085457916419807,
+    "ci_hi": 10.276824384969771,
+    "direction_verdict": "n.s.",
+    "n_obs": 1148,
+    "fit_status": "ok"
+  },
+  "windows": {
+    "repro": {
+      "status": "ok",
+      "n_obs": 1148,
+      "n_det": 513,
+      "n_sto": 635,
+      "cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": 3.2925671229378115,
+        "se": 3.271264850152751,
+        "ci_lo": -3.118994167253397,
+        "ci_hi": 9.70412841312902,
+        "direction_verdict": "n.s.",
+        "n_obs": 1148,
+        "fit_status": "ok"
+      },
+      "overlap": {
+        "min": 0.15586094917885202,
+        "p05": 0.2498966612243133,
+        "p95": 0.7001341196620706,
+        "max": 0.8736267240625409,
+        "frac_outside_05_95": 0.0
+      },
+      "placebo": {
+        "n_ok": 100,
+        "fp_rate": 0.03,
+        "ate_sd": 3.4007460699951477,
+        "p_cal_1sided": 0.1485148514851485,
+        "p_cal_2sided": 0.38613861386138615
+      },
+      "verdict": "indeterminate",
+      "flags": []
+    },
+    "extended": {
+      "status": "ok",
+      "n_obs": 1193,
+      "n_det": 544,
+      "n_sto": 649,
+      "cf": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": 3.675529501214203,
+        "se": 3.3763762192854685,
+        "ci_lo": -2.9420462868428277,
+        "ci_hi": 10.293105289271232,
+        "direction_verdict": "n.s.",
+        "n_obs": 1193,
+        "fit_status": "ok"
+      },
+      "overlap": {
+        "min": 0.12091096991323569,
+        "p05": 0.2583308915749037,
+        "p95": 0.6995094654613419,
+        "max": 0.8513976080811001,
+        "frac_outside_05_95": 0.0
+      },
+      "placebo": {
+        "n_ok": 50,
+        "fp_rate": 0.1,
+        "ate_sd": 3.278884069094886,
+        "p_cal_1sided": 0.13725490196078433,
+        "p_cal_2sided": 0.37254901960784315
+      },
+      "verdict": "indeterminate",
+      "flags": []
+    }
+  }
+}

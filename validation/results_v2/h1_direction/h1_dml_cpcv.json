@@ -1,0 +1,291 @@
+{
+  "spec": "H1 DML on filtered Schmitt-trigger labels with Purged K-Fold cross-fitting (L\u00f3pez de Prado 2018, \u00a77.3)",
+  "n_markets": 8,
+  "horizon": 20,
+  "purged_kfold": {
+    "n_splits": 5,
+    "embargo": 20,
+    "reference": "L\u00f3pez de Prado (2018) AFML Ch. 7.3"
+  },
+  "n_bootstrap": 100,
+  "seed": 42,
+  "total_elapsed_seconds": 1111.7016932964325,
+  "results": {
+    "VNINDEX": {
+      "market": "VNINDEX",
+      "label_source": "filtered_schmitt_trigger",
+      "n_dml_obs": 746,
+      "n_det": 637,
+      "n_sto": 109,
+      "horizon": 20,
+      "purged_kfold_config": {
+        "n_splits": 5,
+        "embargo": 20
+      },
+      "linear_dml": {
+        "spec": "LinearDML+PurgedKFold+Bootstrap",
+        "fit_status": "error: AttributeError: Provided crossfit folds contain training splits that don't contain all treatments",
+        "ate": NaN,
+        "se": NaN,
+        "ci_lo": NaN,
+        "ci_hi": NaN,
+        "direction_verdict": "SKIP",
+        "n_obs": 746
+      },
+      "causal_forest_dml": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": 1.8929830295134935,
+        "se": 2.688094907149434,
+        "ci_lo": -3.3755861755249392,
+        "ci_hi": 7.161552234551925,
+        "direction_verdict": "n.s.",
+        "n_obs": 746,
+        "fit_status": "ok"
+      },
+      "elapsed_seconds": 14.148775815963745
+    },
+    "BVB": {
+      "market": "BVB",
+      "label_source": "filtered_schmitt_trigger",
+      "n_dml_obs": 741,
+      "n_det": 555,
+      "n_sto": 186,
+      "horizon": 20,
+      "purged_kfold_config": {
+        "n_splits": 5,
+        "embargo": 20
+      },
+      "linear_dml": {
+        "spec": "LinearDML+PurgedKFold+Bootstrap",
+        "ate": 0.956655495822073,
+        "se": 2.379968420242815,
+        "ci_lo": -3.707996892196533,
+        "ci_hi": 5.621307883840678,
+        "direction_verdict": "n.s.",
+        "n_obs": 741,
+        "n_det": 555,
+        "n_sto": 186,
+        "fit_status": "ok"
+      },
+      "causal_forest_dml": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": -0.5059915083647983,
+        "se": 1.3012659888079037,
+        "ci_lo": -3.056425980735191,
+        "ci_hi": 2.0444429640055937,
+        "direction_verdict": "n.s.",
+        "n_obs": 741,
+        "fit_status": "ok"
+      },
+      "elapsed_seconds": 184.55361413955688
+    },
+    "KOSPI": {
+      "market": "KOSPI",
+      "label_source": "filtered_schmitt_trigger",
+      "n_dml_obs": 683,
+      "n_det": 405,
+      "n_sto": 278,
+      "horizon": 20,
+      "purged_kfold_config": {
+        "n_splits": 5,
+        "embargo": 20
+      },
+      "linear_dml": {
+        "spec": "LinearDML+PurgedKFold+Bootstrap",
+        "ate": -8.263707740649604,
+        "se": 5.273719116322643,
+        "ci_lo": -18.600007273222385,
+        "ci_hi": 2.0725917919231733,
+        "direction_verdict": "n.s.",
+        "n_obs": 683,
+        "n_det": 405,
+        "n_sto": 278,
+        "fit_status": "ok"
+      },
+      "causal_forest_dml": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": -9.619140359294184,
+        "se": 6.5425961518493345,
+        "ci_lo": -22.44239318230923,
+        "ci_hi": 3.204112463720861,
+        "direction_verdict": "n.s.",
+        "n_obs": 683,
+        "fit_status": "ok"
+      },
+      "elapsed_seconds": 177.30577325820923
+    },
+    "NIFTY": {
+      "market": "NIFTY",
+      "label_source": "filtered_schmitt_trigger",
+      "n_dml_obs": 702,
+      "n_det": 585,
+      "n_sto": 117,
+      "horizon": 20,
+      "purged_kfold_config": {
+        "n_splits": 5,
+        "embargo": 20
+      },
+      "linear_dml": {
+        "spec": "LinearDML+PurgedKFold+Bootstrap",
+        "fit_status": "error: AttributeError: Provided crossfit folds contain training splits that don't contain all treatments",
+        "ate": NaN,
+        "se": NaN,
+        "ci_lo": NaN,
+        "ci_hi": NaN,
+        "direction_verdict": "SKIP",
+        "n_obs": 702
+      },
+      "causal_forest_dml": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": -2.0886044700396553,
+        "se": 2.0189183931232764,
+        "ci_lo": -6.045611808286756,
+        "ci_hi": 1.8684028682074438,
+        "direction_verdict": "n.s.",
+        "n_obs": 702,
+        "fit_status": "ok"
+      },
+      "elapsed_seconds": 9.600573778152466
+    },
+    "SPX": {
+      "market": "SPX",
+      "label_source": "filtered_schmitt_trigger",
+      "n_dml_obs": 865,
+      "n_det": 594,
+      "n_sto": 271,
+      "horizon": 20,
+      "purged_kfold_config": {
+        "n_splits": 5,
+        "embargo": 20
+      },
+      "linear_dml": {
+        "spec": "LinearDML+PurgedKFold+Bootstrap",
+        "ate": 3.446674629297729,
+        "se": 2.1093966480379187,
+        "ci_lo": -0.6876668299661044,
+        "ci_hi": 7.581016088561562,
+        "direction_verdict": "n.s.",
+        "n_obs": 865,
+        "n_det": 594,
+        "n_sto": 271,
+        "fit_status": "ok"
+      },
+      "causal_forest_dml": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": 3.2189312234884633,
+        "se": 1.117802869079804,
+        "ci_lo": 1.028077858276506,
+        "ci_hi": 5.40978458870042,
+        "direction_verdict": "Paradox",
+        "n_obs": 865,
+        "fit_status": "ok"
+      },
+      "elapsed_seconds": 172.06993126869202
+    },
+    "FTSE": {
+      "market": "FTSE",
+      "label_source": "filtered_schmitt_trigger",
+      "n_dml_obs": 747,
+      "n_det": 554,
+      "n_sto": 193,
+      "horizon": 20,
+      "purged_kfold_config": {
+        "n_splits": 5,
+        "embargo": 20
+      },
+      "linear_dml": {
+        "spec": "LinearDML+PurgedKFold+Bootstrap",
+        "ate": 0.9887256142216854,
+        "se": 1.7459757880834021,
+        "ci_lo": -2.4333240483007206,
+        "ci_hi": 4.410775276744091,
+        "direction_verdict": "n.s.",
+        "n_obs": 747,
+        "n_det": 554,
+        "n_sto": 193,
+        "fit_status": "ok"
+      },
+      "causal_forest_dml": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": 0.10900239914310997,
+        "se": 2.6120504695187687,
+        "ci_lo": -5.0105224469146155,
+        "ci_hi": 5.2285272452008345,
+        "direction_verdict": "n.s.",
+        "n_obs": 747,
+        "fit_status": "ok"
+      },
+      "elapsed_seconds": 180.06783485412598
+    },
+    "NIKKEI": {
+      "market": "NIKKEI",
+      "label_source": "filtered_schmitt_trigger",
+      "n_dml_obs": 936,
+      "n_det": 650,
+      "n_sto": 286,
+      "horizon": 20,
+      "purged_kfold_config": {
+        "n_splits": 5,
+        "embargo": 20
+      },
+      "linear_dml": {
+        "spec": "LinearDML+PurgedKFold+Bootstrap",
+        "ate": -0.12401463452357156,
+        "se": 1.8206170539940607,
+        "ci_lo": -3.692358489991346,
+        "ci_hi": 3.444329220944202,
+        "direction_verdict": "n.s.",
+        "n_obs": 936,
+        "n_det": 650,
+        "n_sto": 286,
+        "fit_status": "ok"
+      },
+      "causal_forest_dml": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": -0.12460952290602977,
+        "se": 1.0706695631605245,
+        "ci_lo": -2.2230833060438906,
+        "ci_hi": 1.9738642602318308,
+        "direction_verdict": "n.s.",
+        "n_obs": 936,
+        "fit_status": "ok"
+      },
+      "elapsed_seconds": 188.87070155143738
+    },
+    "BTC": {
+      "market": "BTC",
+      "label_source": "filtered_schmitt_trigger",
+      "n_dml_obs": 1336,
+      "n_det": 996,
+      "n_sto": 340,
+      "horizon": 20,
+      "purged_kfold_config": {
+        "n_splits": 5,
+        "embargo": 20
+      },
+      "linear_dml": {
+        "spec": "LinearDML+PurgedKFold+Bootstrap",
+        "ate": -8.826855129807022,
+        "se": 5.592154869546278,
+        "ci_lo": -19.787277270088012,
+        "ci_hi": 2.1335670104739677,
+        "direction_verdict": "n.s.",
+        "n_obs": 1336,
+        "n_det": 996,
+        "n_sto": 340,
+        "fit_status": "ok"
+      },
+      "causal_forest_dml": {
+        "spec": "CausalForestDML+PurgedKFold",
+        "ate": -8.952698556230128,
+        "se": 4.840067732520266,
+        "ci_lo": -18.439056994704295,
+        "ci_hi": 0.5336598822440344,
+        "direction_verdict": "n.s.",
+        "n_obs": 1336,
+        "fit_status": "ok"
+      },
+      "elapsed_seconds": 185.08248233795166
+    }
+  }
+}
